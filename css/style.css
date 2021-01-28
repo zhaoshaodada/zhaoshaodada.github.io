@@ -50,50 +50,73 @@ li {
 .minbox li:nth-child(1) {
     background: url(../img/01.png) no-repeat 0 0;
     -webkit-transform: translateZ(50px);
+    background-size:100% 100% ;
 }
 .minbox li:nth-child(2) {
     background: url(../img/02.png) no-repeat 0 0;
     -webkit-transform: rotateX(180deg) translateZ(50px);
+    background-size:100% 100% ;
+
 }
 .minbox li:nth-child(3) {
     background: url(../img/01.png) no-repeat 0 0;
     -webkit-transform: rotateX(-90deg) translateZ(50px);
+    background-size:100% 100% ;
+
 }
 .minbox li:nth-child(4) {
     background: url(../img/01.png) no-repeat 0 0;
     -webkit-transform: rotateX(90deg) translateZ(50px);
+    background-size:100% 100% ;
+
 }
 .minbox li:nth-child(5) {
     background: url(../img/01.png) no-repeat 0 0;
     -webkit-transform: rotateY(-90deg) translateZ(50px);
+    background-size:100% 100% ;
+
 }
 .minbox li:nth-child(6) {
     background: url(../img/01.png) no-repeat 0 0;
     -webkit-transform: rotateY(90deg) translateZ(50px);
+    background-size:100% 100% ;
+
 }
 .maxbox li:nth-child(1) {
     background: url(../img/1.jpg) no-repeat 0 0;
     -webkit-transform: translateZ(50px);
+    background-size:100% 100% ;
+
 }
 .maxbox li:nth-child(2) {
     background: url(../img/2.jpg) no-repeat 0 0;
     -webkit-transform: translateZ(50px);
+    background-size:100% 100% ;
+
 }
 .maxbox li:nth-child(3) {
     background: url(../img/1.jpg) no-repeat 0 0;
     -webkit-transform: rotateX(-90deg) translateZ(50px);
+    background-size:100% 100% ;
+
 }
 .maxbox li:nth-child(4) {
     background: url(../img/1.jpg) no-repeat 0 0;
     -webkit-transform: rotateX(90deg) translateZ(50px);
+    background-size:100% 100% ;
+
 }
 .maxbox li:nth-child(5) {
     background: url(../img/1.jpg) no-repeat 0 0;
     -webkit-transform: rotateY(-90deg) translateZ(50px);
+    background-size:100% 100% ;
+
 }
 .maxbox li:nth-child(6) {
     background: url(../img/1.jpg) no-repeat 0 0;
     -webkit-transform: rotateY(90deg) translateZ(50px);
+    background-size:100% 100% ;
+
 }
 .maxbox {
     width: 800px;
