@@ -1,213 +1,82 @@
-@charset "utf-8";
-* {
+html, body {
     margin: 0;
     padding: 0;
-}
-body {
-    max-width: 100%;
-    min-width: 100%;
     height: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background: #171717;
+    color: #999;
+    font: 100%/18px helvetica, arial, sans-serif;
+}
+
+a {
+    color: #2fa1d6;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+}
+
+#canvas-container {
+    background: #000 url(../img/bg.jpg);
+    left: 50%;
     position: absolute;
-    margin-left: auto;
-    margin-right: auto;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
 }
-li {
-    list-style: none;
+
+canvas {
+    cursor: auto;
+    display: block;
+    position: relative;
+    z-index: 3;
 }
-.box {
-    width: 200px;
+
+canvas:active {
+    cursor: crosshair;
+}
+
+#skyline {
+    background: url(../img/skyline.png) repeat-x 50% 0;
+    bottom: 0;
+    height: 135px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+#mountains1 {
+    background: url(../img/mountains1.png) repeat-x 40% 0;
+    bottom: 0;
     height: 200px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
-    position: absolute;
-    margin-left: 42%;
-    margin-top: 22%;
-    -webkit-transform-style: preserve-3d;
-    -webkit-transform: rotateX(13deg);
-    -webkit-animation: move 5s linear infinite;
-}
-.minbox {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    left: 50px;
-    top: 30px;
-    -webkit-transform-style: preserve-3d;
-}
-.minbox li {
-    width: 100px;
-    height: 100px;
-    position: absolute;
     left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+#mountains2 {
+    background: url(../img/mountains2.png) repeat-x 30% 0;
+    bottom: 0;
+    height: 250px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+#gui {
+    right: 0;
+    position: fixed;
     top: 0;
-}
-.minbox li:nth-child(1) {
-    background: url(../img/01.png) no-repeat 0 0;
-    -webkit-transform: translateZ(50px);
-    background-size:100% 100% ;
-}
-.minbox li:nth-child(2) {
-    background: url(../img/02.png) no-repeat 0 0;
-    -webkit-transform: rotateX(180deg) translateZ(50px);
-    background-size:100% 100% ;
-
-}
-.minbox li:nth-child(3) {
-    background: url(../img/01.png) no-repeat 0 0;
-    -webkit-transform: rotateX(-90deg) translateZ(50px);
-    background-size:100% 100% ;
-
-}
-.minbox li:nth-child(4) {
-    background: url(../img/01.png) no-repeat 0 0;
-    -webkit-transform: rotateX(90deg) translateZ(50px);
-    background-size:100% 100% ;
-
-}
-.minbox li:nth-child(5) {
-    background: url(../img/01.png) no-repeat 0 0;
-    -webkit-transform: rotateY(-90deg) translateZ(50px);
-    background-size:100% 100% ;
-
-}
-.minbox li:nth-child(6) {
-    background: url(../img/01.png) no-repeat 0 0;
-    -webkit-transform: rotateY(90deg) translateZ(50px);
-    background-size:100% 100% ;
-
-}
-.maxbox li:nth-child(1) {
-    background: url(../img/1.jpg) no-repeat 0 0;
-    -webkit-transform: translateZ(50px);
-    background-size:100% 100% ;
-
-}
-.maxbox li:nth-child(2) {
-    background: url(../img/2.jpg) no-repeat 0 0;
-    -webkit-transform: translateZ(50px);
-    background-size:100% 100% ;
-
-}
-.maxbox li:nth-child(3) {
-    background: url(../img/1.jpg) no-repeat 0 0;
-    -webkit-transform: rotateX(-90deg) translateZ(50px);
-    background-size:100% 100% ;
-
-}
-.maxbox li:nth-child(4) {
-    background: url(../img/1.jpg) no-repeat 0 0;
-    -webkit-transform: rotateX(90deg) translateZ(50px);
-    background-size:100% 100% ;
-
-}
-.maxbox li:nth-child(5) {
-    background: url(../img/1.jpg) no-repeat 0 0;
-    -webkit-transform: rotateY(-90deg) translateZ(50px);
-    background-size:100% 100% ;
-
-}
-.maxbox li:nth-child(6) {
-    background: url(../img/1.jpg) no-repeat 0 0;
-    -webkit-transform: rotateY(90deg) translateZ(50px);
-    background-size:100% 100% ;
-
-}
-.maxbox {
-    width: 800px;
-    height: 400px;
-    position: absolute;
-    left: 0;
-    top: -20px;
-    -webkit-transform-style: preserve-3d;
-}
-.maxbox li {
-    width: 200px;
-    height: 200px;
-    background: #fff;
-    border: 1px solid #ccc;
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0.2;
-    -webkit-transition: all 1s ease;
-}
-.maxbox li:nth-child(1) {
-    -webkit-transform: translateZ(100px);
-}
-.maxbox li:nth-child(2) {
-    -webkit-transform: rotateX(180deg) translateZ(100px);
-}
-.maxbox li:nth-child(3) {
-    -webkit-transform: rotateX(-90deg) translateZ(100px);
-}
-.maxbox li:nth-child(4) {
-    -webkit-transform: rotateX(90deg) translateZ(100px);
-}
-.maxbox li:nth-child(5) {
-    -webkit-transform: rotateY(-90deg) translateZ(100px);
-}
-.maxbox li:nth-child(6) {
-    -webkit-transform: rotateY(90deg) translateZ(100px);
-}
-.box:hover ol li:nth-child(1) {
-    -webkit-transform: translateZ(300px);
-    width: 400px;
-    height: 400px;
-    opacity: 0.8;
-    left: -100px;
-    top: -100px;
-}
-.box:hover ol li:nth-child(2) {
-    -webkit-transform: rotateX(180deg) translateZ(300px);
-    width: 400px;
-    height: 400px;
-    opacity: 0.8;
-    left: -100px;
-    top: -100px;
-}
-.box:hover ol li:nth-child(3) {
-    -webkit-transform: rotateX(-90deg) translateZ(300px);
-    width: 400px;
-    height: 400px;
-    opacity: 0.8;
-    left: -100px;
-    top: -100px;
-}
-.box:hover ol li:nth-child(4) {
-    -webkit-transform: rotateX(90deg) translateZ(300px);
-    width: 400px;
-    height: 400px;
-    opacity: 0.8;
-    left: -100px;
-    top: -100px;
-}
-.box:hover ol li:nth-child(5) {
-    -webkit-transform: rotateY(-90deg) translateZ(300px);
-    width: 400px;
-    height: 400px;
-    opacity: 0.8;
-    left: -100px;
-    top: -100px;
-}
-.box:hover ol li:nth-child(6) {
-    -webkit-transform: rotateY(90deg) translateZ(300px);
-    width: 400px;
-    height: 400px;
-    opacity: 0.8;
-    left: -100px;
-    top: -100px;
-}
-@keyframes move {
-    0% {
-        -webkit-transform: rotateX(13deg) rotateY(0deg);
-    }
-    100% {
-        -webkit-transform: rotateX(13deg) rotateY(360deg);
-    }
+    z-index: 3;
 }
