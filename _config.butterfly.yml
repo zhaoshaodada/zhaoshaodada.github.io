@@ -76,7 +76,7 @@ avatar:
 disable_top_img: false
 
 # 如果頁面未設置橫幅，則顯示默認的橫幅圖片
-default_top_img: /img/10101.jpg
+default_top_img: /img/index.jpg
 
 # 主頁的橫幅圖片
 index_img:
