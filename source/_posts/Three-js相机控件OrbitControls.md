@@ -5,7 +5,7 @@ tags:
   - three
 categories:
   - 教程
-keywords: "three,教程"
+keywords: "Three.js, OrbitControls, 3D, 相机控件, WebGL"
 ---
 ## Three.js相机控件OrbitControls
 

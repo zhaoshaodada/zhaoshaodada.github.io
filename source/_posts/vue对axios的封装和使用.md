@@ -6,7 +6,7 @@ tags:
   - Axios
 categories:
   - 教程
-keywords: "axios,教程"
+keywords: "Vue, Axios, HTTP请求, 拦截器, 前端封装"
 ---
 在 Vue 项目中，使用 `axios` 进行 HTTP 请求是非常常见的做法。为了提高代码的可维护性、统一错误处理和请求拦截/响应拦截逻辑，对`axios`进行封装使用。
 

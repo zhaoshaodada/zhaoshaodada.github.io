@@ -5,8 +5,8 @@
 # Site
 title: Moonligh
 subtitle:
-description: Moonligh的博客
-keywords:
+description: 一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。
+keywords: 前端开发, JavaScript, Vue, Hexo, 技术博客, ES6, Three.js, Cesium, Axios
 author: Moonligh
 language: zh-CN
 timezone: ''
