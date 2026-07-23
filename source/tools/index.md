@@ -4,6 +4,8 @@ date: 2026-07-23 19:30:00
 type: "tools"
 top_img: /img/tools.jpg
 comments: true
+description: "前端开发者在线工具箱，提供Base64编解码、JSON格式化、时间戳转换、二维码生成、正则表达式测试、图片压缩、Markdown编辑器、颜色选择器、UUID生成、密码生成、字符统计、单位换算、HTTP状态码查询、CSV与JSON互转、CRON表达式生成等16款纯前端工具，数据不上传，安全高效。"
+keywords: "在线工具, 前端工具, Base64, JSON格式化, 时间戳转换, 二维码, 正则表达式, 图片压缩, Markdown, 颜色选择器, UUID, 密码生成, 字符统计, 单位换算, HTTP状态码, CSV, JSON, CRON"
 ---
 
 ## 🛠️ 在线工具箱
@@ -32,6 +34,66 @@ comments: true
     <div class="tool-icon">📱</div>
     <div class="tool-title">二维码生成</div>
     <div class="tool-desc">输入文本生成二维码图片</div>
+  </a>
+  <a class="tool-card" href="/tools/regex.html">
+    <div class="tool-icon">🔎</div>
+    <div class="tool-title">正则表达式测试</div>
+    <div class="tool-desc">实时匹配高亮，支持捕获组</div>
+  </a>
+  <a class="tool-card" href="/tools/image-compress.html">
+    <div class="tool-icon">🖼️</div>
+    <div class="tool-title">图片压缩</div>
+    <div class="tool-desc">Canvas压缩，支持调质量</div>
+  </a>
+  <a class="tool-card" href="/tools/markdown.html">
+    <div class="tool-icon">📝</div>
+    <div class="tool-title">Markdown 编辑器</div>
+    <div class="tool-desc">实时预览，支持导出HTML</div>
+  </a>
+  <a class="tool-card" href="/tools/color-picker.html">
+    <div class="tool-icon">🎨</div>
+    <div class="tool-title">颜色选择器</div>
+    <div class="tool-desc">HEX/RGB/HSL/HSV互转</div>
+  </a>
+  <a class="tool-card" href="/tools/image-base64.html">
+    <div class="tool-icon">🔗</div>
+    <div class="tool-title">图片转 Base64</div>
+    <div class="tool-desc">图片转DataURL，支持拖拽</div>
+  </a>
+  <a class="tool-card" href="/tools/uuid.html">
+    <div class="tool-icon">🆔</div>
+    <div class="tool-title">UUID 生成器</div>
+    <div class="tool-desc">批量生成UUID v4</div>
+  </a>
+  <a class="tool-card" href="/tools/password.html">
+    <div class="tool-icon">🔑</div>
+    <div class="tool-title">密码生成器</div>
+    <div class="tool-desc">自定义长度和字符集</div>
+  </a>
+  <a class="tool-card" href="/tools/char-count.html">
+    <div class="tool-icon">🔢</div>
+    <div class="tool-title">字符统计</div>
+    <div class="tool-desc">字数/行数/字节数统计</div>
+  </a>
+  <a class="tool-card" href="/tools/unit-convert.html">
+    <div class="tool-icon">📏</div>
+    <div class="tool-title">单位换算</div>
+    <div class="tool-desc">长度/重量/温度/数据存储</div>
+  </a>
+  <a class="tool-card" href="/tools/http-status.html">
+    <div class="tool-icon">🌐</div>
+    <div class="tool-title">HTTP 状态码</div>
+    <div class="tool-desc">查询状态码含义和原因</div>
+  </a>
+  <a class="tool-card" href="/tools/csv-json.html">
+    <div class="tool-icon">💱</div>
+    <div class="tool-title">CSV/JSON 互转</div>
+    <div class="tool-desc">CSV与JSON双向转换</div>
+  </a>
+  <a class="tool-card" href="/tools/cron.html">
+    <div class="tool-icon">⏲️</div>
+    <div class="tool-title">CRON 表达式</div>
+    <div class="tool-desc">可视化生成定时任务表达式</div>
   </a>
 </div>
 

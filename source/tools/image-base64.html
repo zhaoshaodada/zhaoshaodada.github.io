@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>图片转 Base64 - 在线工具</title>
+<meta name="description" content="在线图片转 Base64 工具，将图片转换为 DataURL 格式，支持拖拽上传，显示图片尺寸/大小/类型，纯前端 FileReader 实现">
+<meta name="keywords" content="图片转Base64,Base64,DataURL,图片转码,在线Base64,FileReader,图片编码">
+<meta property="og:title" content="图片转 Base64 - 在线工具">
+<meta property="og:description" content="在线图片转 Base64 工具，纯前端 FileReader 实现，支持拖拽上传">
+<meta property="og:type" content="website">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 30px;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #49b1f5;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+.textarea-group {
+  margin-bottom: 16px;
+}
+label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+textarea {
+  width: 100%;
+  min-height: 180px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: Consolas, Monaco, monospace;
+  resize: vertical;
+  line-height: 1.6;
+}
+textarea:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+.btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary { background: #49b1f5; color: #fff; }
+.btn-primary:hover { background: #3aa0e4; }
+.btn-secondary { background: #f0f0f0; color: #333; }
+.btn-secondary:hover { background: #e0e0e0; }
+.btn-success { background: #52c41a; color: #fff; }
+.btn-success:hover { background: #45b016; }
+.btn-danger { background: #ff4d4f; color: #fff; }
+.btn-danger:hover { background: #e84143; }
+.result-area { margin-top: 20px; }
+.msg {
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  display: none;
+}
+.msg.error { background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7; display: block; }
+.msg.success { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; display: block; }
+
+.drop-zone {
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #fafafa;
+}
+.drop-zone:hover, .drop-zone.dragover {
+  border-color: #49b1f5;
+  background: #f0f8ff;
+}
+.drop-zone p {
+  color: #666;
+  font-size: 14px;
+  margin-top: 8px;
+}
+.drop-zone .icon {
+  font-size: 36px;
+  color: #999;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+.info-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px 16px;
+  background: #fafafa;
+}
+.info-card .info-label {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+.info-card .info-value {
+  font-size: 14px;
+  color: #333;
+  font-family: Consolas, Monaco, monospace;
+  word-break: break-all;
+}
+.preview-wrap {
+  margin-top: 16px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  background: #fafafa;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.preview-wrap img {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 4px;
+}
+.preview-wrap .empty-text {
+  color: #999;
+  font-size: 14px;
+}
+@media (max-width: 600px) {
+  .info-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← 返回工具列表</a>
+  <h1>图片转 Base64</h1>
+
+  <div id="msg" class="msg"></div>
+
+  <div class="textarea-group">
+    <label>上传图片：</label>
+    <div class="drop-zone" id="drop-zone">
+      <div class="icon">🖼️</div>
+      <p>点击选择图片，或将图片拖拽到此处</p>
+      <p style="font-size:12px;color:#999;">支持 JPEG / PNG / WebP / GIF / SVG</p>
+      <input type="file" id="file-input" accept="image/*" style="display:none;">
+    </div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-label">文件名</div>
+      <div class="info-value" id="info-name">-</div>
+    </div>
+    <div class="info-card">
+      <div class="info-label">类型</div>
+      <div class="info-value" id="info-type">-</div>
+    </div>
+    <div class="info-card">
+      <div class="info-label">大小</div>
+      <div class="info-value" id="info-size">-</div>
+    </div>
+    <div class="info-card">
+      <div class="info-label">尺寸</div>
+      <div class="info-value" id="info-dim">-</div>
+    </div>
+  </div>
+
+  <div class="textarea-group" style="margin-top:16px;">
+    <label>图片预览：</label>
+    <div class="preview-wrap" id="preview-wrap">
+      <span class="empty-text">图片预览将显示在这里</span>
+    </div>
+  </div>
+
+  <div class="textarea-group">
+    <label>Base64（DataURL）：</label>
+    <textarea id="base64-output" readonly placeholder="Base64 字符串将显示在这里..."></textarea>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn-success" onclick="copyBase64()">复制 Base64</button>
+    <button class="btn-secondary" onclick="copyAsCss()">复制为 CSS background</button>
+    <button class="btn-danger" onclick="clearAll()">清空</button>
+  </div>
+</div>
+
+<script>
+let currentDataUrl = '';
+
+function showMsg(text, type) {
+  const msg = document.getElementById('msg');
+  msg.textContent = text;
+  msg.className = 'msg ' + type;
+}
+function hideMsg() {
+  document.getElementById('msg').className = 'msg';
+}
+
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(2) + ' KB';
+  return (bytes / 1024 / 1024).toFixed(2) + ' MB';
+}
+
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+
+dropZone.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', e => {
+  if (e.target.files[0]) handleFile(e.target.files[0]);
+});
+dropZone.addEventListener('dragover', e => {
+  e.preventDefault();
+  dropZone.classList.add('dragover');
+});
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+  if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+});
+
+function handleFile(file) {
+  hideMsg();
+  if (!file.type.startsWith('image/')) {
+    showMsg('请选择图片文件', 'error');
+    return;
+  }
+  document.getElementById('info-name').textContent = file.name || '-';
+  document.getElementById('info-type').textContent = file.type || '-';
+  document.getElementById('info-size').textContent = formatSize(file.size);
+  document.getElementById('info-dim').textContent = '读取中...';
+
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    const dataUrl = ev.target.result;
+    currentDataUrl = dataUrl;
+    document.getElementById('base64-output').value = dataUrl;
+    const img = new Image();
+    img.onload = function() {
+      document.getElementById('info-dim').textContent = img.naturalWidth + ' × ' + img.naturalHeight;
+      document.getElementById('preview-wrap').innerHTML = '<img src="' + dataUrl + '" alt="预览">';
+    };
+    img.onerror = function() {
+      document.getElementById('info-dim').textContent = '无法读取尺寸';
+      document.getElementById('preview-wrap').innerHTML = '<img src="' + dataUrl + '" alt="预览">';
+    };
+    img.src = dataUrl;
+    showMsg('转换成功', 'success');
+  };
+  reader.onerror = function() {
+    showMsg('读取文件失败', 'error');
+  };
+  reader.readAsDataURL(file);
+}
+
+function copyBase64() {
+  if (!currentDataUrl) { showMsg('没有可复制的内容', 'error'); return; }
+  navigator.clipboard.writeText(currentDataUrl).then(() => {
+    showMsg('已复制 Base64 到剪贴板', 'success');
+  }).catch(() => {
+    const ta = document.getElementById('base64-output');
+    ta.select();
+    document.execCommand('copy');
+    showMsg('已复制 Base64 到剪贴板', 'success');
+  });
+}
+
+function copyAsCss() {
+  if (!currentDataUrl) { showMsg('没有可复制的内容', 'error'); return; }
+  const css = 'background-image: url("' + currentDataUrl + '");';
+  navigator.clipboard.writeText(css).then(() => {
+    showMsg('已复制 CSS background 到剪贴板', 'success');
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = css;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showMsg('已复制 CSS background 到剪贴板', 'success');
+  });
+}
+
+function clearAll() {
+  hideMsg();
+  currentDataUrl = '';
+  fileInput.value = '';
+  document.getElementById('base64-output').value = '';
+  document.getElementById('info-name').textContent = '-';
+  document.getElementById('info-type').textContent = '-';
+  document.getElementById('info-size').textContent = '-';
+  document.getElementById('info-dim').textContent = '-';
+  document.getElementById('preview-wrap').innerHTML = '<span class="empty-text">图片预览将显示在这里</span>';
+}
+</script>
+</body>
+</html>

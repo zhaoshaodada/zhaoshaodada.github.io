@@ -7,6 +7,7 @@ tags:
 categories:
   - 教程
 keywords: "ES6,ES7,ES8,ES9,ES10,JavaScript,新特性"
+description: "本文系统梳理了ECMAScript从ES6到ES10各版本的新特性，涵盖let/const、箭头函数、Promise、async/await、解构赋值、扩展运算符、Object.entries、String.padStart等关键语法。文章还介绍了TC39提案从Stage 0到入选规范的完整流程，帮助JavaScript开发者快速掌握语言演进。"
 ---
 
 > 本文转载自简书文章 [ES6、ES7、ES8、ES9、ES10新特性一览](https://www.jianshu.com/p/065766773752)，作者：Vicky丶Amor

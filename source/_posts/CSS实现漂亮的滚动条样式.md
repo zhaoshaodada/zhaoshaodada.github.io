@@ -8,6 +8,7 @@ tags:
 categories:
   - 教程
 keywords: "CSS滚动条, 自定义滚动条, 美化滚动条"
+description: "本文介绍如何使用CSS实现美观的自定义滚动条样式，提供多款经典样式示例的HTML与CSS代码。文章通过webkit-scrollbar等伪元素属性对浏览器默认滚动条进行美化改造，帮助前端开发者提升页面整体视觉体验与细节质感。"
 ---
 
 > 转载自：[简书-nomooo](https://www.jianshu.com/p/c2addb233acd)

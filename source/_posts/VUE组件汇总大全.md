@@ -8,6 +8,7 @@ tags:
 categories:
   - 资源
 keywords: "Vue组件, UI库, Vue资源, Vue插件"
+description: "本文汇总整理了大量实用的Vue组件资源，涵盖element、Vux等主流UI组件库、Vue插件及各类Vue资源。文章以表格形式罗列组件的Star数与简介，方便开发者快速检索选型，是Vue项目组件选型与资源整合的实用参考资料。"
 ---
 
 > 转载自：[CSDN-西洲](https://blog.csdn.net/xingmeiok/article/details/83307746)

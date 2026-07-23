@@ -9,6 +9,7 @@ tags:
 categories:
   - 教程
 keywords: "Node.js, Express, Mock数据, 假数据, 前后端联调, 分页, JSONP"
+description: "本文介绍如何使用Node.js与Express框架搭建本地后端服务，承接前端请求并分页返回假数据，支持JSONP跨域访问。该方案可用于编写无限下拉等依赖后端数据组件时的顺畅调试，也适合Mock数据模拟前后端联调，让真实数据接入时能快速对接上线。"
 ---
 
 > 转载自：[简书-Jenny_L](https://www.jianshu.com/p/26262bea32e6)

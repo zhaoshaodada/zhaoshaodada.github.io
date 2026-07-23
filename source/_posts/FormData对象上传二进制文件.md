@@ -9,6 +9,7 @@ tags:
 categories:
   - 教程
 keywords: "FormData, 文件上传, AJAX, jQuery, 二进制文件, XMLHttpRequest"
+description: "本文详细讲解如何使用FormData对象组装键值对，配合XMLHttpRequest实现二进制文件的异步上传。涵盖文件对象结构、jQuery与原生Ajax两种实现方式，以及multipart/form-data编码格式下表单数据传输的原理，帮助开发者灵活方便地完成文件上传功能。"
 ---
 
 > 转载自：[博客园-礼拜16](https://www.cnblogs.com/baiyygynui/p/8463771.html)

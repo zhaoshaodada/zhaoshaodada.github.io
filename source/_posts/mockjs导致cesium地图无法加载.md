@@ -7,6 +7,7 @@ tags:
 categories:
   - 教程 
 keywords: "Mock.js, Cesium, 地图加载, 前端调试, 冲突解决"
+description: "本文针对Mock.js导致Cesium三维地图无法正常加载的问题进行分析与解决。在前后端联调与前端调试场景中，Mock.js拦截请求会与Cesium地图资源加载产生冲突，文章梳理了冲突成因并给出相应的处理方案，帮助开发者顺利集成Mock.js与Cesium地图开发。"
 ---
 
 

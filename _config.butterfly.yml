@@ -1214,10 +1214,10 @@ Open_Graph_meta:
   # 是否啟用 Open Graph meta 標籤
   enable: true
   option:
-  # twitter_card:
+  twitter_card: summary_large_image
   # twitter_image:
   # twitter_id:
-  # twitter_site:
+  twitter_site: '@Moonligh'
   # google_plus:
   # fb_admins:
   # fb_app_id:

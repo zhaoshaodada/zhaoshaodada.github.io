@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>单位换算工具 - 在线工具</title>
+<meta name="description" content="在线单位换算工具，支持长度、重量、温度、数据存储等多类别换算，实时双向转换，纯前端实现">
+<meta name="keywords" content="单位换算,长度换算,重量换算,温度换算,数据存储换算,在线工具">
+<meta property="og:title" content="单位换算工具 - 在线工具">
+<meta property="og:description" content="在线单位换算工具，支持长度、重量、温度、数据存储等多类别换算，实时双向转换">
+<meta property="og:type" content="website">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 30px;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #49b1f5;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+.category-group {
+  margin-bottom: 24px;
+}
+label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fff;
+  cursor: pointer;
+}
+select:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+.convert-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.convert-field {
+  flex: 1;
+  min-width: 180px;
+}
+input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: Consolas, Monaco, monospace;
+}
+input[type="number"]:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+.swap-btn {
+  background: #f0f0f0;
+  color: #49b1f5;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  padding: 0;
+  flex-shrink: 0;
+}
+.swap-btn:hover { background: #e0e0e0; }
+.btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary {
+  background: #49b1f5;
+  color: #fff;
+}
+.btn-primary:hover { background: #3aa0e4; }
+.btn-secondary {
+  background: #f0f0f0;
+  color: #333;
+}
+.btn-secondary:hover { background: #e0e0e0; }
+.btn-danger {
+  background: #ff4d4f;
+  color: #fff;
+}
+.btn-danger:hover { background: #e84143; }
+.result-area {
+  margin-top: 20px;
+}
+.result-line {
+  font-size: 14px;
+  color: #666;
+  padding: 10px 12px;
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  line-height: 1.8;
+}
+.msg {
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  display: none;
+}
+.msg.error { background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7; display: block; }
+.msg.success { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; display: block; }
+@media (max-width: 600px) {
+  .container { padding: 20px; }
+  .convert-row { flex-direction: column; align-items: stretch; }
+  .swap-btn { align-self: center; transform: rotate(90deg); }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← 返回工具列表</a>
+  <h1>单位换算工具</h1>
+
+  <div id="msg" class="msg"></div>
+
+  <div class="category-group">
+    <label for="category">类别：</label>
+    <select id="category" onchange="changeCategory()">
+      <option value="length">长度</option>
+      <option value="weight">重量</option>
+      <option value="temperature">温度</option>
+      <option value="storage">数据存储</option>
+    </select>
+  </div>
+
+  <div class="convert-row">
+    <div class="convert-field">
+      <input type="number" id="input-from" value="1" oninput="convertFrom('from')" placeholder="输入数值">
+    </div>
+    <div class="convert-field">
+      <select id="unit-from"></select>
+    </div>
+    <button class="swap-btn" onclick="swapUnits()" title="交换单位">⇄</button>
+    <div class="convert-field">
+      <input type="number" id="input-to" value="1" oninput="convertFrom('to')" placeholder="换算结果">
+    </div>
+    <div class="convert-field">
+      <select id="unit-to"></select>
+    </div>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn-secondary" onclick="resetValues()">重置</button>
+  </div>
+
+  <div class="result-area">
+    <div class="result-line" id="result-text">请输入数值进行换算</div>
+  </div>
+</div>
+
+<script>
+function showMsg(text, type) {
+  const msg = document.getElementById('msg');
+  msg.textContent = text;
+  msg.className = 'msg ' + type;
+}
+function hideMsg() {
+  document.getElementById('msg').className = 'msg';
+}
+
+// 各类别单位定义：name 为显示名，factor 为相对基准单位的换算系数
+// 对于线性单位 y = x * factor
+const categories = {
+  length: {
+    name: '长度',
+    base: '米',
+    units: [
+      { name: '千米 (km)', factor: 1000 },
+      { name: '米 (m)', factor: 1 },
+      { name: '厘米 (cm)', factor: 0.01 },
+      { name: '毫米 (mm)', factor: 0.001 },
+      { name: '英寸 (in)', factor: 0.0254 },
+      { name: '英尺 (ft)', factor: 0.3048 },
+      { name: '英里 (mi)', factor: 1609.344 }
+    ]
+  },
+  weight: {
+    name: '重量',
+    base: '克',
+    units: [
+      { name: '吨 (t)', factor: 1000000 },
+      { name: '千克 (kg)', factor: 1000 },
+      { name: '克 (g)', factor: 1 },
+      { name: '磅 (lb)', factor: 453.592 },
+      { name: '盎司 (oz)', factor: 28.3495 }
+    ]
+  },
+  temperature: {
+    name: '温度',
+    base: '摄氏度',
+    units: [
+      { name: '摄氏度 (°C)', type: 'c' },
+      { name: '华氏度 (°F)', type: 'f' },
+      { name: '开尔文 (K)', type: 'k' }
+    ]
+  },
+  storage: {
+    name: '数据存储',
+    base: '字节',
+    units: [
+      { name: '字节 (B)', factor: 1 },
+      { name: '千字节 (KB)', factor: 1024 },
+      { name: '兆字节 (MB)', factor: 1048576 },
+      { name: '吉字节 (GB)', factor: 1073741824 },
+      { name: '太字节 (TB)', factor: 1099511627776 }
+    ]
+  }
+};
+
+// 温度转换辅助函数：所有温度统一先转到摄氏度
+function tempToCelsius(value, type) {
+  if (type === 'c') return value;
+  if (type === 'f') return (value - 32) * 5 / 9;
+  if (type === 'k') return value - 273.15;
+  return value;
+}
+function celsiusTo(value, type) {
+  if (type === 'c') return value;
+  if (type === 'f') return value * 9 / 5 + 32;
+  if (type === 'k') return value + 273.15;
+  return value;
+}
+
+function populateUnits() {
+  const cat = document.getElementById('category').value;
+  const units = categories[cat].units;
+  const fromSel = document.getElementById('unit-from');
+  const toSel = document.getElementById('unit-to');
+  fromSel.innerHTML = '';
+  toSel.innerHTML = '';
+  units.forEach((u, i) => {
+    const opt1 = document.createElement('option');
+    opt1.value = i;
+    opt1.textContent = u.name;
+    fromSel.appendChild(opt1);
+    const opt2 = document.createElement('option');
+    opt2.value = i;
+    opt2.textContent = u.name;
+    toSel.appendChild(opt2);
+  });
+  // 默认选择不同的两个单位
+  if (units.length > 1) {
+    fromSel.value = 0;
+    toSel.value = Math.min(1, units.length - 1);
+  }
+}
+
+function changeCategory() {
+  populateUnits();
+  convertFrom('from');
+}
+
+function convertValue(value, fromIdx, toIdx, catKey) {
+  const cat = categories[catKey];
+  const from = cat.units[fromIdx];
+  const to = cat.units[toIdx];
+  if (catKey === 'temperature') {
+    const c = tempToCelsius(value, from.type);
+    return celsiusTo(c, to.type);
+  }
+  // 线性单位：先转到基准单位，再转到目标单位
+  const baseValue = value * from.factor;
+  return baseValue / to.factor;
+}
+
+function convertFrom(source) {
+  const catKey = document.getElementById('category').value;
+  const fromIdx = parseInt(document.getElementById('unit-from').value, 10);
+  const toIdx = parseInt(document.getElementById('unit-to').value, 10);
+  const fromInput = document.getElementById('input-from');
+  const toInput = document.getElementById('input-to');
+  const resultText = document.getElementById('result-text');
+
+  let value, result, resultStr;
+  if (source === 'from') {
+    value = parseFloat(fromInput.value);
+    if (isNaN(value)) {
+      toInput.value = '';
+      resultText.textContent = '请输入有效数值';
+      return;
+    }
+    result = convertValue(value, fromIdx, toIdx, catKey);
+    resultStr = formatNumber(result);
+    toInput.value = resultStr;
+  } else {
+    value = parseFloat(toInput.value);
+    if (isNaN(value)) {
+      fromInput.value = '';
+      resultText.textContent = '请输入有效数值';
+      return;
+    }
+    result = convertValue(value, toIdx, fromIdx, catKey);
+    resultStr = formatNumber(result);
+    fromInput.value = resultStr;
+  }
+
+  const fromName = categories[catKey].units[fromIdx].name;
+  const toName = categories[catKey].units[toIdx].name;
+  const sourceValue = source === 'from' ? value : parseFloat(fromInput.value);
+  const targetValue = source === 'from' ? resultStr : value;
+  resultText.textContent = sourceValue + ' ' + fromName + ' = ' + targetValue + ' ' + toName;
+}
+
+function formatNumber(num) {
+  if (Math.abs(num) < 1e-10) return '0';
+  // 处理过大或过小的数，使用科学计数法
+  if (Math.abs(num) < 0.0001 || Math.abs(num) >= 1e12) {
+    return num.toExponential(6);
+  }
+  // 普通数字保留 6 位小数并去除末尾多余的 0
+  return parseFloat(num.toFixed(6)).toString();
+}
+
+function swapUnits() {
+  const fromSel = document.getElementById('unit-from');
+  const toSel = document.getElementById('unit-to');
+  const fromInput = document.getElementById('input-from');
+  const toInput = document.getElementById('input-to');
+  const tmpIdx = fromSel.value;
+  fromSel.value = toSel.value;
+  toSel.value = tmpIdx;
+  const tmpVal = fromInput.value;
+  fromInput.value = toInput.value;
+  toInput.value = tmpVal;
+  convertFrom('from');
+}
+
+function resetValues() {
+  document.getElementById('input-from').value = '1';
+  populateUnits();
+  convertFrom('from');
+  hideMsg();
+}
+
+// 初始化
+populateUnits();
+convertFrom('from');
+</script>
+</body>
+</html>

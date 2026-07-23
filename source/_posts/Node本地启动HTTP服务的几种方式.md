@@ -8,6 +8,7 @@ tags:
 categories:
   - 教程
 keywords: "Node.js, HTTP服务器, 本地服务, express"
+description: "本文总结使用Node.js本地启动HTTP服务的多种方式，涵盖Node内置http模块的使用、express框架的快速搭建以及其他常见方案。文章以代码示例对比各方式的优劣与适用场景，帮助开发者在学习与调试时快速选择合适的本地服务搭建方法。"
 ---
 
 > 转载自：[CSDN-weixin_34336292](https://blog.csdn.net/weixin_34336292/article/details/91375864)

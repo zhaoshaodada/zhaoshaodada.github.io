@@ -8,6 +8,7 @@ tags:
 categories:
   - 教程
 keywords: "Cesium, 点线面, 基础绘制, Entity, 地图开发"
+description: "本文讲解在Cesium三维地图场景中如何进行点、线、面的基础绘制实现，属于GIS地图开发的核心功能。文章基于Entity API介绍简单绘制的实现思路，对比二维与三维场景的差异，帮助开发者快速上手Cesium的图形绘制与地图可视化开发。"
 ---
 
 > 转载自：[CreateFree的博客](https://www.cnblogs.com/CreateFree/p/11488492.html)

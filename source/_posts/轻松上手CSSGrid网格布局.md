@@ -8,6 +8,7 @@ tags:
 categories:
   - 教程
 keywords: "CSS Grid, 网格布局, Grid布局, 布局技巧"
+description: "本文以实际错落网格布局需求为切入点，系统讲解CSS Grid网格布局的基本概念与使用技巧。文章从格子的组成入手，结合实际案例演示Grid布局的实现方式，帮助前端开发者轻松上手并灵活运用CSS Grid完成复杂的二维布局任务。"
 ---
 
 > 转载自：[CSDN-original_heart](https://blog.csdn.net/original_heart/article/details/94761295)

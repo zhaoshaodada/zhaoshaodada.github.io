@@ -8,6 +8,7 @@ tags:
 categories:
   - 教程
 keywords: "Vue, TypeScript, 入门实践, 类型, 接口"
+description: "本文为Vue3.0发布前的TypeScript最佳入门实践，从Vue官方部分使用Ts重写的背景出发，系统讲解类型、接口等核心概念在Vue项目中的应用。文章结合实际开发场景，帮助前端开发者快速掌握TypeScript的类型系统，为Vue3的全面TS化做好铺垫。"
 ---
 
 > 转载自：[掘金-前端劝退师](https://juejin.cn/post/6844903865255477261)

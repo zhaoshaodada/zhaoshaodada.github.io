@@ -8,6 +8,7 @@ tags:
 categories:
   - 教程
 keywords: "Vue, vue-i18n, 国际化, 多语言"
+description: "本文介绍Vue.js国际化插件vue-i18n的使用方法，详细讲解在模板文本、组件方法以及jsf方法中如何调用多语言翻译函数。文章以实际代码示例展示多语言切换的实现思路，帮助开发者快速完成Vue项目的国际化改造与多语言支持。"
 ---
 
 > 转载自：[博客园-大自然的流风](https://www.cnblogs.com/zdz8207/p/vue-i18n-js.html)

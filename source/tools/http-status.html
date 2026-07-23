@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTTP 状态码查询 - 在线工具</title>
+<meta name="description" content="在线 HTTP 状态码查询工具，覆盖 1xx 到 5xx 常见状态码，包含含义、说明、常见原因，支持搜索过滤，纯前端实现">
+<meta name="keywords" content="HTTP状态码,状态码查询,HTTP状态码含义,1xx,2xx,3xx,4xx,5xx,在线工具">
+<meta property="og:title" content="HTTP 状态码查询 - 在线工具">
+<meta property="og:description" content="在线 HTTP 状态码查询工具，覆盖 1xx 到 5xx 常见状态码，包含含义、说明、常见原因">
+<meta property="og:type" content="website">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 30px;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #49b1f5;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+.search-group {
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+}
+input[type="text"]:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.category-tab {
+  padding: 6px 14px;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  background: #fff;
+  color: #666;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.category-tab:hover {
+  border-color: #49b1f5;
+  color: #49b1f5;
+}
+.category-tab.active {
+  background: #49b1f5;
+  color: #fff;
+  border-color: #49b1f5;
+}
+.status-section {
+  margin-bottom: 24px;
+}
+.section-title {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #fff;
+  font-weight: 500;
+}
+.badge-1xx { background: #52c41a; }
+.badge-2xx { background: #49b1f5; }
+.badge-3xx { background: #faad14; }
+.badge-4xx { background: #ff7a45; }
+.badge-5xx { background: #ff4d4f; }
+.status-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.status-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 14px 16px;
+  transition: all 0.2s;
+  background: #fff;
+}
+.status-card:hover {
+  border-color: #49b1f5;
+  box-shadow: 0 2px 8px rgba(73,177,245,0.1);
+}
+.status-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.status-code {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  font-family: Consolas, Monaco, monospace;
+}
+.status-meaning {
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+}
+.status-desc {
+  font-size: 13px;
+  color: #888;
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+.status-cause {
+  font-size: 13px;
+  color: #999;
+  line-height: 1.6;
+}
+.status-cause strong {
+  color: #666;
+}
+.empty-tip {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+  font-size: 14px;
+}
+.msg {
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  display: none;
+}
+.msg.error { background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7; display: block; }
+.msg.success { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; display: block; }
+@media (max-width: 600px) {
+  .container { padding: 20px; }
+  .status-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← 返回工具列表</a>
+  <h1>HTTP 状态码查询</h1>
+
+  <div id="msg" class="msg"></div>
+
+  <div class="search-group">
+    <label for="search">搜索状态码或关键词：</label>
+    <input type="text" id="search" placeholder="输入状态码（如 404）或关键词（如 未找到、重定向）..." oninput="filterStatus()">
+  </div>
+
+  <div class="category-tabs" id="category-tabs">
+    <div class="category-tab active" data-cat="all">全部</div>
+    <div class="category-tab" data-cat="1xx">1xx 信息</div>
+    <div class="category-tab" data-cat="2xx">2xx 成功</div>
+    <div class="category-tab" data-cat="3xx">3xx 重定向</div>
+    <div class="category-tab" data-cat="4xx">4xx 客户端错误</div>
+    <div class="category-tab" data-cat="5xx">5xx 服务器错误</div>
+  </div>
+
+  <div id="result"></div>
+</div>
+
+<script>
+function showMsg(text, type) {
+  const msg = document.getElementById('msg');
+  msg.textContent = text;
+  msg.className = 'msg ' + type;
+}
+function hideMsg() {
+  document.getElementById('msg').className = 'msg';
+}
+
+const statusData = {
+  '1xx': {
+    title: '1xx 信息响应',
+    badge: 'badge-1xx',
+    items: [
+      { code: 100, meaning: 'Continue 继续', desc: '服务器已收到请求头，客户端应继续发送请求体。', cause: '常见于客户端发送大请求体前的预检请求。' },
+      { code: 101, meaning: 'Switching Protocols 切换协议', desc: '服务器根据客户端的 Upgrade 请求头切换协议。', cause: '常见于 WebSocket 连接建立。' },
+      { code: 102, meaning: 'Processing 处理中', desc: '服务器已收到并正在处理请求，但尚未有响应可用。', cause: '常见于 WebDAV 等耗时较长的请求。' },
+      { code: 103, meaning: 'Early Hints 早期提示', desc: '允许服务器在最终响应前发送部分响应头。', cause: '用于预加载资源以优化性能。' }
+    ]
+  },
+  '2xx': {
+    title: '2xx 成功响应',
+    badge: 'badge-2xx',
+    items: [
+      { code: 200, meaning: 'OK 成功', desc: '请求已成功，响应中包含所请求的资源。', cause: '最常见的成功响应。' },
+      { code: 201, meaning: 'Created 已创建', desc: '请求已成功，并创建了新的资源。', cause: '常见于 POST 请求创建资源成功。' },
+      { code: 202, meaning: 'Accepted 已接受', desc: '请求已接受处理，但处理尚未完成。', cause: '常见于异步任务，处理过程仍在进行中。' },
+      { code: 203, meaning: 'Non-Authoritative Information 非权威信息', desc: '返回的元信息并非来自源服务器，而是来自本地或第三方副本。', cause: '常见于使用代理或 CDN 的场景。' },
+      { code: 204, meaning: 'No Content 无内容', desc: '服务器成功处理请求，但响应中不包含任何内容。', cause: '常见于 PUT/DELETE 请求成功后无需返回内容。' },
+      { code: 205, meaning: 'Reset Content 重置内容', desc: '服务器要求客户端重置文档视图（如表单清空）。', cause: '常见于表单提交后清空表单字段。' },
+      { code: 206, meaning: 'Partial Content 部分内容', desc: '服务器成功处理了部分 GET 请求，返回资源的部分内容。', cause: '常见于断点续传、视频流媒体分片下载。' }
+    ]
+  },
+  '3xx': {
+    title: '3xx 重定向',
+    badge: 'badge-3xx',
+    items: [
+      { code: 301, meaning: 'Moved Permanently 永久重定向', desc: '请求的资源已永久移动到新位置，后续请求应使用新的 URL。', cause: '常见于网站改版、域名更换、HTTP 升级 HTTPS。' },
+      { code: 302, meaning: 'Found 临时重定向', desc: '请求的资源临时移动到新位置，后续请求仍使用原 URL。', cause: '常见于登录后跳转、临时维护页面。' },
+      { code: 303, meaning: 'See Other 查看其他', desc: '服务器要求客户端使用 GET 方法访问另一个 URI 获取资源。', cause: '常见于 POST 提交后使用 PRG 模式跳转到结果页。' },
+      { code: 304, meaning: 'Not Modified 未修改', desc: '资源自上次请求后未修改，客户端可使用缓存的版本。', cause: '常见于浏览器缓存协商（If-Modified-Since/ETag）。' },
+      { code: 307, meaning: 'Temporary Redirect 临时重定向', desc: '请求的资源临时移动到新位置，请求方法和请求体保持不变。', cause: '与 302 类似，但严格保留原始请求方法。' },
+      { code: 308, meaning: 'Permanent Redirect 永久重定向', desc: '请求的资源永久移动到新位置，请求方法和请求体保持不变。', cause: '与 301 类似，但严格保留原始请求方法。' }
+    ]
+  },
+  '4xx': {
+    title: '4xx 客户端错误',
+    badge: 'badge-4xx',
+    items: [
+      { code: 400, meaning: 'Bad Request 错误请求', desc: '服务器无法理解请求的语法或参数错误。', cause: '常见于参数缺失、格式错误、JSON 解析失败。' },
+      { code: 401, meaning: 'Unauthorized 未授权', desc: '请求需要身份验证，客户端未提供有效凭证。', cause: '常见于未登录访问受保护资源、Token 过期或无效。' },
+      { code: 402, meaning: 'Payment Required 需要付款', desc: '保留供将来使用，通常表示需要付费才能访问。', cause: '常见于付费墙、订阅类服务的支付校验。' },
+      { code: 403, meaning: 'Forbidden 禁止访问', desc: '服务器拒绝执行请求，即使客户端已通过身份验证。', cause: '常见于权限不足、IP 被封禁、目录禁止访问。' },
+      { code: 404, meaning: 'Not Found 未找到', desc: '服务器找不到请求的资源。', cause: '常见于 URL 错误、资源已被删除、路径拼写错误。' },
+      { code: 405, meaning: 'Method Not Allowed 方法不允许', desc: '请求方法不被目标资源支持。', cause: '常见于对只支持 GET 的接口发送 POST 请求。' },
+      { code: 406, meaning: 'Not Acceptable 不可接受', desc: '服务器无法根据客户端的 Accept 头返回可接受的内容。', cause: '常见于请求的格式与服务器提供的不匹配。' },
+      { code: 408, meaning: 'Request Timeout 请求超时', desc: '服务器等待客户端请求超时。', cause: '常见于客户端网络慢、上传大文件超时。' },
+      { code: 409, meaning: 'Conflict 冲突', desc: '请求与服务器当前状态冲突，无法完成。', cause: '常见于并发修改同一资源、唯一性约束冲突。' },
+      { code: 410, meaning: 'Gone 已删除', desc: '请求的资源已永久删除，且无转发地址。', cause: '常见于资源永久删除后告知客户端不要再请求。' },
+      { code: 413, meaning: 'Payload Too Large 请求体过大', desc: '请求体超过服务器允许的最大值。', cause: '常见于上传文件过大、表单数据过多。' },
+      { code: 414, meaning: 'URI Too Long URI 过长', desc: '请求的 URI 超过服务器允许的最大长度。', cause: '常见于 GET 请求参数过多、URL 编码异常。' },
+      { code: 415, meaning: 'Unsupported Media Type 不支持的媒体类型', desc: '请求的 Content-Type 服务器不支持。', cause: '常见于服务器要求 JSON 但客户端发送了 form-data。' },
+      { code: 429, meaning: 'Too Many Requests 请求过多', desc: '客户端在短时间内发送了过多请求，触发限流。', cause: '常见于 API 调用频率超限、爬虫被识别。' },
+      { code: 431, meaning: 'Request Header Fields Too Large 请求头过大', desc: '请求头字段过大，服务器拒绝处理。', cause: '常见于 Cookie 过多、自定义请求头过大。' }
+    ]
+  },
+  '5xx': {
+    title: '5xx 服务器错误',
+    badge: 'badge-5xx',
+    items: [
+      { code: 500, meaning: 'Internal Server Error 服务器内部错误', desc: '服务器遇到意外情况，无法完成请求。', cause: '常见于代码异常、空指针、数据库连接失败、配置错误。' },
+      { code: 501, meaning: 'Not Implemented 未实现', desc: '服务器不支持请求所需的功能，无法完成请求。', cause: '常见于服务器不支持该 HTTP 方法或功能未开发。' },
+      { code: 502, meaning: 'Bad Gateway 网关错误', desc: '作为网关或代理的服务器从上游服务器收到无效响应。', cause: '常见于上游服务崩溃、Nginx 反代后端不可用。' },
+      { code: 503, meaning: 'Service Unavailable 服务不可用', desc: '服务器暂时无法处理请求，通常因过载或维护。', cause: '常见于服务器过载、限流、计划内停机维护。' },
+      { code: 504, meaning: 'Gateway Timeout 网关超时', desc: '作为网关或代理的服务器等待上游服务器响应超时。', cause: '常见于上游服务响应过慢、网络不通。' },
+      { code: 505, meaning: 'HTTP Version Not Supported 不支持的 HTTP 版本', desc: '服务器不支持请求所用的 HTTP 协议版本。', cause: '常见于客户端使用了过新或过旧的 HTTP 版本。' },
+      { code: 507, meaning: 'Insufficient Storage 存储不足', desc: '服务器无法存储完成请求所需的内容。', cause: '常见于 WebDAV 上传时服务器磁盘空间不足。' },
+      { code: 511, meaning: 'Network Authentication Required 需要网络认证', desc: '客户端需要进行网络认证才能访问资源。', cause: '常见于公共 Wi-Fi 的强制门户认证页面。' }
+    ]
+  }
+};
+
+let currentCategory = 'all';
+let currentSearch = '';
+
+document.querySelectorAll('.category-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    currentCategory = this.dataset.cat;
+    render();
+  });
+});
+
+function filterStatus() {
+  currentSearch = document.getElementById('search').value.trim().toLowerCase();
+  render();
+}
+
+function render() {
+  const container = document.getElementById('result');
+  container.innerHTML = '';
+  let totalCount = 0;
+  const categories = currentCategory === 'all' ? ['1xx', '2xx', '3xx', '4xx', '5xx'] : [currentCategory];
+
+  categories.forEach(catKey => {
+    const section = statusData[catKey];
+    const filtered = section.items.filter(item => {
+      if (!currentSearch) return true;
+      return item.code.toString().includes(currentSearch) ||
+             item.meaning.toLowerCase().includes(currentSearch) ||
+             item.desc.toLowerCase().includes(currentSearch) ||
+             item.cause.toLowerCase().includes(currentSearch);
+    });
+    if (filtered.length === 0) return;
+
+    const sectionEl = document.createElement('div');
+    sectionEl.className = 'status-section';
+    sectionEl.innerHTML = '<div class="section-title">' + section.title + ' <span class="section-badge ' + section.badge + '">' + filtered.length + '</span></div>';
+
+    const list = document.createElement('div');
+    list.className = 'status-list';
+    filtered.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'status-card';
+      card.innerHTML =
+        '<div class="status-header">' +
+          '<span class="status-code">' + item.code + '</span>' +
+          '<span class="status-meaning">' + item.meaning + '</span>' +
+        '</div>' +
+        '<div class="status-desc">' + item.desc + '</div>' +
+        '<div class="status-cause"><strong>常见原因：</strong>' + item.cause + '</div>';
+      list.appendChild(card);
+    });
+    sectionEl.appendChild(list);
+    container.appendChild(sectionEl);
+    totalCount += filtered.length;
+  });
+
+  if (totalCount === 0) {
+    container.innerHTML = '<div class="empty-tip">未找到匹配的状态码，请尝试其他关键词</div>';
+  }
+}
+
+// 初始渲染
+render();
+</script>
+</body>
+</html>

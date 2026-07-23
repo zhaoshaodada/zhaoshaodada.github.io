@@ -6,6 +6,7 @@ tags:
 categories:
   - 教程
 keywords: "Three.js, OrbitControls, 3D, 相机控件, WebGL"
+description: "本文介绍Three.js相机控件OrbitControls的使用方法，通过对三维场景进行缩放、平移、旋转操作来改变相机参数，实现不同视角的渲染效果。内容涵盖OrbitControls.js的引入方式、功能说明及其对正投影相机和透视投影相机的封装原理，适用于WebGL 3D开发场景。"
 ---
 ## Three.js相机控件OrbitControls
 
