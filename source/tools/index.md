@@ -4,8 +4,8 @@ date: 2026-07-23 19:30:00
 type: "tools"
 top_img: /img/tools.jpg
 comments: true
-description: "前端开发者在线工具箱，提供Base64编解码、JSON格式化、时间戳转换、二维码生成、正则表达式测试、图片压缩、Markdown编辑器、颜色选择器、UUID生成、密码生成、字符统计、单位换算、HTTP状态码查询、CSV与JSON互转、CRON表达式生成等16款纯前端工具，数据不上传，安全高效。"
-keywords: "在线工具, 前端工具, Base64, JSON格式化, 时间戳转换, 二维码, 正则表达式, 图片压缩, Markdown, 颜色选择器, UUID, 密码生成, 字符统计, 单位换算, HTTP状态码, CSV, JSON, CRON"
+description: "前端开发者在线工具箱，提供Base64编解码、JSON格式化、时间戳转换、二维码生成、正则表达式测试、图片压缩、图片格式转换、图片尺寸修改、Markdown编辑器、颜色选择器、UUID生成、密码生成、字符统计、单位换算、HTTP状态码查询、CSV与JSON互转、CRON表达式生成等19款纯前端工具，数据不上传，安全高效。"
+keywords: "在线工具, 前端工具, Base64, JSON格式化, 时间戳转换, 二维码, 正则表达式, 图片压缩, 图片格式转换, PNG转JPEG, 图片尺寸修改, Markdown, 颜色选择器, UUID, 密码生成, 字符统计, 单位换算, HTTP状态码, CSV, JSON, CRON"
 ---
 
 ## 🛠️ 在线工具箱
@@ -69,6 +69,11 @@ keywords: "在线工具, 前端工具, Base64, JSON格式化, 时间戳转换, �
     <div class="tool-icon">📐</div>
     <div class="tool-title">图片尺寸修改</div>
     <div class="tool-desc">按百分比或自定义宽高缩放</div>
+  </a>
+  <a class="tool-card" href="/tools/image-convert.html">
+    <div class="tool-icon">🔄</div>
+    <div class="tool-title">图片格式转换</div>
+    <div class="tool-desc">PNG/JPEG/WebP 互转</div>
   </a>
   <a class="tool-card" href="/tools/uuid.html">
     <div class="tool-icon">🆔</div>
