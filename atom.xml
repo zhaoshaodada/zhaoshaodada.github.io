@@ -36,6 +36,71 @@
     <author>
       <name>Moonligh</name>
     </author>
+    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
+    <category term="JavaScript" scheme="https://zhaoshaodada.github.io/tags/JavaScript/"/>
+    <category term="工具类" scheme="https://zhaoshaodada.github.io/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+    <category term="日期处理" scheme="https://zhaoshaodada.github.io/tags/%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86/"/>
+    <category term="数组" scheme="https://zhaoshaodada.github.io/tags/%E6%95%B0%E7%BB%84/"/>
+    <category term="axios" scheme="https://zhaoshaodada.github.io/tags/axios/"/>
+    <category term="Promise" scheme="https://zhaoshaodada.github.io/tags/Promise/"/>
+    <id>https://zhaoshaodada.github.io/2026/07/23/%E5%89%8D%E7%AB%AF%E7%AE%80%E6%B4%81%E5%B9%B6%E5%AE%9E%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/</id>
+    <link href="https://zhaoshaodada.github.io/2026/07/23/%E5%89%8D%E7%AB%AF%E7%AE%80%E6%B4%81%E5%B9%B6%E5%AE%9E%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+    <published>2026-07-23T11:20:00.000Z</published>
+    <summary>
+      <![CDATA[<blockquote>
+<p>转载自：<a href="https://juejin.cn/post/6844903591325466637">掘金-火狼1</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言"]]>
+    </summary>
+    <title>前端简洁并实用的工具类</title>
+    <updated>2026-07-23T11:30:53.739Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
+    <category term="Node.js" scheme="https://zhaoshaodada.github.io/tags/Node-js/"/>
+    <category term="Express" scheme="https://zhaoshaodada.github.io/tags/Express/"/>
+    <category term="Mock数据" scheme="https://zhaoshaodada.github.io/tags/Mock%E6%95%B0%E6%8D%AE/"/>
+    <category term="前后端联调" scheme="https://zhaoshaodada.github.io/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%81%94%E8%B0%83/"/>
+    <id>https://zhaoshaodada.github.io/2026/07/23/%E4%BD%BF%E7%94%A8NodeExpress%E5%88%9B%E5%BB%BA%E5%90%8E%E7%AB%AF%E8%BF%94%E5%9B%9E%E5%81%87%E6%95%B0%E6%8D%AE/</id>
+    <link href="https://zhaoshaodada.github.io/2026/07/23/%E4%BD%BF%E7%94%A8NodeExpress%E5%88%9B%E5%BB%BA%E5%90%8E%E7%AB%AF%E8%BF%94%E5%9B%9E%E5%81%87%E6%95%B0%E6%8D%AE/"/>
+    <published>2026-07-23T11:10:00.000Z</published>
+    <summary>
+      <![CDATA[<blockquote>
+<p>转载自：<a href="https://www.jianshu.com/p/26262bea32e6">简书-Jenny_L</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言"]]>
+    </summary>
+    <title>使用Node Express创建后端返回假数据</title>
+    <updated>2026-07-23T11:27:47.173Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
+    <category term="Ajax" scheme="https://zhaoshaodada.github.io/tags/Ajax/"/>
+    <category term="jQuery" scheme="https://zhaoshaodada.github.io/tags/jQuery/"/>
+    <category term="FormData" scheme="https://zhaoshaodada.github.io/tags/FormData/"/>
+    <category term="文件上传" scheme="https://zhaoshaodada.github.io/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    <id>https://zhaoshaodada.github.io/2026/07/23/FormData%E5%AF%B9%E8%B1%A1%E4%B8%8A%E4%BC%A0%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6/</id>
+    <link href="https://zhaoshaodada.github.io/2026/07/23/FormData%E5%AF%B9%E8%B1%A1%E4%B8%8A%E4%BC%A0%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6/"/>
+    <published>2026-07-23T11:00:00.000Z</published>
+    <summary>
+      <![CDATA[<blockquote>
+<p>转载自：<a href="https://www.cnblogs.com/baiyygynui/p/8463771.html">博客园-礼拜16</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言"]]>
+    </summary>
+    <title>FormData对象上传二进制文件</title>
+    <updated>2026-07-23T11:27:20.913Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
     <category term="资源" scheme="https://zhaoshaodada.github.io/categories/%E8%B5%84%E6%BA%90/"/>
     <category term="Vue" scheme="https://zhaoshaodada.github.io/tags/Vue/"/>
     <category term="组件" scheme="https://zhaoshaodada.github.io/tags/%E7%BB%84%E4%BB%B6/"/>
