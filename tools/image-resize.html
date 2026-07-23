@@ -1,17 +1,17 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Moonligh | Moonligh</title><meta name="author" content="Moonligh"><meta name="copyright" content="Moonligh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="单位换算工具 - 在线工具       * { margin: 0; padding: 0; box-sizing: border-box; } body {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;   backgr">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Moonligh | Moonligh</title><meta name="author" content="Moonligh"><meta name="copyright" content="Moonligh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="图片尺寸修改 - 在线工具       * { margin: 0; padding: 0; box-sizing: border-box; } body {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;   backgr">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Moonligh">
-<meta property="og:url" content="https://zhaoshaodada.github.io/tools/unit-convert.html">
+<meta property="og:url" content="https://zhaoshaodada.github.io/tools/image-resize.html">
 <meta property="og:site_name" content="Moonligh">
-<meta property="og:description" content="单位换算工具 - 在线工具       * { margin: 0; padding: 0; box-sizing: border-box; } body {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;   backgr">
+<meta property="og:description" content="图片尺寸修改 - 在线工具       * { margin: 0; padding: 0; box-sizing: border-box; } body {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;   backgr">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://zhaoshaodada.github.io/img/favicon.jpg">
-<meta property="article:published_time" content="2026-07-23T12:04:56.846Z">
-<meta property="article:modified_time" content="2026-07-23T12:04:56.846Z">
+<meta property="article:published_time" content="2026-07-23T12:17:29.624Z">
+<meta property="article:modified_time" content="2026-07-23T12:17:29.624Z">
 <meta property="article:author" content="Moonligh">
 <meta property="article:tag" content="前端开发, JavaScript, Vue, Hexo, 技术博客, ES6, Three.js, Cesium, Axios">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zhaoshaodada.github.io/img/favicon.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://zhaoshaodada.github.io/tools/unit-convert.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+<meta name="twitter:image" content="https://zhaoshaodada.github.io/img/favicon.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://zhaoshaodada.github.io/tools/image-resize.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
     (() => {
       
     const saveToLocal = {
@@ -151,11 +151,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>单位换算工具 - 在线工具</title>
-<meta name="description" content="在线单位换算工具，支持长度、重量、温度、数据存储等多类别换算，实时双向转换，纯前端实现">
-<meta name="keywords" content="单位换算,长度换算,重量换算,温度换算,数据存储换算,在线工具">
-<meta property="og:title" content="单位换算工具 - 在线工具">
-<meta property="og:description" content="在线单位换算工具，支持长度、重量、温度、数据存储等多类别换算，实时双向转换">
+<title>图片尺寸修改 - 在线工具</title>
+<meta name="description" content="在线图片尺寸修改工具，支持按百分比或自定义宽高调整图片大小，保持比例可选，纯前端 Canvas 实现">
+<meta name="keywords" content="图片尺寸, 图片缩放, 调整大小, resize, Canvas, 在线工具">
+<meta property="og:title" content="图片尺寸修改 - 在线工具">
+<meta property="og:description" content="在线图片尺寸修改工具，支持按百分比或自定义宽高调整图片大小">
 <meta property="og:type" content="website">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -186,66 +186,133 @@ h1 {
   margin-bottom: 20px;
   color: #333;
 }
-.category-group {
-  margin-bottom: 24px;
+.upload-area {
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 40px 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
-label {
-  display: block;
+.upload-area:hover, .upload-area.dragover {
+  border-color: #49b1f5;
+  background: #f0f9ff;
+}
+.upload-area .icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+.upload-area .text {
+  color: #999;
+  font-size: 14px;
+}
+.upload-area input { display: none; }
+
+.preview-area {
+  display: none;
+  margin-bottom: 20px;
+}
+.preview-area.active { display: block; }
+
+.original-info {
+  background: #fafafa;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
   font-size: 14px;
   color: #666;
-  margin-bottom: 8px;
+  border: 1px solid #eee;
 }
-select {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #ddd;
+.original-info span {
+  margin-right: 20px;
+}
+.original-info b {
+  color: #333;
+  font-family: Consolas, Monaco, monospace;
+}
+
+.option-group {
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #fafafa;
   border-radius: 8px;
-  font-size: 14px;
-  font-family: inherit;
-  background: #fff;
-  cursor: pointer;
+  border: 1px solid #eee;
 }
-select:focus {
-  outline: none;
+.option-group h3 {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 16px;
+}
+.mode-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.mode-tab {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  background: #fff;
+  transition: all 0.2s;
+}
+.mode-tab.active {
+  background: #49b1f5;
+  color: #fff;
   border-color: #49b1f5;
 }
-.convert-row {
+.option-row {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
 }
-.convert-field {
-  flex: 1;
-  min-width: 180px;
+.option-row label {
+  font-size: 14px;
+  color: #666;
+  min-width: 70px;
 }
-input[type="number"] {
-  width: 100%;
-  padding: 10px 12px;
+.option-row input[type="number"] {
+  width: 100px;
+  padding: 8px 12px;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 15px;
-  font-family: Consolas, Monaco, monospace;
+  border-radius: 6px;
+  font-size: 14px;
 }
-input[type="number"]:focus {
+.option-row input[type="number"]:focus {
   outline: none;
   border-color: #49b1f5;
 }
-.swap-btn {
-  background: #f0f0f0;
+.option-row input[type="range"] {
+  flex: 1;
+  min-width: 150px;
+}
+.option-row select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+}
+.option-row .value {
+  font-family: Consolas, Monaco, monospace;
   color: #49b1f5;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  font-weight: 500;
+  min-width: 50px;
+}
+.checkbox-row {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  padding: 0;
-  flex-shrink: 0;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #666;
 }
-.swap-btn:hover { background: #e0e0e0; }
+.checkbox-row input { cursor: pointer; }
+
 .btn-group {
   display: flex;
   gap: 10px;
@@ -260,32 +327,46 @@ button {
   cursor: pointer;
   transition: all 0.2s;
 }
-.btn-primary {
-  background: #49b1f5;
-  color: #fff;
-}
+.btn-primary { background: #49b1f5; color: #fff; }
 .btn-primary:hover { background: #3aa0e4; }
-.btn-secondary {
-  background: #f0f0f0;
-  color: #333;
-}
-.btn-secondary:hover { background: #e0e0e0; }
-.btn-danger {
-  background: #ff4d4f;
-  color: #fff;
-}
+.btn-success { background: #52c41a; color: #fff; }
+.btn-success:hover { background: #45b016; }
+.btn-danger { background: #ff4d4f; color: #fff; }
 .btn-danger:hover { background: #e84143; }
+.btn-secondary { background: #f0f0f0; color: #333; }
+.btn-secondary:hover { background: #e0e0e0; }
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .result-area {
+  display: none;
   margin-top: 20px;
 }
-.result-line {
-  font-size: 14px;
-  color: #666;
-  padding: 10px 12px;
-  background: #fafafa;
-  border: 1px solid #eee;
+.result-area.active { display: block; }
+.result-info {
+  background: #f6ffed;
+  border: 1px solid #b7eb8f;
+  padding: 12px 16px;
   border-radius: 8px;
-  line-height: 1.8;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #389e0d;
+}
+.result-info span { margin-right: 20px; }
+.result-preview {
+  text-align: center;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  margin-bottom: 16px;
+  overflow: auto;
+}
+.result-preview img {
+  max-width: 100%;
+  height: auto;
 }
 .msg {
   padding: 10px 16px;
@@ -296,242 +377,287 @@ button {
 }
 .msg.error { background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7; display: block; }
 .msg.success { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; display: block; }
-@media (max-width: 600px) {
-  .container { padding: 20px; }
-  .convert-row { flex-direction: column; align-items: stretch; }
-  .swap-btn { align-self: center; transform: rotate(90deg); }
-}
 </style>
 </head>
 <body>
 <div class="container">
   <a href="/tools/" class="back-link">← 返回工具列表</a>
-  <h1>单位换算工具</h1>
+  <h1>图片尺寸修改</h1>
 
   <div id="msg" class="msg"></div>
 
-  <div class="category-group">
-    <label for="category">类别：</label>
-    <select id="category" onchange="changeCategory()">
-      <option value="length">长度</option>
-      <option value="weight">重量</option>
-      <option value="temperature">温度</option>
-      <option value="storage">数据存储</option>
-    </select>
+  <div class="upload-area" id="uploadArea">
+    <div class="icon">📁</div>
+    <div class="text">点击或拖拽图片到此处上传</div>
+    <input type="file" id="fileInput" accept="image/*">
   </div>
 
-  <div class="convert-row">
-    <div class="convert-field">
-      <input type="number" id="input-from" value="1" oninput="convertFrom('from')" placeholder="输入数值">
+  <div class="preview-area" id="previewArea">
+    <div class="original-info" id="originalInfo"></div>
+
+    <div class="option-group">
+      <h3>调整方式</h3>
+      <div class="mode-tabs">
+        <div class="mode-tab active" data-mode="percent">按百分比</div>
+        <div class="mode-tab" data-mode="custom">自定义尺寸</div>
+      </div>
+
+      <div id="percentMode">
+        <div class="option-row">
+          <label>缩放比例：</label>
+          <input type="range" id="percentRange" min="10" max="300" step="10" value="50">
+          <span class="value" id="percentValue">50%</span>
+        </div>
+      </div>
+
+      <div id="customMode" style="display:none;">
+        <div class="option-row">
+          <label>宽度：</label>
+          <input type="number" id="targetWidth" placeholder="像素" min="1">
+          <span>px</span>
+        </div>
+        <div class="option-row">
+          <label>高度：</label>
+          <input type="number" id="targetHeight" placeholder="像素" min="1">
+          <span>px</span>
+        </div>
+        <div class="checkbox-row">
+          <input type="checkbox" id="keepRatio" checked>
+          <label for="keepRatio">保持原始宽高比</label>
+        </div>
+      </div>
+
+      <div class="option-row" style="margin-top:16px;">
+        <label>输出格式：</label>
+        <select id="outputFormat">
+          <option value="original">保持原格式</option>
+          <option value="image/jpeg">JPEG</option>
+          <option value="image/png">PNG</option>
+          <option value="image/webp">WebP</option>
+        </select>
+      </div>
+      <div class="option-row" id="qualityRow">
+        <label>质量：</label>
+        <input type="range" id="qualityRange" min="10" max="100" step="5" value="80">
+        <span class="value" id="qualityValue">80%</span>
+      </div>
     </div>
-    <div class="convert-field">
-      <select id="unit-from"></select>
-    </div>
-    <button class="swap-btn" onclick="swapUnits()" title="交换单位">⇄</button>
-    <div class="convert-field">
-      <input type="number" id="input-to" value="1" oninput="convertFrom('to')" placeholder="换算结果">
-    </div>
-    <div class="convert-field">
-      <select id="unit-to"></select>
+
+    <div class="btn-group">
+      <button class="btn-primary" id="resizeBtn" onclick="resizeImage()" disabled>调整尺寸</button>
+      <button class="btn-danger" onclick="resetAll()">重新选择</button>
     </div>
   </div>
 
-  <div class="btn-group">
-    <button class="btn-secondary" onclick="resetValues()">重置</button>
-  </div>
-
-  <div class="result-area">
-    <div class="result-line" id="result-text">请输入数值进行换算</div>
+  <div class="result-area" id="resultArea">
+    <div class="result-info" id="resultInfo"></div>
+    <div class="result-preview" id="resultPreview"></div>
+    <div class="btn-group">
+      <button class="btn-success" id="downloadBtn" onclick="downloadResult()">下载图片</button>
+    </div>
   </div>
 </div>
 
 <script>
+let originalImage = null;
+let originalFile = null;
+let resultBlob = null;
+
 function showMsg(text, type) {
   const msg = document.getElementById('msg');
   msg.textContent = text;
   msg.className = 'msg ' + type;
+  setTimeout(() => { msg.className = 'msg'; }, 3000);
 }
-function hideMsg() {
+
+const uploadArea = document.getElementById('uploadArea');
+const fileInput = document.getElementById('fileInput');
+
+uploadArea.addEventListener('click', () => fileInput.click());
+uploadArea.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  uploadArea.classList.add('dragover');
+});
+uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+uploadArea.addEventListener('drop', (e) => {
+  e.preventDefault();
+  uploadArea.classList.remove('dragover');
+  if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change', (e) => {
+  if (e.target.files.length) handleFile(e.target.files[0]);
+});
+
+function handleFile(file) {
+  if (!file.type.startsWith('image/')) {
+    showMsg('请上传图片文件', 'error');
+    return;
+  }
+  originalFile = file;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = new Image();
+    img.onload = () => {
+      originalImage = img;
+      showOriginalInfo(file, img);
+      document.getElementById('previewArea').classList.add('active');
+      document.getElementById('resizeBtn').disabled = false;
+      // 初始化自定义尺寸输入框
+      document.getElementById('targetWidth').value = img.naturalWidth;
+      document.getElementById('targetHeight').value = img.naturalHeight;
+      showMsg('图片加载成功', 'success');
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function showOriginalInfo(file, img) {
+  const sizeKB = (file.size / 1024).toFixed(2);
+  const sizeMB = (file.size / 1024 / 1024).toFixed(2);
+  const sizeStr = file.size > 1024 * 1024 ? sizeMB + ' MB' : sizeKB + ' KB';
+  document.getElementById('originalInfo').innerHTML =
+    '<span>文件名：<b>' + file.name + '</b></span>' +
+    '<span>原始尺寸：<b>' + img.naturalWidth + ' × ' + img.naturalHeight + '</b></span>' +
+    '<span>文件大小：<b>' + sizeStr + '</b></span>' +
+    '<span>类型：<b>' + file.type + '</b></span>';
+}
+
+// 模式切换
+document.querySelectorAll('.mode-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    const mode = this.dataset.mode;
+    document.getElementById('percentMode').style.display = mode === 'percent' ? 'block' : 'none';
+    document.getElementById('customMode').style.display = mode === 'custom' ? 'block' : 'none';
+  });
+});
+
+// 百分比滑块
+document.getElementById('percentRange').addEventListener('input', function() {
+  document.getElementById('percentValue').textContent = this.value + '%';
+});
+
+// 质量滑块
+document.getElementById('qualityRange').addEventListener('input', function() {
+  document.getElementById('qualityValue').textContent = this.value + '%';
+});
+
+// 输出格式切换时显示/隐藏质量选项
+document.getElementById('outputFormat').addEventListener('change', function() {
+  const qualityRow = document.getElementById('qualityRow');
+  qualityRow.style.display = (this.value === 'image/jpeg' || this.value === 'image/webp') ? 'flex' : 'none';
+});
+// 初始状态
+document.getElementById('qualityRow').style.display = 'none';
+
+// 保持比例联动
+document.getElementById('targetWidth').addEventListener('input', function() {
+  if (document.getElementById('keepRatio').checked && originalImage) {
+    const ratio = originalImage.naturalHeight / originalImage.naturalWidth;
+    document.getElementById('targetHeight').value = Math.round(this.value * ratio);
+  }
+});
+document.getElementById('targetHeight').addEventListener('input', function() {
+  if (document.getElementById('keepRatio').checked && originalImage) {
+    const ratio = originalImage.naturalWidth / originalImage.naturalHeight;
+    document.getElementById('targetWidth').value = Math.round(this.value * ratio);
+  }
+});
+document.getElementById('keepRatio').addEventListener('change', function() {
+  if (this.checked && originalImage) {
+    const ratio = originalImage.naturalHeight / originalImage.naturalWidth;
+    document.getElementById('targetHeight').value = Math.round(document.getElementById('targetWidth').value * ratio);
+  }
+});
+
+function resizeImage() {
+  if (!originalImage) { showMsg('请先上传图片', 'error'); return; }
+
+  let targetW, targetH;
+  const activeMode = document.querySelector('.mode-tab.active').dataset.mode;
+
+  if (activeMode === 'percent') {
+    const percent = parseInt(document.getElementById('percentRange').value);
+    targetW = Math.round(originalImage.naturalWidth * percent / 100);
+    targetH = Math.round(originalImage.naturalHeight * percent / 100);
+  } else {
+    targetW = parseInt(document.getElementById('targetWidth').value);
+    targetH = parseInt(document.getElementById('targetHeight').value);
+    if (!targetW || !targetH || targetW < 1 || targetH < 1) {
+      showMsg('请输入有效的宽度和高度', 'error');
+      return;
+    }
+  }
+
+  const canvas = document.createElement('canvas');
+  canvas.width = targetW;
+  canvas.height = targetH;
+  const ctx = canvas.getContext('2d');
+  // 白底，防止 PNG 透明转 JPEG 变黑
+  if (getOutputMime() === 'image/jpeg') {
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, targetW, targetH);
+  }
+  ctx.drawImage(originalImage, 0, 0, targetW, targetH);
+
+  const mime = getOutputMime();
+  const quality = parseInt(document.getElementById('qualityRange').value) / 100;
+
+  canvas.toBlob((blob) => {
+    if (!blob) { showMsg('生成失败', 'error'); return; }
+    resultBlob = blob;
+    const url = URL.createObjectURL(blob);
+    const sizeKB = (blob.size / 1024).toFixed(2);
+    const sizeMB = (blob.size / 1024 / 1024).toFixed(2);
+    const sizeStr = blob.size > 1024 * 1024 ? sizeMB + ' MB' : sizeKB + ' KB';
+    const originalSizeStr = originalFile.size > 1024 * 1024
+      ? (originalFile.size / 1024 / 1024).toFixed(2) + ' MB'
+      : (originalFile.size / 1024).toFixed(2) + ' KB';
+    const ratio = ((1 - blob.size / originalFile.size) * 100).toFixed(1);
+
+    document.getElementById('resultInfo').innerHTML =
+      '<span>新尺寸：<b>' + targetW + ' × ' + targetH + '</b></span>' +
+      '<span>新大小：<b>' + sizeStr + '</b></span>' +
+      '<span>原大小：<b>' + originalSizeStr + '</b></span>' +
+      '<span>变化：<b>' + (ratio > 0 ? '-' : '+') + Math.abs(ratio) + '%</b></span>';
+
+    document.getElementById('resultPreview').innerHTML = '<img src="' + url + '" alt="预览">';
+    document.getElementById('resultArea').classList.add('active');
+    showMsg('调整成功', 'success');
+  }, mime, quality);
+}
+
+function getOutputMime() {
+  const fmt = document.getElementById('outputFormat').value;
+  if (fmt === 'original') {
+    return originalFile.type || 'image/png';
+  }
+  return fmt;
+}
+
+function downloadResult() {
+  if (!resultBlob) { showMsg('请先调整尺寸', 'error'); return; }
+  const mime = resultBlob.type;
+  const ext = mime === 'image/jpeg' ? 'jpg' : (mime === 'image/webp' ? 'webp' : 'png');
+  const originalName = originalFile.name.replace(/\.[^.]+$/, '');
+  const link = document.createElement('a');
+  link.download = originalName + '_resized.' + ext;
+  link.href = URL.createObjectURL(resultBlob);
+  link.click();
+  showMsg('开始下载', 'success');
+}
+
+function resetAll() {
+  originalImage = null;
+  originalFile = null;
+  resultBlob = null;
+  fileInput.value = '';
+  document.getElementById('previewArea').classList.remove('active');
+  document.getElementById('resultArea').classList.remove('active');
   document.getElementById('msg').className = 'msg';
 }
-
-// 各类别单位定义：name 为显示名，factor 为相对基准单位的换算系数
-// 对于线性单位 y = x * factor
-const categories = {
-  length: {
-    name: '长度',
-    base: '米',
-    units: [
-      { name: '千米 (km)', factor: 1000 },
-      { name: '米 (m)', factor: 1 },
-      { name: '厘米 (cm)', factor: 0.01 },
-      { name: '毫米 (mm)', factor: 0.001 },
-      { name: '英寸 (in)', factor: 0.0254 },
-      { name: '英尺 (ft)', factor: 0.3048 },
-      { name: '英里 (mi)', factor: 1609.344 }
-    ]
-  },
-  weight: {
-    name: '重量',
-    base: '克',
-    units: [
-      { name: '吨 (t)', factor: 1000000 },
-      { name: '千克 (kg)', factor: 1000 },
-      { name: '克 (g)', factor: 1 },
-      { name: '磅 (lb)', factor: 453.592 },
-      { name: '盎司 (oz)', factor: 28.3495 }
-    ]
-  },
-  temperature: {
-    name: '温度',
-    base: '摄氏度',
-    units: [
-      { name: '摄氏度 (°C)', type: 'c' },
-      { name: '华氏度 (°F)', type: 'f' },
-      { name: '开尔文 (K)', type: 'k' }
-    ]
-  },
-  storage: {
-    name: '数据存储',
-    base: '字节',
-    units: [
-      { name: '字节 (B)', factor: 1 },
-      { name: '千字节 (KB)', factor: 1024 },
-      { name: '兆字节 (MB)', factor: 1048576 },
-      { name: '吉字节 (GB)', factor: 1073741824 },
-      { name: '太字节 (TB)', factor: 1099511627776 }
-    ]
-  }
-};
-
-// 温度转换辅助函数：所有温度统一先转到摄氏度
-function tempToCelsius(value, type) {
-  if (type === 'c') return value;
-  if (type === 'f') return (value - 32) * 5 / 9;
-  if (type === 'k') return value - 273.15;
-  return value;
-}
-function celsiusTo(value, type) {
-  if (type === 'c') return value;
-  if (type === 'f') return value * 9 / 5 + 32;
-  if (type === 'k') return value + 273.15;
-  return value;
-}
-
-function populateUnits() {
-  const cat = document.getElementById('category').value;
-  const units = categories[cat].units;
-  const fromSel = document.getElementById('unit-from');
-  const toSel = document.getElementById('unit-to');
-  fromSel.innerHTML = '';
-  toSel.innerHTML = '';
-  units.forEach((u, i) => {
-    const opt1 = document.createElement('option');
-    opt1.value = i;
-    opt1.textContent = u.name;
-    fromSel.appendChild(opt1);
-    const opt2 = document.createElement('option');
-    opt2.value = i;
-    opt2.textContent = u.name;
-    toSel.appendChild(opt2);
-  });
-  // 默认选择不同的两个单位
-  if (units.length > 1) {
-    fromSel.value = 0;
-    toSel.value = Math.min(1, units.length - 1);
-  }
-}
-
-function changeCategory() {
-  populateUnits();
-  convertFrom('from');
-}
-
-function convertValue(value, fromIdx, toIdx, catKey) {
-  const cat = categories[catKey];
-  const from = cat.units[fromIdx];
-  const to = cat.units[toIdx];
-  if (catKey === 'temperature') {
-    const c = tempToCelsius(value, from.type);
-    return celsiusTo(c, to.type);
-  }
-  // 线性单位：先转到基准单位，再转到目标单位
-  const baseValue = value * from.factor;
-  return baseValue / to.factor;
-}
-
-function convertFrom(source) {
-  const catKey = document.getElementById('category').value;
-  const fromIdx = parseInt(document.getElementById('unit-from').value, 10);
-  const toIdx = parseInt(document.getElementById('unit-to').value, 10);
-  const fromInput = document.getElementById('input-from');
-  const toInput = document.getElementById('input-to');
-  const resultText = document.getElementById('result-text');
-
-  let value, result, resultStr;
-  if (source === 'from') {
-    value = parseFloat(fromInput.value);
-    if (isNaN(value)) {
-      toInput.value = '';
-      resultText.textContent = '请输入有效数值';
-      return;
-    }
-    result = convertValue(value, fromIdx, toIdx, catKey);
-    resultStr = formatNumber(result);
-    toInput.value = resultStr;
-  } else {
-    value = parseFloat(toInput.value);
-    if (isNaN(value)) {
-      fromInput.value = '';
-      resultText.textContent = '请输入有效数值';
-      return;
-    }
-    result = convertValue(value, toIdx, fromIdx, catKey);
-    resultStr = formatNumber(result);
-    fromInput.value = resultStr;
-  }
-
-  const fromName = categories[catKey].units[fromIdx].name;
-  const toName = categories[catKey].units[toIdx].name;
-  const sourceValue = source === 'from' ? value : parseFloat(fromInput.value);
-  const targetValue = source === 'from' ? resultStr : value;
-  resultText.textContent = sourceValue + ' ' + fromName + ' = ' + targetValue + ' ' + toName;
-}
-
-function formatNumber(num) {
-  if (Math.abs(num) < 1e-10) return '0';
-  // 处理过大或过小的数，使用科学计数法
-  if (Math.abs(num) < 0.0001 || Math.abs(num) >= 1e12) {
-    return num.toExponential(6);
-  }
-  // 普通数字保留 6 位小数并去除末尾多余的 0
-  return parseFloat(num.toFixed(6)).toString();
-}
-
-function swapUnits() {
-  const fromSel = document.getElementById('unit-from');
-  const toSel = document.getElementById('unit-to');
-  const fromInput = document.getElementById('input-from');
-  const toInput = document.getElementById('input-to');
-  const tmpIdx = fromSel.value;
-  fromSel.value = toSel.value;
-  toSel.value = tmpIdx;
-  const tmpVal = fromInput.value;
-  fromInput.value = toInput.value;
-  toInput.value = tmpVal;
-  convertFrom('from');
-}
-
-function resetValues() {
-  document.getElementById('input-from').value = '1';
-  populateUnits();
-  convertFrom('from');
-  hideMsg();
-}
-
-// 初始化
-populateUnits();
-convertFrom('from');
 </script>
 </body>
 </html>
