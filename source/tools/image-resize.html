@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>图片尺寸修改 - 在线工具</title>
+<meta name="description" content="在线图片尺寸修改工具，支持按百分比或自定义宽高调整图片大小，保持比例可选，纯前端 Canvas 实现">
+<meta name="keywords" content="图片尺寸, 图片缩放, 调整大小, resize, Canvas, 在线工具">
+<meta property="og:title" content="图片尺寸修改 - 在线工具">
+<meta property="og:description" content="在线图片尺寸修改工具，支持按百分比或自定义宽高调整图片大小">
+<meta property="og:type" content="website">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 30px;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #49b1f5;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+.upload-area {
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 40px 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.upload-area:hover, .upload-area.dragover {
+  border-color: #49b1f5;
+  background: #f0f9ff;
+}
+.upload-area .icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+.upload-area .text {
+  color: #999;
+  font-size: 14px;
+}
+.upload-area input { display: none; }
+
+.preview-area {
+  display: none;
+  margin-bottom: 20px;
+}
+.preview-area.active { display: block; }
+
+.original-info {
+  background: #fafafa;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #666;
+  border: 1px solid #eee;
+}
+.original-info span {
+  margin-right: 20px;
+}
+.original-info b {
+  color: #333;
+  font-family: Consolas, Monaco, monospace;
+}
+
+.option-group {
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+.option-group h3 {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 16px;
+}
+.mode-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.mode-tab {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  background: #fff;
+  transition: all 0.2s;
+}
+.mode-tab.active {
+  background: #49b1f5;
+  color: #fff;
+  border-color: #49b1f5;
+}
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.option-row label {
+  font-size: 14px;
+  color: #666;
+  min-width: 70px;
+}
+.option-row input[type="number"] {
+  width: 100px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.option-row input[type="number"]:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+.option-row input[type="range"] {
+  flex: 1;
+  min-width: 150px;
+}
+.option-row select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+}
+.option-row .value {
+  font-family: Consolas, Monaco, monospace;
+  color: #49b1f5;
+  font-weight: 500;
+  min-width: 50px;
+}
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #666;
+}
+.checkbox-row input { cursor: pointer; }
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary { background: #49b1f5; color: #fff; }
+.btn-primary:hover { background: #3aa0e4; }
+.btn-success { background: #52c41a; color: #fff; }
+.btn-success:hover { background: #45b016; }
+.btn-danger { background: #ff4d4f; color: #fff; }
+.btn-danger:hover { background: #e84143; }
+.btn-secondary { background: #f0f0f0; color: #333; }
+.btn-secondary:hover { background: #e0e0e0; }
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.result-area {
+  display: none;
+  margin-top: 20px;
+}
+.result-area.active { display: block; }
+.result-info {
+  background: #f6ffed;
+  border: 1px solid #b7eb8f;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #389e0d;
+}
+.result-info span { margin-right: 20px; }
+.result-preview {
+  text-align: center;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  margin-bottom: 16px;
+  overflow: auto;
+}
+.result-preview img {
+  max-width: 100%;
+  height: auto;
+}
+.msg {
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  display: none;
+}
+.msg.error { background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7; display: block; }
+.msg.success { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; display: block; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← 返回工具列表</a>
+  <h1>图片尺寸修改</h1>
+
+  <div id="msg" class="msg"></div>
+
+  <div class="upload-area" id="uploadArea">
+    <div class="icon">📁</div>
+    <div class="text">点击或拖拽图片到此处上传</div>
+    <input type="file" id="fileInput" accept="image/*">
+  </div>
+
+  <div class="preview-area" id="previewArea">
+    <div class="original-info" id="originalInfo"></div>
+
+    <div class="option-group">
+      <h3>调整方式</h3>
+      <div class="mode-tabs">
+        <div class="mode-tab active" data-mode="percent">按百分比</div>
+        <div class="mode-tab" data-mode="custom">自定义尺寸</div>
+      </div>
+
+      <div id="percentMode">
+        <div class="option-row">
+          <label>缩放比例：</label>
+          <input type="range" id="percentRange" min="10" max="300" step="10" value="50">
+          <span class="value" id="percentValue">50%</span>
+        </div>
+      </div>
+
+      <div id="customMode" style="display:none;">
+        <div class="option-row">
+          <label>宽度：</label>
+          <input type="number" id="targetWidth" placeholder="像素" min="1">
+          <span>px</span>
+        </div>
+        <div class="option-row">
+          <label>高度：</label>
+          <input type="number" id="targetHeight" placeholder="像素" min="1">
+          <span>px</span>
+        </div>
+        <div class="checkbox-row">
+          <input type="checkbox" id="keepRatio" checked>
+          <label for="keepRatio">保持原始宽高比</label>
+        </div>
+      </div>
+
+      <div class="option-row" style="margin-top:16px;">
+        <label>输出格式：</label>
+        <select id="outputFormat">
+          <option value="original">保持原格式</option>
+          <option value="image/jpeg">JPEG</option>
+          <option value="image/png">PNG</option>
+          <option value="image/webp">WebP</option>
+        </select>
+      </div>
+      <div class="option-row" id="qualityRow">
+        <label>质量：</label>
+        <input type="range" id="qualityRange" min="10" max="100" step="5" value="80">
+        <span class="value" id="qualityValue">80%</span>
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn-primary" id="resizeBtn" onclick="resizeImage()" disabled>调整尺寸</button>
+      <button class="btn-danger" onclick="resetAll()">重新选择</button>
+    </div>
+  </div>
+
+  <div class="result-area" id="resultArea">
+    <div class="result-info" id="resultInfo"></div>
+    <div class="result-preview" id="resultPreview"></div>
+    <div class="btn-group">
+      <button class="btn-success" id="downloadBtn" onclick="downloadResult()">下载图片</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let originalImage = null;
+let originalFile = null;
+let resultBlob = null;
+
+function showMsg(text, type) {
+  const msg = document.getElementById('msg');
+  msg.textContent = text;
+  msg.className = 'msg ' + type;
+  setTimeout(() => { msg.className = 'msg'; }, 3000);
+}
+
+const uploadArea = document.getElementById('uploadArea');
+const fileInput = document.getElementById('fileInput');
+
+uploadArea.addEventListener('click', () => fileInput.click());
+uploadArea.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  uploadArea.classList.add('dragover');
+});
+uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+uploadArea.addEventListener('drop', (e) => {
+  e.preventDefault();
+  uploadArea.classList.remove('dragover');
+  if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change', (e) => {
+  if (e.target.files.length) handleFile(e.target.files[0]);
+});
+
+function handleFile(file) {
+  if (!file.type.startsWith('image/')) {
+    showMsg('请上传图片文件', 'error');
+    return;
+  }
+  originalFile = file;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = new Image();
+    img.onload = () => {
+      originalImage = img;
+      showOriginalInfo(file, img);
+      document.getElementById('previewArea').classList.add('active');
+      document.getElementById('resizeBtn').disabled = false;
+      // 初始化自定义尺寸输入框
+      document.getElementById('targetWidth').value = img.naturalWidth;
+      document.getElementById('targetHeight').value = img.naturalHeight;
+      showMsg('图片加载成功', 'success');
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function showOriginalInfo(file, img) {
+  const sizeKB = (file.size / 1024).toFixed(2);
+  const sizeMB = (file.size / 1024 / 1024).toFixed(2);
+  const sizeStr = file.size > 1024 * 1024 ? sizeMB + ' MB' : sizeKB + ' KB';
+  document.getElementById('originalInfo').innerHTML =
+    '<span>文件名：<b>' + file.name + '</b></span>' +
+    '<span>原始尺寸：<b>' + img.naturalWidth + ' × ' + img.naturalHeight + '</b></span>' +
+    '<span>文件大小：<b>' + sizeStr + '</b></span>' +
+    '<span>类型：<b>' + file.type + '</b></span>';
+}
+
+// 模式切换
+document.querySelectorAll('.mode-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    const mode = this.dataset.mode;
+    document.getElementById('percentMode').style.display = mode === 'percent' ? 'block' : 'none';
+    document.getElementById('customMode').style.display = mode === 'custom' ? 'block' : 'none';
+  });
+});
+
+// 百分比滑块
+document.getElementById('percentRange').addEventListener('input', function() {
+  document.getElementById('percentValue').textContent = this.value + '%';
+});
+
+// 质量滑块
+document.getElementById('qualityRange').addEventListener('input', function() {
+  document.getElementById('qualityValue').textContent = this.value + '%';
+});
+
+// 输出格式切换时显示/隐藏质量选项
+document.getElementById('outputFormat').addEventListener('change', function() {
+  const qualityRow = document.getElementById('qualityRow');
+  qualityRow.style.display = (this.value === 'image/jpeg' || this.value === 'image/webp') ? 'flex' : 'none';
+});
+// 初始状态
+document.getElementById('qualityRow').style.display = 'none';
+
+// 保持比例联动
+document.getElementById('targetWidth').addEventListener('input', function() {
+  if (document.getElementById('keepRatio').checked && originalImage) {
+    const ratio = originalImage.naturalHeight / originalImage.naturalWidth;
+    document.getElementById('targetHeight').value = Math.round(this.value * ratio);
+  }
+});
+document.getElementById('targetHeight').addEventListener('input', function() {
+  if (document.getElementById('keepRatio').checked && originalImage) {
+    const ratio = originalImage.naturalWidth / originalImage.naturalHeight;
+    document.getElementById('targetWidth').value = Math.round(this.value * ratio);
+  }
+});
+document.getElementById('keepRatio').addEventListener('change', function() {
+  if (this.checked && originalImage) {
+    const ratio = originalImage.naturalHeight / originalImage.naturalWidth;
+    document.getElementById('targetHeight').value = Math.round(document.getElementById('targetWidth').value * ratio);
+  }
+});
+
+function resizeImage() {
+  if (!originalImage) { showMsg('请先上传图片', 'error'); return; }
+
+  let targetW, targetH;
+  const activeMode = document.querySelector('.mode-tab.active').dataset.mode;
+
+  if (activeMode === 'percent') {
+    const percent = parseInt(document.getElementById('percentRange').value);
+    targetW = Math.round(originalImage.naturalWidth * percent / 100);
+    targetH = Math.round(originalImage.naturalHeight * percent / 100);
+  } else {
+    targetW = parseInt(document.getElementById('targetWidth').value);
+    targetH = parseInt(document.getElementById('targetHeight').value);
+    if (!targetW || !targetH || targetW < 1 || targetH < 1) {
+      showMsg('请输入有效的宽度和高度', 'error');
+      return;
+    }
+  }
+
+  const canvas = document.createElement('canvas');
+  canvas.width = targetW;
+  canvas.height = targetH;
+  const ctx = canvas.getContext('2d');
+  // 白底，防止 PNG 透明转 JPEG 变黑
+  if (getOutputMime() === 'image/jpeg') {
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, targetW, targetH);
+  }
+  ctx.drawImage(originalImage, 0, 0, targetW, targetH);
+
+  const mime = getOutputMime();
+  const quality = parseInt(document.getElementById('qualityRange').value) / 100;
+
+  canvas.toBlob((blob) => {
+    if (!blob) { showMsg('生成失败', 'error'); return; }
+    resultBlob = blob;
+    const url = URL.createObjectURL(blob);
+    const sizeKB = (blob.size / 1024).toFixed(2);
+    const sizeMB = (blob.size / 1024 / 1024).toFixed(2);
+    const sizeStr = blob.size > 1024 * 1024 ? sizeMB + ' MB' : sizeKB + ' KB';
+    const originalSizeStr = originalFile.size > 1024 * 1024
+      ? (originalFile.size / 1024 / 1024).toFixed(2) + ' MB'
+      : (originalFile.size / 1024).toFixed(2) + ' KB';
+    const ratio = ((1 - blob.size / originalFile.size) * 100).toFixed(1);
+
+    document.getElementById('resultInfo').innerHTML =
+      '<span>新尺寸：<b>' + targetW + ' × ' + targetH + '</b></span>' +
+      '<span>新大小：<b>' + sizeStr + '</b></span>' +
+      '<span>原大小：<b>' + originalSizeStr + '</b></span>' +
+      '<span>变化：<b>' + (ratio > 0 ? '-' : '+') + Math.abs(ratio) + '%</b></span>';
+
+    document.getElementById('resultPreview').innerHTML = '<img src="' + url + '" alt="预览">';
+    document.getElementById('resultArea').classList.add('active');
+    showMsg('调整成功', 'success');
+  }, mime, quality);
+}
+
+function getOutputMime() {
+  const fmt = document.getElementById('outputFormat').value;
+  if (fmt === 'original') {
+    return originalFile.type || 'image/png';
+  }
+  return fmt;
+}
+
+function downloadResult() {
+  if (!resultBlob) { showMsg('请先调整尺寸', 'error'); return; }
+  const mime = resultBlob.type;
+  const ext = mime === 'image/jpeg' ? 'jpg' : (mime === 'image/webp' ? 'webp' : 'png');
+  const originalName = originalFile.name.replace(/\.[^.]+$/, '');
+  const link = document.createElement('a');
+  link.download = originalName + '_resized.' + ext;
+  link.href = URL.createObjectURL(resultBlob);
+  link.click();
+  showMsg('开始下载', 'success');
+}
+
+function resetAll() {
+  originalImage = null;
+  originalFile = null;
+  resultBlob = null;
+  fileInput.value = '';
+  document.getElementById('previewArea').classList.remove('active');
+  document.getElementById('resultArea').classList.remove('active');
+  document.getElementById('msg').className = 'msg';
+}
+</script>
+</body>
+</html>

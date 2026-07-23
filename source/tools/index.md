@@ -60,6 +60,16 @@ keywords: "在线工具, 前端工具, Base64, JSON格式化, 时间戳转换, �
     <div class="tool-title">图片转 Base64</div>
     <div class="tool-desc">图片转DataURL，支持拖拽</div>
   </a>
+  <a class="tool-card" href="/tools/base64-image.html">
+    <div class="tool-icon">🖼️</div>
+    <div class="tool-title">Base64 转图片</div>
+    <div class="tool-desc">Base64还原为图片并下载</div>
+  </a>
+  <a class="tool-card" href="/tools/image-resize.html">
+    <div class="tool-icon">📐</div>
+    <div class="tool-title">图片尺寸修改</div>
+    <div class="tool-desc">按百分比或自定义宽高缩放</div>
+  </a>
   <a class="tool-card" href="/tools/uuid.html">
     <div class="tool-icon">🆔</div>
     <div class="tool-title">UUID 生成器</div>

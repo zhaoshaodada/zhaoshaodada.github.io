@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base64 转图片 - 在线工具</title>
+<meta name="description" content="在线 Base64 转图片工具，将 Base64/DataURL 字符串还原为图片并预览下载，支持 PNG/JPEG/GIF/WebP/SVG">
+<meta name="keywords" content="Base64转图片, Base64转Image, DataURL, 图片还原, 在线工具">
+<meta property="og:title" content="Base64 转图片 - 在线工具">
+<meta property="og:description" content="在线 Base64 转图片工具，将 Base64 字符串还原为图片并预览下载">
+<meta property="og:type" content="website">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 30px;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #49b1f5;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+.textarea-group {
+  margin-bottom: 16px;
+}
+label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+textarea {
+  width: 100%;
+  min-height: 180px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: Consolas, Monaco, monospace;
+  resize: vertical;
+  line-height: 1.5;
+}
+textarea:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+.btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary { background: #49b1f5; color: #fff; }
+.btn-primary:hover { background: #3aa0e4; }
+.btn-success { background: #52c41a; color: #fff; }
+.btn-success:hover { background: #45b016; }
+.btn-secondary { background: #f0f0f0; color: #333; }
+.btn-secondary:hover { background: #e0e0e0; }
+.btn-danger { background: #ff4d4f; color: #fff; }
+.btn-danger:hover { background: #e84143; }
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.msg {
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  display: none;
+}
+.msg.error { background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7; display: block; }
+.msg.success { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; display: block; }
+.result-area {
+  display: none;
+  margin-top: 20px;
+}
+.result-area.active { display: block; }
+.result-info {
+  background: #fafafa;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #666;
+  border: 1px solid #eee;
+}
+.result-info span {
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 4px;
+}
+.result-info b {
+  color: #333;
+  font-family: Consolas, Monaco, monospace;
+}
+.result-preview {
+  text-align: center;
+  padding: 30px;
+  background: #fafafa;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  margin-bottom: 16px;
+  overflow: auto;
+  background-image: linear-gradient(45deg, #eee 25%, transparent 25%),
+                    linear-gradient(-45deg, #eee 25%, transparent 25%),
+                    linear-gradient(45deg, transparent 75%, #eee 75%),
+                    linear-gradient(-45deg, transparent 75%, #eee 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+}
+.result-preview img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← 返回工具列表</a>
+  <h1>Base64 转图片</h1>
+
+  <div id="msg" class="msg"></div>
+
+  <div class="textarea-group">
+    <label>输入 Base64 字符串（支持 DataURL 或纯 Base64）：</label>
+    <textarea id="base64Input" placeholder="粘贴 Base64 或 DataURL 字符串，例如：data:image/png;base64,iVBORw0KGgo..."></textarea>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn-primary" onclick="convertToImage()">转换为图片</button>
+    <button class="btn-secondary" onclick="loadExample()">加载示例</button>
+    <button class="btn-danger" onclick="clearAll()">清空</button>
+  </div>
+
+  <div class="result-area" id="resultArea">
+    <div class="result-info" id="resultInfo"></div>
+    <div class="result-preview" id="resultPreview"></div>
+    <div class="btn-group">
+      <button class="btn-success" id="downloadBtn" onclick="downloadImage()">下载图片</button>
+      <button class="btn-secondary" onclick="copyImgToClipboard()">复制图片</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let resultBlob = null;
+let resultMime = 'image/png';
+
+function showMsg(text, type) {
+  const msg = document.getElementById('msg');
+  msg.textContent = text;
+  msg.className = 'msg ' + type;
+  setTimeout(() => { msg.className = 'msg'; }, 3000);
+}
+
+function convertToImage() {
+  const input = document.getElementById('base64Input').value.trim();
+  if (!input) { showMsg('请输入 Base64 字符串', 'error'); return; }
+
+  let dataUrl = input;
+  // 如果是纯 Base64（没有 data: 前缀），尝试补全
+  if (!input.startsWith('data:')) {
+    // 尝试从 Base64 内容推断 MIME 类型
+    let mime = 'image/png';
+    if (input.startsWith('/9j/')) mime = 'image/jpeg';
+    else if (input.startsWith('iVBORw0KGgo')) mime = 'image/png';
+    else if (input.startsWith('R0lGODlh')) mime = 'image/gif';
+    else if (input.startsWith('UklGR')) mime = 'image/webp';
+    else if (input.startsWith('PHN2Zy') || input.includes('<svg')) mime = 'image/svg+xml';
+    dataUrl = 'data:' + mime + ';base64,' + input;
+  }
+
+  // 提取 MIME 类型
+  const mimeMatch = dataUrl.match(/^data:([^;]+);/);
+  resultMime = mimeMatch ? mimeMatch[1] : 'image/png';
+
+  const img = new Image();
+  img.onload = () => {
+    resultBlob = dataURLtoBlob(dataUrl);
+    const sizeKB = resultBlob ? (resultBlob.size / 1024).toFixed(2) : '--';
+    const sizeMB = resultBlob ? (resultBlob.size / 1024 / 1024).toFixed(2) : '--';
+    const sizeStr = resultBlob && resultBlob.size > 1024 * 1024 ? sizeMB + ' MB' : sizeKB + ' KB';
+    const base64Len = input.length;
+    const base64KB = (base64Len / 1024).toFixed(2);
+
+    document.getElementById('resultInfo').innerHTML =
+      '<span>格式：<b>' + resultMime + '</b></span>' +
+      '<span>尺寸：<b>' + img.naturalWidth + ' × ' + img.naturalHeight + '</b></span>' +
+      '<span>图片大小：<b>' + sizeStr + '</b></span>' +
+      '<span>Base64 长度：<b>' + base64Len + ' 字符 (' + base64KB + ' KB)</b></span>';
+
+    document.getElementById('resultPreview').innerHTML = '<img src="' + dataUrl + '" alt="转换结果">';
+    document.getElementById('resultArea').classList.add('active');
+    showMsg('转换成功', 'success');
+  };
+  img.onerror = () => {
+    showMsg('转换失败：无效的 Base64 图片数据', 'error');
+    document.getElementById('resultArea').classList.remove('active');
+  };
+  img.src = dataUrl;
+}
+
+function dataURLtoBlob(dataUrl) {
+  try {
+    const arr = dataUrl.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], { type: mime });
+  } catch (e) {
+    return null;
+  }
+}
+
+function downloadImage() {
+  if (!resultBlob) { showMsg('请先转换', 'error'); return; }
+  const ext = resultMime === 'image/jpeg' ? 'jpg' :
+              (resultMime === 'image/webp' ? 'webp' :
+              (resultMime === 'image/gif' ? 'gif' :
+              (resultMime === 'image/svg+xml' ? 'svg' : 'png')));
+  const link = document.createElement('a');
+  link.download = 'base64_image.' + ext;
+  link.href = URL.createObjectURL(resultBlob);
+  link.click();
+  showMsg('开始下载', 'success');
+}
+
+function copyImgToClipboard() {
+  if (!resultBlob) { showMsg('请先转换', 'error'); return; }
+  if (!navigator.clipboard || !navigator.clipboard.write) {
+    showMsg('当前浏览器不支持复制图片到剪贴板', 'error');
+    return;
+  }
+  const item = new ClipboardItem({ [resultMime]: resultBlob });
+  navigator.clipboard.write([item]).then(() => {
+    showMsg('图片已复制到剪贴板', 'success');
+  }).catch(() => {
+    showMsg('复制失败，请尝试下载', 'error');
+  });
+}
+
+function loadExample() {
+  // 1x1 红色 PNG 的 Base64
+  document.getElementById('base64Input').value =
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==';
+  convertToImage();
+}
+
+function clearAll() {
+  document.getElementById('base64Input').value = '';
+  document.getElementById('resultArea').classList.remove('active');
+  document.getElementById('msg').className = 'msg';
+  resultBlob = null;
+}
+</script>
+</body>
+</html>
