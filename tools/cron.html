@@ -1,0 +1,939 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Moonligh | Moonligh</title><meta name="author" content="Moonligh"><meta name="copyright" content="Moonligh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="CRON 表达式生成器 - 在线工具       * { margin: 0; padding: 0; box-sizing: border-box; } body {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;   b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Moonligh">
+<meta property="og:url" content="https://zhaoshaodada.github.io/tools/cron.html">
+<meta property="og:site_name" content="Moonligh">
+<meta property="og:description" content="CRON 表达式生成器 - 在线工具       * { margin: 0; padding: 0; box-sizing: border-box; } body {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;   b">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhaoshaodada.github.io/img/favicon.jpg">
+<meta property="article:published_time" content="2026-07-23T12:08:08.496Z">
+<meta property="article:modified_time" content="2026-07-23T12:08:08.496Z">
+<meta property="article:author" content="Moonligh">
+<meta property="article:tag" content="前端开发, JavaScript, Vue, Hexo, 技术博客, ES6, Three.js, Cesium, Axios">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhaoshaodada.github.io/img/favicon.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://zhaoshaodada.github.io/tools/cron.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Moonligh',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Moonligh" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Moonligh" type="application/rss+xml">
+</head><body><div id="web_bg" style="background-image: url(/img/22.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/favicon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 工具</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/index.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Moonligh</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 工具</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title"></h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRON 表达式生成器 - 在线工具</title>
+<meta name="description" content="在线 CRON 表达式可视化生成器，支持五个字段（分钟/小时/日/月/星期）的具体值、区间、列表、步长配置，实时生成表达式、中文描述及下 5 次执行时间，纯前端实现">
+<meta name="keywords" content="cron,crontab,表达式,生成器,定时任务,在线工具">
+<meta property="og:title" content="CRON 表达式生成器 - 在线工具">
+<meta property="og:description" content="在线 CRON 表达式可视化生成器，支持五个字段配置，实时生成表达式、中文描述及下 5 次执行时间，纯前端实现">
+<meta property="og:type" content="website">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 30px;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #49b1f5;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+h2 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+.section {
+  margin-bottom: 24px;
+}
+.field-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.field-label {
+  width: 60px;
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.field-type {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+  color: #333;
+}
+.field-type:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+.field-inputs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  flex-wrap: wrap;
+}
+.field-inputs input {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100px;
+  font-family: Consolas, Monaco, monospace;
+}
+.field-inputs input:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+.field-inputs .sep {
+  color: #999;
+  font-size: 14px;
+}
+.field-inputs .hint {
+  color: #999;
+  font-size: 14px;
+}
+.field-range {
+  font-size: 12px;
+  color: #999;
+  width: 100%;
+  margin-top: 2px;
+}
+.presets {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary { background: #49b1f5; color: #fff; }
+.btn-primary:hover { background: #3aa0e4; }
+.btn-success { background: #52c41a; color: #fff; }
+.btn-success:hover { background: #45b016; }
+.btn-secondary { background: #f0f0f0; color: #333; }
+.btn-secondary:hover { background: #e0e0e0; }
+.btn-danger { background: #ff4d4f; color: #fff; }
+.btn-danger:hover { background: #e84143; }
+.expr-box {
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+}
+.expr-box label {
+  display: block;
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 10px;
+}
+.expr-input {
+  width: 100%;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 22px;
+  color: #49b1f5;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-align: center;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+.desc-box {
+  background: #f0f8ff;
+  border: 1px solid #d6e9ff;
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+}
+.next-times {
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 16px;
+}
+.next-times ul {
+  list-style: none;
+}
+.next-times li {
+  padding: 9px 12px;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+}
+.next-times li:last-child { border-bottom: none; }
+.next-times .empty {
+  color: #999;
+  font-family: inherit;
+  font-size: 14px;
+  text-align: center;
+  padding: 16px;
+}
+.btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  justify-content: center;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← 返回工具列表</a>
+  <h1>CRON 表达式生成器</h1>
+
+  <div class="section">
+    <h2>常用预设</h2>
+    <div class="presets">
+      <button class="btn-secondary" data-expr="* * * * *">每分钟</button>
+      <button class="btn-secondary" data-expr="0 * * * *">每小时整点</button>
+      <button class="btn-secondary" data-expr="*/15 * * * *">每 15 分钟</button>
+      <button class="btn-secondary" data-expr="0 0 * * *">每天 0:00</button>
+      <button class="btn-secondary" data-expr="0 8 * * *">每天 8:00</button>
+      <button class="btn-secondary" data-expr="0 0 * * 1">每周一</button>
+      <button class="btn-secondary" data-expr="0 0 1 * *">每月 1 号</button>
+      <button class="btn-secondary" data-expr="0 0 * * 1-5">工作日</button>
+      <button class="btn-secondary" data-expr="0 0 * * 0,6">每周末</button>
+      <button class="btn-secondary" data-expr="0 9 * * 1-5">工作日 9:00</button>
+      <button class="btn-secondary" data-expr="0 0 1 1 *">每年 1 月 1 日</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>字段配置</h2>
+    <div class="field-row">
+      <label class="field-label">分钟</label>
+      <select class="field-type" data-field="minute" data-min="0" data-max="59">
+        <option value="every">每 ( * )</option>
+        <option value="value">具体值</option>
+        <option value="range">区间</option>
+        <option value="list">列表</option>
+        <option value="step">步长</option>
+      </select>
+      <span class="field-inputs" data-field="minute"></span>
+      <span class="field-range" data-field="minute"></span>
+    </div>
+    <div class="field-row">
+      <label class="field-label">小时</label>
+      <select class="field-type" data-field="hour" data-min="0" data-max="23">
+        <option value="every">每 ( * )</option>
+        <option value="value">具体值</option>
+        <option value="range">区间</option>
+        <option value="list">列表</option>
+        <option value="step">步长</option>
+      </select>
+      <span class="field-inputs" data-field="hour"></span>
+      <span class="field-range" data-field="hour"></span>
+    </div>
+    <div class="field-row">
+      <label class="field-label">日</label>
+      <select class="field-type" data-field="day" data-min="1" data-max="31">
+        <option value="every">每 ( * )</option>
+        <option value="value">具体值</option>
+        <option value="range">区间</option>
+        <option value="list">列表</option>
+        <option value="step">步长</option>
+      </select>
+      <span class="field-inputs" data-field="day"></span>
+      <span class="field-range" data-field="day"></span>
+    </div>
+    <div class="field-row">
+      <label class="field-label">月</label>
+      <select class="field-type" data-field="month" data-min="1" data-max="12">
+        <option value="every">每 ( * )</option>
+        <option value="value">具体值</option>
+        <option value="range">区间</option>
+        <option value="list">列表</option>
+        <option value="step">步长</option>
+      </select>
+      <span class="field-inputs" data-field="month"></span>
+      <span class="field-range" data-field="month"></span>
+    </div>
+    <div class="field-row">
+      <label class="field-label">星期</label>
+      <select class="field-type" data-field="week" data-min="0" data-max="7">
+        <option value="every">每 ( * )</option>
+        <option value="value">具体值</option>
+        <option value="range">区间</option>
+        <option value="list">列表</option>
+        <option value="step">步长</option>
+      </select>
+      <span class="field-inputs" data-field="week"></span>
+      <span class="field-range" data-field="week"></span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="expr-box">
+      <label>生成的 CRON 表达式（分钟 小时 日 月 星期）</label>
+      <input type="text" class="expr-input" id="expr" readonly>
+      <div class="btn-group">
+        <button class="btn-success" onclick="copyExpr()">复制表达式</button>
+        <button class="btn-danger" onclick="resetAll()">重置</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>表达式描述</h2>
+    <div class="desc-box" id="desc">—</div>
+  </div>
+
+  <div class="section">
+    <h2>下 5 次执行时间</h2>
+    <div class="next-times">
+      <ul id="next-times">
+        <li class="empty">计算中...</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+var FIELDS = ['minute', 'hour', 'day', 'month', 'week'];
+var weekNames = ['日', '一', '二', '三', '四', '五', '六'];
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function expandField(field, min, max, isWeek) {
+  var result = new Set();
+  field = String(field).trim();
+  if (field === '*' || field === '') {
+    for (var i = min; i <= max; i++) result.add(i);
+    return result;
+  }
+  var parts = field.split(',');
+  for (var p = 0; p < parts.length; p++) {
+    var part = parts[p].trim();
+    if (!part) continue;
+    var step = 1;
+    var rangePart = part;
+    var slashIdx = part.indexOf('/');
+    if (slashIdx !== -1) {
+      step = parseInt(part.substring(slashIdx + 1));
+      rangePart = part.substring(0, slashIdx);
+      if (isNaN(step) || step < 1) step = 1;
+    }
+    var start, end;
+    if (rangePart === '*' || rangePart === '') {
+      start = min; end = max;
+    } else if (rangePart.indexOf('-') !== -1) {
+      var ab = rangePart.split('-');
+      start = parseInt(ab[0]);
+      end = parseInt(ab[1]);
+    } else {
+      start = parseInt(rangePart);
+      if (slashIdx !== -1) { end = max; }
+      else { end = start; }
+    }
+    if (isNaN(start) || isNaN(end)) continue;
+    for (var v = start; v <= end; v += step) {
+      result.add(v);
+    }
+  }
+  if (isWeek && result.has(7)) {
+    result.delete(7);
+    result.add(0);
+  }
+  return result;
+}
+
+function renderInputs(field) {
+  var select = document.querySelector('.field-type[data-field="' + field + '"]');
+  var type = select.value;
+  var container = document.querySelector('.field-inputs[data-field="' + field + '"]');
+  var rangeEl = document.querySelector('.field-range[data-field="' + field + '"]');
+  var min = select.dataset.min;
+  var max = select.dataset.max;
+  rangeEl.textContent = '范围：' + min + ' - ' + max + (field === 'week' ? '（0 和 7 均为周日）' : '');
+  var html = '';
+  if (type === 'every') {
+    html = '<span class="hint">每</span>';
+  } else if (type === 'value') {
+    html = '<input type="number" class="v" min="' + min + '" max="' + max + '" placeholder="' + min + '-' + max + '">';
+  } else if (type === 'range') {
+    html = '<input type="number" class="r-from" min="' + min + '" max="' + max + '" placeholder="起"> <span class="sep">-</span> <input type="number" class="r-to" min="' + min + '" max="' + max + '" placeholder="止">';
+  } else if (type === 'list') {
+    html = '<input type="text" class="l-val" placeholder="如 0,15,30,45">';
+  } else if (type === 'step') {
+    html = '<input type="number" class="s-start" min="' + min + '" max="' + max + '" placeholder="起(默认' + min + ')"> <span class="sep">/</span> <input type="number" class="s-step" min="1" placeholder="步长">';
+  }
+  container.innerHTML = html;
+  var inputs = container.querySelectorAll('input');
+  for (var k = 0; k < inputs.length; k++) {
+    inputs[k].addEventListener('input', update);
+  }
+  update();
+}
+
+function generateField(field) {
+  var select = document.querySelector('.field-type[data-field="' + field + '"]');
+  var type = select.value;
+  var container = document.querySelector('.field-inputs[data-field="' + field + '"]');
+  var min = parseInt(select.dataset.min);
+  var max = parseInt(select.dataset.max);
+  if (type === 'every') return '*';
+  if (type === 'value') {
+    var v = container.querySelector('.v').value;
+    return v !== '' ? v : String(min);
+  }
+  if (type === 'range') {
+    var from = container.querySelector('.r-from').value;
+    var to = container.querySelector('.r-to').value;
+    return (from || min) + '-' + (to || max);
+  }
+  if (type === 'list') {
+    var val = container.querySelector('.l-val').value.trim();
+    return val || '*';
+  }
+  if (type === 'step') {
+    var start = container.querySelector('.s-start').value;
+    var step = container.querySelector('.s-step').value;
+    var s = start !== '' ? start : min;
+    var st = step !== '' ? step : 1;
+    if (String(s) === String(min)) return '*/' + st;
+    return s + '/' + st;
+  }
+  return '*';
+}
+
+function setFieldUI(field, value) {
+  var select = document.querySelector('.field-type[data-field="' + field + '"]');
+  var min = select.dataset.min;
+  var max = select.dataset.max;
+  var m;
+  if (value === '*') {
+    select.value = 'every';
+    renderInputs(field);
+  } else if ((m = value.match(/^\*\/(\d+)$/))) {
+    select.value = 'step';
+    renderInputs(field);
+    var c = document.querySelector('.field-inputs[data-field="' + field + '"]');
+    c.querySelector('.s-step').value = m[1];
+  } else if ((m = value.match(/^(\d+)-(\d+)\/(\d+)$/))) {
+    select.value = 'step';
+    renderInputs(field);
+    var c2 = document.querySelector('.field-inputs[data-field="' + field + '"]');
+    c2.querySelector('.s-start').value = m[1];
+    c2.querySelector('.s-step').value = m[3];
+  } else if ((m = value.match(/^(\d+)\/(\d+)$/))) {
+    select.value = 'step';
+    renderInputs(field);
+    var c3 = document.querySelector('.field-inputs[data-field="' + field + '"]');
+    c3.querySelector('.s-start').value = m[1];
+    c3.querySelector('.s-step').value = m[2];
+  } else if ((m = value.match(/^(\d+)-(\d+)$/))) {
+    select.value = 'range';
+    renderInputs(field);
+    var c4 = document.querySelector('.field-inputs[data-field="' + field + '"]');
+    c4.querySelector('.r-from').value = m[1];
+    c4.querySelector('.r-to').value = m[2];
+  } else if (value.indexOf(',') !== -1) {
+    select.value = 'list';
+    renderInputs(field);
+    var c5 = document.querySelector('.field-inputs[data-field="' + field + '"]');
+    c5.querySelector('.l-val').value = value;
+  } else if (/^\d+$/.test(value)) {
+    select.value = 'value';
+    renderInputs(field);
+    var c6 = document.querySelector('.field-inputs[data-field="' + field + '"]');
+    c6.querySelector('.v').value = value;
+  } else {
+    select.value = 'list';
+    renderInputs(field);
+    var c7 = document.querySelector('.field-inputs[data-field="' + field + '"]');
+    c7.querySelector('.l-val').value = value;
+  }
+}
+
+function applyExpression(expr) {
+  var parts = expr.trim().split(/\s+/);
+  if (parts.length !== 5) return;
+  for (var i = 0; i < FIELDS.length; i++) {
+    setFieldUI(FIELDS[i], parts[i]);
+  }
+  update();
+}
+
+function describeCron(expr) {
+  var fields = expr.trim().split(/\s+/);
+  if (fields.length !== 5) return '表达式格式不正确（需要 5 个字段）';
+  var minF = fields[0], hourF = fields[1], dayF = fields[2], monthF = fields[3], weekF = fields[4];
+  var isEveryMin = minF === '*';
+  var isEveryHour = hourF === '*';
+  var isEveryDay = dayF === '*';
+  var isEveryMonth = monthF === '*';
+  var isEveryWeek = weekF === '*';
+
+  var timeStr;
+  var m;
+  if (isEveryMin && isEveryHour) {
+    timeStr = '每分钟';
+  } else if (minF === '0' && isEveryHour) {
+    timeStr = '每小时整点';
+  } else if ((m = minF.match(/^\*\/(\d+)$/)) && isEveryHour) {
+    timeStr = '每 ' + m[1] + ' 分钟';
+  } else if (isEveryMin && !isEveryHour) {
+    var mh = hourF.match(/^\*\/(\d+)$/);
+    if (mh) {
+      timeStr = '每 ' + mh[1] + ' 小时的每分钟';
+    } else {
+      var hs = Array.from(expandField(hourF, 0, 23)).sort(function (a, b) { return a - b; }).map(pad);
+      timeStr = hs.join('、') + ' 点的每分钟';
+    }
+  } else if (!isEveryMin && !isEveryHour) {
+    var hs2 = Array.from(expandField(hourF, 0, 23)).sort(function (a, b) { return a - b; });
+    var ms2 = Array.from(expandField(minF, 0, 59)).sort(function (a, b) { return a - b; });
+    if (hs2.length === 1 && ms2.length === 1) {
+      timeStr = pad(hs2[0]) + ':' + pad(ms2[0]);
+    } else {
+      var times = [];
+      hs2.forEach(function (h) { ms2.forEach(function (mm) { times.push(pad(h) + ':' + pad(mm)); }); });
+      timeStr = times.join('、');
+    }
+  } else {
+    var ms3 = Array.from(expandField(minF, 0, 59)).sort(function (a, b) { return a - b; });
+    timeStr = '每小时的第 ' + ms3.join('、') + ' 分钟';
+  }
+
+  var schedParts = [];
+  if (!isEveryWeek) {
+    var days = Array.from(expandField(weekF, 0, 7, true)).sort(function (a, b) {
+      var oa = a === 0 ? 7 : a;
+      var ob = b === 0 ? 7 : b;
+      return oa - ob;
+    });
+    schedParts.push('每' + days.map(function (d) { return '周' + weekNames[d]; }).join('、'));
+  }
+  if (!isEveryDay) {
+    schedParts.push('每月 ' + dayF + ' 日');
+  }
+  if (!isEveryMonth) {
+    schedParts.push(monthF + ' 月');
+  }
+  var schedStr = schedParts.join('，');
+
+  if (isEveryDay && isEveryMonth && isEveryWeek) {
+    if (timeStr === '每分钟') return '每分钟执行';
+    if (timeStr === '每小时整点') return '每小时整点执行';
+    return '每天 ' + timeStr + ' 执行';
+  } else {
+    if (timeStr === '每分钟') {
+      return (schedStr ? schedStr + '，' : '') + '每分钟执行';
+    }
+    return (schedStr ? schedStr + ' ' : '') + timeStr + ' 执行';
+  }
+}
+
+function getNextTimes(expr, count) {
+  var parts = expr.trim().split(/\s+/);
+  if (parts.length !== 5) return [];
+  var minF = parts[0], hourF = parts[1], dayF = parts[2], monthF = parts[3], weekF = parts[4];
+  var minSet = expandField(minF, 0, 59);
+  var hourSet = expandField(hourF, 0, 23);
+  var daySet = expandField(dayF, 1, 31);
+  var monthSet = expandField(monthF, 1, 12);
+  var weekSet = expandField(weekF, 0, 7, true);
+
+  var dayRestricted = dayF !== '*';
+  var weekRestricted = weekF !== '*';
+
+  var results = [];
+  var d = new Date();
+  d.setSeconds(0, 0);
+  d.setMinutes(d.getMinutes() + 1);
+
+  var iter = 0;
+  var maxIter = 50000;
+  while (results.length < count && iter < maxIter) {
+    iter++;
+    var month = d.getMonth() + 1;
+    if (!monthSet.has(month)) {
+      d.setMonth(d.getMonth() + 1, 1);
+      d.setHours(0, 0, 0, 0);
+      continue;
+    }
+    var day = d.getDate();
+    var week = d.getDay();
+    var dayOk;
+    if (dayRestricted && weekRestricted) dayOk = daySet.has(day) || weekSet.has(week);
+    else if (dayRestricted) dayOk = daySet.has(day);
+    else if (weekRestricted) dayOk = weekSet.has(week);
+    else dayOk = true;
+    if (!dayOk) {
+      d.setDate(d.getDate() + 1);
+      d.setHours(0, 0, 0, 0);
+      continue;
+    }
+    var h = d.getHours();
+    if (!hourSet.has(h)) {
+      d.setHours(d.getHours() + 1, 0, 0, 0);
+      continue;
+    }
+    var mm = d.getMinutes();
+    if (!minSet.has(mm)) {
+      d.setMinutes(d.getMinutes() + 1, 0, 0);
+      continue;
+    }
+    results.push(new Date(d));
+    d.setMinutes(d.getMinutes() + 1, 0);
+  }
+  return results;
+}
+
+function formatDate(d) {
+  return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + ' ' +
+    pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()) + ' 周' + weekNames[d.getDay()];
+}
+
+function update() {
+  var parts = FIELDS.map(generateField);
+  var expr = parts.join(' ');
+  document.getElementById('expr').value = expr;
+  document.getElementById('desc').textContent = describeCron(expr);
+  try {
+    var times = getNextTimes(expr, 5);
+    var list = document.getElementById('next-times');
+    if (times.length === 0) {
+      list.innerHTML = '<li class="empty">未找到执行时间（可能日期不存在，如 2 月 30 日）</li>';
+    } else {
+      list.innerHTML = times.map(function (t, idx) {
+        return '<li>' + (idx + 1) + '. ' + formatDate(t) + '</li>';
+      }).join('');
+    }
+  } catch (e) {
+    document.getElementById('next-times').innerHTML = '<li class="empty">表达式无效</li>';
+  }
+}
+
+function copyExpr() {
+  var val = document.getElementById('expr').value;
+  if (!val) return;
+  navigator.clipboard.writeText(val).then(function () {
+    alert('已复制：' + val);
+  }).catch(function () {
+    var el = document.getElementById('expr');
+    el.select();
+    document.execCommand('copy');
+    alert('已复制：' + val);
+  });
+}
+
+function resetAll() {
+  FIELDS.forEach(function (f) {
+    var sel = document.querySelector('.field-type[data-field="' + f + '"]');
+    sel.value = 'every';
+    renderInputs(f);
+  });
+}
+
+FIELDS.forEach(function (f) {
+  var sel = document.querySelector('.field-type[data-field="' + f + '"]');
+  sel.addEventListener('change', function () { renderInputs(f); });
+  renderInputs(f);
+});
+
+document.querySelectorAll('.presets button').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    applyExpression(btn.dataset.expr);
+  });
+});
+
+update();
+</script>
+</body>
+</html>
+</div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/favicon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Moonligh</div><div class="author-info-description">不需要什么描述</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">随便转，随便看</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E5%89%8D%E7%AB%AF%E5%B0%8F%E6%8A%80%E5%B7%A7%E9%9B%86%E9%94%A6/" title="前端小技巧集锦">前端小技巧集锦</a><time datetime="2026-07-23T12:00:00.000Z" title="发表于 2026-07-23 20:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E5%89%8D%E7%AB%AF%E7%AE%80%E6%B4%81%E5%B9%B6%E5%AE%9E%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" title="前端简洁并实用的工具类">前端简洁并实用的工具类</a><time datetime="2026-07-23T11:20:00.000Z" title="发表于 2026-07-23 19:20:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E4%BD%BF%E7%94%A8NodeExpress%E5%88%9B%E5%BB%BA%E5%90%8E%E7%AB%AF%E8%BF%94%E5%9B%9E%E5%81%87%E6%95%B0%E6%8D%AE/" title="使用Node Express创建后端返回假数据">使用Node Express创建后端返回假数据</a><time datetime="2026-07-23T11:10:00.000Z" title="发表于 2026-07-23 19:10:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/FormData%E5%AF%B9%E8%B1%A1%E4%B8%8A%E4%BC%A0%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6/" title="FormData对象上传二进制文件">FormData对象上传二进制文件</a><time datetime="2026-07-23T11:00:00.000Z" title="发表于 2026-07-23 19:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/VUE%E7%BB%84%E4%BB%B6%E6%B1%87%E6%80%BB%E5%A4%A7%E5%85%A8/" title="VUE组件汇总大全">VUE组件汇总大全</a><time datetime="2026-07-23T11:00:00.000Z" title="发表于 2026-07-23 19:00:00">2026-07-23</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%99%E7%A8%8B/"><span class="card-category-list-name">教程</span><span class="card-category-list-count">17</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%B5%84%E6%BA%90/"><span class="card-category-list-name">资源</span><span class="card-category-list-count">3</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Butterfly/" style="font-size: 1.15em; color: rgb(198, 192, 50);">Butterfly</a><a href="/tags/CSS/" style="font-size: 1.45em; color: rgb(132, 197, 68);">CSS</a><a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 1.35em; color: rgb(160, 96, 190);">技巧</a><a href="/tags/Cesium/" style="font-size: 1.25em; color: rgb(69, 50, 76);">Cesium</a><a href="/tags/%E7%82%B9%E7%BA%BF%E9%9D%A2/" style="font-size: 1.15em; color: rgb(77, 58, 56);">点线面</a><a href="/tags/GIS/" style="font-size: 1.15em; color: rgb(50, 156, 52);">GIS</a><a href="/tags/%E6%BB%9A%E5%8A%A8%E6%9D%A1/" style="font-size: 1.15em; color: rgb(50, 87, 126);">滚动条</a><a href="/tags/%E6%A0%B7%E5%BC%8F/" style="font-size: 1.15em; color: rgb(83, 50, 101);">样式</a><a href="/tags/Ajax/" style="font-size: 1.15em; color: rgb(156, 166, 86);">Ajax</a><a href="/tags/jQuery/" style="font-size: 1.15em; color: rgb(150, 140, 54);">jQuery</a><a href="/tags/FormData/" style="font-size: 1.15em; color: rgb(50, 62, 50);">FormData</a><a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" style="font-size: 1.15em; color: rgb(182, 196, 50);">文件上传</a><a href="/tags/Node-js/" style="font-size: 1.25em; color: rgb(62, 143, 93);">Node.js</a><a href="/tags/HTTP/" style="font-size: 1.15em; color: rgb(97, 53, 52);">HTTP</a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.15em; color: rgb(96, 83, 50);">服务器</a><a href="/tags/ES6/" style="font-size: 1.15em; color: rgb(86, 146, 50);">ES6</a><a href="/tags/JavaScript/" style="font-size: 1.25em; color: rgb(50, 125, 89);">JavaScript</a><a href="/tags/Vue/" style="font-size: 1.35em; color: rgb(50, 67, 170);">Vue</a><a href="/tags/%E7%BB%84%E4%BB%B6/" style="font-size: 1.15em; color: rgb(117, 144, 126);">组件</a><a href="/tags/%E8%B5%84%E6%BA%90/" style="font-size: 1.35em; color: rgb(109, 200, 50);">资源</a><a href="/tags/TypeScript/" style="font-size: 1.15em; color: rgb(156, 50, 50);">TypeScript</a><a href="/tags/%E5%85%A5%E9%97%A8/" style="font-size: 1.15em; color: rgb(186, 50, 118);">入门</a><a href="/tags/Three-js/" style="font-size: 1.15em; color: rgb(190, 71, 50);">Three.js</a><a href="/tags/mockjs/" style="font-size: 1.15em; color: rgb(163, 50, 193);">mockjs</a><a href="/tags/Hexo/" style="font-size: 1.15em; color: rgb(160, 132, 80);">Hexo</a><a href="/tags/Axios/" style="font-size: 1.15em; color: rgb(141, 94, 50);">Axios</a><a href="/tags/i18n/" style="font-size: 1.15em; color: rgb(50, 128, 168);">i18n</a><a href="/tags/%E5%9B%BD%E9%99%85%E5%8C%96/" style="font-size: 1.15em; color: rgb(50, 141, 50);">国际化</a><a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 1.15em; color: rgb(50, 50, 95);">前端开发</a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 1.15em; color: rgb(97, 50, 55);">工具</a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.25em; color: rgb(50, 50, 50);">前端</a><a href="/tags/HTML/" style="font-size: 1.15em; color: rgb(141, 134, 50);">HTML</a><a href="/tags/JS/" style="font-size: 1.15em; color: rgb(60, 154, 50);">JS</a><a href="/tags/Express/" style="font-size: 1.15em; color: rgb(50, 71, 124);">Express</a><a href="/tags/Mock%E6%95%B0%E6%8D%AE/" style="font-size: 1.15em; color: rgb(169, 195, 121);">Mock数据</a><a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%81%94%E8%B0%83/" style="font-size: 1.15em; color: rgb(50, 50, 92);">前后端联调</a><a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" style="font-size: 1.15em; color: rgb(99, 187, 50);">工具类</a><a href="/tags/%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86/" style="font-size: 1.15em; color: rgb(80, 70, 50);">日期处理</a><a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 1.15em; color: rgb(96, 128, 52);">数组</a><a href="/tags/axios/" style="font-size: 1.15em; color: rgb(181, 108, 50);">axios</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/07/">
+            <span class="card-archive-list-date">
+              七月 2026
+            </span>
+            <span class="card-archive-list-count">15</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/04/">
+            <span class="card-archive-list-date">
+              四月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              十二月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              十一月 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">20</div></div><div class="webinfo-item"><div class="item-name">运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2025-11-18T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-07-23T12:11:23.934Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Moonligh</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.2</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = {"data-mapping":"pathname","data-reactions-enabled":"1","data-emit-metadata":"0","data-input-position":"bottom","data-lang":"zh-CN"}
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'zhaoshaodada/zhaoshaodada.github.io',
+      'data-repo-id': 'MDEwOlJlcG9zaXRvcnkzMzM3MTQ2OTg=',
+      'data-category-id': 'DIC_kwDOE-QVCs4DByp7',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script>var meting_api="https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&r=:r";</script><div class="aplayer" data-server="netease" data-type="playlist" data-id="6758762023" data-fixed="true" data-mini="true" data-autoplay="false" data-theme="#49b1f5" data-loop="all" data-order="list" data-preload="auto" data-volume="0.7" data-mutex="true" data-lrctype="0"></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="https://YOUR-VERCEL-APP.vercel.app/busuanzi.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
