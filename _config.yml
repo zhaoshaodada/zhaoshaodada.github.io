@@ -14,6 +14,17 @@ timezone: ''
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://zhaoshaodada.github.io
+algolia:
+  appId: ''
+  apiKey: ''
+  indexName: ''
+
+# Hexo 6+ 站点搜索配置
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:

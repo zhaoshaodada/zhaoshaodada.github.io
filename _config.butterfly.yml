@@ -559,11 +559,8 @@ search:
   # 如果不需要搜索功能，保持為空
   use: local_search
   placeholder: 搜索文章...
-
-  # Algolia 搜索
   algolia_search:
-    # 每頁搜索結果數量
-    hitsPerPage: 6
+    hitsPerPage: 5
 
   # 本地搜索
   local_search:

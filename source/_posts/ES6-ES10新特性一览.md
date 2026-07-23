@@ -1,7 +1,6 @@
 ---
 title: ES6、ES7、ES8、ES9、ES10新特性一览
 date: 2026-07-22 12:00:00
-cover:
 tags:
   - ES6
   - JavaScript

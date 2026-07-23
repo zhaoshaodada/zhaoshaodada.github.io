@@ -1,6 +1,6 @@
 ---
 title: vue对axios的封装和使用
-cover: 
+date: 2026-04-18 20:00:00
 tags:
   - Hexo
   - Axios
