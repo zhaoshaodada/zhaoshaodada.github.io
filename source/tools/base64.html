@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base64 编解码 - 在线工具</title>
+<meta name="description" content="在线 Base64 编码解码工具，纯前端实现，安全快速">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 30px;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #49b1f5;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+.tabs {
+  display: flex;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 20px;
+}
+.tab {
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #666;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+}
+.tab.active {
+  color: #49b1f5;
+  border-bottom-color: #49b1f5;
+  font-weight: 500;
+}
+.textarea-group {
+  margin-bottom: 16px;
+}
+label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+textarea {
+  width: 100%;
+  min-height: 180px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: Consolas, Monaco, monospace;
+  resize: vertical;
+  line-height: 1.6;
+}
+textarea:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+.btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary {
+  background: #49b1f5;
+  color: #fff;
+}
+.btn-primary:hover { background: #3aa0e4; }
+.btn-secondary {
+  background: #f0f0f0;
+  color: #333;
+}
+.btn-secondary:hover { background: #e0e0e0; }
+.btn-success {
+  background: #52c41a;
+  color: #fff;
+}
+.btn-success:hover { background: #45b016; }
+.btn-warning {
+  background: #faad14;
+  color: #fff;
+}
+.btn-warning:hover { background: #e89c0c; }
+.btn-danger {
+  background: #ff4d4f;
+  color: #fff;
+}
+.btn-danger:hover { background: #e84143; }
+.result-area {
+  margin-top: 20px;
+}
+.msg {
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  display: none;
+}
+.msg.error { background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7; display: block; }
+.msg.success { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; display: block; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← 返回工具列表</a>
+  <h1>Base64 编解码</h1>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="encode">编码</div>
+    <div class="tab" data-tab="decode">解码</div>
+  </div>
+
+  <div id="msg" class="msg"></div>
+
+  <div class="tab-content" id="encode">
+    <div class="textarea-group">
+      <label>输入文本：</label>
+      <textarea id="encode-input" placeholder="请输入要编码的文本..."></textarea>
+    </div>
+    <div class="btn-group">
+      <button class="btn-primary" onclick="encode()">编码</button>
+      <button class="btn-success" onclick="copyOutput('encode-output')">复制结果</button>
+      <button class="btn-danger" onclick="clearAll('encode')">清空</button>
+    </div>
+    <div class="result-area">
+      <div class="textarea-group">
+        <label>Base64 结果：</label>
+        <textarea id="encode-output" readonly placeholder="编码结果将显示在这里..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content" id="decode" style="display:none;">
+    <div class="textarea-group">
+      <label>输入 Base64：</label>
+      <textarea id="decode-input" placeholder="请输入要解码的 Base64 字符串..."></textarea>
+    </div>
+    <div class="btn-group">
+      <button class="btn-primary" onclick="decode()">解码</button>
+      <button class="btn-success" onclick="copyOutput('decode-output')">复制结果</button>
+      <button class="btn-danger" onclick="clearAll('decode')">清空</button>
+    </div>
+    <div class="result-area">
+      <div class="textarea-group">
+        <label>解码结果：</label>
+        <textarea id="decode-output" readonly placeholder="解码结果将显示在这里..."></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+    document.getElementById(this.dataset.tab).style.display = 'block';
+    hideMsg();
+  });
+});
+
+function showMsg(text, type) {
+  const msg = document.getElementById('msg');
+  msg.textContent = text;
+  msg.className = 'msg ' + type;
+}
+function hideMsg() {
+  document.getElementById('msg').className = 'msg';
+}
+
+function encode() {
+  const input = document.getElementById('encode-input').value;
+  if (!input) { showMsg('请输入要编码的文本', 'error'); return; }
+  try {
+    const result = btoa(unescape(encodeURIComponent(input)));
+    document.getElementById('encode-output').value = result;
+    showMsg('编码成功', 'success');
+  } catch (e) {
+    showMsg('编码失败: ' + e.message, 'error');
+  }
+}
+
+function decode() {
+  const input = document.getElementById('decode-input').value.trim();
+  if (!input) { showMsg('请输入要解码的 Base64 字符串', 'error'); return; }
+  try {
+    const result = decodeURIComponent(escape(atob(input)));
+    document.getElementById('decode-output').value = result;
+    showMsg('解码成功', 'success');
+  } catch (e) {
+    showMsg('解码失败：不是有效的 Base64 字符串', 'error');
+  }
+}
+
+function copyOutput(id) {
+  const val = document.getElementById(id).value;
+  if (!val) { showMsg('没有可复制的内容', 'error'); return; }
+  navigator.clipboard.writeText(val).then(() => {
+    showMsg('已复制到剪贴板', 'success');
+  }).catch(() => {
+    const el = document.getElementById(id);
+    el.select();
+    document.execCommand('copy');
+    showMsg('已复制到剪贴板', 'success');
+  });
+}
+
+function clearAll(type) {
+  document.getElementById(type + '-input').value = '';
+  document.getElementById(type + '-output').value = '';
+  hideMsg();
+}
+</script>
+</body>
+</html>

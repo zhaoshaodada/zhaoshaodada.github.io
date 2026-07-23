@@ -13,11 +13,14 @@ nav:
   fixed: false
 
 menu:
- 首页: / || fas fa-home
- 时间轴: /archives/ || fas fa-archive
- 标签: /tags/ || fas fa-tags
- 分类: /categories/ || fas fa-folder-open
- 照片: /Gallery/ || fas fa-images
+  首页: / || fas fa-home
+  时间轴: /archives/ || fas fa-archive
+  标签: /tags/ || fas fa-tags
+  分类: /categories/ || fas fa-folder-open
+  照片: /Gallery/ || fas fa-images
+  音乐: /music/ || fas fa-music
+  工具: /tools/ || fas fa-tools
+  关于: /about/ || fas fa-heart
 
 
 # 列表||fa fa-heartbeat:
@@ -25,7 +28,6 @@ menu:
 #   照片: /Gallery/ || fas fa-images
 #   電影: /movies/ || fas fa-video
 #   友鏈: /link/ || fas fa-link
-#   關於: /about/ || fas fa-heart
 
 
 
@@ -262,8 +264,6 @@ post_edit:
   # 是否啟用在線編輯
   enable: false
   # url: https://github.com/用戶名/倉庫名/edit/分支名/子目錄名/
-  # 例如: https://github.com/jerryc127/butterfly.js.org/edit/main/source/
-  url:
 
 # 相關文章
 related_post:
@@ -520,11 +520,11 @@ wordcount:
 # 不蒜子 PV / UV 統計
 busuanzi:
   # 網站 UV 統計
-  site_uv: false
+  site_uv: true
   # 網站 PV 統計
-  site_pv: false
+  site_pv: true
   # 頁面 PV 統計
-  page_pv: false
+  page_pv: true
 
 # --------------------------------------
 # 數學公式設置
@@ -608,7 +608,7 @@ comments:
   # 如果不需要評論功能，保持為空
   # 選擇：Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk
   # 兩個評論系統的格式：Disqus,Waline
-  use:
+  use: Giscus
   # 按鈕旁邊顯示評論系統名稱
   text: true
   # 懶加載：評論系統將在評論元素進入瀏覽器視口時加載
@@ -731,17 +731,24 @@ twikoo:
 # 官方文檔：https://giscus.app/
 giscus:
   # 倉庫地址
-  repo:
+  repo: zhaoshaodada/zhaoshaodada.github.io
   # 倉庫 ID
-  repo_id:
+  repo_id: MDEwOlJlcG9zaXRvcnkzMzM3MTQ2OTg=
+  # 分類
+  category: General
   # 分類 ID
-  category_id:
+  category_id: DIC_kwDOE-QVCs4DByp7
   # 主題配置，light 為淺色主題，dark 為深色主題
   theme:
     light: light
     dark: dark
   # 其他可選配置
   option:
+    data-mapping: pathname
+    data-reactions-enabled: "1"
+    data-emit-metadata: "0"
+    data-input-position: bottom
+    data-lang: zh-CN
 
 # Remark42 評論插件配置
 # 官方文檔：https://remark42.com/docs/configuration/frontend/
@@ -1153,9 +1160,7 @@ pjax:
 
 # 注入 CSS 和腳本 (aplayer/meting)
 aplayerInject:
-  # 是否啟用注入
-  enable: false
-  # 是否每頁啟用
+  enable: true
   per_page: true
 
 # Snackbar - Toast 通知
@@ -1232,6 +1237,10 @@ inject:
   # - <link rel="stylesheet" href="/xxx.css">
   bottom:
   # - <script src="xxxx"></script>
+  # 覆盖 MetingJS 默认 API（官方 API 已失效）
+  - <script>var meting_api="https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&r=:r";</script>
+  # 全局浮动音乐播放器（fixed: 固定右下角，mini: 紧凑模式）
+  - <div class="aplayer" data-server="netease" data-type="playlist" data-id="6758762023" data-fixed="true" data-mini="true" data-autoplay="false" data-theme="#49b1f5" data-loop="all" data-order="list" data-preload="auto" data-volume="0.7" data-mutex="true" data-lrctype="0"></div>
 
 # CDN 設置
 # 除非你知道它們的工作原理，否則不要修改以下設置
@@ -1251,4 +1260,6 @@ CDN:
   custom_format:
 
   option:
-         busuanzi: //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
+         # 自建 Vercel 计数服务（替代已失效的 busuanzi.ibruce.info）
+         # 部署后将下面的域名替换为你的 Vercel 应用地址
+         busuanzi: https://YOUR-VERCEL-APP.vercel.app/busuanzi.js

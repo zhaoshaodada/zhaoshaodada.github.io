@@ -2,7 +2,7 @@
 title: Three.js相机控件OrbitControls
 date: 2025-12-17 13:45:17
 tags:
-  - three
+  - Three.js
 categories:
   - 教程
 keywords: "Three.js, OrbitControls, 3D, 相机控件, WebGL"
