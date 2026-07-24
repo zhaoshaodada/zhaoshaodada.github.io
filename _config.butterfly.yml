@@ -308,7 +308,7 @@ footer:
   custom_text:
   # 主題和框架的版權聲明
   copyright:
-    enable: true
+    enable: false
     # 顯示版本號
     version: true
 
