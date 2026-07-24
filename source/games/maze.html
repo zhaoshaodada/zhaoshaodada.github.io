@@ -236,7 +236,7 @@
     </div>
     
     <div class="tip">
-      💡 提示：红色圆点是起点，绿色方块是终点。找到通往终点的路径即可获胜！
+      💡 提示：红色圆点是起点，绿色方块是终点。找到通往终点的路径即可获胜！小人会按 180-250ms 切换两帧走路动画。
     </div>
   </div>
   
@@ -270,8 +270,41 @@
     var startTime = null;
     var timerInterval = null;
     var gameStarted = false;
+    var moveState = 'idle'; // idle | up | down | left | right
+    var walkFrame = 0; // 0 or 1: 两张走路帧
+    var walkFrameTimer = null;
+    var walkFrameInterval = 220; // 180-250ms 之间
+    var stopWalkTimer = null;
+    var playerImages = [];
+    var imagesLoaded = 0;
+    var imagesReady = false;
+    
+    function preloadImages() {
+      var sources = [
+        '/games/img.png',
+        '/games/img_1.png'
+      ];
+      sources.forEach(function(src) {
+        var img = new Image();
+        img.onload = function() {
+          imagesLoaded++;
+          if (imagesLoaded === sources.length) {
+            imagesReady = true;
+          }
+        };
+        img.onerror = function() {
+          imagesLoaded++;
+          if (imagesLoaded === sources.length) {
+            imagesReady = true;
+          }
+        };
+        img.src = src;
+        playerImages.push(img);
+      });
+    }
     
     function init() {
+      preloadImages();
       newGame();
       window.addEventListener('keydown', handleKeyDown);
       canvas.addEventListener('click', function() { canvas.focus(); });
@@ -295,8 +328,15 @@
       exit = { x: size - 2, y: size - 2 };
       steps = 0;
       gameStarted = false;
+      moveState = 'down';
+      walkFrame = 0;
       
       stopTimer();
+      stopWalkAnimation();
+      if (stopWalkTimer) {
+        clearTimeout(stopWalkTimer);
+        stopWalkTimer = null;
+      }
       document.getElementById('steps').textContent = '0';
       document.getElementById('time').textContent = '00:00';
       
@@ -385,36 +425,50 @@
     function drawPlayer() {
       var config = difficulty[currentDifficulty];
       var cellSize = config.cellSize;
+      var cx = player.x * cellSize + cellSize / 2;
+      var cy = player.y * cellSize + cellSize / 2;
+      var size = cellSize * 0.85;
       
-      ctx.fillStyle = '#ff6b6b';
-      ctx.beginPath();
-      ctx.arc(
-        player.x * cellSize + cellSize / 2,
-        player.y * cellSize + cellSize / 2,
-        cellSize / 3,
-        0,
-        Math.PI * 2
-      );
-      ctx.fill();
-      
-      // 眼睛
-      ctx.fillStyle = '#fff';
-      ctx.beginPath();
-      ctx.arc(
-        player.x * cellSize + cellSize / 2 - cellSize / 10,
-        player.y * cellSize + cellSize / 2 - cellSize / 12,
-        cellSize / 12,
-        0,
-        Math.PI * 2
-      );
-      ctx.arc(
-        player.x * cellSize + cellSize / 2 + cellSize / 10,
-        player.y * cellSize + cellSize / 2 - cellSize / 12,
-        cellSize / 12,
-        0,
-        Math.PI * 2
-      );
-      ctx.fill();
+      if (imagesReady && playerImages.length >= 2 && playerImages[0].complete) {
+        // 走动时使用两张图片交替显示，静止时使用第一张
+        var imgIndex = (moveState !== 'idle' && walkFrame === 1) ? 1 : 0;
+        var img = playerImages[imgIndex];
+        
+        ctx.save();
+        // 根据方向水平翻转
+        if (moveState === 'left') {
+          ctx.translate(cx + size / 2, cy - size / 2);
+          ctx.scale(-1, 1);
+          ctx.drawImage(img, 0, 0, size, size);
+        } else {
+          ctx.drawImage(img, cx - size / 2, cy - size / 2, size, size);
+        }
+        ctx.restore();
+      } else {
+        // 图片未加载完成时使用占位圆点
+        ctx.fillStyle = '#ff6b6b';
+        ctx.beginPath();
+        ctx.arc(cx, cy, cellSize / 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    
+    function startWalkAnimation() {
+      if (walkFrameTimer) return;
+      // 根据移动速度在 180-250ms 之间随机选择
+      walkFrameInterval = 180 + Math.floor(Math.random() * 70);
+      walkFrameTimer = setInterval(function() {
+        walkFrame = walkFrame === 0 ? 1 : 0;
+        drawMaze();
+      }, walkFrameInterval);
+    }
+    
+    function stopWalkAnimation() {
+      if (walkFrameTimer) {
+        clearInterval(walkFrameTimer);
+        walkFrameTimer = null;
+        walkFrame = 0;
+      }
     }
     
     function handleKeyDown(e) {
@@ -442,22 +496,42 @@
       var ny = player.y;
       
       switch (direction) {
-        case 'up': ny--; break;
-        case 'down': ny++; break;
-        case 'left': nx--; break;
-        case 'right': nx++; break;
+        case 'up': ny--; moveState = 'up'; break;
+        case 'down': ny++; moveState = 'down'; break;
+        case 'left': nx--; moveState = 'left'; break;
+        case 'right': nx++; moveState = 'right'; break;
       }
+      
+      // 记录方向（用于停止时保持朝向）
+      var lastDir = moveState;
       
       if (maze[ny] && maze[ny][nx] === 0) {
         player.x = nx;
         player.y = ny;
         steps++;
         document.getElementById('steps').textContent = steps;
+        
+        // 启动走路动画
+        startWalkAnimation();
+        // 清除停止动画的定时器
+        if (stopWalkTimer) {
+          clearTimeout(stopWalkTimer);
+          stopWalkTimer = null;
+        }
+        // 设置 200ms 后停止动画（如果未继续移动）
+        stopWalkTimer = setTimeout(function() {
+          stopWalkAnimation();
+        }, 200);
+        
         drawMaze();
         
         if (player.x === exit.x && player.y === exit.y) {
           gameWin();
         }
+      } else {
+        // 即使撞墙也保持朝向
+        moveState = lastDir;
+        drawMaze();
       }
     }
     
