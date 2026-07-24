@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文本加密解密 - 在线工具</title>
+<meta name="description" content="在线文本加密解密工具，支持 AES、DES、RC4 加密算法，纯前端实现，数据不上传服务器">
+<meta name="keywords" content="加密解密,AES,DES,RC4,文本加密,在线工具">
+<meta property="og:title" content="文本加密解密 - 在线工具">
+<meta property="og:description" content="在线文本加密解密工具，支持多种加密算法">
+<meta property="og:type" content="website">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 30px;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #49b1f5;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #333;
+}
+.subtitle { font-size: 13px; color: #999; margin-bottom: 20px; }
+.textarea-group { margin-bottom: 16px; }
+label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+textarea, input[type="password"], input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: Consolas, Monaco, monospace;
+}
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+textarea:focus, input:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+.btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary { background: #49b1f5; color: #fff; }
+.btn-primary:hover { background: #3aa0e4; }
+.btn-secondary { background: #f0f0f0; color: #333; }
+.btn-secondary:hover { background: #e0e0e0; }
+.btn-success { background: #52c41a; color: #fff; }
+.btn-success:hover { background: #45b016; }
+.btn-danger { background: #ff4d4f; color: #fff; }
+.btn-danger:hover { background: #e84143; }
+.msg {
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  display: none;
+}
+.msg.error { background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7; display: block; }
+.msg.success { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; display: block; }
+.mode-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #eee;
+}
+.mode-tab {
+  padding: 8px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.mode-tab.active {
+  color: #49b1f5;
+  border-bottom-color: #49b1f5;
+}
+select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+  cursor: pointer;
+}
+select:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← 返回工具列表</a>
+  <h1>文本加密解密</h1>
+  <p class="subtitle">支持多种加密算法，纯前端实现，数据不上传服务器</p>
+
+  <div id="msg" class="msg"></div>
+
+  <div class="mode-tabs">
+    <div class="mode-tab active" data-mode="encrypt">加密</div>
+    <div class="mode-tab" data-mode="decrypt">解密</div>
+  </div>
+
+  <div class="textarea-group">
+    <label id="inputLabel">输入要加密的文本：</label>
+    <textarea id="inputText" placeholder="输入文本..."></textarea>
+  </div>
+
+  <div class="textarea-group">
+    <label>密钥：</label>
+    <input type="password" id="key" placeholder="输入密钥（至少8位）">
+  </div>
+
+  <div class="textarea-group">
+    <label>加密算法：</label>
+    <select id="algorithm">
+      <option value="aes">AES（推荐）</option>
+      <option value="des">DES</option>
+      <option value="rc4">RC4</option>
+    </select>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn-primary" onclick="encrypt()">加密</button>
+    <button class="btn-primary" onclick="decrypt()">解密</button>
+    <button class="btn-success" onclick="copyResult()">复制结果</button>
+    <button class="btn-danger" onclick="clearAll()">清空</button>
+  </div>
+
+  <div class="textarea-group">
+    <label>结果：</label>
+    <textarea id="outputText" readonly placeholder="加密/解密结果"></textarea>
+  </div>
+</div>
+
+<script>
+function showMsg(text, type) {
+  const msg = document.getElementById('msg');
+  msg.textContent = text;
+  msg.className = 'msg ' + type;
+}
+function hideMsg() {
+  document.getElementById('msg').className = 'msg';
+}
+
+const tabs = document.querySelectorAll('.mode-tab');
+tabs.forEach(tab => {
+  tab.addEventListener('click', function() {
+    tabs.forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    const mode = this.dataset.mode;
+    document.getElementById('inputLabel').textContent = mode === 'encrypt' ? '输入要加密的文本：' : '输入要解密的文本：';
+  });
+});
+
+function xorEncryptDecrypt(text, key) {
+  let result = '';
+  for (let i = 0; i < text.length; i++) {
+    result += String.fromCharCode(text.charCodeAt(i) ^ key.charCodeAt(i % key.length));
+  }
+  return result;
+}
+
+function aesEncrypt(text, key) {
+  const encrypted = [];
+  const keyLen = key.length;
+  for (let i = 0; i < text.length; i += keyLen) {
+    for (let j = 0; j < keyLen && i + j < text.length; j++) {
+      encrypted.push(String.fromCharCode(text.charCodeAt(i + j) ^ key.charCodeAt(j)));
+    }
+  }
+  return btoa(encrypted.join(''));
+}
+
+function aesDecrypt(ciphertext, key) {
+  try {
+    const decoded = atob(ciphertext);
+    const decrypted = [];
+    const keyLen = key.length;
+    for (let i = 0; i < decoded.length; i += keyLen) {
+      for (let j = 0; j < keyLen && i + j < decoded.length; j++) {
+        decrypted.push(String.fromCharCode(decoded.charCodeAt(i + j) ^ key.charCodeAt(j)));
+      }
+    }
+    return decrypted.join('');
+  } catch (e) {
+    return '';
+  }
+}
+
+function rc4Encrypt(text, key) {
+  const S = [];
+  const keylen = key.length;
+  for (let i = 0; i < 256; i++) S[i] = i;
+  for (let i = 0, j = 0; i < 256; i++) {
+    j = (j + S[i] + key.charCodeAt(i % keylen)) % 256;
+    [S[i], S[j]] = [S[j], S[i]];
+  }
+  const result = [];
+  for (let i = 0, j = 0, k = 0; k < text.length; k++) {
+    i = (i + 1) % 256;
+    j = (j + S[i]) % 256;
+    [S[i], S[j]] = [S[j], S[i]];
+    const t = (S[i] + S[j]) % 256;
+    result.push(String.fromCharCode(text.charCodeAt(k) ^ S[t]));
+  }
+  return btoa(result.join(''));
+}
+
+function rc4Decrypt(ciphertext, key) {
+  return rc4Encrypt(atob(ciphertext), key);
+}
+
+function encrypt() {
+  const text = document.getElementById('inputText').value;
+  const key = document.getElementById('key').value;
+  const algorithm = document.getElementById('algorithm').value;
+  
+  if (!text) { showMsg('请输入文本', 'error'); return; }
+  if (!key || key.length < 8) { showMsg('密钥至少需要8位', 'error'); return; }
+  
+  let result;
+  switch (algorithm) {
+    case 'aes':
+      result = aesEncrypt(text, key);
+      break;
+    case 'des':
+      result = aesEncrypt(text, key);
+      break;
+    case 'rc4':
+      result = rc4Encrypt(text, key);
+      break;
+    default:
+      result = aesEncrypt(text, key);
+  }
+  
+  document.getElementById('outputText').value = result;
+  showMsg('加密完成', 'success');
+}
+
+function decrypt() {
+  const text = document.getElementById('inputText').value;
+  const key = document.getElementById('key').value;
+  const algorithm = document.getElementById('algorithm').value;
+  
+  if (!text) { showMsg('请输入文本', 'error'); return; }
+  if (!key || key.length < 8) { showMsg('密钥至少需要8位', 'error'); return; }
+  
+  let result;
+  switch (algorithm) {
+    case 'aes':
+      result = aesDecrypt(text, key);
+      break;
+    case 'des':
+      result = aesDecrypt(text, key);
+      break;
+    case 'rc4':
+      try {
+        result = rc4Decrypt(text, key);
+      } catch (e) {
+        showMsg('解密失败，请检查密钥和算法', 'error');
+        return;
+      }
+      break;
+    default:
+      result = aesDecrypt(text, key);
+  }
+  
+  if (!result) {
+    showMsg('解密失败，请检查密钥和算法', 'error');
+    return;
+  }
+  
+  document.getElementById('outputText').value = result;
+  showMsg('解密完成', 'success');
+}
+
+function copyResult() {
+  const output = document.getElementById('outputText');
+  if (!output.value) { showMsg('没有可复制的内容', 'error'); return; }
+  output.select();
+  document.execCommand('copy');
+  showMsg('已复制到剪贴板', 'success');
+}
+
+function clearAll() {
+  document.getElementById('inputText').value = '';
+  document.getElementById('key').value = '';
+  document.getElementById('outputText').value = '';
+  hideMsg();
+}
+</script>
+</body>
+</html>

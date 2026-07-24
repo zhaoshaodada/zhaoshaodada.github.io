@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>随机数生成器 - 在线工具</title>
+<meta name="description" content="在线随机数生成器，支持整数、小数、随机数组、随机字符串、随机颜色生成，纯前端实现">
+<meta name="keywords" content="随机数,随机生成器,随机整数,随机字符串,随机颜色,在线工具">
+<meta property="og:title" content="随机数生成器 - 在线工具">
+<meta property="og:description" content="在线随机数生成器，支持整数、小数、随机数组、随机字符串生成">
+<meta property="og:type" content="website">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 30px;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #49b1f5;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #333;
+}
+.subtitle { font-size: 13px; color: #999; margin-bottom: 20px; }
+.textarea-group { margin-bottom: 16px; }
+label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+input[type="number"], select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  min-width: 100px;
+}
+input[type="number"]:focus, select:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: Consolas, Monaco, monospace;
+  min-height: 150px;
+  resize: vertical;
+}
+textarea:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+.btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary { background: #49b1f5; color: #fff; }
+.btn-primary:hover { background: #3aa0e4; }
+.btn-secondary { background: #f0f0f0; color: #333; }
+.btn-secondary:hover { background: #e0e0e0; }
+.btn-success { background: #52c41a; color: #fff; }
+.btn-success:hover { background: #45b016; }
+.btn-danger { background: #ff4d4f; color: #fff; }
+.btn-danger:hover { background: #e84143; }
+.msg {
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  display: none;
+}
+.msg.error { background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7; display: block; }
+.msg.success { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; display: block; }
+.mode-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+}
+.mode-tab {
+  padding: 8px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.mode-tab.active {
+  color: #49b1f5;
+  border-bottom-color: #49b1f5;
+}
+.control-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  align-items: center;
+}
+.control-group {
+  flex: 1;
+  min-width: 150px;
+}
+.color-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  margin-top: 8px;
+}
+@media (max-width: 600px) {
+  .control-row { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← 返回工具列表</a>
+  <h1>随机数生成器</h1>
+  <p class="subtitle">支持整数、小数、随机数组、随机字符串、随机颜色生成</p>
+
+  <div id="msg" class="msg"></div>
+
+  <div class="mode-tabs">
+    <div class="mode-tab active" data-mode="integer">随机整数</div>
+    <div class="mode-tab" data-mode="decimal">随机小数</div>
+    <div class="mode-tab" data-mode="array">随机数组</div>
+    <div class="mode-tab" data-mode="string">随机字符串</div>
+    <div class="mode-tab" data-mode="color">随机颜色</div>
+  </div>
+
+  <div id="integerMode">
+    <div class="control-row">
+      <div class="control-group">
+        <label>最小值：</label>
+        <input type="number" id="minInt" value="0">
+      </div>
+      <div class="control-group">
+        <label>最大值：</label>
+        <input type="number" id="maxInt" value="100">
+      </div>
+    </div>
+    <div class="btn-group">
+      <button class="btn-primary" onclick="generateInt()">生成随机整数</button>
+      <button class="btn-success" onclick="copyResult()">复制结果</button>
+      <button class="btn-secondary" onclick="clearAll()">清空</button>
+    </div>
+  </div>
+
+  <div id="decimalMode" style="display:none;">
+    <div class="control-row">
+      <div class="control-group">
+        <label>最小值：</label>
+        <input type="number" id="minDec" value="0">
+      </div>
+      <div class="control-group">
+        <label>最大值：</label>
+        <input type="number" id="maxDec" value="1">
+      </div>
+      <div class="control-group">
+        <label>小数位数：</label>
+        <input type="number" id="decimals" value="2" min="1" max="10">
+      </div>
+    </div>
+    <div class="btn-group">
+      <button class="btn-primary" onclick="generateDecimal()">生成随机小数</button>
+      <button class="btn-success" onclick="copyResult()">复制结果</button>
+      <button class="btn-secondary" onclick="clearAll()">清空</button>
+    </div>
+  </div>
+
+  <div id="arrayMode" style="display:none;">
+    <div class="control-row">
+      <div class="control-group">
+        <label>最小值：</label>
+        <input type="number" id="arrMin" value="0">
+      </div>
+      <div class="control-group">
+        <label>最大值：</label>
+        <input type="number" id="arrMax" value="100">
+      </div>
+      <div class="control-group">
+        <label>数组长度：</label>
+        <input type="number" id="arrLength" value="10" min="1" max="1000">
+      </div>
+    </div>
+    <div class="btn-group">
+      <button class="btn-primary" onclick="generateArray()">生成随机数组</button>
+      <button class="btn-success" onclick="copyResult()">复制结果</button>
+      <button class="btn-secondary" onclick="clearAll()">清空</button>
+    </div>
+  </div>
+
+  <div id="stringMode" style="display:none;">
+    <div class="control-row">
+      <div class="control-group">
+        <label>字符串长度：</label>
+        <input type="number" id="strLength" value="16" min="1" max="100">
+      </div>
+      <div class="control-group">
+        <label>字符类型：</label>
+        <select id="charType">
+          <option value="all">字母+数字+特殊字符</option>
+          <option value="alnum">字母+数字</option>
+          <option value="alpha">仅字母</option>
+          <option value="num">仅数字</option>
+          <option value="hex">十六进制</option>
+          <option value="base64">Base64字符集</option>
+        </select>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button class="btn-primary" onclick="generateString()">生成随机字符串</button>
+      <button class="btn-success" onclick="copyResult()">复制结果</button>
+      <button class="btn-secondary" onclick="clearAll()">清空</button>
+    </div>
+  </div>
+
+  <div id="colorMode" style="display:none;">
+    <div class="btn-group">
+      <button class="btn-primary" onclick="generateColor()">生成随机颜色</button>
+      <button class="btn-success" onclick="copyResult()">复制颜色值</button>
+      <button class="btn-secondary" onclick="clearAll()">清空</button>
+    </div>
+    <div class="color-preview" id="colorPreview"></div>
+  </div>
+
+  <div class="textarea-group">
+    <label>结果：</label>
+    <textarea id="outputText" readonly placeholder="生成的随机结果"></textarea>
+  </div>
+</div>
+
+<script>
+function showMsg(text, type) {
+  const msg = document.getElementById('msg');
+  msg.textContent = text;
+  msg.className = 'msg ' + type;
+}
+function hideMsg() {
+  document.getElementById('msg').className = 'msg';
+}
+
+const tabs = document.querySelectorAll('.mode-tab');
+const modes = ['integer', 'decimal', 'array', 'string', 'color'];
+tabs.forEach(tab => {
+  tab.addEventListener('click', function() {
+    tabs.forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    modes.forEach(m => {
+      document.getElementById(m + 'Mode').style.display = this.dataset.mode === m ? 'block' : 'none';
+    });
+  });
+});
+
+function generateInt() {
+  const min = parseInt(document.getElementById('minInt').value, 10) || 0;
+  const max = parseInt(document.getElementById('maxInt').value, 10) || 100;
+  if (min > max) { showMsg('最小值不能大于最大值', 'error'); return; }
+  const result = Math.floor(Math.random() * (max - min + 1)) + min;
+  document.getElementById('outputText').value = result;
+  showMsg('生成成功', 'success');
+}
+
+function generateDecimal() {
+  const min = parseFloat(document.getElementById('minDec').value) || 0;
+  const max = parseFloat(document.getElementById('maxDec').value) || 1;
+  const decimals = parseInt(document.getElementById('decimals').value, 10) || 2;
+  if (min > max) { showMsg('最小值不能大于最大值', 'error'); return; }
+  const result = (Math.random() * (max - min) + min).toFixed(decimals);
+  document.getElementById('outputText').value = result;
+  showMsg('生成成功', 'success');
+}
+
+function generateArray() {
+  const min = parseInt(document.getElementById('arrMin').value, 10) || 0;
+  const max = parseInt(document.getElementById('arrMax').value, 10) || 100;
+  const length = parseInt(document.getElementById('arrLength').value, 10) || 10;
+  if (min > max) { showMsg('最小值不能大于最大值', 'error'); return; }
+  if (length > 1000) { showMsg('数组长度不能超过1000', 'error'); return; }
+  const arr = [];
+  for (let i = 0; i < length; i++) {
+    arr.push(Math.floor(Math.random() * (max - min + 1)) + min);
+  }
+  document.getElementById('outputText').value = JSON.stringify(arr, null, 2);
+  showMsg('生成成功', 'success');
+}
+
+function generateString() {
+  const length = parseInt(document.getElementById('strLength').value, 10) || 16;
+  const type = document.getElementById('charType').value;
+  const chars = {
+    all: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?',
+    alnum: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
+    alpha: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
+    num: '0123456789',
+    hex: '0123456789ABCDEF',
+    base64: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='
+  };
+  const charSet = chars[type] || chars.all;
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += charSet.charAt(Math.floor(Math.random() * charSet.length));
+  }
+  document.getElementById('outputText').value = result;
+  showMsg('生成成功', 'success');
+}
+
+function generateColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  const hex = '#' + r.toString(16).padStart(2, '0') + g.toString(16).padStart(2, '0') + b.toString(16).padStart(2, '0');
+  const rgb = `rgb(${r}, ${g}, ${b})`;
+  const hsl = rgbToHsl(r, g, b);
+  document.getElementById('outputText').value = `HEX: ${hex}\nRGB: ${rgb}\nHSL: ${hsl}`;
+  document.getElementById('colorPreview').style.backgroundColor = hex;
+  showMsg('生成成功', 'success');
+}
+
+function rgbToHsl(r, g, b) {
+  r /= 255; g /= 255; b /= 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h, s, l = (max + min) / 2;
+  if (max === min) { h = s = 0; } else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+      case g: h = ((b - r) / d + 2) / 6; break;
+      case b: h = ((r - g) / d + 4) / 6; break;
+    }
+  }
+  return `hsl(${Math.round(h * 360)}, ${Math.round(s * 100)}%, ${Math.round(l * 100)}%)`;
+}
+
+function copyResult() {
+  const output = document.getElementById('outputText');
+  if (!output.value) { showMsg('没有可复制的内容', 'error'); return; }
+  output.select();
+  document.execCommand('copy');
+  showMsg('已复制到剪贴板', 'success');
+}
+
+function clearAll() {
+  document.getElementById('outputText').value = '';
+  document.getElementById('colorPreview').style.backgroundColor = '';
+  hideMsg();
+}
+</script>
+</body>
+</html>

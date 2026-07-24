@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>进制转换 - 在线工具</title>
+<meta name="description" content="在线进制转换工具，支持十进制、二进制、八进制、十六进制互转，ASCII字符转换，纯前端实现">
+<meta name="keywords" content="进制转换,十进制,二进制,八进制,十六进制,ASCII,在线工具">
+<meta property="og:title" content="进制转换 - 在线工具">
+<meta property="og:description" content="在线进制转换工具，支持十进制、二进制、八进制、十六进制互转">
+<meta property="og:type" content="website">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 30px;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #49b1f5;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #333;
+}
+.subtitle { font-size: 13px; color: #999; margin-bottom: 20px; }
+.textarea-group { margin-bottom: 16px; }
+label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: Consolas, Monaco, monospace;
+}
+input[type="text"]:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+.btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary { background: #49b1f5; color: #fff; }
+.btn-primary:hover { background: #3aa0e4; }
+.btn-secondary { background: #f0f0f0; color: #333; }
+.btn-secondary:hover { background: #e0e0e0; }
+.btn-success { background: #52c41a; color: #fff; }
+.btn-success:hover { background: #45b016; }
+.btn-danger { background: #ff4d4f; color: #fff; }
+.btn-danger:hover { background: #e84143; }
+.msg {
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  display: none;
+}
+.msg.error { background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7; display: block; }
+.msg.success { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; display: block; }
+.convert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+.convert-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.convert-card .card-title {
+  padding: 10px 14px;
+  background: #f6f8fa;
+  font-size: 13px;
+  color: #666;
+  border-bottom: 1px solid #eee;
+}
+.convert-card .card-body {
+  padding: 12px;
+}
+.convert-card input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: Consolas, Monaco, monospace;
+  background: #fafafa;
+}
+.convert-card input:focus {
+  outline: none;
+  border-color: #49b1f5;
+  background: #fff;
+}
+.convert-card .copy-btn {
+  margin-top: 8px;
+  width: 100%;
+  padding: 6px;
+  font-size: 12px;
+}
+@media (max-width: 600px) {
+  .convert-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← 返回工具列表</a>
+  <h1>进制转换</h1>
+  <p class="subtitle">支持十进制、二进制、八进制、十六进制互转，ASCII字符转换</p>
+
+  <div id="msg" class="msg"></div>
+
+  <div class="textarea-group">
+    <label>输入数值（自动识别进制）：</label>
+    <input type="text" id="inputValue" placeholder="例如：100, 0b1100100, 0o144, 0x64">
+  </div>
+
+  <div class="btn-group">
+    <button class="btn-primary" onclick="convert()">转换</button>
+    <button class="btn-success" onclick="copyResult()">复制所有结果</button>
+    <button class="btn-danger" onclick="clearAll()">清空</button>
+  </div>
+
+  <div class="convert-grid">
+    <div class="convert-card">
+      <div class="card-title">十进制 (Decimal)</div>
+      <div class="card-body">
+        <input type="text" id="decResult" readonly>
+        <button class="btn-secondary copy-btn" onclick="copyToClipboard('decResult')">复制</button>
+      </div>
+    </div>
+    <div class="convert-card">
+      <div class="card-title">二进制 (Binary)</div>
+      <div class="card-body">
+        <input type="text" id="binResult" readonly>
+        <button class="btn-secondary copy-btn" onclick="copyToClipboard('binResult')">复制</button>
+      </div>
+    </div>
+    <div class="convert-card">
+      <div class="card-title">八进制 (Octal)</div>
+      <div class="card-body">
+        <input type="text" id="octResult" readonly>
+        <button class="btn-secondary copy-btn" onclick="copyToClipboard('octResult')">复制</button>
+      </div>
+    </div>
+    <div class="convert-card">
+      <div class="card-title">十六进制 (Hex)</div>
+      <div class="card-body">
+        <input type="text" id="hexResult" readonly>
+        <button class="btn-secondary copy-btn" onclick="copyToClipboard('hexResult')">复制</button>
+      </div>
+    </div>
+    <div class="convert-card">
+      <div class="card-title">ASCII 字符</div>
+      <div class="card-body">
+        <input type="text" id="asciiResult" readonly>
+        <button class="btn-secondary copy-btn" onclick="copyToClipboard('asciiResult')">复制</button>
+      </div>
+    </div>
+    <div class="convert-card">
+      <div class="card-title">Unicode</div>
+      <div class="card-body">
+        <input type="text" id="unicodeResult" readonly>
+        <button class="btn-secondary copy-btn" onclick="copyToClipboard('unicodeResult')">复制</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showMsg(text, type) {
+  const msg = document.getElementById('msg');
+  msg.textContent = text;
+  msg.className = 'msg ' + type;
+}
+function hideMsg() {
+  document.getElementById('msg').className = 'msg';
+}
+
+function parseInput(input) {
+  input = input.trim().toLowerCase();
+  if (input.startsWith('0b')) {
+    return parseInt(input.slice(2), 2);
+  } else if (input.startsWith('0o')) {
+    return parseInt(input.slice(2), 8);
+  } else if (input.startsWith('0x')) {
+    return parseInt(input.slice(2), 16);
+  } else if (/^[01]+$/.test(input)) {
+    return parseInt(input, 2);
+  } else if (/^[0-7]+$/.test(input)) {
+    return parseInt(input, 8);
+  } else if (/^[0-9a-f]+$/.test(input)) {
+    return parseInt(input, 16);
+  }
+  return parseInt(input, 10);
+}
+
+function convert() {
+  const input = document.getElementById('inputValue').value;
+  if (!input) { showMsg('请输入数值', 'error'); return; }
+  
+  let num;
+  if (/^[\x00-\x7F]+$/.test(input) && !/^[0-9a-f]+$/i.test(input)) {
+    num = input.charCodeAt(0);
+    document.getElementById('asciiResult').value = input;
+  } else {
+    num = parseInput(input);
+    if (isNaN(num)) { showMsg('无法识别的数值格式', 'error'); return; }
+    if (num >= 0 && num <= 127) {
+      document.getElementById('asciiResult').value = String.fromCharCode(num);
+    } else {
+      document.getElementById('asciiResult').value = '超出ASCII范围';
+    }
+  }
+  
+  document.getElementById('decResult').value = num.toString(10);
+  document.getElementById('binResult').value = '0b' + num.toString(2);
+  document.getElementById('octResult').value = '0o' + num.toString(8);
+  document.getElementById('hexResult').value = '0x' + num.toString(16).toUpperCase();
+  document.getElementById('unicodeResult').value = '\\u' + num.toString(16).padStart(4, '0');
+  
+  showMsg('转换完成', 'success');
+}
+
+function copyToClipboard(id) {
+  const el = document.getElementById(id);
+  if (!el.value) { showMsg('没有可复制的内容', 'error'); return; }
+  el.select();
+  document.execCommand('copy');
+  showMsg('已复制到剪贴板', 'success');
+}
+
+function copyResult() {
+  const results = [
+    '十进制: ' + document.getElementById('decResult').value,
+    '二进制: ' + document.getElementById('binResult').value,
+    '八进制: ' + document.getElementById('octResult').value,
+    '十六进制: ' + document.getElementById('hexResult').value,
+    'ASCII: ' + document.getElementById('asciiResult').value
+  ].join('\n');
+  const textarea = document.createElement('textarea');
+  textarea.value = results;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textarea);
+  showMsg('已复制所有结果', 'success');
+}
+
+function clearAll() {
+  document.getElementById('inputValue').value = '';
+  document.getElementById('decResult').value = '';
+  document.getElementById('binResult').value = '';
+  document.getElementById('octResult').value = '';
+  document.getElementById('hexResult').value = '';
+  document.getElementById('asciiResult').value = '';
+  document.getElementById('unicodeResult').value = '';
+  hideMsg();
+}
+
+document.getElementById('inputValue').addEventListener('input', convert);
+</script>
+</body>
+</html>

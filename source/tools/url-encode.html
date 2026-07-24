@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>URL 编解码 - 在线工具</title>
+<meta name="description" content="在线URL编解码工具，支持URL编码、解码、Unicode编码，纯前端实现，数据不上传服务器">
+<meta name="keywords" content="URL编码,URL解码,encodeURI,decodeURI,编解码,在线工具">
+<meta property="og:title" content="URL 编解码 - 在线工具">
+<meta property="og:description" content="在线URL编解码工具，支持URL编码、解码、Unicode编码">
+<meta property="og:type" content="website">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 30px;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #49b1f5;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #333;
+}
+.subtitle { font-size: 13px; color: #999; margin-bottom: 20px; }
+.textarea-group { margin-bottom: 16px; }
+label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: Consolas, Monaco, monospace;
+  min-height: 150px;
+  resize: vertical;
+}
+textarea:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+.btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary { background: #49b1f5; color: #fff; }
+.btn-primary:hover { background: #3aa0e4; }
+.btn-secondary { background: #f0f0f0; color: #333; }
+.btn-secondary:hover { background: #e0e0e0; }
+.btn-success { background: #52c41a; color: #fff; }
+.btn-success:hover { background: #45b016; }
+.btn-danger { background: #ff4d4f; color: #fff; }
+.btn-danger:hover { background: #e84143; }
+.msg {
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  display: none;
+}
+.msg.error { background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7; display: block; }
+.msg.success { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; display: block; }
+.mode-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #eee;
+}
+.mode-tab {
+  padding: 8px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.mode-tab.active {
+  color: #49b1f5;
+  border-bottom-color: #49b1f5;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← 返回工具列表</a>
+  <h1>URL 编解码</h1>
+  <p class="subtitle">支持 URL 编码、解码、URI组件编码、Unicode编码转换</p>
+
+  <div id="msg" class="msg"></div>
+
+  <div class="mode-tabs">
+    <div class="mode-tab active" data-mode="encode">编码</div>
+    <div class="mode-tab" data-mode="decode">解码</div>
+  </div>
+
+  <div class="textarea-group">
+    <label id="inputLabel">输入要编码的文本：</label>
+    <textarea id="inputText" placeholder="输入文本，例如：https://example.com?name=张三&age=25"></textarea>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn-primary" onclick="encodeURIComponentFn()">URI 组件编码</button>
+    <button class="btn-primary" onclick="encodeURIFn()">URI 编码</button>
+    <button class="btn-primary" onclick="encodeUTF8()">UTF-8 编码</button>
+    <button class="btn-primary" onclick="encodeUnicode()">Unicode 编码</button>
+    <button class="btn-secondary" onclick="clearAll()">清空</button>
+  </div>
+
+  <div class="textarea-group">
+    <label>结果：</label>
+    <textarea id="outputText" readonly placeholder="编码/解码结果"></textarea>
+    <div class="btn-group" style="margin-top:8px;">
+      <button class="btn-success" onclick="copyResult()">复制结果</button>
+      <button class="btn-secondary" onclick="swapText()">交换内容</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function showMsg(text, type) {
+  const msg = document.getElementById('msg');
+  msg.textContent = text;
+  msg.className = 'msg ' + type;
+}
+function hideMsg() {
+  document.getElementById('msg').className = 'msg';
+}
+
+const tabs = document.querySelectorAll('.mode-tab');
+tabs.forEach(tab => {
+  tab.addEventListener('click', function() {
+    tabs.forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    const mode = this.dataset.mode;
+    document.getElementById('inputLabel').textContent = mode === 'encode' ? '输入要编码的文本：' : '输入要解码的文本：';
+  });
+});
+
+function encodeURIComponentFn() {
+  const input = document.getElementById('inputText').value;
+  if (!input) { showMsg('请输入内容', 'error'); return; }
+  try {
+    const result = encodeURIComponent(input);
+    document.getElementById('outputText').value = result;
+    showMsg('编码完成', 'success');
+  } catch (e) {
+    showMsg('编码失败：' + e.message, 'error');
+  }
+}
+
+function encodeURIFn() {
+  const input = document.getElementById('inputText').value;
+  if (!input) { showMsg('请输入内容', 'error'); return; }
+  try {
+    const result = encodeURI(input);
+    document.getElementById('outputText').value = result;
+    showMsg('编码完成', 'success');
+  } catch (e) {
+    showMsg('编码失败：' + e.message, 'error');
+  }
+}
+
+function encodeUTF8() {
+  const input = document.getElementById('inputText').value;
+  if (!input) { showMsg('请输入内容', 'error'); return; }
+  try {
+    const result = encodeURIComponent(input).replace(/%20/g, '+');
+    document.getElementById('outputText').value = result;
+    showMsg('UTF-8 编码完成', 'success');
+  } catch (e) {
+    showMsg('编码失败：' + e.message, 'error');
+  }
+}
+
+function encodeUnicode() {
+  const input = document.getElementById('inputText').value;
+  if (!input) { showMsg('请输入内容', 'error'); return; }
+  try {
+    const result = input.split('').map(c => {
+      const code = c.charCodeAt(0);
+      return code > 127 ? '\\u' + code.toString(16).padStart(4, '0') : c;
+    }).join('');
+    document.getElementById('outputText').value = result;
+    showMsg('Unicode 编码完成', 'success');
+  } catch (e) {
+    showMsg('编码失败：' + e.message, 'error');
+  }
+}
+
+function decodeURIComponentFn() {
+  const input = document.getElementById('inputText').value;
+  if (!input) { showMsg('请输入内容', 'error'); return; }
+  try {
+    const result = decodeURIComponent(input);
+    document.getElementById('outputText').value = result;
+    showMsg('解码完成', 'success');
+  } catch (e) {
+    showMsg('解码失败：' + e.message, 'error');
+  }
+}
+
+function decodeURIFn() {
+  const input = document.getElementById('inputText').value;
+  if (!input) { showMsg('请输入内容', 'error'); return; }
+  try {
+    const result = decodeURI(input);
+    document.getElementById('outputText').value = result;
+    showMsg('解码完成', 'success');
+  } catch (e) {
+    showMsg('解码失败：' + e.message, 'error');
+  }
+}
+
+function decodeUnicode() {
+  const input = document.getElementById('inputText').value;
+  if (!input) { showMsg('请输入内容', 'error'); return; }
+  try {
+    const result = input.replace(/\\u([0-9a-fA-F]{4})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+    document.getElementById('outputText').value = result;
+    showMsg('Unicode 解码完成', 'success');
+  } catch (e) {
+    showMsg('解码失败：' + e.message, 'error');
+  }
+}
+
+function copyResult() {
+  const output = document.getElementById('outputText');
+  if (!output.value) { showMsg('没有可复制的内容', 'error'); return; }
+  output.select();
+  document.execCommand('copy');
+  showMsg('已复制到剪贴板', 'success');
+}
+
+function swapText() {
+  const input = document.getElementById('inputText');
+  const output = document.getElementById('outputText');
+  const temp = input.value;
+  input.value = output.value;
+  output.value = temp;
+  hideMsg();
+}
+
+function clearAll() {
+  document.getElementById('inputText').value = '';
+  document.getElementById('outputText').value = '';
+  hideMsg();
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && e.key === 'Enter') {
+    const activeTab = document.querySelector('.mode-tab.active').dataset.mode;
+    if (activeTab === 'encode') {
+      encodeURIComponentFn();
+    } else {
+      decodeURIComponentFn();
+    }
+  }
+});
+</script>
+</body>
+</html>

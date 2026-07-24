@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="人民币大小写转换工具，快速将阿拉伯数字金额转换为中文大写金额，适用于财务票据、合同填写等场景。">
+  <meta name="keywords" content="人民币大小写转换,金额转换,数字转大写,财务工具">
+  <meta property="og:title" content="人民币大小写转换工具">
+  <meta property="og:description" content="快速将阿拉伯数字金额转换为中文大写金额">
+  <title>人民币大小写转换工具</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 28px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #999;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .input-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+    }
+    input {
+      width: 100%;
+      padding: 15px 20px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 18px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    input:focus {
+      border-color: #667eea;
+    }
+    input.error {
+      border-color: #f44336;
+    }
+    .result-box {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .result-label {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    .result-text {
+      font-size: 24px;
+      font-weight: 600;
+      color: #333;
+      word-break: break-all;
+      font-family: 'STKaiti', 'KaiTi', serif;
+    }
+    .btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+    .btn:active {
+      transform: translateY(0);
+    }
+    .copy-btn {
+      float: right;
+      padding: 8px 16px;
+      background: #fff;
+      border: 1px solid #667eea;
+      color: #667eea;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .copy-btn:hover {
+      background: #667eea;
+      color: #fff;
+    }
+    .tip {
+      margin-top: 20px;
+      padding: 15px;
+      background: #fff3e0;
+      border-radius: 8px;
+      border-left: 4px solid #ff9800;
+      font-size: 14px;
+      color: #e65100;
+    }
+    .error-msg {
+      color: #f44336;
+      font-size: 14px;
+      margin-top: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💰 人民币大小写转换</h1>
+    <p class="subtitle">快速将阿拉伯数字金额转换为中文大写金额</p>
+    
+    <div class="input-group">
+      <label>请输入金额（支持小数点后两位）：</label>
+      <input type="text" id="amountInput" placeholder="例如：12345.67" maxlength="20">
+      <div class="error-msg" id="errorMsg">请输入有效的金额</div>
+    </div>
+    
+    <button class="btn" onclick="convert()">转换</button>
+    
+    <div class="result-box">
+      <div style="overflow: hidden;">
+        <span class="result-label">大写金额：</span>
+        <button class="copy-btn" onclick="copyResult()">复制</button>
+      </div>
+      <div class="result-text" id="result">请输入金额进行转换</div>
+    </div>
+    
+    <div class="tip">
+      💡 提示：支持整数和小数，最大支持到亿位。转换结果适用于财务票据、合同等正式场合。
+    </div>
+  </div>
+
+  <script>
+    function convert() {
+      var input = document.getElementById('amountInput').value.trim();
+      var errorMsg = document.getElementById('errorMsg');
+      var result = document.getElementById('result');
+      
+      if (!input) {
+        errorMsg.style.display = 'block';
+        result.textContent = '请输入金额进行转换';
+        document.getElementById('amountInput').classList.add('error');
+        return;
+      }
+      
+      var reg = /^(\d{1,10})(\.(\d{1,2}))?$/;
+      if (!reg.test(input)) {
+        errorMsg.style.display = 'block';
+        errorMsg.textContent = '请输入有效的金额，最大支持10位整数和2位小数';
+        result.textContent = '请输入金额进行转换';
+        document.getElementById('amountInput').classList.add('error');
+        return;
+      }
+      
+      errorMsg.style.display = 'none';
+      document.getElementById('amountInput').classList.remove('error');
+      
+      var num = parseFloat(input);
+      if (num > 9999999999.99) {
+        errorMsg.style.display = 'block';
+        errorMsg.textContent = '金额过大，请输入小于100亿的金额';
+        result.textContent = '请输入金额进行转换';
+        return;
+      }
+      
+      result.textContent = numToChinese(input);
+    }
+    
+    function numToChinese(numStr) {
+      var chnNumChar = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
+      var chnUnitSection = ['', '万', '亿', '万亿', '亿亿'];
+      var chnUnitChar = ['', '拾', '佰', '仟'];
+      
+      var strIns = '', chnStr = '';
+      var unitPos = 0;
+      var zero = true;
+      
+      numStr = numStr.split('.');
+      var integer = numStr[0];
+      var decimal = numStr[1] || '';
+      
+      for (var i = integer.length - 1; i >= 0; i--) {
+        var section = parseInt(integer.substr(i - 3 < 0 ? 0 : i - 3, i - 3 < 0 ? i + 1 : 4));
+        if (zero) {
+          zero = false;
+          strIns = chnUnitSection[unitPos];
+        } else {
+          strIns = chnUnitSection[unitPos];
+        }
+        chnStr = sectionToChinese(section) + strIns + chnStr;
+        unitPos++;
+      }
+      
+      if (decimal) {
+        var d1 = decimal[0] ? chnNumChar[decimal[0]] + '角' : '';
+        var d2 = decimal[1] ? chnNumChar[decimal[1]] + '分' : '';
+        chnStr += d1 + d2;
+      } else {
+        chnStr += '整';
+      }
+      
+      return '人民币' + chnStr.replace(/零+/g, '零').replace(/零万/g, '万').replace(/零亿/g, '亿').replace(/零角零分/g, '').replace(/零角/g, '零').replace(/零分/g, '');
+    }
+    
+    function sectionToChinese(section) {
+      var chnNumChar = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
+      var chnUnitChar = ['', '拾', '佰', '仟'];
+      
+      var strIns = '', chnStr = '';
+      var unitPos = 0;
+      var zero = true;
+      
+      while (section > 0) {
+        var v = section % 10;
+        if (v === 0) {
+          if (!zero) {
+            zero = true;
+            chnStr = chnNumChar[v] + chnStr;
+          }
+        } else {
+          zero = false;
+          strIns = chnNumChar[v];
+          strIns += chnUnitChar[unitPos];
+          chnStr = strIns + chnStr;
+        }
+        unitPos++;
+        section = Math.floor(section / 10);
+      }
+      
+      return chnStr;
+    }
+    
+    function copyResult() {
+      var result = document.getElementById('result').textContent;
+      if (result === '请输入金额进行转换') {
+        alert('请先进行转换');
+        return;
+      }
+      navigator.clipboard.writeText(result).then(function() {
+        alert('复制成功！');
+      }).catch(function() {
+        alert('复制失败，请手动复制');
+      });
+    }
+    
+    document.getElementById('amountInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        convert();
+      }
+    });
+  </script>
+</body>
+</html>

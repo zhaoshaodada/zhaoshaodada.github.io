@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="抽奖工具，支持自定义奖项和中奖概率，模拟抽奖过程，记录中奖历史。">
+  <meta name="keywords" content="抽奖工具,幸运抽奖,随机抽奖,奖品抽取">
+  <meta property="og:title" content="抽奖工具">
+  <meta property="og:description" content="支持自定义奖项和中奖概率的抽奖工具">
+  <title>抽奖工具</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 28px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #999;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .prize-list {
+      margin-bottom: 25px;
+    }
+    .prize-item {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+    .prize-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-right: 15px;
+    }
+    .prize-info {
+      flex: 1;
+    }
+    .prize-name {
+      font-weight: 600;
+      color: #333;
+    }
+    .prize-prob {
+      font-size: 12px;
+      color: #999;
+    }
+    .btn {
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 24px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(250, 112, 154, 0.4);
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(250, 112, 154, 0.5);
+    }
+    .btn:active {
+      transform: translateY(0);
+    }
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .result-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .result-modal.show {
+      display: flex;
+    }
+    .result-content {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      animation: bounceIn 0.5s;
+      max-width: 400px;
+      width: 90%;
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      60% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .result-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+    }
+    .result-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .result-prize {
+      font-size: 24px;
+      color: #fa709a;
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
+    .close-btn {
+      padding: 12px 40px;
+      background: #fa709a;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .close-btn:hover {
+      background: #f85582;
+    }
+    .stats-box {
+      margin-top: 25px;
+      padding: 20px;
+      background: #fff3e0;
+      border-radius: 10px;
+    }
+    .stats-title {
+      font-weight: 600;
+      color: #e65100;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 15px;
+      background: #fff;
+      border-radius: 8px;
+    }
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fa709a;
+    }
+    .stat-label {
+      font-size: 14px;
+      color: #999;
+      margin-top: 5px;
+    }
+    .tip {
+      margin-top: 20px;
+      padding: 15px;
+      background: #ffebee;
+      border-radius: 8px;
+      border-left: 4px solid #fa709a;
+      font-size: 14px;
+      color: #c62828;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎁 幸运抽奖</h1>
+    <p class="subtitle">试试你的运气，看看能抽到什么大奖</p>
+    
+    <div class="prize-list">
+      <div class="prize-item">
+        <div class="prize-icon">🏆</div>
+        <div class="prize-info">
+          <div class="prize-name">一等奖 - 神秘大礼</div>
+          <div class="prize-prob">中奖概率：5%</div>
+        </div>
+      </div>
+      <div class="prize-item">
+        <div class="prize-icon">🥈</div>
+        <div class="prize-info">
+          <div class="prize-name">二等奖 - 精美礼品</div>
+          <div class="prize-prob">中奖概率：15%</div>
+        </div>
+      </div>
+      <div class="prize-item">
+        <div class="prize-icon">🥉</div>
+        <div class="prize-info">
+          <div class="prize-name">三等奖 - 实用好物</div>
+          <div class="prize-prob">中奖概率：30%</div>
+        </div>
+      </div>
+      <div class="prize-item">
+        <div class="prize-icon">🎟️</div>
+        <div class="prize-info">
+          <div class="prize-name">参与奖 - 感谢参与</div>
+          <div class="prize-prob">中奖概率：50%</div>
+        </div>
+      </div>
+    </div>
+    
+    <button class="btn" id="drawBtn" onclick="startDraw()">开始抽奖</button>
+    
+    <div class="stats-box">
+      <div class="stats-title">📊 抽奖统计</div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value" id="totalDraws">0</div>
+          <div class="stat-label">总抽奖次数</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="winCount">0</div>
+          <div class="stat-label">中奖次数</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="tip">
+      💡 提示：中奖概率仅供参考，每次抽奖都是独立随机事件。实际结果可能与概率有偏差。
+    </div>
+  </div>
+  
+  <div class="result-modal" id="resultModal">
+    <div class="result-content">
+      <div class="result-icon" id="resultIcon">🎉</div>
+      <div class="result-title">恭喜中奖！</div>
+      <div class="result-prize" id="resultPrize">一等奖</div>
+      <button class="close-btn" onclick="closeModal()">确定</button>
+    </div>
+  </div>
+
+  <script>
+    var prizes = [
+      { name: '一等奖 - 神秘大礼', prob: 5, icon: '🏆', color: '#ff9800' },
+      { name: '二等奖 - 精美礼品', prob: 15, icon: '🥈', color: '#9e9e9e' },
+      { name: '三等奖 - 实用好物', prob: 30, icon: '🥉', color: '#795548' },
+      { name: '参与奖 - 感谢参与', prob: 50, icon: '🎟️', color: '#607d8b' }
+    ];
+    
+    var totalDraws = 0;
+    var winCount = 0;
+    var isDrawing = false;
+    
+    function startDraw() {
+      if (isDrawing) return;
+      
+      isDrawing = true;
+      var btn = document.getElementById('drawBtn');
+      btn.disabled = true;
+      btn.textContent = '抽奖中...';
+      
+      var icons = ['🎁', '🎊', '🎉', '✨', '🌟', '💫', '🎈', '🎆'];
+      var iconIndex = 0;
+      
+      var timer = setInterval(function() {
+        btn.textContent = icons[iconIndex % icons.length] + ' 抽奖中...';
+        iconIndex++;
+      }, 100);
+      
+      setTimeout(function() {
+        clearInterval(timer);
+        
+        var rand = Math.random() * 100;
+        var cumulative = 0;
+        var result = null;
+        
+        for (var i = 0; i < prizes.length; i++) {
+          cumulative += prizes[i].prob;
+          if (rand <= cumulative) {
+            result = prizes[i];
+            break;
+          }
+        }
+        
+        totalDraws++;
+        if (result.prob > 0) {
+          winCount++;
+        }
+        
+        updateStats();
+        showResult(result);
+        
+        btn.disabled = false;
+        btn.textContent = '开始抽奖';
+        isDrawing = false;
+      }, 2000);
+    }
+    
+    function updateStats() {
+      document.getElementById('totalDraws').textContent = totalDraws;
+      document.getElementById('winCount').textContent = winCount;
+    }
+    
+    function showResult(prize) {
+      var modal = document.getElementById('resultModal');
+      document.getElementById('resultIcon').textContent = prize.icon;
+      document.getElementById('resultPrize').textContent = prize.name;
+      document.getElementById('resultPrize').style.color = prize.color;
+      modal.classList.add('show');
+    }
+    
+    function closeModal() {
+      document.getElementById('resultModal').classList.remove('show');
+    }
+    
+    document.getElementById('resultModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="文本去重工具，支持按行去重、保留首次出现、保留最后出现，适用于处理重复数据。">
+  <meta name="keywords" content="文本去重,去重工具,重复内容删除,数据清洗">
+  <meta property="og:title" content="文本去重工具">
+  <meta property="og:description" content="支持按行去重的文本处理工具">
+  <title>文本去重工具</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      padding: 40px;
+      max-width: 700px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 28px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #999;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .options {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .option-btn {
+      padding: 10px 20px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 14px;
+    }
+    .option-btn.active {
+      border-color: #a8edea;
+      background: #e8faf9;
+      color: #00897b;
+    }
+    .input-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+    }
+    textarea {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 16px;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 200px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    textarea:focus {
+      border-color: #a8edea;
+    }
+    .btn-group {
+      display: flex;
+      gap: 15px;
+    }
+    .btn {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      color: #333;
+    }
+    .btn-secondary {
+      background: #f0f0f0;
+      color: #666;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+    .result-box {
+      margin-top: 25px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      display: none;
+    }
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .result-title {
+      font-weight: 600;
+      color: #333;
+    }
+    .result-stats {
+      font-size: 14px;
+      color: #666;
+    }
+    .result-textarea {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 150px;
+      outline: none;
+      background: #fff;
+    }
+    .copy-btn {
+      padding: 8px 16px;
+      background: #fff;
+      border: 1px solid #a8edea;
+      color: #00897b;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .copy-btn:hover {
+      background: #a8edea;
+      color: #fff;
+    }
+    .tip {
+      margin-top: 20px;
+      padding: 15px;
+      background: #e8faf9;
+      border-radius: 8px;
+      border-left: 4px solid #00897b;
+      font-size: 14px;
+      color: #00695c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔄 文本去重</h1>
+    <p class="subtitle">按行去重，支持保留首次或最后出现的内容</p>
+    
+    <div class="options">
+      <div class="option-btn active" data-mode="first">保留首次出现</div>
+      <div class="option-btn" data-mode="last">保留最后出现</div>
+      <div class="option-btn" data-mode="sort">去重后排序</div>
+    </div>
+    
+    <div class="input-group">
+      <label>输入文本（每行一条）：</label>
+      <textarea id="inputText" placeholder="第一行&#10;第二行&#10;第一行&#10;第三行&#10;第二行">苹果
+香蕉
+苹果
+橙子
+香蕉
+葡萄
+橙子</textarea>
+    </div>
+    
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="removeDuplicates()">开始去重</button>
+      <button class="btn btn-secondary" onclick="clearAll()">清空</button>
+    </div>
+    
+    <div class="result-box" id="resultBox">
+      <div class="result-header">
+        <span class="result-title">去重结果</span>
+        <div style="display: flex; gap: 10px;">
+          <span class="result-stats" id="stats">原行：7 | 去重后：4 | 移除：3</span>
+          <button class="copy-btn" onclick="copyResult()">复制结果</button>
+        </div>
+      </div>
+      <textarea class="result-textarea" id="resultText" readonly></textarea>
+    </div>
+    
+    <div class="tip">
+      💡 提示：文本按行进行比较，空白行会自动忽略。支持保留首次出现、保留最后出现、去重后排序三种模式。
+    </div>
+  </div>
+
+  <script>
+    var options = document.querySelectorAll('.option-btn');
+    var mode = 'first';
+    
+    options.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        options.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        mode = btn.dataset.mode;
+      });
+    });
+    
+    function removeDuplicates() {
+      var input = document.getElementById('inputText').value.trim();
+      if (!input) {
+        alert('请输入文本');
+        return;
+      }
+      
+      var lines = input.split('\n');
+      var originalCount = lines.length;
+      
+      var seen = new Set();
+      var result = [];
+      
+      if (mode === 'first') {
+        lines.forEach(function(line) {
+          var trimmed = line.trim();
+          if (trimmed && !seen.has(trimmed)) {
+            seen.add(trimmed);
+            result.push(trimmed);
+          }
+        });
+      } else if (mode === 'last') {
+        var temp = [];
+        lines.forEach(function(line) {
+          var trimmed = line.trim();
+          if (trimmed) {
+            temp.push(trimmed);
+          }
+        });
+        
+        for (var i = temp.length - 1; i >= 0; i--) {
+          var trimmed = temp[i];
+          if (!seen.has(trimmed)) {
+            seen.add(trimmed);
+            result.unshift(trimmed);
+          }
+        }
+      } else if (mode === 'sort') {
+        lines.forEach(function(line) {
+          var trimmed = line.trim();
+          if (trimmed && !seen.has(trimmed)) {
+            seen.add(trimmed);
+            result.push(trimmed);
+          }
+        });
+        result.sort();
+      }
+      
+      var removedCount = originalCount - result.length;
+      
+      document.getElementById('resultText').value = result.join('\n');
+      document.getElementById('stats').textContent = '原行：' + originalCount + ' | 去重后：' + result.length + ' | 移除：' + removedCount;
+      document.getElementById('resultBox').style.display = 'block';
+    }
+    
+    function clearAll() {
+      document.getElementById('inputText').value = '';
+      document.getElementById('resultBox').style.display = 'none';
+    }
+    
+    function copyResult() {
+      var result = document.getElementById('resultText').value;
+      navigator.clipboard.writeText(result).then(function() {
+        alert('复制成功！');
+      }).catch(function() {
+        alert('复制失败，请手动复制');
+      });
+    }
+  </script>
+</body>
+</html>

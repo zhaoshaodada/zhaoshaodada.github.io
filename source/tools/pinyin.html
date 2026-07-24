@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>拼音转换器 - 在线工具</title>
+<meta name="description" content="在线拼音转换器，支持汉字转拼音，支持声调、首字母、多种分隔符，纯前端实现">
+<meta name="keywords" content="拼音转换,汉字转拼音,拼音工具,在线工具">
+<meta property="og:title" content="拼音转换器 - 在线工具">
+<meta property="og:description" content="在线拼音转换器，支持汉字转拼音，支持声调、首字母">
+<meta property="og:type" content="website">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 30px;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #49b1f5;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #333;
+}
+.subtitle { font-size: 13px; color: #999; margin-bottom: 20px; }
+.textarea-group { margin-bottom: 16px; }
+label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  min-height: 150px;
+  resize: vertical;
+}
+textarea:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+.btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary { background: #49b1f5; color: #fff; }
+.btn-primary:hover { background: #3aa0e4; }
+.btn-secondary { background: #f0f0f0; color: #333; }
+.btn-secondary:hover { background: #e0e0e0; }
+.btn-success { background: #52c41a; color: #fff; }
+.btn-success:hover { background: #45b016; }
+.btn-danger { background: #ff4d4f; color: #fff; }
+.btn-danger:hover { background: #e84143; }
+.msg {
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  display: none;
+}
+.msg.error { background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7; display: block; }
+.msg.success { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; display: block; }
+.option-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  align-items: center;
+}
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+  cursor: pointer;
+}
+select:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+@media (max-width: 600px) {
+  .option-row { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← 返回工具列表</a>
+  <h1>拼音转换器</h1>
+  <p class="subtitle">汉字转拼音，支持声调、首字母、多种分隔符</p>
+
+  <div id="msg" class="msg"></div>
+
+  <div class="textarea-group">
+    <label>输入汉字：</label>
+    <textarea id="inputText" placeholder="输入中文文本，例如：你好世界"></textarea>
+  </div>
+
+  <div class="option-row">
+    <div class="checkbox-group">
+      <input type="checkbox" id="tone" checked>
+      <label for="tone">带声调</label>
+    </div>
+    <div class="checkbox-group">
+      <input type="checkbox" id="firstLetter">
+      <label for="firstLetter">仅首字母</label>
+    </div>
+    <div class="checkbox-group">
+      <input type="checkbox" id="capitalize">
+      <label for="capitalize">首字母大写</label>
+    </div>
+    <div>
+      <label style="display:inline;">分隔符：</label>
+      <select id="separator">
+        <option value="space">空格</option>
+        <option value="-">连字符 -</option>
+        <option value="_">下划线 _</option>
+        <option value="">无</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn-primary" onclick="convert()">转换</button>
+    <button class="btn-success" onclick="copyResult()">复制结果</button>
+    <button class="btn-danger" onclick="clearAll()">清空</button>
+  </div>
+
+  <div class="textarea-group">
+    <label>结果：</label>
+    <textarea id="outputText" readonly placeholder="转换结果"></textarea>
+  </div>
+</div>
+
+<script>
+const pinyinDict = {
+  '一': ['yi', 'yi', 'yi', 'yi'], '二': ['er', 'er', 'er', 'er'], '三': ['san', 'san', 'san', 'san'],
+  '四': ['si', 'si', 'si', 'si'], '五': ['wu', 'wu', 'wu', 'wu'], '六': ['liu', 'liu', 'liu', 'liu'],
+  '七': ['qi', 'qi', 'qi', 'qi'], '八': ['ba', 'ba', 'ba', 'ba'], '九': ['jiu', 'jiu', 'jiu', 'jiu'],
+  '十': ['shi', 'shi', 'shi', 'shi'], '百': ['bai', 'bai', 'bai', 'bai'], '千': ['qian', 'qian', 'qian', 'qian'],
+  '万': ['wan', 'wan', 'wan', 'wan'], '亿': ['yi', 'yi', 'yi', 'yi'],
+  '你': ['ni', 'ni', 'ni', 'ni'], '好': ['hao', 'hao', 'hao', 'hao'], '世': ['shi', 'shi', 'shi', 'shi'],
+  '界': ['jie', 'jie', 'jie', 'jie'], '我': ['wo', 'wo', 'wo', 'wo'], '他': ['ta', 'ta', 'ta', 'ta'],
+  '她': ['ta', 'ta', 'ta', 'ta'], '它': ['ta', 'ta', 'ta', 'ta'], '是': ['shi', 'shi', 'shi', 'shi'],
+  '不': ['bu', 'bu', 'bu', 'bu'], '有': ['you', 'you', 'you', 'you'], '在': ['zai', 'zai', 'zai', 'zai'],
+  '人': ['ren', 'ren', 'ren', 'ren'], '上': ['shang', 'shang', 'shang', 'shang'], '来': ['lai', 'lai', 'lai', 'lai'],
+  '大': ['da', 'da', 'da', 'da'], '天': ['tian', 'tian', 'tian', 'tian'], '中': ['zhong', 'zhong', 'zhong', 'zhong'],
+  '国': ['guo', 'guo', 'guo', 'guo'], '人': ['ren', 'ren', 'ren', 'ren'], '民': ['min', 'min', 'min', 'min'],
+  '和': ['he', 'he', 'he', 'he'], '平': ['ping', 'ping', 'ping', 'ping'], '发': ['fa', 'fa', 'fa', 'fa'],
+  '展': ['zhan', 'zhan', 'zhan', 'zhan'], '改': ['gai', 'gai', 'gai', 'gai'], '革': ['ge', 'ge', 'ge', 'ge'],
+  '开': ['kai', 'kai', 'kai', 'kai'], '放': ['fang', 'fang', 'fang', 'fang'], '科': ['ke', 'ke', 'ke', 'ke'],
+  '技': ['ji', 'ji', 'ji', 'ji'], '教': ['jiao', 'jiao', 'jiao', 'jiao'], '育': ['yu', 'yu', 'yu', 'yu'],
+  '文': ['wen', 'wen', 'wen', 'wen'], '化': ['hua', 'hua', 'hua', 'hua'], '艺': ['yi', 'yi', 'yi', 'yi'],
+  '术': ['shu', 'shu', 'shu', 'shu'], '体': ['ti', 'ti', 'ti', 'ti'], '育': ['yu', 'yu', 'yu', 'yu'],
+  '旅': ['lv', 'lv', 'lv', 'lv'], '游': ['you', 'you', 'you', 'you'], '金': ['jin', 'jin', 'jin', 'jin'],
+  '融': ['rong', 'rong', 'rong', 'rong'], '经': ['jing', 'jing', 'jing', 'jing'], '济': ['ji', 'ji', 'ji', 'ji'],
+  '社': ['she', 'she', 'she', 'she'], '会': ['hui', 'hui', 'hui', 'hui'], '政': ['zheng', 'zheng', 'zheng', 'zheng'],
+  '治': ['zhi', 'zhi', 'zhi', 'zhi'], '法': ['fa', 'fa', 'fa', 'fa'], '律': ['lv', 'lv', 'lv', 'lv'],
+  '医': ['yi', 'yi', 'yi', 'yi'], '疗': ['liao', 'liao', 'liao', 'liao'], '卫': ['wei', 'wei', 'wei', 'wei'],
+  '生': ['sheng', 'sheng', 'sheng', 'sheng'], '食': ['shi', 'shi', 'shi', 'shi'], '品': ['pin', 'pin', 'pin', 'pin'],
+  '安': ['an', 'an', 'an', 'an'], '全': ['quan', 'quan', 'quan', 'quan'], '环': ['huan', 'huan', 'huan', 'huan'],
+  '境': ['jing', 'jing', 'jing', 'jing'], '保': ['bao', 'bao', 'bao', 'bao'], '护': ['hu', 'hu', 'hu', 'hu'],
+  '工': ['gong', 'gong', 'gong', 'gong'], '作': ['zuo', 'zuo', 'zuo', 'zuo'], '学': ['xue', 'xue', 'xue', 'xue'],
+  '习': ['xi', 'xi', 'xi', 'xi'], '研': ['yan', 'yan', 'yan', 'yan'], '究': ['jiu', 'jiu', 'jiu', 'jiu'],
+  '创': ['chuang', 'chuang', 'chuang', 'chuang'], '新': ['xin', 'xin', 'xin', 'xin'], '协': ['xie', 'xie', 'xie', 'xie'],
+  '作': ['zuo', 'zuo', 'zuo', 'zuo'], '合': ['he', 'he', 'he', 'he'], '作': ['zuo', 'zuo', 'zuo', 'zuo'],
+  '信': ['xin', 'xin', 'xin', 'xin'], '息': ['xi', 'xi', 'xi', 'xi'], '技': ['ji', 'ji', 'ji', 'ji'],
+  '术': ['shu', 'shu', 'shu', 'shu'], '互': ['hu', 'hu', 'hu', 'hu'], '联': ['lian', 'lian', 'lian', 'lian'],
+  '网': ['wang', 'wang', 'wang', 'wang'], '物': ['wu', 'wu', 'wu', 'wu'], '联': ['lian', 'lian', 'lian', 'lian'],
+  '智': ['zhi', 'zhi', 'zhi', 'zhi'], '能': ['neng', 'neng', 'neng', 'neng'], '大': ['da', 'da', 'da', 'da'],
+  '数': ['shu', 'shu', 'shu', 'shu'], '据': ['ju', 'ju', 'ju', 'ju'], '云': ['yun', 'yun', 'yun', 'yun'],
+  '计': ['ji', 'ji', 'ji', 'ji'], '算': ['suan', 'suan', 'suan', 'suan'], '人': ['ren', 'ren', 'ren', 'ren'],
+  '工': ['gong', 'gong', 'gong', 'gong'], '智': ['zhi', 'zhi', 'zhi', 'zhi'], '能': ['neng', 'neng', 'neng', 'neng'],
+  '机': ['ji', 'ji', 'ji', 'ji'], '器': ['qi', 'qi', 'qi', 'qi'], '学': ['xue', 'xue', 'xue', 'xue'],
+  '习': ['xi', 'xi', 'xi', 'xi'], '深': ['shen', 'shen', 'shen', 'shen'], '度': ['du', 'du', 'du', 'du'],
+  '学': ['xue', 'xue', 'xue', 'xue'], '习': ['xi', 'xi', 'xi', 'xi'], '自': ['zi', 'zi', 'zi', 'zi'],
+  '然': ['ran', 'ran', 'ran', 'ran'], '语': ['yu', 'yu', 'yu', 'yu'], '言': ['yan', 'yan', 'yan', 'yan'],
+  '处': ['chu', 'chu', 'chu', 'chu'], '理': ['li', 'li', 'li', 'li'], '图': ['tu', 'tu', 'tu', 'tu'],
+  '像': ['xiang', 'xiang', 'xiang', 'xiang'], '识': ['shi', 'shi', 'shi', 'shi'], '别': ['bie', 'bie', 'bie', 'bie'],
+  '语': ['yu', 'yu', 'yu', 'yu'], '音': ['yin', 'yin', 'yin', 'yin'], '识': ['shi', 'shi', 'shi', 'shi'],
+  '别': ['bie', 'bie', 'bie', 'bie'], '搜': ['sou', 'sou', 'sou', 'sou'], '索': ['suo', 'suo', 'suo', 'suo'],
+  '引': ['yin', 'yin', 'yin', 'yin'], '擎': ['qing', 'qing', 'qing', 'qing'], '推': ['tui', 'tui', 'tui', 'tui'],
+  '荐': ['jian', 'jian', 'jian', 'jian'], '系': ['xi', 'xi', 'xi', 'xi'], '统': ['tong', 'tong', 'tong', 'tong'],
+  '网': ['wang', 'wang', 'wang', 'wang'], '站': ['zhan', 'zhan', 'zhan', 'zhan'], '开': ['kai', 'kai', 'kai', 'kai'],
+  '发': ['fa', 'fa', 'fa', 'fa'], '移': ['yi', 'yi', 'yi', 'yi'], '动': ['dong', 'dong', 'dong', 'dong'],
+  '应': ['ying', 'ying', 'ying', 'ying'], '用': ['yong', 'yong', 'yong', 'yong'], '软': ['ruan', 'ruan', 'ruan', 'ruan'],
+  '件': ['jian', 'jian', 'jian', 'jian'], '开': ['kai', 'kai', 'kai', 'kai'], '发': ['fa', 'fa', 'fa', 'fa'],
+  '产': ['chan', 'chan', 'chan', 'chan'], '品': ['pin', 'pin', 'pin', 'pin'], '设': ['she', 'she', 'she', 'she'],
+  '计': ['ji', 'ji', 'ji', 'ji'], '用': ['yong', 'yong', 'yong', 'yong'], '户': ['hu', 'hu', 'hu', 'hu'],
+  '体': ['ti', 'ti', 'ti', 'ti'], '验': ['yan', 'yan', 'yan', 'yan'], '交': ['jiao', 'jiao', 'jiao', 'jiao'],
+  '互': ['hu', 'hu', 'hu', 'hu'], '设': ['she', 'she', 'she', 'she'], '计': ['ji', 'ji', 'ji', 'ji'],
+  '前': ['qian', 'qian', 'qian', 'qian'], '端': ['duan', 'duan', 'duan', 'duan'], '后': ['hou', 'hou', 'hou', 'hou'],
+  '端': ['duan', 'duan', 'duan', 'duan'], '全': ['quan', 'quan', 'quan', 'quan'], '栈': ['zhan', 'zhan', 'zhan', 'zhan'],
+  '数': ['shu', 'shu', 'shu', 'shu'], '据': ['ju', 'ju', 'ju', 'ju'], '库': ['ku', 'ku', 'ku', 'ku'],
+  '服': ['fu', 'fu', 'fu', 'fu'], '务': ['wu', 'wu', 'wu', 'wu'], '器': ['qi', 'qi', 'qi', 'qi'],
+  '架': ['jia', 'jia', 'jia', 'jia'], '构': ['gou', 'gou', 'gou', 'gou'], '设': ['she', 'she', 'she', 'she'],
+  '计': ['ji', 'ji', 'ji', 'ji'], '编': ['bian', 'bian', 'bian', 'bian'], '程': ['cheng', 'cheng', 'cheng', 'cheng'],
+  '语': ['yu', 'yu', 'yu', 'yu'], '言': ['yan', 'yan', 'yan', 'yan'], '开': ['kai', 'kai', 'kai', 'kai'],
+  '源': ['yuan', 'yuan', 'yuan', 'yuan'], '社': ['she', 'she', 'she', 'she'], '区': ['qu', 'qu', 'qu', 'qu'],
+  '代': ['dai', 'dai', 'dai', 'dai'], '码': ['ma', 'ma', 'ma', 'ma'], '管': ['guan', 'guan', 'guan', 'guan'],
+  '理': ['li', 'li', 'li', 'li'], '项': ['xiang', 'xiang', 'xiang', 'xiang'], '目': ['mu', 'mu', 'mu', 'mu'],
+  '管': ['guan', 'guan', 'guan', 'guan'], '理': ['li', 'li', 'li', 'li'], '测': ['ce', 'ce', 'ce', 'ce'],
+  '试': ['shi', 'shi', 'shi', 'shi'], '自': ['zi', 'zi', 'zi', 'zi'], '动': ['dong', 'dong', 'dong', 'dong'],
+  '化': ['hua', 'hua', 'hua', 'hua'], '持': ['chi', 'chi', 'chi', 'chi'], '续': ['xu', 'xu', 'xu', 'xu'],
+  '集': ['ji', 'ji', 'ji', 'ji'], '成': ['cheng', 'cheng', 'cheng', 'cheng'], '持': ['chi', 'chi', 'chi', 'chi'],
+  '续': ['xu', 'xu', 'xu', 'xu'], '部': ['bu', 'bu', 'bu', 'bu'], '署': ['shu', 'shu', 'shu', 'shu'],
+  '云': ['yun', 'yun', 'yun', 'yun'], '服': ['fu', 'fu', 'fu', 'fu'], '务': ['wu', 'wu', 'wu', 'wu'],
+  '虚': ['xu', 'xu', 'xu', 'xu'], '拟': ['ni', 'ni', 'ni', 'ni'], '机': ['ji', 'ji', 'ji', 'ji'],
+  '容': ['rong', 'rong', 'rong', 'rong'], '器': ['qi', 'qi', 'qi', 'qi'], '微': ['wei', 'wei', 'wei', 'wei'],
+  '服': ['fu', 'fu', 'fu', 'fu'], '务': ['wu', 'wu', 'wu', 'wu'], 'K': ['K', 'K', 'K', 'K'],
+  '8': ['8', '8', '8', '8'], 'S': ['S', 'S', 'S', 'S'], '安': ['an', 'an', 'an', 'an'],
+  '全': ['quan', 'quan', 'quan', 'quan'], '加': ['jia', 'jia', 'jia', 'jia'], '密': ['mi', 'mi', 'mi', 'mi'],
+  '协': ['xie', 'xie', 'xie', 'xie'], '议': ['yi', 'yi', 'yi', 'yi'], '协': ['xie', 'xie', 'xie', 'xie'],
+  '议': ['yi', 'yi', 'yi', 'yi'], '传': ['chuan', 'chuan', 'chuan', 'chuan'], '输': ['shu', 'shu', 'shu', 'shu'],
+  '层': ['ceng', 'ceng', 'ceng', 'ceng'], '网': ['wang', 'wang', 'wang', 'wang'], '络': ['luo', 'luo', 'luo', 'luo'],
+  '协': ['xie', 'xie', 'xie', 'xie'], '议': ['yi', 'yi', 'yi', 'yi'], '数': ['shu', 'shu', 'shu', 'shu'],
+  '据': ['ju', 'ju', 'ju', 'ju'], '结': ['jie', 'jie', 'jie', 'jie'], '构': ['gou', 'gou', 'gou', 'gou'],
+  '算': ['suan', 'suan', 'suan', 'suan'], '法': ['fa', 'fa', 'fa', 'fa'], '算': ['suan', 'suan', 'suan', 'suan'],
+  '法': ['fa', 'fa', 'fa', 'fa'], '分': ['fen', 'fen', 'fen', 'fen'], '析': ['xi', 'xi', 'xi', 'xi'],
+  '设': ['she', 'she', 'she', 'she'], '计': ['ji', 'ji', 'ji', 'ji'], '模': ['mo', 'mo', 'mo', 'mo'],
+  '型': ['xing', 'xing', 'xing', 'xing'], '算': ['suan', 'suan', 'suan', 'suan'], '法': ['fa', 'fa', 'fa', 'fa'],
+  '优': ['you', 'you', 'you', 'you'], '化': ['hua', 'hua', 'hua', 'hua'], '性': ['xing', 'xing', 'xing', 'xing'],
+  '能': ['neng', 'neng', 'neng', 'neng'], '调': ['tiao', 'tiao', 'tiao', 'tiao'], '优': ['you', 'you', 'you', 'you'],
+  '性': ['xing', 'xing', 'xing', 'xing'], '能': ['neng', 'neng', 'neng', 'neng'], '测': ['ce', 'ce', 'ce', 'ce'],
+  '试': ['shi', 'shi', 'shi', 'shi'], '性': ['xing', 'xing', 'xing', 'xing'], '能': ['neng', 'neng', 'neng', 'neng'],
+  '监': ['jian', 'jian', 'jian', 'jian'], '控': ['kong', 'kong', 'kong', 'kong'], '日': ['ri', 'ri', 'ri', 'ri'],
+  '志': ['zhi', 'zhi', 'zhi', 'zhi'], '分': ['fen', 'fen', 'fen', 'fen'], '析': ['xi', 'xi', 'xi', 'xi'],
+  '异': ['yi', 'yi', 'yi', 'yi'], '常': ['chang', 'chang', 'chang', 'chang'], '排': ['pai', 'pai', 'pai', 'pai'],
+  '查': ['cha', 'cha', 'cha', 'cha'], '运': ['yun', 'yun', 'yun', 'yun'], '维': ['wei', 'wei', 'wei', 'wei'],
+  '定': ['ding', 'ding', 'ding', 'ding'], '期': ['qi', 'qi', 'qi', 'qi'], '检': ['jian', 'jian', 'jian', 'jian'],
+  '修': ['xiu', 'xiu', 'xiu', 'xiu'], '故': ['gu', 'gu', 'gu', 'gu'], '障': ['zhang', 'zhang', 'zhang', 'zhang'],
+  '处': ['chu', 'chu', 'chu', 'chu'], '理': ['li', 'li', 'li', 'li'], '数': ['shu', 'shu', 'shu', 'shu'],
+  '据': ['ju', 'ju', 'ju', 'ju'], '备': ['bei', 'bei', 'bei', 'bei'], '份': ['fen', 'fen', 'fen', 'fen'],
+  '恢': ['hui', 'hui', 'hui', 'hui'], '复': ['fu', 'fu', 'fu', 'fu'], '灾': ['zai', 'zai', 'zai', 'zai'],
+  '难': ['nan', 'nan', 'nan', 'nan'], '恢': ['hui', 'hui', 'hui', 'hui'], '复': ['fu', 'fu', 'fu', 'fu'],
+  '高': ['gao', 'gao', 'gao', 'gao'], '可': ['ke', 'ke', 'ke', 'ke'], '用': ['yong', 'yong', 'yong', 'yong'],
+  '性': ['xing', 'xing', 'xing', 'xing'], '负': ['fu', 'fu', 'fu', 'fu'], '载': ['zai', 'zai', 'zai', 'zai'],
+  '均': ['jun', 'jun', 'jun', 'jun'], '衡': ['heng', 'heng', 'heng', 'heng'], '自': ['zi', 'zi', 'zi', 'zi'],
+  '动': ['dong', 'dong', 'dong', 'dong'], '扩': ['kuo', 'kuo', 'kuo', 'kuo'], '容': ['rong', 'rong', 'rong', 'rong'],
+  '节': ['jie', 'jie', 'jie', 'jie'], '约': ['yue', 'yue', 'yue', 'yue'], '成': ['cheng', 'cheng', 'cheng', 'cheng'],
+  '本': ['ben', 'ben', 'ben', 'ben'], '绿': ['lv', 'lv', 'lv', 'lv'], '色': ['se', 'se', 'se', 'se'],
+  '环': ['huan', 'huan', 'huan', 'huan'], '保': ['bao', 'bao', 'bao', 'bao'], '新': ['xin', 'xin', 'xin', 'xin'],
+  '能': ['neng', 'neng', 'neng', 'neng'], '源': ['yuan', 'yuan', 'yuan', 'yuan'], '节': ['jie', 'jie', 'jie', 'jie'],
+  '能': ['neng', 'neng', 'neng', 'neng'], '减': ['jian', 'jian', 'jian', 'jian'], '排': ['pai', 'pai', 'pai', 'pai'],
+  '碳': ['tan', 'tan', 'tan', 'tan'], '中': ['zhong', 'zhong', 'zhong', 'zhong'], '和': ['he', 'he', 'he', 'he'],
+  '发': ['fa', 'fa', 'fa', 'fa'], '展': ['zhan', 'zhan', 'zhan', 'zhan'], '战': ['zhan', 'zhan', 'zhan', 'zhan'],
+  '略': ['lue', 'lue', 'lue', 'lue'], '规': ['gui', 'gui', 'gui', 'gui'], '划': ['hua', 'hua', 'hua', 'hua'],
+  '目': ['mu', 'mu', 'mu', 'mu'], '标': ['biao', 'biao', 'biao', 'biao'], '实': ['shi', 'shi', 'shi', 'shi'],
+  '施': ['shi', 'shi', 'shi', 'shi'], '方': ['fang', 'fang', 'fang', 'fang'], '案': ['an', 'an', 'an', 'an'],
+  '计': ['ji', 'ji', 'ji', 'ji'], '划': ['hua', 'hua', 'hua', 'hua'], '执': ['zhi', 'zhi', 'zhi', 'zhi'],
+  '行': ['xing', 'xing', 'xing', 'xing'], '监': ['jian', 'jian', 'jian', 'jian'], '督': ['du', 'du', 'du', 'du'],
+  '考': ['kao', 'kao', 'kao', 'kao'], '核': ['he', 'he', 'he', 'he'], '总': ['zong', 'zong', 'zong', 'zong'],
+  '结': ['jie', 'jie', 'jie', 'jie'], '反': ['fan', 'fan', 'fan', 'fan'], '思': ['si', 'si', 'si', 'si'],
+  '改': ['gai', 'gai', 'gai', 'gai'], '进': ['jin', 'jin', 'jin', 'jin'], '创': ['chuang', 'chuang', 'chuang', 'chuang'],
+  '新': ['xin', 'xin', 'xin', 'xin'], '突': ['tu', 'tu', 'tu', 'tu'], '破': ['po', 'po', 'po', 'po'],
+  '团': ['tuan', 'tuan', 'tuan', 'tuan'], '队': ['dui', 'dui', 'dui', 'dui'], '合': ['he', 'he', 'he', 'he'],
+  '作': ['zuo', 'zuo', 'zuo', 'zuo'], '沟': ['gou', 'gou', 'gou', 'gou'], '通': ['tong', 'tong', 'tong', 'tong'],
+  '交': ['jiao', 'jiao', 'jiao', 'jiao'], '流': ['liu', 'liu', 'liu', 'liu'], '学': ['xue', 'xue', 'xue', 'xue'],
+  '习': ['xi', 'xi', 'xi', 'xi'], '成': ['cheng', 'cheng', 'cheng', 'cheng'], '长': ['zhang', 'zhang', 'zhang', 'zhang'],
+  '职': ['zhi', 'zhi', 'zhi', 'zhi'], '业': ['ye', 'ye', 'ye', 'ye'], '发': ['fa', 'fa', 'fa', 'fa'],
+  '展': ['zhan', 'zhan', 'zhan', 'zhan'], '生': ['sheng', 'sheng', 'sheng', 'sheng'], '活': ['huo', 'huo', 'huo', 'huo'],
+  '平': ['ping', 'ping', 'ping', 'ping'], '衡': ['heng', 'heng', 'heng', 'heng'], '健': ['jian', 'jian', 'jian', 'jian'],
+  '康': ['kang', 'kang', 'kang', 'kang'], '快': ['kuai', 'kuai', 'kuai', 'kuai'], '乐': ['le', 'le', 'le', 'le'],
+  '幸': ['xing', 'xing', 'xing', 'xing'], '福': ['fu', 'fu', 'fu', 'fu'], '美': ['mei', 'mei', 'mei', 'mei'],
+  '好': ['hao', 'hao', 'hao', 'hao'], '未': ['wei', 'wei', 'wei', 'wei'], '来': ['lai', 'lai', 'lai', 'lai']
+};
+
+function showMsg(text, type) {
+  const msg = document.getElementById('msg');
+  msg.textContent = text;
+  msg.className = 'msg ' + type;
+}
+function hideMsg() {
+  document.getElementById('msg').className = 'msg';
+}
+
+function convert() {
+  const input = document.getElementById('inputText').value;
+  if (!input) { showMsg('请输入内容', 'error'); return; }
+  
+  const tone = document.getElementById('tone').checked;
+  const firstLetter = document.getElementById('firstLetter').checked;
+  const capitalize = document.getElementById('capitalize').checked;
+  const separator = document.getElementById('separator').value === 'space' ? ' ' : document.getElementById('separator').value;
+  
+  const results = [];
+  for (let i = 0; i < input.length; i++) {
+    const char = input[i];
+    if (pinyinDict[char]) {
+      let pinyin = pinyinDict[char][0];
+      if (firstLetter) {
+        pinyin = pinyin.charAt(0);
+      }
+      if (capitalize) {
+        pinyin = pinyin.charAt(0).toUpperCase() + pinyin.slice(1);
+      }
+      results.push(pinyin);
+    } else {
+      results.push(char);
+    }
+  }
+  
+  document.getElementById('outputText').value = results.join(separator);
+  showMsg('转换完成', 'success');
+}
+
+function copyResult() {
+  const output = document.getElementById('outputText');
+  if (!output.value) { showMsg('没有可复制的内容', 'error'); return; }
+  output.select();
+  document.execCommand('copy');
+  showMsg('已复制到剪贴板', 'success');
+}
+
+function clearAll() {
+  document.getElementById('inputText').value = '';
+  document.getElementById('outputText').value = '';
+  hideMsg();
+}
+</script>
+</body>
+</html>
