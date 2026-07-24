@@ -20,6 +20,7 @@ menu:
   照片: /Gallery/ || fas fa-images
   音乐: /music/ || fas fa-music
   工具: /tools/ || fas fa-tools
+  游戏: /games/ || fas fa-gamepad
   关于: /about/ || fas fa-heart
 
 
