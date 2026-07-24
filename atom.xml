@@ -11,7 +11,22 @@
   <rights>All rights reserved 2026, Moonligh</rights>
   <subtitle>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</subtitle>
   <title>Moonligh</title>
-  <updated>2026-07-23T12:03:26.723Z</updated>
+  <updated>2026-07-24T09:19:47.112Z</updated>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="随笔" scheme="https://zhaoshaodada.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="生活" scheme="https://zhaoshaodada.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+    <category term="随笔" scheme="https://zhaoshaodada.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    <category term="珠海" scheme="https://zhaoshaodada.github.io/tags/%E7%8F%A0%E6%B5%B7/"/>
+    <id>https://zhaoshaodada.github.io/2026/07/24/%E7%8F%A0%E6%B5%B7%E6%97%B6%E5%85%89/</id>
+    <link href="https://zhaoshaodada.github.io/2026/07/24/%E7%8F%A0%E6%B5%B7%E6%97%B6%E5%85%89/"/>
+    <published>2026-07-24T12:00:00.000Z</published>
+    <summary>记录2019-2020年间在珠海出差的美好时光，与同事一起游览珠海渔女、珠海大剧院，骑行情侣路，参加珠澳三千米徒步活动，那段简单快乐的工作生活至今难忘。</summary>
+    <title>珠海时光</title>
+    <updated>2026-07-24T09:19:47.112Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Moonligh</name>
@@ -295,18 +310,5 @@
     <summary>本文针对Mock.js导致Cesium三维地图无法正常加载的问题进行分析与解决。在前后端联调与前端调试场景中，Mock.js拦截请求会与Cesium地图资源加载产生冲突，文章梳理了冲突成因并给出相应的处理方案，帮助开发者顺利集成Mock.js与Cesium地图开发。</summary>
     <title>mockjs导致cesium地图无法加载</title>
     <updated>2026-07-23T12:03:25.903Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
-    <category term="Butterfly" scheme="https://zhaoshaodada.github.io/tags/Butterfly/"/>
-    <id>https://zhaoshaodada.github.io/2025/11/19/Butterfly%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/</id>
-    <link href="https://zhaoshaodada.github.io/2025/11/19/Butterfly%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/"/>
-    <published>2025-11-19T11:26:58.000Z</published>
-    <summary>本文为Hexo博客Butterfly主题的配置教程，介绍该主题的安装部署与各项功能配置方法，涵盖导航栏、侧边栏、文章页、评论系统等常用项的设置，并附官方文档链接，帮助用户快速搭建美观实用的个人博客站点。</summary>
-    <title>Butterfly配置教程</title>
-    <updated>2026-07-23T12:03:26.020Z</updated>
   </entry>
 </feed>

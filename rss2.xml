@@ -6,7 +6,7 @@
     <description>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</description>
     <language>zh-CN</language>
     <copyright>All rights reserved 2026, Moonligh</copyright>
-    <lastBuildDate>Thu, 23 Jul 2026 12:03:26 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jul 2026 09:19:47 GMT</lastBuildDate>
     <generator>Hexo</generator>
     <image>
       <url>https://zhaoshaodada.github.io/img/favicon.jpg</url>
@@ -14,6 +14,17 @@
       <link>https://zhaoshaodada.github.io/</link>
     </image>
     <atom:link href="https://zhaoshaodada.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>珠海时光</title>
+      <link>https://zhaoshaodada.github.io/2026/07/24/%E7%8F%A0%E6%B5%B7%E6%97%B6%E5%85%89/</link>
+      <description>记录2019-2020年间在珠海出差的美好时光，与同事一起游览珠海渔女、珠海大剧院，骑行情侣路，参加珠澳三千米徒步活动，那段简单快乐的工作生活至今难忘。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E9%9A%8F%E7%AC%94/">随笔</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E7%94%9F%E6%B4%BB/">生活</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E9%9A%8F%E7%AC%94/">随笔</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E7%8F%A0%E6%B5%B7/">珠海</category>
+      <pubDate>Fri, 24 Jul 2026 12:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>前端小技巧集锦</title>
       <link>https://zhaoshaodada.github.io/2026/07/23/%E5%89%8D%E7%AB%AF%E5%B0%8F%E6%8A%80%E5%B7%A7%E9%9B%86%E9%94%A6/</link>
@@ -221,15 +232,6 @@
       <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
       <category domain="https://zhaoshaodada.github.io/tags/mockjs/">mockjs</category>
       <pubDate>Fri, 21 Nov 2025 02:49:28 GMT</pubDate>
-    </item>
-    <item>
-      <title>Butterfly配置教程</title>
-      <link>https://zhaoshaodada.github.io/2025/11/19/Butterfly%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/</link>
-      <description>本文为Hexo博客Butterfly主题的配置教程，介绍该主题的安装部署与各项功能配置方法，涵盖导航栏、侧边栏、文章页、评论系统等常用项的设置，并附官方文档链接，帮助用户快速搭建美观实用的个人博客站点。</description>
-      <author>Moonligh</author>
-      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
-      <category domain="https://zhaoshaodada.github.io/tags/Butterfly/">Butterfly</category>
-      <pubDate>Wed, 19 Nov 2025 11:26:58 GMT</pubDate>
     </item>
   </channel>
 </rss>
