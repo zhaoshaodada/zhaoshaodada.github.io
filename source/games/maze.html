@@ -265,6 +265,7 @@
     var currentDifficulty = 'normal';
     var maze = [];
     var player = { x: 1, y: 1 };
+    var playerRender = { x: 1, y: 1 }; // 实际渲染的插值位置
     var exit = { x: 0, y: 0 };
     var steps = 0;
     var startTime = null;
@@ -274,28 +275,44 @@
     var walkFrame = 0; // 0 or 1: 两张走路帧
     var walkFrameTimer = null;
     var walkFrameInterval = 220; // 180-250ms 之间
-    var stopWalkTimer = null;
+    
+    // 移动动画相关
+    var isMoving = false;
+    var moveFrom = { x: 0, y: 0 };
+    var moveTo = { x: 0, y: 0 };
+    var moveStartTime = 0;
+    var moveDuration = 220; // 单格移动时长
+    var moveAnimFrame = null;
+    var isAnimating = false;
+    
     var playerImages = [];
-    var imagesLoaded = 0;
     var imagesReady = false;
+    var initDone = false;
     
     function preloadImages() {
       var sources = [
         '/games/img.png',
         '/games/img_1.png'
       ];
+      var loaded = 0;
       sources.forEach(function(src) {
         var img = new Image();
         img.onload = function() {
-          imagesLoaded++;
-          if (imagesLoaded === sources.length) {
+          loaded++;
+          if (loaded === sources.length) {
             imagesReady = true;
+            if (initDone) {
+              drawMaze();
+            }
           }
         };
         img.onerror = function() {
-          imagesLoaded++;
-          if (imagesLoaded === sources.length) {
+          loaded++;
+          if (loaded === sources.length) {
             imagesReady = true;
+            if (initDone) {
+              drawMaze();
+            }
           }
         };
         img.src = src;
@@ -306,6 +323,11 @@
     function init() {
       preloadImages();
       newGame();
+      initDone = true;
+      // 如果图片已经加载好，立即重绘
+      if (imagesReady) {
+        drawMaze();
+      }
       window.addEventListener('keydown', handleKeyDown);
       canvas.addEventListener('click', function() { canvas.focus(); });
     }
@@ -325,18 +347,18 @@
       
       maze = generateMaze(size);
       player = { x: 1, y: 1 };
+      playerRender = { x: 1, y: 1 };
       exit = { x: size - 2, y: size - 2 };
       steps = 0;
       gameStarted = false;
       moveState = 'down';
       walkFrame = 0;
+      isMoving = false;
       
       stopTimer();
       stopWalkAnimation();
-      if (stopWalkTimer) {
-        clearTimeout(stopWalkTimer);
-        stopWalkTimer = null;
-      }
+      cancelMoveAnimation();
+      
       document.getElementById('steps').textContent = '0';
       document.getElementById('time').textContent = '00:00';
       
@@ -425,13 +447,13 @@
     function drawPlayer() {
       var config = difficulty[currentDifficulty];
       var cellSize = config.cellSize;
-      var cx = player.x * cellSize + cellSize / 2;
-      var cy = player.y * cellSize + cellSize / 2;
+      var cx = playerRender.x * cellSize + cellSize / 2;
+      var cy = playerRender.y * cellSize + cellSize / 2;
       var size = cellSize * 0.85;
       
-      if (imagesReady && playerImages.length >= 2 && playerImages[0].complete) {
+      if (imagesReady && playerImages.length >= 2 && playerImages[0].complete && playerImages[0].naturalWidth > 0) {
         // 走动时使用两张图片交替显示，静止时使用第一张
-        var imgIndex = (moveState !== 'idle' && walkFrame === 1) ? 1 : 0;
+        var imgIndex = (isMoving && walkFrame === 1) ? 1 : 0;
         var img = playerImages[imgIndex];
         
         ctx.save();
@@ -471,6 +493,47 @@
       }
     }
     
+    function cancelMoveAnimation() {
+      if (moveAnimFrame) {
+        cancelAnimationFrame(moveAnimFrame);
+        moveAnimFrame = null;
+      }
+      isAnimating = false;
+    }
+    
+    function animateMove() {
+      if (!isAnimating) return;
+      var now = Date.now();
+      var elapsed = now - moveStartTime;
+      var progress = Math.min(elapsed / moveDuration, 1);
+      
+      // 缓动函数：ease-out
+      var ease = 1 - Math.pow(1 - progress, 2);
+      
+      playerRender.x = moveFrom.x + (moveTo.x - moveFrom.x) * ease;
+      playerRender.y = moveFrom.y + (moveTo.y - moveFrom.y) * ease;
+      
+      drawMaze();
+      
+      if (progress < 1) {
+        moveAnimFrame = requestAnimationFrame(animateMove);
+      } else {
+        // 动画完成
+        playerRender.x = moveTo.x;
+        playerRender.y = moveTo.y;
+        isMoving = false;
+        isAnimating = false;
+        moveAnimFrame = null;
+        stopWalkAnimation();
+        drawMaze();
+        
+        // 检查是否到达终点
+        if (player.x === exit.x && player.y === exit.y) {
+          gameWin();
+        }
+      }
+    }
+    
     function handleKeyDown(e) {
       if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].indexOf(e.key) === -1) {
         return;
@@ -486,53 +549,59 @@
     }
     
     function movePlayer(direction) {
+      // 每次按键只处理一格
+      if (isAnimating) return;
+      
       if (!gameStarted) {
         gameStarted = true;
         startTime = Date.now();
         timerInterval = setInterval(updateTimer, 1000);
       }
       
+      // 更新朝向
+      switch (direction) {
+        case 'up': moveState = 'up'; break;
+        case 'down': moveState = 'down'; break;
+        case 'left': moveState = 'left'; break;
+        case 'right': moveState = 'right'; break;
+      }
+      
       var nx = player.x;
       var ny = player.y;
       
       switch (direction) {
-        case 'up': ny--; moveState = 'up'; break;
-        case 'down': ny++; moveState = 'down'; break;
-        case 'left': nx--; moveState = 'left'; break;
-        case 'right': nx++; moveState = 'right'; break;
+        case 'up': ny--; break;
+        case 'down': ny++; break;
+        case 'left': nx--; break;
+        case 'right': nx++; break;
       }
       
-      // 记录方向（用于停止时保持朝向）
-      var lastDir = moveState;
-      
-      if (maze[ny] && maze[ny][nx] === 0) {
-        player.x = nx;
-        player.y = ny;
-        steps++;
-        document.getElementById('steps').textContent = steps;
-        
-        // 启动走路动画
-        startWalkAnimation();
-        // 清除停止动画的定时器
-        if (stopWalkTimer) {
-          clearTimeout(stopWalkTimer);
-          stopWalkTimer = null;
-        }
-        // 设置 200ms 后停止动画（如果未继续移动）
-        stopWalkTimer = setTimeout(function() {
-          stopWalkAnimation();
-        }, 200);
-        
+      // 检查目标格子是否可走
+      if (!maze[ny] || maze[ny][nx] !== 0) {
+        // 撞墙，只更新朝向
         drawMaze();
-        
-        if (player.x === exit.x && player.y === exit.y) {
-          gameWin();
-        }
-      } else {
-        // 即使撞墙也保持朝向
-        moveState = lastDir;
-        drawMaze();
+        return;
       }
+      
+      // 启动走路帧切换动画
+      startWalkAnimation();
+      
+      // 启动位置插值动画
+      isMoving = true;
+      isAnimating = true;
+      moveFrom.x = playerRender.x;
+      moveFrom.y = playerRender.y;
+      moveTo.x = nx;
+      moveTo.y = ny;
+      moveStartTime = Date.now();
+      
+      // 立即更新逻辑位置（用于步数计算）
+      player.x = nx;
+      player.y = ny;
+      steps++;
+      document.getElementById('steps').textContent = steps;
+      
+      moveAnimFrame = requestAnimationFrame(animateMove);
     }
     
     function updateTimer() {
