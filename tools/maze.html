@@ -1,17 +1,17 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Moonligh | Moonligh</title><meta name="author" content="Moonligh"><meta name="copyright" content="Moonligh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="文本对比 - 在线工具       * { margin: 0; padding: 0; box-sizing: border-box; } body {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;   backgrou">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Moonligh | Moonligh</title><meta name="author" content="Moonligh"><meta name="copyright" content="Moonligh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="迷宫小游戏        * { margin: 0; padding: 0; box-sizing: border-box; }     body {       font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, &#39;PingFang SC&#39;, &#39;Hiragino Sans GB&#39;,">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Moonligh">
-<meta property="og:url" content="https://zhaoshaodada.github.io/tools/text-diff.html">
+<meta property="og:url" content="https://zhaoshaodada.github.io/tools/maze.html">
 <meta property="og:site_name" content="Moonligh">
-<meta property="og:description" content="文本对比 - 在线工具       * { margin: 0; padding: 0; box-sizing: border-box; } body {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;   backgrou">
+<meta property="og:description" content="迷宫小游戏        * { margin: 0; padding: 0; box-sizing: border-box; }     body {       font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, &#39;PingFang SC&#39;, &#39;Hiragino Sans GB&#39;,">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://zhaoshaodada.github.io/img/favicon.jpg">
-<meta property="article:published_time" content="2026-07-24T02:41:35.238Z">
-<meta property="article:modified_time" content="2026-07-24T02:41:35.238Z">
+<meta property="article:published_time" content="2026-07-24T03:25:44.670Z">
+<meta property="article:modified_time" content="2026-07-24T03:25:44.670Z">
 <meta property="article:author" content="Moonligh">
 <meta property="article:tag" content="前端开发, JavaScript, Vue, Hexo, 技术博客, ES6, Three.js, Cesium, Axios">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zhaoshaodada.github.io/img/favicon.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://zhaoshaodada.github.io/tools/text-diff.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+<meta name="twitter:image" content="https://zhaoshaodada.github.io/img/favicon.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://zhaoshaodada.github.io/tools/maze.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
     (() => {
       
     const saveToLocal = {
@@ -149,356 +149,495 @@
 </head><body><div id="web_bg" style="background-image: url(/img/22.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/favicon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 工具</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/index.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Moonligh</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 工具</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title"></h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>文本对比 - 在线工具</title>
-<meta name="description" content="在线文本对比工具，支持两段文本差异对比，高亮显示新增、删除、修改内容，纯前端实现">
-<meta name="keywords" content="文本对比,差异对比,diff,在线工具">
-<meta property="og:title" content="文本对比 - 在线工具">
-<meta property="og:description" content="在线文本对比工具，支持两段文本差异对比">
-<meta property="og:type" content="website">
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background: #f5f5f5;
-  min-height: 100vh;
-  padding: 20px;
-}
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  padding: 30px;
-}
-.back-link {
-  display: inline-block;
-  margin-bottom: 20px;
-  color: #49b1f5;
-  text-decoration: none;
-  font-size: 14px;
-}
-.back-link:hover { text-decoration: underline; }
-h1 {
-  font-size: 24px;
-  margin-bottom: 8px;
-  color: #333;
-}
-.subtitle { font-size: 13px; color: #999; margin-bottom: 20px; }
-.textarea-group { margin-bottom: 16px; }
-label {
-  display: block;
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 8px;
-}
-textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 14px;
-  font-family: Consolas, Monaco, monospace;
-  min-height: 200px;
-  resize: vertical;
-}
-textarea:focus {
-  outline: none;
-  border-color: #49b1f5;
-}
-.btn-group {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-}
-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.btn-primary { background: #49b1f5; color: #fff; }
-.btn-primary:hover { background: #3aa0e4; }
-.btn-secondary { background: #f0f0f0; color: #333; }
-.btn-secondary:hover { background: #e0e0e0; }
-.btn-success { background: #52c41a; color: #fff; }
-.btn-success:hover { background: #45b016; }
-.btn-danger { background: #ff4d4f; color: #fff; }
-.btn-danger:hover { background: #e84143; }
-.msg {
-  padding: 10px 16px;
-  border-radius: 6px;
-  margin-bottom: 12px;
-  font-size: 14px;
-  display: none;
-}
-.msg.error { background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7; display: block; }
-.msg.success { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; display: block; }
-.diff-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-.diff-panel {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-}
-.diff-panel .panel-header {
-  padding: 10px 14px;
-  background: #f6f8fa;
-  font-size: 13px;
-  color: #666;
-  border-bottom: 1px solid #eee;
-}
-.diff-panel .panel-body {
-  padding: 12px;
-  max-height: 300px;
-  overflow-y: auto;
-}
-.diff-content {
-  font-family: Consolas, Monaco, monospace;
-  font-size: 14px;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  word-break: break-all;
-}
-.diff-added {
-  background: #f6ffed;
-  color: #52c41a;
-  text-decoration: none;
-}
-.diff-removed {
-  background: #fff2f0;
-  color: #ff4d4f;
-  text-decoration: line-through;
-}
-.diff-modified-old {
-  background: #fff7e6;
-  color: #fa8c16;
-}
-.diff-modified-new {
-  background: #e6f7ff;
-  color: #1890ff;
-}
-.diff-marker {
-  display: inline-block;
-  width: 20px;
-  text-align: center;
-  font-size: 12px;
-  margin-right: 8px;
-}
-.info-bar {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-  padding: 12px;
-  background: #fafafa;
-  border-radius: 8px;
-  font-size: 13px;
-}
-.info-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.info-item .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-.dot.added { background: #52c41a; }
-.dot.removed { background: #ff4d4f; }
-.dot.modified { background: #fa8c16; }
-@media (max-width: 600px) {
-  .diff-grid { grid-template-columns: 1fr; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="迷宫小游戏，自动生成随机迷宫，使用键盘方向键控制小人从起点走到终点，支持多种难度。">
+  <meta name="keywords" content="迷宫游戏,小游戏,方向键控制,走迷宫,益智游戏">
+  <meta property="og:title" content="迷宫小游戏">
+  <meta property="og:description" content="自动生成随机迷宫，方向键控制小人走出迷宫">
+  <title>迷宫小游戏</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      padding: 30px;
+      max-width: 700px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 28px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #999;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+    .control-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .difficulty-select {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    select {
+      padding: 8px 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      cursor: pointer;
+    }
+    select:focus {
+      border-color: #667eea;
+    }
+    .btn {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+    .stats {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .stat-value {
+      font-weight: 600;
+      color: #667eea;
+    }
+    #mazeCanvas {
+      display: block;
+      margin: 0 auto;
+      border: 3px solid #667eea;
+      border-radius: 8px;
+      background: #f8f9fa;
+    }
+    .hint {
+      text-align: center;
+      margin-top: 15px;
+      color: #888;
+      font-size: 14px;
+    }
+    .keyboard {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 15px;
+    }
+    .key-row {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      align-items: center;
+    }
+    .key {
+      width: 50px;
+      height: 50px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #666;
+      background: #f8f9fa;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.1s;
+    }
+    .key:active {
+      background: #667eea;
+      color: #fff;
+      border-color: #667eea;
+    }
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal.show {
+      display: flex;
+    }
+    .modal-content {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      animation: bounceIn 0.5s;
+      max-width: 400px;
+      width: 90%;
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      60% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .modal-icon {
+      font-size: 60px;
+      margin-bottom: 15px;
+    }
+    .modal-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .modal-text {
+      color: #666;
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
+    .tip {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f3e8ff;
+      border-radius: 8px;
+      border-left: 4px solid #764ba2;
+      font-size: 14px;
+      color: #5a189a;
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-  <a href="/tools/" class="back-link">← 返回工具列表</a>
-  <h1>文本对比</h1>
-  <p class="subtitle">支持两段文本差异对比，高亮显示新增、删除、修改内容</p>
-
-  <div id="msg" class="msg"></div>
-
-  <div class="diff-grid">
-    <div class="textarea-group">
-      <label>原始文本：</label>
-      <textarea id="oldText" placeholder="输入原始文本..."></textarea>
-    </div>
-    <div class="textarea-group">
-      <label>新文本：</label>
-      <textarea id="newText" placeholder="输入新文本..."></textarea>
-    </div>
-  </div>
-
-  <div class="btn-group">
-    <button class="btn-primary" onclick="compare()">开始对比</button>
-    <button class="btn-secondary" onclick="loadExample()">加载示例</button>
-    <button class="btn-danger" onclick="clearAll()">清空</button>
-  </div>
-
-  <div class="info-bar" id="infoBar" style="display:none;">
-    <div class="info-item">
-      <span class="dot added"></span>
-      <span id="addedCount">0 行新增</span>
-    </div>
-    <div class="info-item">
-      <span class="dot removed"></span>
-      <span id="removedCount">0 行删除</span>
-    </div>
-    <div class="info-item">
-      <span class="dot modified"></span>
-      <span id="modifiedCount">0 行修改</span>
-    </div>
-  </div>
-
-  <div class="diff-grid">
-    <div class="diff-panel">
-      <div class="panel-header">原始文本</div>
-      <div class="panel-body">
-        <div class="diff-content" id="diffOld"></div>
+  <div class="container">
+    <h1>🎮 迷宫逃脱</h1>
+    <p class="subtitle">使用方向键控制小人，从起点走到终点</p>
+    
+    <div class="control-bar">
+      <div class="difficulty-select">
+        <label>难度：</label>
+        <select id="difficulty" onchange="changeDifficulty()">
+          <option value="easy">简单 (11x11)</option>
+          <option value="normal" selected>普通 (15x15)</option>
+          <option value="hard">困难 (21x21)</option>
+          <option value="expert">专家 (31x31)</option>
+        </select>
+        <button class="btn" onclick="newGame()">新游戏</button>
+      </div>
+      <div class="stats">
+        <div class="stat-item">
+          <span>步数：</span>
+          <span class="stat-value" id="steps">0</span>
+        </div>
+        <div class="stat-item">
+          <span>时间：</span>
+          <span class="stat-value" id="time">00:00</span>
+        </div>
       </div>
     </div>
-    <div class="diff-panel">
-      <div class="panel-header">新文本</div>
-      <div class="panel-body">
-        <div class="diff-content" id="diffNew"></div>
+    
+    <canvas id="mazeCanvas" width="600" height="600"></canvas>
+    
+    <p class="hint">💡 点击画布或按下方向键即可开始</p>
+    
+    <div class="keyboard">
+      <div class="key-row">
+        <div class="key" onclick="movePlayer('up')">↑</div>
+        <div style="display: flex; gap: 5px;">
+          <div class="key" onclick="movePlayer('left')">←</div>
+          <div class="key" onclick="movePlayer('down')">↓</div>
+          <div class="key" onclick="movePlayer('right')">→</div>
+        </div>
       </div>
     </div>
+    
+    <div class="tip">
+      💡 提示：红色圆点是起点，绿色方块是终点。找到通往终点的路径即可获胜！
+    </div>
   </div>
-</div>
-
-<script>
-function showMsg(text, type) {
-  const msg = document.getElementById('msg');
-  msg.textContent = text;
-  msg.className = 'msg ' + type;
-}
-function hideMsg() {
-  document.getElementById('msg').className = 'msg';
-}
-
-function diffLines(oldLines, newLines) {
-  const result = [];
-  const matrix = [];
-  const oLen = oldLines.length;
-  const nLen = newLines.length;
   
-  for (let i = 0; i <= oLen; i++) {
-    matrix[i] = [];
-    for (let j = 0; j <= nLen; j++) {
-      if (i === 0) matrix[i][j] = j;
-      else if (j === 0) matrix[i][j] = i;
-      else if (oldLines[i - 1] === newLines[j - 1]) matrix[i][j] = matrix[i - 1][j - 1];
-      else matrix[i][j] = Math.min(matrix[i - 1][j], matrix[i][j - 1], matrix[i - 1][j - 1]) + 1;
+  <div class="modal" id="winModal">
+    <div class="modal-content">
+      <div class="modal-icon">🎉</div>
+      <div class="modal-title">恭喜通关！</div>
+      <div class="modal-text" id="winText">
+        你成功走出了迷宫！<br>
+        步数：0 | 时间：00:00
+      </div>
+      <button class="btn" onclick="closeModal()">再玩一次</button>
+    </div>
+  </div>
+
+  <script>
+    var canvas = document.getElementById('mazeCanvas');
+    var ctx = canvas.getContext('2d');
+    var difficulty = {
+      easy: { size: 11, cellSize: 50 },
+      normal: { size: 15, cellSize: 36 },
+      hard: { size: 21, cellSize: 26 },
+      expert: { size: 31, cellSize: 18 }
+    };
+    
+    var currentDifficulty = 'normal';
+    var maze = [];
+    var player = { x: 1, y: 1 };
+    var exit = { x: 0, y: 0 };
+    var steps = 0;
+    var startTime = null;
+    var timerInterval = null;
+    var gameStarted = false;
+    
+    function init() {
+      newGame();
+      window.addEventListener('keydown', handleKeyDown);
+      canvas.addEventListener('click', function() { canvas.focus(); });
     }
-  }
-  
-  let i = oLen, j = nLen;
-  while (i > 0 || j > 0) {
-    if (i > 0 && j > 0 && oldLines[i - 1] === newLines[j - 1]) {
-      result.unshift({ type: 'equal', oldLine: oldLines[i - 1], newLine: newLines[j - 1] });
-      i--; j--;
-    } else if (j > 0 && (i === 0 || matrix[i][j - 1] <= matrix[i - 1][j])) {
-      result.unshift({ type: 'added', oldLine: null, newLine: newLines[j - 1] });
-      j--;
-    } else if (i > 0 && (j === 0 || matrix[i][j - 1] > matrix[i - 1][j])) {
-      result.unshift({ type: 'removed', oldLine: oldLines[i - 1], newLine: null });
-      i--;
+    
+    function changeDifficulty() {
+      currentDifficulty = document.getElementById('difficulty').value;
+      newGame();
     }
-  }
-  
-  return result;
-}
-
-function compare() {
-  const oldText = document.getElementById('oldText').value;
-  const newText = document.getElementById('newText').value;
-  
-  if (!oldText || !newText) {
-    showMsg('请输入两段文本进行对比', 'error');
-    return;
-  }
-  
-  const oldLines = oldText.split('\n');
-  const newLines = newText.split('\n');
-  const diffResult = diffLines(oldLines, newLines);
-  
-  let added = 0, removed = 0, modified = 0;
-  let diffOldHtml = '', diffNewHtml = '';
-  
-  diffResult.forEach((item, index) => {
-    const lineNum = index + 1;
-    if (item.type === 'equal') {
-      diffOldHtml += `<div><span class="diff-marker">${lineNum}</span>${escapeHtml(item.oldLine)}</div>`;
-      diffNewHtml += `<div><span class="diff-marker">${lineNum}</span>${escapeHtml(item.newLine)}</div>`;
-    } else if (item.type === 'added') {
-      added++;
-      diffOldHtml += `<div><span class="diff-marker"> </span></div>`;
-      diffNewHtml += `<div class="diff-added"><span class="diff-marker">+</span>${escapeHtml(item.newLine)}</div>`;
-    } else if (item.type === 'removed') {
-      removed++;
-      diffOldHtml += `<div class="diff-removed"><span class="diff-marker">-</span>${escapeHtml(item.oldLine)}</div>`;
-      diffNewHtml += `<div><span class="diff-marker"> </span></div>`;
+    
+    function newGame() {
+      var config = difficulty[currentDifficulty];
+      var size = config.size;
+      var cellSize = config.cellSize;
+      
+      canvas.width = size * cellSize;
+      canvas.height = size * cellSize;
+      
+      maze = generateMaze(size);
+      player = { x: 1, y: 1 };
+      exit = { x: size - 2, y: size - 2 };
+      steps = 0;
+      gameStarted = false;
+      
+      stopTimer();
+      document.getElementById('steps').textContent = '0';
+      document.getElementById('time').textContent = '00:00';
+      
+      drawMaze();
     }
-  });
-  
-  document.getElementById('diffOld').innerHTML = diffOldHtml;
-  document.getElementById('diffNew').innerHTML = diffNewHtml;
-  document.getElementById('addedCount').textContent = `${added} 行新增`;
-  document.getElementById('removedCount').textContent = `${removed} 行删除`;
-  document.getElementById('modifiedCount').textContent = `${modified} 行修改`;
-  document.getElementById('infoBar').style.display = 'flex';
-  
-  showMsg('对比完成', 'success');
-}
-
-function escapeHtml(text) {
-  if (text === null || text === undefined) return '';
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
-
-function loadExample() {
-  document.getElementById('oldText').value = `function hello(name) {
-  console.log('Hello, ' + name);
-  return name;
-}
-
-const user = 'World';
-hello(user);`;
-  document.getElementById('newText').value = `function hello(name, greeting = 'Hello') {
-  console.log(greeting + ', ' + name + '!');
-  return { name, greeting };
-}
-
-const user = 'Moonligh';
-const result = hello(user, 'Hi');`;
-  hideMsg();
-}
-
-function clearAll() {
-  document.getElementById('oldText').value = '';
-  document.getElementById('newText').value = '';
-  document.getElementById('diffOld').innerHTML = '';
-  document.getElementById('diffNew').innerHTML = '';
-  document.getElementById('infoBar').style.display = 'none';
-  hideMsg();
-}
-</script>
+    
+    function generateMaze(size) {
+      var maze = [];
+      for (var i = 0; i < size; i++) {
+        maze[i] = [];
+        for (var j = 0; j < size; j++) {
+          maze[i][j] = 1;
+        }
+      }
+      
+      var stack = [];
+      var current = { x: 1, y: 1 };
+      maze[1][1] = 0;
+      stack.push(current);
+      
+      var directions = [
+        { dx: 0, dy: -2 },
+        { dx: 0, dy: 2 },
+        { dx: -2, dy: 0 },
+        { dx: 2, dy: 0 }
+      ];
+      
+      while (stack.length > 0) {
+        var neighbors = [];
+        
+        for (var i = 0; i < directions.length; i++) {
+          var nx = current.x + directions[i].dx;
+          var ny = current.y + directions[i].dy;
+          
+          if (nx > 0 && nx < size - 1 && ny > 0 && ny < size - 1 && maze[ny][nx] === 1) {
+            neighbors.push({ x: nx, y: ny, dx: directions[i].dx / 2, dy: directions[i].dy / 2 });
+          }
+        }
+        
+        if (neighbors.length > 0) {
+          var next = neighbors[Math.floor(Math.random() * neighbors.length)];
+          maze[current.y + next.dy][current.x + next.dx] = 0;
+          maze[next.y][next.x] = 0;
+          stack.push({ x: next.x, y: next.y });
+          current = { x: next.x, y: next.y };
+        } else {
+          current = stack.pop();
+        }
+      }
+      
+      return maze;
+    }
+    
+    function drawMaze() {
+      var config = difficulty[currentDifficulty];
+      var cellSize = config.cellSize;
+      var size = config.size;
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      for (var y = 0; y < size; y++) {
+        for (var x = 0; x < size; x++) {
+          if (maze[y][x] === 1) {
+            ctx.fillStyle = '#667eea';
+            ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+          } else {
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+          }
+        }
+      }
+      
+      // 绘制终点
+      ctx.fillStyle = '#4caf50';
+      ctx.fillRect(exit.x * cellSize + 4, exit.y * cellSize + 4, cellSize - 8, cellSize - 8);
+      ctx.fillStyle = '#fff';
+      ctx.font = (cellSize * 0.5) + 'px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('🏁', exit.x * cellSize + cellSize / 2, exit.y * cellSize + cellSize / 2);
+      
+      // 绘制玩家
+      drawPlayer();
+    }
+    
+    function drawPlayer() {
+      var config = difficulty[currentDifficulty];
+      var cellSize = config.cellSize;
+      
+      ctx.fillStyle = '#ff6b6b';
+      ctx.beginPath();
+      ctx.arc(
+        player.x * cellSize + cellSize / 2,
+        player.y * cellSize + cellSize / 2,
+        cellSize / 3,
+        0,
+        Math.PI * 2
+      );
+      ctx.fill();
+      
+      // 眼睛
+      ctx.fillStyle = '#fff';
+      ctx.beginPath();
+      ctx.arc(
+        player.x * cellSize + cellSize / 2 - cellSize / 10,
+        player.y * cellSize + cellSize / 2 - cellSize / 12,
+        cellSize / 12,
+        0,
+        Math.PI * 2
+      );
+      ctx.arc(
+        player.x * cellSize + cellSize / 2 + cellSize / 10,
+        player.y * cellSize + cellSize / 2 - cellSize / 12,
+        cellSize / 12,
+        0,
+        Math.PI * 2
+      );
+      ctx.fill();
+    }
+    
+    function handleKeyDown(e) {
+      if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].indexOf(e.key) === -1) {
+        return;
+      }
+      e.preventDefault();
+      
+      switch (e.key) {
+        case 'ArrowUp': movePlayer('up'); break;
+        case 'ArrowDown': movePlayer('down'); break;
+        case 'ArrowLeft': movePlayer('left'); break;
+        case 'ArrowRight': movePlayer('right'); break;
+      }
+    }
+    
+    function movePlayer(direction) {
+      if (!gameStarted) {
+        gameStarted = true;
+        startTime = Date.now();
+        timerInterval = setInterval(updateTimer, 1000);
+      }
+      
+      var nx = player.x;
+      var ny = player.y;
+      
+      switch (direction) {
+        case 'up': ny--; break;
+        case 'down': ny++; break;
+        case 'left': nx--; break;
+        case 'right': nx++; break;
+      }
+      
+      if (maze[ny] && maze[ny][nx] === 0) {
+        player.x = nx;
+        player.y = ny;
+        steps++;
+        document.getElementById('steps').textContent = steps;
+        drawMaze();
+        
+        if (player.x === exit.x && player.y === exit.y) {
+          gameWin();
+        }
+      }
+    }
+    
+    function updateTimer() {
+      var elapsed = Math.floor((Date.now() - startTime) / 1000);
+      var minutes = Math.floor(elapsed / 60).toString().padStart(2, '0');
+      var seconds = (elapsed % 60).toString().padStart(2, '0');
+      document.getElementById('time').textContent = minutes + ':' + seconds;
+    }
+    
+    function stopTimer() {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+    }
+    
+    function gameWin() {
+      stopTimer();
+      var timeStr = document.getElementById('time').textContent;
+      document.getElementById('winText').innerHTML = 
+        '你成功走出了迷宫！<br>步数：' + steps + ' | 时间：' + timeStr;
+      document.getElementById('winModal').classList.add('show');
+    }
+    
+    function closeModal() {
+      document.getElementById('winModal').classList.remove('show');
+      newGame();
+    }
+    
+    init();
+  </script>
 </body>
 </html></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/favicon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Moonligh</div><div class="author-info-description">不需要什么描述</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">随便转，随便看</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E5%89%8D%E7%AB%AF%E5%B0%8F%E6%8A%80%E5%B7%A7%E9%9B%86%E9%94%A6/" title="前端小技巧集锦">前端小技巧集锦</a><time datetime="2026-07-23T12:00:00.000Z" title="发表于 2026-07-23 20:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E5%89%8D%E7%AB%AF%E7%AE%80%E6%B4%81%E5%B9%B6%E5%AE%9E%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" title="前端简洁并实用的工具类">前端简洁并实用的工具类</a><time datetime="2026-07-23T11:20:00.000Z" title="发表于 2026-07-23 19:20:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E4%BD%BF%E7%94%A8NodeExpress%E5%88%9B%E5%BB%BA%E5%90%8E%E7%AB%AF%E8%BF%94%E5%9B%9E%E5%81%87%E6%95%B0%E6%8D%AE/" title="使用Node Express创建后端返回假数据">使用Node Express创建后端返回假数据</a><time datetime="2026-07-23T11:10:00.000Z" title="发表于 2026-07-23 19:10:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/FormData%E5%AF%B9%E8%B1%A1%E4%B8%8A%E4%BC%A0%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6/" title="FormData对象上传二进制文件">FormData对象上传二进制文件</a><time datetime="2026-07-23T11:00:00.000Z" title="发表于 2026-07-23 19:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/VUE%E7%BB%84%E4%BB%B6%E6%B1%87%E6%80%BB%E5%A4%A7%E5%85%A8/" title="VUE组件汇总大全">VUE组件汇总大全</a><time datetime="2026-07-23T11:00:00.000Z" title="发表于 2026-07-23 19:00:00">2026-07-23</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
