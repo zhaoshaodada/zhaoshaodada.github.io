@@ -4,8 +4,8 @@ date: 2026-07-24 12:00:00
 type: "games"
 top_img: /img/tools.jpg
 comments: true
-description: "有趣的在线小游戏合集，包括迷宫逃脱等益智游戏，全部纯前端实现，无需下载即可游玩。"
-keywords: "小游戏,迷宫游戏,益智游戏,在线游戏,迷宫逃脱"
+description: "有趣的在线小游戏合集，包括迷宫逃脱、贪吃蛇、俄罗斯方块、2048、扫雷、五子棋、消消乐、拼图、连连看、别踩白块等益智休闲游戏，全部纯前端实现，无需下载即可游玩。"
+keywords: "小游戏,迷宫游戏,贪吃蛇,俄罗斯方块,2048,扫雷,五子棋,消消乐,拼图,连连看,别踩白块,益智游戏,在线游戏"
 ---
 
 ## 🎮 小游戏合集
@@ -16,12 +16,93 @@ keywords: "小游戏,迷宫游戏,益智游戏,在线游戏,迷宫逃脱"
 
 <div class="game-grid">
   <a class="game-card" href="/games/maze.html">
-    <div class="game-icon">🎮</div>
+    <div class="game-icon">🏃</div>
     <div class="game-title">迷宫逃脱</div>
     <div class="game-desc">使用方向键控制小人走出迷宫</div>
     <div class="game-tags">
       <span class="tag">益智</span>
       <span class="tag">迷宫</span>
+    </div>
+  </a>
+  <a class="game-card" href="/games/snake.html">
+    <div class="game-icon">🐍</div>
+    <div class="game-title">贪吃蛇</div>
+    <div class="game-desc">方向键控制蛇吃食物变长</div>
+    <div class="game-tags">
+      <span class="tag">经典</span>
+      <span class="tag">贪吃蛇</span>
+    </div>
+  </a>
+  <a class="game-card" href="/games/tetris.html">
+    <div class="game-icon">🧊</div>
+    <div class="game-title">俄罗斯方块</div>
+    <div class="game-desc">方向键控制方块移动旋转，消除完整行</div>
+    <div class="game-tags">
+      <span class="tag">经典</span>
+      <span class="tag">消除</span>
+    </div>
+  </a>
+  <a class="game-card" href="/games/2048.html">
+    <div class="game-icon">🔢</div>
+    <div class="game-title">2048</div>
+    <div class="game-desc">滑动合并相同数字，达到2048获胜</div>
+    <div class="game-tags">
+      <span class="tag">益智</span>
+      <span class="tag">合并</span>
+    </div>
+  </a>
+  <a class="game-card" href="/games/minesweeper.html">
+    <div class="game-icon">💣</div>
+    <div class="game-title">扫雷</div>
+    <div class="game-desc">左键揭开格子，右键标记地雷</div>
+    <div class="game-tags">
+      <span class="tag">经典</span>
+      <span class="tag">推理</span>
+    </div>
+  </a>
+  <a class="game-card" href="/games/gomoku.html">
+    <div class="game-icon">⚫</div>
+    <div class="game-title">五子棋</div>
+    <div class="game-desc">双人对战，先连成五子者获胜</div>
+    <div class="game-tags">
+      <span class="tag">对战</span>
+      <span class="tag">策略</span>
+    </div>
+  </a>
+  <a class="game-card" href="/games/match3.html">
+    <div class="game-icon">💎</div>
+    <div class="game-title">消消乐</div>
+    <div class="game-desc">交换相邻方块消除三个或更多相同图案</div>
+    <div class="game-tags">
+      <span class="tag">消除</span>
+      <span class="tag">休闲</span>
+    </div>
+  </a>
+  <a class="game-card" href="/games/puzzle.html">
+    <div class="game-icon">🧩</div>
+    <div class="game-title">拼图游戏</div>
+    <div class="game-desc">点击交换方块，还原完整图片</div>
+    <div class="game-tags">
+      <span class="tag">益智</span>
+      <span class="tag">拼图</span>
+    </div>
+  </a>
+  <a class="game-card" href="/games/linkup.html">
+    <div class="game-icon">🔗</div>
+    <div class="game-title">连连看</div>
+    <div class="game-desc">用不超过两个拐点的线连接相同图案</div>
+    <div class="game-tags">
+      <span class="tag">消除</span>
+      <span class="tag">休闲</span>
+    </div>
+  </a>
+  <a class="game-card" href="/games/piano-tiles.html">
+    <div class="game-icon">🎹</div>
+    <div class="game-title">别踩白块</div>
+    <div class="game-desc">快速点击黑色方块得分</div>
+    <div class="game-tags">
+      <span class="tag">反应</span>
+      <span class="tag">节奏</span>
     </div>
   </a>
 </div>
