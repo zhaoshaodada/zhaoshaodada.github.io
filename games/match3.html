@@ -1,17 +1,17 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Moonligh | Moonligh</title><meta name="author" content="Moonligh"><meta name="copyright" content="Moonligh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="BMI计算器工具        * { margin: 0; padding: 0; box-sizing: border-box; }     body {       font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, &#39;PingFang SC&#39;, &#39;Hiragino Sans G">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Moonligh | Moonligh</title><meta name="author" content="Moonligh"><meta name="copyright" content="Moonligh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="消消乐小游戏        * { margin: 0; padding: 0; box-sizing: border-box; }     body {       font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, &#39;PingFang SC&#39;, &#39;Hiragino Sans GB&#39;">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Moonligh">
-<meta property="og:url" content="https://zhaoshaodada.github.io/tools/bmi-calc.html">
+<meta property="og:url" content="https://zhaoshaodada.github.io/games/match3.html">
 <meta property="og:site_name" content="Moonligh">
-<meta property="og:description" content="BMI计算器工具        * { margin: 0; padding: 0; box-sizing: border-box; }     body {       font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, &#39;PingFang SC&#39;, &#39;Hiragino Sans G">
+<meta property="og:description" content="消消乐小游戏        * { margin: 0; padding: 0; box-sizing: border-box; }     body {       font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, &#39;PingFang SC&#39;, &#39;Hiragino Sans GB&#39;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://zhaoshaodada.github.io/img/favicon.jpg">
-<meta property="article:published_time" content="2026-07-24T02:54:31.163Z">
-<meta property="article:modified_time" content="2026-07-24T02:54:31.163Z">
+<meta property="article:published_time" content="2026-07-24T07:35:14.256Z">
+<meta property="article:modified_time" content="2026-07-24T07:35:14.256Z">
 <meta property="article:author" content="Moonligh">
 <meta property="article:tag" content="前端开发, JavaScript, Vue, Hexo, 技术博客, ES6, Three.js, Cesium, Axios">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zhaoshaodada.github.io/img/favicon.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://zhaoshaodada.github.io/tools/bmi-calc.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+<meta name="twitter:image" content="https://zhaoshaodada.github.io/img/favicon.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://zhaoshaodada.github.io/games/match3.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
     (() => {
       
     const saveToLocal = {
@@ -151,11 +151,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BMI身体质量指数计算器，快速计算您的BMI指数，评估健康状况并给出建议。">
-  <meta name="keywords" content="BMI计算器,身体质量指数,BMI指数,健康评估">
-  <meta property="og:title" content="BMI计算器工具">
-  <meta property="og:description" content="快速计算BMI指数，评估健康状况">
-  <title>BMI计算器工具</title>
+  <meta name="description" content="消消乐小游戏，经典三消游戏，交换相邻方块消除三个或更多相同图案。">
+  <meta name="keywords" content="消消乐,小游戏,三消游戏,消除游戏">
+  <meta property="og:title" content="消消乐小游戏">
+  <meta property="og:description" content="经典消消乐游戏，交换相邻方块消除三个或更多相同图案">
+  <title>消消乐小游戏</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -163,69 +163,51 @@
       background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
       min-height: 100vh;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      flex-direction: column;
+      padding: 0;
+    }
+    .header {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 25px 20px;
+      text-align: center;
+      width: 100%;
+    }
+    h1 {
+      color: #fff;
+      margin-bottom: 8px;
+      font-size: 28px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .subtitle {
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 0;
+      font-size: 14px;
     }
     .container {
       background: #fff;
       border-radius: 16px;
       box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-      padding: 40px;
+      padding: 30px;
       max-width: 500px;
       width: 100%;
+      margin: 20px auto;
     }
-    h1 {
-      text-align: center;
-      color: #333;
-      margin-bottom: 8px;
-      font-size: 28px;
-    }
-    .subtitle {
-      text-align: center;
-      color: #999;
-      margin-bottom: 30px;
-      font-size: 14px;
-    }
-    .input-group {
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-      color: #555;
-    }
-    .input-row {
+    .control-bar {
       display: flex;
-      gap: 20px;
-    }
-    .input-row .input-group {
-      flex: 1;
-    }
-    input {
-      width: 100%;
-      padding: 15px 20px;
-      border: 2px solid #e0e0e0;
-      border-radius: 10px;
-      font-size: 18px;
-      outline: none;
-      transition: border-color 0.3s;
-    }
-    input:focus {
-      border-color: #f5576c;
-    }
-    input.error {
-      border-color: #f44336;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     .btn {
-      width: 100%;
-      padding: 15px;
+      padding: 10px 20px;
       background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
       color: #fff;
       border: none;
-      border-radius: 10px;
-      font-size: 18px;
+      border-radius: 8px;
+      font-size: 14px;
       font-weight: 500;
       cursor: pointer;
       transition: transform 0.2s;
@@ -233,207 +215,406 @@
     .btn:hover {
       transform: translateY(-2px);
     }
-    .btn:active {
-      transform: translateY(0);
-    }
-    .result-box {
-      margin-top: 25px;
-      display: none;
-    }
-    .bmi-circle {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      margin: 0 auto 20px;
+    .stats {
       display: flex;
-      flex-direction: column;
+      gap: 20px;
+    }
+    .stat-item {
+      background: #f8f9fa;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 5px;
+    }
+    .stat-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f5576c;
+    }
+    .game-board {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 5px;
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 0 auto;
+    }
+    .cell {
+      aspect-ratio: 1;
+      background: #fff;
+      border-radius: 8px;
+      display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.5s;
+      font-size: 28px;
+      cursor: pointer;
+      transition: all 0.15s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    .bmi-circle.underweight { background: #4fc3f7; }
-    .bmi-circle.normal { background: #81c784; }
-    .bmi-circle.overweight { background: #ffb74d; }
-    .bmi-circle.obese { background: #ef5350; }
-    .bmi-value {
-      font-size: 48px;
+    .cell:hover {
+      transform: scale(1.05);
+    }
+    .cell.selected {
+      background: #ffe4e1;
+      border: 3px solid #f5576c;
+      transform: scale(1.05);
+    }
+    .cell.matching {
+      animation: matchPop 0.3s ease-out forwards;
+    }
+    @keyframes matchPop {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.5; }
+      100% { transform: scale(0); opacity: 0; }
+    }
+    .cell.dropping {
+      animation: drop 0.3s ease-out;
+    }
+    @keyframes drop {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(0); }
+    }
+    .hint {
+      text-align: center;
+      margin-top: 15px;
+      color: #888;
+      font-size: 14px;
+    }
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal.show {
+      display: flex;
+    }
+    .modal-content {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      animation: bounceIn 0.5s;
+      max-width: 400px;
+      width: 90%;
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      60% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .modal-icon {
+      font-size: 60px;
+      margin-bottom: 15px;
+    }
+    .modal-title {
+      font-size: 24px;
       font-weight: 700;
-      color: #fff;
-    }
-    .bmi-label {
-      font-size: 18px;
-      color: #fff;
-      font-weight: 500;
-    }
-    .advice-box {
-      background: #f8f9fa;
-      border-radius: 10px;
-      padding: 20px;
-    }
-    .advice-title {
-      font-weight: 600;
       color: #333;
       margin-bottom: 10px;
-      font-size: 16px;
     }
-    .advice-text {
+    .modal-text {
       color: #666;
-      font-size: 14px;
+      margin-bottom: 25px;
       line-height: 1.8;
-    }
-    .bmi-table {
-      margin-top: 20px;
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-    }
-    .bmi-table th, .bmi-table td {
-      padding: 10px;
-      text-align: center;
-      border-bottom: 1px solid #eee;
-    }
-    .bmi-table th {
-      background: #f8f9fa;
-      color: #666;
-    }
-    .error-msg {
-      color: #f44336;
-      font-size: 14px;
-      margin-top: 5px;
-      display: none;
-    }
-    .tip {
-      margin-top: 20px;
-      padding: 15px;
-      background: #fce4ec;
-      border-radius: 8px;
-      border-left: 4px solid #f5576c;
-      font-size: 14px;
-      color: #c62828;
     }
   </style>
 </head>
 <body>
+  <div class="header">
+    <h1>💎 消消乐</h1>
+    <p class="subtitle">点击选择方块，交换相邻方块消除三个或更多相同图案</p>
+  </div>
   <div class="container">
-    <h1>⚖️ BMI 计算器</h1>
-    <p class="subtitle">计算身体质量指数，评估您的健康状况</p>
-    
-    <div class="input-row">
-      <div class="input-group">
-        <label>身高（cm）：</label>
-        <input type="number" id="height" placeholder="例如：175" maxlength="4">
-        <div class="error-msg" id="heightError">请输入有效的身高</div>
+    <div class="control-bar">
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-label">得分</div>
+          <div class="stat-value" id="score">0</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">步数</div>
+          <div class="stat-value" id="moves">30</div>
+        </div>
       </div>
-      <div class="input-group">
-        <label>体重（kg）：</label>
-        <input type="number" id="weight" placeholder="例如：68" maxlength="4">
-        <div class="error-msg" id="weightError">请输入有效的体重</div>
-      </div>
+      <button class="btn" onclick="newGame()">新游戏</button>
     </div>
     
-    <button class="btn" onclick="calculateBMI()">计算</button>
+    <div class="game-board" id="gameBoard"></div>
     
-    <div class="result-box" id="resultBox">
-      <div class="bmi-circle" id="bmiCircle">
-        <div class="bmi-value" id="bmiValue">--</div>
-        <div class="bmi-label" id="bmiLabel">--</div>
+    <p class="hint">💡 点击两个相邻方块交换位置，三个或更多相同图案连成一线即可消除</p>
+  </div>
+  
+  <div class="modal" id="winModal">
+    <div class="modal-content">
+      <div class="modal-icon">🎉</div>
+      <div class="modal-title">恭喜通关！</div>
+      <div class="modal-text" id="winText">
+        得分：0
       </div>
-      <div class="advice-box">
-        <div class="advice-title">💡 健康建议</div>
-        <div class="advice-text" id="adviceText"></div>
-      </div>
+      <button class="btn" onclick="closeModal()">再玩一次</button>
     </div>
-    
-    <table class="bmi-table">
-      <thead>
-        <tr>
-          <th>范围</th>
-          <th>BMI 值</th>
-          <th>状态</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td style="color: #0288d1;">偏瘦</td><td>&lt; 18.5</td><td>需要增加营养</td></tr>
-        <tr><td style="color: #388e3c;">正常</td><td>18.5 - 23.9</td><td>保持健康习惯</td></tr>
-        <tr><td style="color: #f57c00;">超重</td><td>24.0 - 27.9</td><td>建议适当运动</td></tr>
-        <tr><td style="color: #c62828;">肥胖</td><td>≥ 28.0</td><td>需要控制饮食</td></tr>
-      </tbody>
-    </table>
-    
-    <div class="tip">
-      💡 提示：BMI 只是参考指标，肌肉含量高的人群可能 BMI 值偏高。建议结合体脂率等指标综合评估。
+  </div>
+  
+  <div class="modal" id="gameOverModal">
+    <div class="modal-content">
+      <div class="modal-icon">😢</div>
+      <div class="modal-title">游戏结束</div>
+      <div class="modal-text" id="gameOverText">
+        得分：0
+      </div>
+      <button class="btn" onclick="closeModal()">再玩一次</button>
     </div>
   </div>
 
   <script>
-    function calculateBMI() {
-      var height = parseFloat(document.getElementById('height').value);
-      var weight = parseFloat(document.getElementById('weight').value);
-      
-      var heightError = document.getElementById('heightError');
-      var weightError = document.getElementById('weightError');
-      var resultBox = document.getElementById('resultBox');
-      
-      heightError.style.display = 'none';
-      weightError.style.display = 'none';
-      document.getElementById('height').classList.remove('error');
-      document.getElementById('weight').classList.remove('error');
-      
-      if (isNaN(height) || height <= 0 || height > 250) {
-        heightError.style.display = 'block';
-        document.getElementById('height').classList.add('error');
-        return;
-      }
-      
-      if (isNaN(weight) || weight <= 0 || weight > 300) {
-        weightError.style.display = 'block';
-        document.getElementById('weight').classList.add('error');
-        return;
-      }
-      
-      var bmi = weight / Math.pow(height / 100, 2);
-      bmi = Math.round(bmi * 10) / 10;
-      
-      var category = '';
-      var className = '';
-      var advice = '';
-      
-      if (bmi < 18.5) {
-        category = '偏瘦';
-        className = 'underweight';
-        advice = '您的体重偏轻，建议适当增加营养摄入，保证充足的蛋白质和碳水化合物。可以适当进行力量训练，增加肌肉量。';
-      } else if (bmi >= 18.5 && bmi < 24) {
-        category = '正常';
-        className = 'normal';
-        advice = '恭喜！您的体重在正常范围内。请继续保持健康的饮食习惯和适度的运动，维持良好的身体状态。';
-      } else if (bmi >= 24 && bmi < 28) {
-        category = '超重';
-        className = 'overweight';
-        advice = '您的体重略微超标，建议适当控制饮食，减少高热量食物的摄入，并增加有氧运动，如快走、慢跑、游泳等。';
-      } else {
-        category = '肥胖';
-        className = 'obese';
-        advice = '您的体重超标较多，建议制定科学的减重计划，控制饮食热量摄入，增加运动量。如有需要，可以咨询专业医生或营养师。';
-      }
-      
-      document.getElementById('bmiValue').textContent = bmi;
-      document.getElementById('bmiLabel').textContent = category;
-      document.getElementById('bmiCircle').className = 'bmi-circle ' + className;
-      document.getElementById('adviceText').textContent = advice;
-      resultBox.style.display = 'block';
+    var rows = 8;
+    var cols = 8;
+    var board = [];
+    var score = 0;
+    var moves = 30;
+    var selected = null;
+    var isAnimating = false;
+    var gameOver = false;
+    
+    var symbols = ['💎', '💜', '💚', '💙', '🧡', '💛', '❤'];
+    
+    function init() {
+      newGame();
     }
     
-    document.getElementById('height').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        document.getElementById('weight').focus();
-      }
-    });
+    function newGame() {
+      board = [];
+      score = 0;
+      moves = 30;
+      selected = null;
+      isAnimating = false;
+      gameOver = false;
+      updateStats();
+      generateBoard();
+      render();
+    }
     
-    document.getElementById('weight').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        calculateBMI();
+    function generateBoard() {
+      for (var y = 0; y < rows; y++) {
+        board[y] = [];
+        for (var x = 0; x < cols; x++) {
+          var symbol;
+          do {
+            symbol = symbols[Math.floor(Math.random() * symbols.length)];
+          } while (hasMatch(x, y, symbol));
+          board[y][x] = symbol;
+        }
       }
-    });
+    }
+    
+    function hasMatch(x, y, symbol) {
+      if (x >= 2 && board[y][x - 1] === symbol && board[y][x - 2] === symbol) return true;
+      if (y >= 2 && board[y - 1][x] === symbol && board[y - 2][x] === symbol) return true;
+      return false;
+    }
+    
+    function render() {
+      var gameBoard = document.getElementById('gameBoard');
+      gameBoard.innerHTML = '';
+      
+      for (var y = 0; y < rows; y++) {
+        for (var x = 0; x < cols; x++) {
+          var cell = document.createElement('div');
+          cell.className = 'cell';
+          cell.dataset.x = x;
+          cell.dataset.y = y;
+          cell.textContent = board[y][x];
+          cell.addEventListener('click', handleClick);
+          
+          if (selected && selected.x === x && selected.y === y) {
+            cell.classList.add('selected');
+          }
+          
+          gameBoard.appendChild(cell);
+        }
+      }
+    }
+    
+    function handleClick(e) {
+      if (isAnimating || gameOver) return;
+      
+      var x = parseInt(e.target.dataset.x);
+      var y = parseInt(e.target.dataset.y);
+      
+      if (!selected) {
+        selected = { x, y };
+        render();
+        return;
+      }
+      
+      if (selected.x === x && selected.y === y) {
+        selected = null;
+        render();
+        return;
+      }
+      
+      if (Math.abs(selected.x - x) + Math.abs(selected.y - y) !== 1) {
+        selected = { x, y };
+        render();
+        return;
+      }
+      
+      swap(selected.x, selected.y, x, y);
+      selected = null;
+      
+      setTimeout(function() {
+        if (findMatches()) {
+          moves--;
+          updateStats();
+          processMatches();
+        } else {
+          swap(selected.x, selected.y, x, y);
+          render();
+        }
+      }, 150);
+    }
+    
+    function swap(x1, y1, x2, y2) {
+      var temp = board[y1][x1];
+      board[y1][x1] = board[y2][x2];
+      board[y2][x2] = temp;
+      render();
+    }
+    
+    function findMatches() {
+      for (var y = 0; y < rows; y++) {
+        for (var x = 0; x < cols - 2; x++) {
+          if (board[y][x] && board[y][x] === board[y][x + 1] && board[y][x] === board[y][x + 2]) {
+            return true;
+          }
+        }
+      }
+      
+      for (var x = 0; x < cols; x++) {
+        for (var y = 0; y < rows - 2; y++) {
+          if (board[y][x] && board[y][x] === board[y + 1][x] && board[y][x] === board[y + 2][x]) {
+            return true;
+          }
+        }
+      }
+      
+      return false;
+    }
+    
+    function processMatches() {
+      isAnimating = true;
+      
+      var matches = findAllMatches();
+      if (matches.length === 0) {
+        isAnimating = false;
+        checkGameOver();
+        return;
+      }
+      
+      score += matches.length * 10;
+      updateStats();
+      
+      matches.forEach(function(pos) {
+        board[pos.y][pos.x] = null;
+      });
+      
+      render();
+      
+      setTimeout(function() {
+        dropBlocks();
+        setTimeout(function() {
+          fillEmpty();
+          render();
+          setTimeout(function() {
+            processMatches();
+          }, 300);
+        }, 300);
+      }, 300);
+    }
+    
+    function findAllMatches() {
+      var matches = [];
+      
+      for (var y = 0; y < rows; y++) {
+        for (var x = 0; x < cols - 2; x++) {
+          if (board[y][x] && board[y][x] === board[y][x + 1] && board[y][x] === board[y][x + 2]) {
+            matches.push({ x, y }, { x: x + 1, y }, { x: x + 2, y });
+            x += 2;
+          }
+        }
+      }
+      
+      for (var x = 0; x < cols; x++) {
+        for (var y = 0; y < rows - 2; y++) {
+          if (board[y][x] && board[y][x] === board[y + 1][x] && board[y][x] === board[y + 2][x]) {
+            matches.push({ x, y }, { x, y: y + 1 }, { x, y: y + 2 });
+            y += 2;
+          }
+        }
+      }
+      
+      return matches.filter(function(pos, index, self) {
+        return self.findIndex(function(p) { return p.x === pos.x && p.y === pos.y; }) === index;
+      });
+    }
+    
+    function dropBlocks() {
+      for (var x = 0; x < cols; x++) {
+        var writePos = rows - 1;
+        for (var y = rows - 1; y >= 0; y--) {
+          if (board[y][x]) {
+            if (y !== writePos) {
+              board[writePos][x] = board[y][x];
+              board[y][x] = null;
+            }
+            writePos--;
+          }
+        }
+      }
+    }
+    
+    function fillEmpty() {
+      for (var x = 0; x < cols; x++) {
+        for (var y = 0; y < rows; y++) {
+          if (!board[y][x]) {
+            board[y][x] = symbols[Math.floor(Math.random() * symbols.length)];
+          }
+        }
+      }
+    }
+    
+    function updateStats() {
+      document.getElementById('score').textContent = score;
+      document.getElementById('moves').textContent = moves;
+    }
+    
+    function checkGameOver() {
+      if (moves <= 0) {
+        gameOver = true;
+        document.getElementById('gameOverText').textContent = '得分：' + score;
+        document.getElementById('gameOverModal').classList.add('show');
+      }
+    }
+    
+    function closeModal() {
+      document.getElementById('winModal').classList.remove('show');
+      document.getElementById('gameOverModal').classList.remove('show');
+      newGame();
+    }
+    
+    init();
   </script>
 </body>
 </html></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/favicon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Moonligh</div><div class="author-info-description">不需要什么描述</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">随便转，随便看</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E5%89%8D%E7%AB%AF%E5%B0%8F%E6%8A%80%E5%B7%A7%E9%9B%86%E9%94%A6/" title="前端小技巧集锦">前端小技巧集锦</a><time datetime="2026-07-23T12:00:00.000Z" title="发表于 2026-07-23 20:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E5%89%8D%E7%AB%AF%E7%AE%80%E6%B4%81%E5%B9%B6%E5%AE%9E%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" title="前端简洁并实用的工具类">前端简洁并实用的工具类</a><time datetime="2026-07-23T11:20:00.000Z" title="发表于 2026-07-23 19:20:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E4%BD%BF%E7%94%A8NodeExpress%E5%88%9B%E5%BB%BA%E5%90%8E%E7%AB%AF%E8%BF%94%E5%9B%9E%E5%81%87%E6%95%B0%E6%8D%AE/" title="使用Node Express创建后端返回假数据">使用Node Express创建后端返回假数据</a><time datetime="2026-07-23T11:10:00.000Z" title="发表于 2026-07-23 19:10:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/FormData%E5%AF%B9%E8%B1%A1%E4%B8%8A%E4%BC%A0%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6/" title="FormData对象上传二进制文件">FormData对象上传二进制文件</a><time datetime="2026-07-23T11:00:00.000Z" title="发表于 2026-07-23 19:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/VUE%E7%BB%84%E4%BB%B6%E6%B1%87%E6%80%BB%E5%A4%A7%E5%85%A8/" title="VUE组件汇总大全">VUE组件汇总大全</a><time datetime="2026-07-23T11:00:00.000Z" title="发表于 2026-07-23 19:00:00">2026-07-23</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
