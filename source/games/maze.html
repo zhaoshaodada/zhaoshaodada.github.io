@@ -15,9 +15,26 @@
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      flex-direction: column;
+      padding: 0;
+    }
+    .header {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 25px 20px;
+      text-align: center;
+      width: 100%;
+    }
+    h1 {
+      color: #fff;
+      margin-bottom: 8px;
+      font-size: 28px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .subtitle {
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 0;
+      font-size: 14px;
     }
     .container {
       background: #fff;
@@ -26,18 +43,7 @@
       padding: 30px;
       max-width: 700px;
       width: 100%;
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-      margin-bottom: 8px;
-      font-size: 28px;
-    }
-    .subtitle {
-      text-align: center;
-      color: #999;
-      margin-bottom: 20px;
-      font-size: 14px;
+      margin: 20px auto;
     }
     .control-bar {
       display: flex;
@@ -193,10 +199,11 @@
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="header">
     <h1>🎮 迷宫逃脱</h1>
     <p class="subtitle">使用方向键控制小人，从起点走到终点</p>
-    
+  </div>
+  <div class="container">
     <div class="control-bar">
       <div class="difficulty-select">
         <label>难度：</label>
