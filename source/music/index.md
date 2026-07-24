@@ -2,7 +2,7 @@
 title: 音乐
 date: 2026-07-23 17:00:00
 type: "music"
-top_img: /img/music.jpg
+top_img: /img/10101.jpg
 comments: true
 ---
 
