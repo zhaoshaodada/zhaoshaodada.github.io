@@ -4,8 +4,8 @@ date: 2026-07-24 12:00:00
 type: "games"
 top_img: /img/tools.jpg
 comments: true
-description: "有趣的在线小游戏合集，包括迷宫逃脱、贪吃蛇、俄罗斯方块、2048、扫雷、五子棋、消消乐、拼图、连连看、别踩白块等益智休闲游戏，全部纯前端实现，无需下载即可游玩。"
-keywords: "小游戏,迷宫游戏,贪吃蛇,俄罗斯方块,2048,扫雷,五子棋,消消乐,拼图,连连看,别踩白块,益智游戏,在线游戏"
+description: "有趣的在线小游戏合集，包括迷宫逃脱、迷宫寻宝、迷宫追逐、3D迷宫、双人迷宫对战、贪吃蛇、俄罗斯方块、2048、扫雷、五子棋、消消乐、拼图、连连看、别踩白块等益智休闲游戏，全部纯前端实现，无需下载即可游玩。"
+keywords: "小游戏,迷宫游戏,迷宫寻宝,迷宫追逐,3D迷宫,双人对战,贪吃蛇,俄罗斯方块,2048,扫雷,五子棋,消消乐,拼图,连连看,别踩白块,益智游戏,在线游戏"
 ---
 
 ## 🎮 小游戏合集
@@ -22,6 +22,42 @@ keywords: "小游戏,迷宫游戏,贪吃蛇,俄罗斯方块,2048,扫雷,五子�
     <div class="game-tags">
       <span class="tag">益智</span>
       <span class="tag">迷宫</span>
+    </div>
+  </a>
+  <a class="game-card" href="/games/maze-treasure.html">
+    <div class="game-icon">💎</div>
+    <div class="game-title">迷宫寻宝</div>
+    <div class="game-desc">收集所有宝藏后到达出口获胜</div>
+    <div class="game-tags">
+      <span class="tag">收集</span>
+      <span class="tag">迷宫</span>
+    </div>
+  </a>
+  <a class="game-card" href="/games/maze-chase.html">
+    <div class="game-icon">👻</div>
+    <div class="game-title">迷宫追逐</div>
+    <div class="game-desc">躲避敌人到达出口</div>
+    <div class="game-tags">
+      <span class="tag">追逐</span>
+      <span class="tag">迷宫</span>
+    </div>
+  </a>
+  <a class="game-card" href="/games/maze-3d.html">
+    <div class="game-icon">🎮</div>
+    <div class="game-title">3D迷宫</div>
+    <div class="game-desc">第一人称视角探索迷宫</div>
+    <div class="game-tags">
+      <span class="tag">3D</span>
+      <span class="tag">迷宫</span>
+    </div>
+  </a>
+  <a class="game-card" href="/games/maze-battle.html">
+    <div class="game-icon">⚔️</div>
+    <div class="game-title">双人迷宫对战</div>
+    <div class="game-desc">两位玩家比赛先到达出口</div>
+    <div class="game-tags">
+      <span class="tag">双人</span>
+      <span class="tag">对战</span>
     </div>
   </a>
   <a class="game-card" href="/games/snake.html">
