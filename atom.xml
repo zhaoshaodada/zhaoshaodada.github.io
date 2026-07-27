@@ -11,7 +11,22 @@
   <rights>All rights reserved 2026, Moonligh</rights>
   <subtitle>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</subtitle>
   <title>Moonligh</title>
-  <updated>2026-07-24T09:19:47.112Z</updated>
+  <updated>2026-07-27T02:20:48.325Z</updated>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
+    <category term="Node" scheme="https://zhaoshaodada.github.io/tags/Node/"/>
+    <category term="npm" scheme="https://zhaoshaodada.github.io/tags/npm/"/>
+    <category term="前端" scheme="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    <id>https://zhaoshaodada.github.io/2026/07/24/Node%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E4%B8%8Enpm%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</id>
+    <link href="https://zhaoshaodada.github.io/2026/07/24/Node%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E4%B8%8Enpm%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"/>
+    <published>2026-07-24T13:00:00.000Z</published>
+    <summary>新拉取的前端项目经常会遇到Node版本不兼容和npm依赖安装失败的问题，本文总结了使用--force、--legacy-peer-deps强制安装、cnpm替代方案，以及使用国内镜像加速依赖拉取等实用技巧。</summary>
+    <title>Node版本兼容与npm依赖安装指南</title>
+    <updated>2026-07-27T02:20:48.325Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Moonligh</name>
@@ -296,19 +311,5 @@
     <summary>本文整理汇总了一批实用的前端资源网站，涵盖图片库、素材网站、开发工具等多个分类。文章以链接列表形式呈现，方便开发者快速获取所需的设计素材与开发资源，是日常前端开发与设计工作中值得收藏的实用资源导航。</summary>
     <title>资源网站</title>
     <updated>2026-07-23T12:03:57.116Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
-    <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
-    <category term="mockjs" scheme="https://zhaoshaodada.github.io/tags/mockjs/"/>
-    <id>https://zhaoshaodada.github.io/2025/11/21/mockjs%E5%AF%BC%E8%87%B4cesium%E5%9C%B0%E5%9B%BE%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</id>
-    <link href="https://zhaoshaodada.github.io/2025/11/21/mockjs%E5%AF%BC%E8%87%B4cesium%E5%9C%B0%E5%9B%BE%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/"/>
-    <published>2025-11-21T02:49:28.000Z</published>
-    <summary>本文针对Mock.js导致Cesium三维地图无法正常加载的问题进行分析与解决。在前后端联调与前端调试场景中，Mock.js拦截请求会与Cesium地图资源加载产生冲突，文章梳理了冲突成因并给出相应的处理方案，帮助开发者顺利集成Mock.js与Cesium地图开发。</summary>
-    <title>mockjs导致cesium地图无法加载</title>
-    <updated>2026-07-23T12:03:25.903Z</updated>
   </entry>
 </feed>
