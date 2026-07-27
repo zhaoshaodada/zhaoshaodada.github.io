@@ -11,7 +11,23 @@
   <rights>All rights reserved 2026, Moonligh</rights>
   <subtitle>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</subtitle>
   <title>Moonligh</title>
-  <updated>2026-07-27T03:14:27.340Z</updated>
+  <updated>2026-07-27T03:30:06.686Z</updated>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="经验分享" scheme="https://zhaoshaodada.github.io/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"/>
+    <category term="Windows" scheme="https://zhaoshaodada.github.io/tags/Windows/"/>
+    <category term="安全" scheme="https://zhaoshaodada.github.io/tags/%E5%AE%89%E5%85%A8/"/>
+    <category term="病毒" scheme="https://zhaoshaodada.github.io/tags/%E7%97%85%E6%AF%92/"/>
+    <category term="Office" scheme="https://zhaoshaodada.github.io/tags/Office/"/>
+    <id>https://zhaoshaodada.github.io/2026/07/27/%E8%AD%A6%E6%83%95%EF%BC%81%E7%94%84%E5%88%AB%E7%9C%9F%E5%81%87%E9%9A%BE%E8%BE%A8%E7%9A%84Windows%E5%92%8COffice%E6%BF%80%E6%B4%BB%E8%84%9A%E6%9C%AC/</id>
+    <link href="https://zhaoshaodada.github.io/2026/07/27/%E8%AD%A6%E6%83%95%EF%BC%81%E7%94%84%E5%88%AB%E7%9C%9F%E5%81%87%E9%9A%BE%E8%BE%A8%E7%9A%84Windows%E5%92%8COffice%E6%BF%80%E6%B4%BB%E8%84%9A%E6%9C%AC/"/>
+    <published>2026-07-27T04:00:00.000Z</published>
+    <summary>网上流传的一行脚本激活Windows和Office看似方便快捷，但背后隐藏着巨大的安全风险。本文详细介绍如何甄别真假激活脚本，识别域名仿冒陷阱和带毒可执行文件，保护你的电脑安全。</summary>
+    <title>警惕！甄别真假难辨的Windows和Office激活脚本</title>
+    <updated>2026-07-27T03:30:06.686Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Moonligh</name>
@@ -303,19 +319,5 @@
     <summary>本文系统梳理了ECMAScript从ES6到ES10各版本的新特性，涵盖let/const、箭头函数、Promise、async/await、解构赋值、扩展运算符、Object.entries、String.padStart等关键语法。文章还介绍了TC39提案从Stage 0到入选规范的完整流程，帮助JavaScript开发者快速掌握语言演进。</summary>
     <title>ES6、ES7、ES8、ES9、ES10新特性一览</title>
     <updated>2026-07-23T12:03:13.792Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
-    <category term="Hexo" scheme="https://zhaoshaodada.github.io/tags/Hexo/"/>
-    <category term="Axios" scheme="https://zhaoshaodada.github.io/tags/Axios/"/>
-    <id>https://zhaoshaodada.github.io/2026/04/18/vue%E5%AF%B9axios%E7%9A%84%E5%B0%81%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</id>
-    <link href="https://zhaoshaodada.github.io/2026/04/18/vue%E5%AF%B9axios%E7%9A%84%E5%B0%81%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/"/>
-    <published>2026-04-18T12:00:00.000Z</published>
-    <summary>本文讲解在Vue项目中如何对axios进行封装使用，以提高代码可维护性、统一错误处理及请求/响应拦截逻辑。内容适用于Vue2与Vue3，涵盖axios的安装、基础封装、拦截器配置及完整调用示例，帮助开发者规范前端HTTP请求的统一管理。</summary>
-    <title>vue对axios的封装和使用</title>
-    <updated>2026-07-23T12:03:24.128Z</updated>
   </entry>
 </feed>
