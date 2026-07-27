@@ -11,7 +11,23 @@
   <rights>All rights reserved 2026, Moonligh</rights>
   <subtitle>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</subtitle>
   <title>Moonligh</title>
-  <updated>2026-07-27T02:20:48.325Z</updated>
+  <updated>2026-07-27T02:39:45.399Z</updated>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
+    <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
+    <category term="GIS" scheme="https://zhaoshaodada.github.io/tags/GIS/"/>
+    <category term="性能优化" scheme="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <category term="三维地图" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4%E5%9C%B0%E5%9B%BE/"/>
+    <id>https://zhaoshaodada.github.io/2026/07/27/%E6%8F%90%E5%8D%87Cesium%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/</id>
+    <link href="https://zhaoshaodada.github.io/2026/07/27/%E6%8F%90%E5%8D%87Cesium%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <published>2026-07-27T02:30:00.000Z</published>
+    <summary>本文详细介绍如何通过调整Cesium的地形精度、瓦片缓存等参数来提升渲染性能和FPS，让三维地球场景运行更加流畅，适用于Web端GIS应用开发。</summary>
+    <title>提升Cesium渲染性能的方法</title>
+    <updated>2026-07-27T02:39:45.399Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Moonligh</name>
@@ -298,18 +314,5 @@
     <summary>本文介绍Three.js相机控件OrbitControls的使用方法，通过对三维场景进行缩放、平移、旋转操作来改变相机参数，实现不同视角的渲染效果。内容涵盖OrbitControls.js的引入方式、功能说明及其对正投影相机和透视投影相机的封装原理，适用于WebGL 3D开发场景。</summary>
     <title>Three.js相机控件OrbitControls</title>
     <updated>2026-07-23T12:03:13.101Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="资源" scheme="https://zhaoshaodada.github.io/categories/%E8%B5%84%E6%BA%90/"/>
-    <category term="资源" scheme="https://zhaoshaodada.github.io/tags/%E8%B5%84%E6%BA%90/"/>
-    <id>https://zhaoshaodada.github.io/2025/11/21/%E8%B5%84%E6%BA%90%E7%BD%91%E7%AB%99/</id>
-    <link href="https://zhaoshaodada.github.io/2025/11/21/%E8%B5%84%E6%BA%90%E7%BD%91%E7%AB%99/"/>
-    <published>2025-11-21T06:33:07.000Z</published>
-    <summary>本文整理汇总了一批实用的前端资源网站，涵盖图片库、素材网站、开发工具等多个分类。文章以链接列表形式呈现，方便开发者快速获取所需的设计素材与开发资源，是日常前端开发与设计工作中值得收藏的实用资源导航。</summary>
-    <title>资源网站</title>
-    <updated>2026-07-23T12:03:57.116Z</updated>
   </entry>
 </feed>

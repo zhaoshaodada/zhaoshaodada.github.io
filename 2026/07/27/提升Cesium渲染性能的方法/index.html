@@ -1,0 +1,326 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>提升Cesium渲染性能的方法 | Moonligh</title><meta name="author" content="Moonligh"><meta name="copyright" content="Moonligh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文详细介绍如何通过调整Cesium的地形精度、瓦片缓存等参数来提升渲染性能和FPS，让三维地球场景运行更加流畅，适用于Web端GIS应用开发。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="提升Cesium渲染性能的方法">
+<meta property="og:url" content="https://zhaoshaodada.github.io/2026/07/27/%E6%8F%90%E5%8D%87Cesium%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="Moonligh">
+<meta property="og:description" content="本文详细介绍如何通过调整Cesium的地形精度、瓦片缓存等参数来提升渲染性能和FPS，让三维地球场景运行更加流畅，适用于Web端GIS应用开发。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhaoshaodada.github.io/img/favicon.jpg">
+<meta property="article:published_time" content="2026-07-27T02:30:00.000Z">
+<meta property="article:modified_time" content="2026-07-27T02:39:45.399Z">
+<meta property="article:author" content="Moonligh">
+<meta property="article:tag" content="Cesium">
+<meta property="article:tag" content="GIS">
+<meta property="article:tag" content="性能优化">
+<meta property="article:tag" content="三维地图">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhaoshaodada.github.io/img/favicon.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "提升Cesium渲染性能的方法",
+  "url": "https://zhaoshaodada.github.io/2026/07/27/%E6%8F%90%E5%8D%87Cesium%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/",
+  "image": "https://zhaoshaodada.github.io/img/favicon.jpg",
+  "datePublished": "2026-07-27T02:30:00.000Z",
+  "dateModified": "2026-07-27T02:39:45.399Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Moonligh",
+      "url": "https://zhaoshaodada.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://zhaoshaodada.github.io/2026/07/27/%E6%8F%90%E5%8D%87Cesium%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '提升Cesium渲染性能的方法',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Moonligh" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Moonligh" type="application/rss+xml">
+</head><body><div id="web_bg" style="background-image: url(/img/22.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/favicon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 工具</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/index.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Moonligh</span></a><a class="nav-page-title" href="/"><span class="site-name">提升Cesium渲染性能的方法</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 工具</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">提升Cesium渲染性能的方法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-07-27T02:30:00.000Z" title="发表于 2026-07-27 10:30:00">2026-07-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-27T02:39:45.399Z" title="更新于 2026-07-27 10:39:45">2026-07-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="提升Cesium渲染性能的方法"><a href="#提升Cesium渲染性能的方法" class="headerlink" title="提升Cesium渲染性能的方法"></a>提升Cesium渲染性能的方法</h2><p>在使用Cesium开发Web三维GIS应用时，性能优化是一个绕不开的话题。当地球视角拉近、地形细节增多或者叠加多层影像数据时，FPS（每秒帧数）往往会明显下降，甚至会出现卡顿。本文就来分享几个通过调整核心参数来提升Cesium渲染性能的实用方法。</p>
+<h3 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h3><p>Cesium默认的地形和影像加载配置，通常是为了保证最佳的视觉效果。但在实际项目中，尤其是面向普通PC或笔记本用户时，过高的精度设置会导致：</p>
+<ul>
+<li>GPU渲染压力过大，FPS下降</li>
+<li>内存占用持续攀升，浏览器卡顿甚至崩溃</li>
+<li>瓦片加载队列拥堵，画面迟迟无法完整显示</li>
+</ul>
+<p>这时候就需要在<strong>视觉效果</strong>和<strong>运行性能</strong>之间做出权衡。</p>
+<h3 id="核心优化参数"><a href="#核心优化参数" class="headerlink" title="核心优化参数"></a>核心优化参数</h3><h4 id="1-限制地形加载精度-——-maximumScreenSpaceError"><a href="#1-限制地形加载精度-——-maximumScreenSpaceError" class="headerlink" title="1. 限制地形加载精度 —— maximumScreenSpaceError"></a>1. 限制地形加载精度 —— maximumScreenSpaceError</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化时配置</span></span><br><span class="line"><span class="keyword">const</span> viewer = <span class="keyword">new</span> <span class="title class_">Cesium</span>.<span class="title class_">Viewer</span>(<span class="string">&#x27;cesiumContainer&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">terrainProvider</span>: <span class="title class_">Cesium</span>.<span class="title function_">createWorldTerrain</span>(&#123;</span><br><span class="line">    <span class="attr">requestWaterMask</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">requestVertexNormals</span>: <span class="literal">true</span></span><br><span class="line">  &#125;),</span><br><span class="line">  <span class="comment">// 地形渲染精度</span></span><br><span class="line">  <span class="attr">globe</span>: &#123;</span><br><span class="line">    <span class="attr">maximumScreenSpaceError</span>: <span class="number">16</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者初始化后动态修改</span></span><br><span class="line">viewer.<span class="property">scene</span>.<span class="property">globe</span>.<span class="property">maximumScreenSpaceError</span> = <span class="number">16</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>原理说明：</strong></p>
+<p><code>maximumScreenSpaceError</code> 决定了地形瓦片的细分程度。它的含义是：<strong>屏幕空间误差阈值</strong>，数值越小，地形越精细，加载的瓦片层级越高；数值越大，地形越粗糙，但性能越好。</p>
+<ul>
+<li><strong>默认值：2</strong> —— 精度很高，适合高端设备</li>
+<li><strong>推荐值：8 ~ 16</strong> —— 在视觉效果和性能之间取得平衡</li>
+<li><strong>低端设备：32</strong> —— 优先保证流畅度</li>
+</ul>
+<p>这个参数对FPS的影响非常显著。在视角拉近、地形起伏较大的区域，将它从默认值2调整到16，通常能让FPS提升30%~50%。</p>
+<h4 id="2-控制地形瓦片缓存-——-tileCacheSize"><a href="#2-控制地形瓦片缓存-——-tileCacheSize" class="headerlink" title="2. 控制地形瓦片缓存 —— tileCacheSize"></a>2. 控制地形瓦片缓存 —— tileCacheSize</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化时</span></span><br><span class="line"><span class="keyword">const</span> viewer = <span class="keyword">new</span> <span class="title class_">Cesium</span>.<span class="title class_">Viewer</span>(<span class="string">&#x27;cesiumContainer&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">globe</span>: &#123;</span><br><span class="line">    <span class="attr">tileCacheSize</span>: <span class="number">50</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 动态修改</span></span><br><span class="line">viewer.<span class="property">scene</span>.<span class="property">globe</span>.<span class="property">tileCacheSize</span> = <span class="number">50</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>原理说明：</strong></p>
+<p><code>tileCacheSize</code> 控制Cesium在内存中保留的地形瓦片数量。Cesium为了提升浏览体验，会把已经加载过的瓦片缓存起来，避免用户转动视角时重复请求。但如果缓存过大，内存占用会急剧增加。</p>
+<ul>
+<li><strong>默认值：100</strong> —— 缓存较多瓦片，内存占用大</li>
+<li><strong>推荐值：50</strong> —— 适当减少缓存，释放内存</li>
+<li><strong>内存紧张：20</strong> —— 最小化缓存，以网络请求换取内存</li>
+</ul>
+<p>当用户设备内存有限（比如4GB或8GB内存的笔记本），或者同时运行多个Web应用时，适当降低这个值能有效减少浏览器的内存压力。</p>
+<h4 id="3-控制影像瓦片缓存-——-imageryCacheSize"><a href="#3-控制影像瓦片缓存-——-imageryCacheSize" class="headerlink" title="3. 控制影像瓦片缓存 —— imageryCacheSize"></a>3. 控制影像瓦片缓存 —— imageryCacheSize</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> viewer = <span class="keyword">new</span> <span class="title class_">Cesium</span>.<span class="title class_">Viewer</span>(<span class="string">&#x27;cesiumContainer&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">imageryProvider</span>: <span class="keyword">new</span> <span class="title class_">Cesium</span>.<span class="title class_">TileMapServiceImageryProvider</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;https://your-tile-server.com/tiles&#x27;</span></span><br><span class="line">  &#125;),</span><br><span class="line">  <span class="comment">// 影像图层缓存</span></span><br><span class="line">  <span class="attr">imageryCacheSize</span>: <span class="number">50</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>原理说明：</strong></p>
+<p>和地形瓦片类似，影像瓦片也会被缓存。当叠加了多层影像（如底图+标注+热力图+实景）时，影像瓦片的缓存占用会迅速累积。限制影像缓存大小可以避免内存溢出。</p>
+<h3 id="综合配置示例"><a href="#综合配置示例" class="headerlink" title="综合配置示例"></a>综合配置示例</h3><p>将以上参数整合在一起，一个兼顾性能和效果的Cesium初始化配置如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> viewer = <span class="keyword">new</span> <span class="title class_">Cesium</span>.<span class="title class_">Viewer</span>(<span class="string">&#x27;cesiumContainer&#x27;</span>, &#123;</span><br><span class="line">  <span class="comment">// 地形数据源</span></span><br><span class="line">  <span class="attr">terrainProvider</span>: <span class="title class_">Cesium</span>.<span class="title function_">createWorldTerrain</span>(&#123;</span><br><span class="line">    <span class="attr">requestWaterMask</span>: <span class="literal">false</span>,        <span class="comment">// 不需要水面效果时关闭</span></span><br><span class="line">    <span class="attr">requestVertexNormals</span>: <span class="literal">false</span>     <span class="comment">// 不需要地形光照时关闭</span></span><br><span class="line">  &#125;),</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 场景优化</span></span><br><span class="line">  <span class="attr">scene3DOnly</span>: <span class="literal">true</span>,               <span class="comment">// 如果不需要2D/哥伦布视图，关闭以提升性能</span></span><br><span class="line">  <span class="attr">orderIndependentTranslucency</span>: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 地球参数</span></span><br><span class="line">  <span class="attr">globe</span>: &#123;</span><br><span class="line">    <span class="attr">maximumScreenSpaceError</span>: <span class="number">16</span>,   <span class="comment">// 降低地形精度</span></span><br><span class="line">    <span class="attr">tileCacheSize</span>: <span class="number">50</span>              <span class="comment">// 限制地形缓存</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 影像缓存</span></span><br><span class="line">  <span class="attr">imageryCacheSize</span>: <span class="number">50</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 关闭不必要的UI组件</span></span><br><span class="line">  <span class="attr">baseLayerPicker</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">geocoder</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">homeButton</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">sceneModePicker</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">timeline</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">animation</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">fullscreenButton</span>: <span class="literal">false</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="更多性能优化建议"><a href="#更多性能优化建议" class="headerlink" title="更多性能优化建议"></a>更多性能优化建议</h3><p>除了调整上述核心参数，还有以下几个常用的优化手段：</p>
+<h4 id="关闭抗锯齿"><a href="#关闭抗锯齿" class="headerlink" title="关闭抗锯齿"></a>关闭抗锯齿</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">viewer.<span class="property">scene</span>.<span class="property">postProcessStages</span>.<span class="property">fxaa</span>.<span class="property">enabled</span> = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>抗锯齿（FXAA）会消耗一定的GPU性能，如果对画面边缘平滑度要求不高，可以关闭。</p>
+<h4 id="限制请求并发数"><a href="#限制请求并发数" class="headerlink" title="限制请求并发数"></a>限制请求并发数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">viewer.<span class="property">scene</span>.<span class="property">globe</span>.<span class="property">maximumSimultaneousTileLoads</span> = <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<p>控制同时加载的瓦片数量，避免过多并发请求导致网络拥堵和渲染阻塞。</p>
+<h4 id="根据视角距离动态调整精度"><a href="#根据视角距离动态调整精度" class="headerlink" title="根据视角距离动态调整精度"></a>根据视角距离动态调整精度</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">viewer.<span class="property">scene</span>.<span class="property">globe</span>.<span class="property">maximumScreenSpaceError</span> = <span class="number">16</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当相机高度较高时，进一步降低精度</span></span><br><span class="line">viewer.<span class="property">camera</span>.<span class="property">changed</span>.<span class="title function_">addEventListener</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> height = viewer.<span class="property">camera</span>.<span class="property">positionCartographic</span>.<span class="property">height</span></span><br><span class="line">  <span class="keyword">if</span> (height &gt; <span class="number">100000</span>) &#123;</span><br><span class="line">    viewer.<span class="property">scene</span>.<span class="property">globe</span>.<span class="property">maximumScreenSpaceError</span> = <span class="number">32</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    viewer.<span class="property">scene</span>.<span class="property">globe</span>.<span class="property">maximumScreenSpaceError</span> = <span class="number">16</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>远处俯瞰时，用户对地形细节不敏感，可以大幅降低精度；拉近时再恢复。</p>
+<h4 id="使用Primitive代替Entity"><a href="#使用Primitive代替Entity" class="headerlink" title="使用Primitive代替Entity"></a>使用Primitive代替Entity</h4><p>如果场景中需要大量动态对象（如标记点、模型），优先使用 <code>Primitive</code> 而不是 <code>Entity</code>。Primitive更底层、更轻量，渲染性能更好。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 性能更好的方式</span></span><br><span class="line"><span class="keyword">const</span> primitive = <span class="keyword">new</span> <span class="title class_">Cesium</span>.<span class="title class_">Primitive</span>(&#123;</span><br><span class="line">  <span class="attr">geometryInstances</span>: <span class="keyword">new</span> <span class="title class_">Cesium</span>.<span class="title class_">GeometryInstance</span>(&#123;</span><br><span class="line">    <span class="attr">geometry</span>: <span class="keyword">new</span> <span class="title class_">Cesium</span>.<span class="title class_">PointGeometry</span>(&#123;</span><br><span class="line">      <span class="attr">positions</span>: positions</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;),</span><br><span class="line">  <span class="attr">appearance</span>: <span class="keyword">new</span> <span class="title class_">Cesium</span>.<span class="title class_">PointAppearance</span>()</span><br><span class="line">&#125;)</span><br><span class="line">viewer.<span class="property">scene</span>.<span class="property">primitives</span>.<span class="title function_">add</span>(primitive)</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Cesium性能优化的核心思路是：<strong>在视觉可接受的范围内，尽可能减少GPU和内存的压力</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>默认值</th>
+<th>推荐值</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>maximumScreenSpaceError</code></td>
+<td>2</td>
+<td>16</td>
+<td>降低地形精度，减少瓦片数量</td>
+</tr>
+<tr>
+<td><code>tileCacheSize</code></td>
+<td>100</td>
+<td>50</td>
+<td>限制地形瓦片缓存，释放内存</td>
+</tr>
+<tr>
+<td><code>imageryCacheSize</code></td>
+<td>100</td>
+<td>50</td>
+<td>限制影像瓦片缓存</td>
+</tr>
+<tr>
+<td><code>maximumSimultaneousTileLoads</code></td>
+<td>无限制</td>
+<td>10</td>
+<td>控制并发加载数</td>
+</tr>
+</tbody></table>
+<p>不同项目、不同硬件环境下，最佳的参数组合也不同。建议在实际项目中通过浏览器的Performance面板观察FPS和内存占用，逐步调整找到最适合自己场景的配置。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://zhaoshaodada.github.io">Moonligh</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://zhaoshaodada.github.io/2026/07/27/%E6%8F%90%E5%8D%87Cesium%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/">https://zhaoshaodada.github.io/2026/07/27/%E6%8F%90%E5%8D%87Cesium%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://zhaoshaodada.github.io" target="_blank">Moonligh</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Cesium/">Cesium</a><a class="post-meta__tags" href="/tags/GIS/">GIS</a><a class="post-meta__tags" href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a><a class="post-meta__tags" href="/tags/%E4%B8%89%E7%BB%B4%E5%9C%B0%E5%9B%BE/">三维地图</a></div><div class="post-share"><div class="social-share" data-image="/img/favicon.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/07/24/Node%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E4%B8%8Enpm%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/" title="Node版本兼容与npm依赖安装指南"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Node版本兼容与npm依赖安装指南</div></div><div class="info-2"><div class="info-item-1">Node版本兼容与npm依赖安装指南新拉取一个前端项目，npm install 一跑，满屏红色报错——这大概是每个前端开发者都经历过的痛。Node版本不兼容、依赖冲突、网络超时……这些问题看似简单，却常常让人卡住半天。本文就来系统地梳理一下这些常见问题的解决方案。 Node版本不兼容不同项目可能依赖不同版本的Node，版本不匹配时往往会出现各种奇怪的报错，比如：  Error: error:0308010C:digital envelope routines::unsupported（Node 17+ 的 OpenSSL 变更） ERR_MODULE_NOT_FOUND（Node版本过低不支持ESM） 某些老旧依赖在 高版本Node 下编译失败  推荐做法： 使用 nvm（Windows 用户用 nvm-windows）管理多个Node版本，根据项目切换： 12nvm install 16nvm use 16  npm依赖冲突项目依赖树中，不同包可能对同一个依赖有版本冲突，尤其是 peer dependencies 冲突最为常见。npm 7+ 默认会严格检查 peer depen...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/07/23/Cesium%E5%9F%BA%E7%A1%80%E7%BB%98%E5%88%B6%E7%82%B9%E7%BA%BF%E9%9D%A2/" title="Cesium基础绘制（点线面）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-23</div><div class="info-item-2">Cesium基础绘制（点线面）</div></div><div class="info-2"><div class="info-item-1"> 转载自：CreateFree的博客  前言对于一个地图GIS场景，绘制点、线、面属于是基础功能，无论是二维地图还是三维地图场景均是如此，尤其对于三维场景来说比二维应该是更加困难了些。 但是基础的简单绘制不用考虑太多，下面我们开始学习在Cesium的三维场景中如何进行基础绘制的实现。 使用原始Cesium的Entity方法绘制Cesium中封装了几何对象的接口，也就是点、线、面、圆柱体、长方体、圆锥体等等，还有特殊的几何对象：corridor、ellipse、ellipsoid；以及billboard和model。但这次主要是使用点、线、面这三个几何对象，其他的几何对象都是类似的，使用方法大同小异，主要是看每个几何对象自身内部所需要的参数有哪些罢了。 绘制点Entity首先看看PointGraphics点几何对象，它需要的参数是点的位置（坐标、最主要的），样式（颜色、轮廓的宽度、颜色等）。那么我们传给它这些属性即可实现绘制点的功能。 核心代码如下：  使用handler构建鼠标事件：  1234567891011121314151617181920document.getElem...</div></div></div></a><a class="pagination-related" href="/2025/11/21/mockjs%E5%AF%BC%E8%87%B4cesium%E5%9C%B0%E5%9B%BE%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/" title="mockjs导致cesium地图无法加载"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-11-21</div><div class="info-item-2">mockjs导致cesium地图无法加载</div></div><div class="info-2"><div class="info-item-1">mockjs 导致cesium地图无法加载大盅码 2022-09-15 2,526 阅读1分钟 关注  问题描述 昨天在vue3+vite项目中加了cesium 用来展示3d地图，出现如下错误    1js 体验AI代码助手 代码解读复制代码Uncaught (in promise) TypeError: Failed to execute &#x27;createImageBitmap&#x27; on &#x27;Window&#x27;: The provided value is not of type &#x27;(Blob or HTMLCanvasElement or HTMLImageElement or HTMLVideoElement or ImageBitmap or ImageData or OffscreenCanvas or SVGImageElement or VideoFrame)&#x27;.   问题分析 面向搜索引擎一番，没有发现类似问题 开始以为是cesium的key有问题，更换key，更换成高德的图层都无效 于是仔细研究报错信息，发现它说...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/favicon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Moonligh</div><div class="author-info-description">不需要什么描述</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">随便转，随便看</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%8D%87Cesium%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">提升Cesium渲染性能的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF"><span class="toc-number">1.1.</span> <span class="toc-text">问题背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E4%BC%98%E5%8C%96%E5%8F%82%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">核心优化参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%99%90%E5%88%B6%E5%9C%B0%E5%BD%A2%E5%8A%A0%E8%BD%BD%E7%B2%BE%E5%BA%A6-%E2%80%94%E2%80%94-maximumScreenSpaceError"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 限制地形加载精度 —— maximumScreenSpaceError</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8E%A7%E5%88%B6%E5%9C%B0%E5%BD%A2%E7%93%A6%E7%89%87%E7%BC%93%E5%AD%98-%E2%80%94%E2%80%94-tileCacheSize"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 控制地形瓦片缓存 —— tileCacheSize</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%8E%A7%E5%88%B6%E5%BD%B1%E5%83%8F%E7%93%A6%E7%89%87%E7%BC%93%E5%AD%98-%E2%80%94%E2%80%94-imageryCacheSize"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. 控制影像瓦片缓存 —— imageryCacheSize</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.3.</span> <span class="toc-text">综合配置示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E5%A4%9A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.4.</span> <span class="toc-text">更多性能优化建议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E6%8A%97%E9%94%AF%E9%BD%BF"><span class="toc-number">1.4.1.</span> <span class="toc-text">关闭抗锯齿</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%99%90%E5%88%B6%E8%AF%B7%E6%B1%82%E5%B9%B6%E5%8F%91%E6%95%B0"><span class="toc-number">1.4.2.</span> <span class="toc-text">限制请求并发数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E8%A7%86%E8%A7%92%E8%B7%9D%E7%A6%BB%E5%8A%A8%E6%80%81%E8%B0%83%E6%95%B4%E7%B2%BE%E5%BA%A6"><span class="toc-number">1.4.3.</span> <span class="toc-text">根据视角距离动态调整精度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Primitive%E4%BB%A3%E6%9B%BFEntity"><span class="toc-number">1.4.4.</span> <span class="toc-text">使用Primitive代替Entity</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.5.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/27/%E6%8F%90%E5%8D%87Cesium%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/" title="提升Cesium渲染性能的方法">提升Cesium渲染性能的方法</a><time datetime="2026-07-27T02:30:00.000Z" title="发表于 2026-07-27 10:30:00">2026-07-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/24/Node%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E4%B8%8Enpm%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/" title="Node版本兼容与npm依赖安装指南">Node版本兼容与npm依赖安装指南</a><time datetime="2026-07-24T13:00:00.000Z" title="发表于 2026-07-24 21:00:00">2026-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/24/%E7%8F%A0%E6%B5%B7%E6%97%B6%E5%85%89/" title="珠海时光">珠海时光</a><time datetime="2026-07-24T12:00:00.000Z" title="发表于 2026-07-24 20:00:00">2026-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E5%89%8D%E7%AB%AF%E5%B0%8F%E6%8A%80%E5%B7%A7%E9%9B%86%E9%94%A6/" title="前端小技巧集锦">前端小技巧集锦</a><time datetime="2026-07-23T12:00:00.000Z" title="发表于 2026-07-23 20:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E5%89%8D%E7%AB%AF%E7%AE%80%E6%B4%81%E5%B9%B6%E5%AE%9E%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" title="前端简洁并实用的工具类">前端简洁并实用的工具类</a><time datetime="2026-07-23T11:20:00.000Z" title="发表于 2026-07-23 19:20:00">2026-07-23</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Moonligh</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = {"data-mapping":"pathname","data-reactions-enabled":"1","data-emit-metadata":"0","data-input-position":"bottom","data-lang":"zh-CN"}
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'zhaoshaodada/zhaoshaodada.github.io',
+      'data-repo-id': 'MDEwOlJlcG9zaXRvcnkzMzM3MTQ2OTg=',
+      'data-category-id': 'DIC_kwDOE-QVCs4DByp7',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script>var meting_api="https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&r=:r";</script><div class="aplayer" data-server="netease" data-type="playlist" data-id="6758762023" data-fixed="true" data-mini="true" data-autoplay="false" data-theme="#49b1f5" data-loop="all" data-order="list" data-preload="auto" data-volume="0.7" data-mutex="true" data-lrctype="0"></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="https://YOUR-VERCEL-APP.vercel.app/busuanzi.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
