@@ -42,7 +42,7 @@
     <published>2026-07-27T08:00:00.000Z</published>
     <summary>Cesium原生Label实体存在始终面向相机、像素级尺寸、样式能力有限等局限。本文介绍通过Wall实体+Canvas动态材质实现文字贴地/贴墙动态标注的完整技术方案，涵盖异步纹理生成、CallbackProperty逐帧刷新、相机自动定位等核心要点。</summary>
     <title>Cesium Wall + Canvas 实现文字贴地贴墙动态标注</title>
-    <updated>2026-07-28T11:07:22.344Z</updated>
+    <updated>2026-07-28T11:30:29.380Z</updated>
   </entry>
   <entry>
     <author>
