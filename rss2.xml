@@ -6,7 +6,7 @@
     <description>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</description>
     <language>zh-CN</language>
     <copyright>All rights reserved 2026, Moonligh</copyright>
-    <lastBuildDate>Tue, 28 Jul 2026 11:07:22 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 28 Jul 2026 11:25:25 GMT</lastBuildDate>
     <generator>Hexo</generator>
     <image>
       <url>https://zhaoshaodada.github.io/img/favicon.jpg</url>
@@ -14,6 +14,18 @@
       <link>https://zhaoshaodada.github.io/</link>
     </image>
     <atom:link href="https://zhaoshaodada.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Cesium 近地天空盒：把天空拉回地面</title>
+      <link>https://zhaoshaodada.github.io/2026/07/27/Cesium%E8%BF%91%E5%9C%B0%E5%A4%A9%E7%A9%BA%E7%9B%92%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88/</link>
+      <description>Cesium默认天空盒适合太空视角，相机贴近地面时天空显得不贴合。本文介绍通过自定义DrawCommand做近地天空盒，并按相机高度自动切回默认天空的完整技术方案，涵盖SkyBoxOnGround实现、Cubemap方向映射、天空盒制作三步走等核心要点。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
+      <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%A4%A9%E7%A9%BA%E7%9B%92/">天空盒</category>
+      <pubDate>Mon, 27 Jul 2026 10:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>Cesium Wall + Canvas 实现文字贴地贴墙动态标注</title>
       <link>https://zhaoshaodada.github.io/2026/07/27/Cesium-Wall-Canvas%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%B4%B4%E5%9C%B0%E8%B4%B4%E5%A2%99%E5%8A%A8%E6%80%81%E6%A0%87%E6%B3%A8/</link>
@@ -232,17 +244,6 @@
       <category domain="https://zhaoshaodada.github.io/tags/TypeScript/">TypeScript</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E5%85%A5%E9%97%A8/">入门</category>
       <pubDate>Thu, 23 Jul 2026 03:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>Cesium基础绘制（点线面）</title>
-      <link>https://zhaoshaodada.github.io/2026/07/23/Cesium%E5%9F%BA%E7%A1%80%E7%BB%98%E5%88%B6%E7%82%B9%E7%BA%BF%E9%9D%A2/</link>
-      <description>本文讲解在Cesium三维地图场景中如何进行点、线、面的基础绘制实现，属于GIS地图开发的核心功能。文章基于Entity API介绍简单绘制的实现思路，对比二维与三维场景的差异，帮助开发者快速上手Cesium的图形绘制与地图可视化开发。</description>
-      <author>Moonligh</author>
-      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
-      <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E7%82%B9%E7%BA%BF%E9%9D%A2/">点线面</category>
-      <category domain="https://zhaoshaodada.github.io/tags/GIS/">GIS</category>
-      <pubDate>Thu, 23 Jul 2026 02:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
