@@ -11,7 +11,23 @@
   <rights>All rights reserved 2026, Moonligh</rights>
   <subtitle>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</subtitle>
   <title>Moonligh</title>
-  <updated>2026-07-27T03:30:06.686Z</updated>
+  <updated>2026-07-28T11:07:22.344Z</updated>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
+    <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
+    <category term="Canvas" scheme="https://zhaoshaodada.github.io/tags/Canvas/"/>
+    <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
+    <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
+    <id>https://zhaoshaodada.github.io/2026/07/27/Cesium-Wall-Canvas%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%B4%B4%E5%9C%B0%E8%B4%B4%E5%A2%99%E5%8A%A8%E6%80%81%E6%A0%87%E6%B3%A8/</id>
+    <link href="https://zhaoshaodada.github.io/2026/07/27/Cesium-Wall-Canvas%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%B4%B4%E5%9C%B0%E8%B4%B4%E5%A2%99%E5%8A%A8%E6%80%81%E6%A0%87%E6%B3%A8/"/>
+    <published>2026-07-27T08:00:00.000Z</published>
+    <summary>Cesium原生Label实体存在始终面向相机、像素级尺寸、样式能力有限等局限。本文介绍通过Wall实体+Canvas动态材质实现文字贴地/贴墙动态标注的完整技术方案，涵盖异步纹理生成、CallbackProperty逐帧刷新、相机自动定位等核心要点。</summary>
+    <title>Cesium Wall + Canvas 实现文字贴地贴墙动态标注</title>
+    <updated>2026-07-28T11:07:22.344Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Moonligh</name>
@@ -305,19 +321,5 @@
     <summary>本文讲解在Cesium三维地图场景中如何进行点、线、面的基础绘制实现，属于GIS地图开发的核心功能。文章基于Entity API介绍简单绘制的实现思路，对比二维与三维场景的差异，帮助开发者快速上手Cesium的图形绘制与地图可视化开发。</summary>
     <title>Cesium基础绘制（点线面）</title>
     <updated>2026-07-23T12:03:55.564Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
-    <category term="ES6" scheme="https://zhaoshaodada.github.io/tags/ES6/"/>
-    <category term="JavaScript" scheme="https://zhaoshaodada.github.io/tags/JavaScript/"/>
-    <id>https://zhaoshaodada.github.io/2026/07/22/ES6-ES10%E6%96%B0%E7%89%B9%E6%80%A7%E4%B8%80%E8%A7%88/</id>
-    <link href="https://zhaoshaodada.github.io/2026/07/22/ES6-ES10%E6%96%B0%E7%89%B9%E6%80%A7%E4%B8%80%E8%A7%88/"/>
-    <published>2026-07-22T04:00:00.000Z</published>
-    <summary>本文系统梳理了ECMAScript从ES6到ES10各版本的新特性，涵盖let/const、箭头函数、Promise、async/await、解构赋值、扩展运算符、Object.entries、String.padStart等关键语法。文章还介绍了TC39提案从Stage 0到入选规范的完整流程，帮助JavaScript开发者快速掌握语言演进。</summary>
-    <title>ES6、ES7、ES8、ES9、ES10新特性一览</title>
-    <updated>2026-07-23T12:03:13.792Z</updated>
   </entry>
 </feed>
