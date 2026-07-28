@@ -12,6 +12,8 @@ keywords: "Cesium, Canvas, Wall实体, 贴地标注, 贴墙标注, CallbackPrope
 description: "Cesium原生Label实体存在始终面向相机、像素级尺寸、样式能力有限等局限。本文介绍通过Wall实体+Canvas动态材质实现文字贴地/贴墙动态标注的完整技术方案，涵盖异步纹理生成、CallbackProperty逐帧刷新、相机自动定位等核心要点。"
 ---
 
+![贴墙贴地动态标注效果演示](/img/cesium-wall-demo.gif)
+
 ## Cesium原生Label的局限
 
 Cesium 原生提供了 `Label` 实体用于文字标注，调用简单几行代码就能把文字放到地球上，但它有三个明显的局限：
@@ -283,6 +285,8 @@ const cameraInfo = {
 };
 labelPolygon.locate(cameraInfo);
 ```
+
+![贴墙+贴地L形展示效果](/img/cesium-wall-result.png)
 
 ## 完整使用示例
 
