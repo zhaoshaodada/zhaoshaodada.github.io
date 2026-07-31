@@ -6,7 +6,7 @@
     <description>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</description>
     <language>zh-CN</language>
     <copyright>All rights reserved 2026, Moonligh</copyright>
-    <lastBuildDate>Tue, 28 Jul 2026 11:25:25 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2026 01:39:43 GMT</lastBuildDate>
     <generator>Hexo</generator>
     <image>
       <url>https://zhaoshaodada.github.io/img/favicon.jpg</url>
@@ -14,6 +14,19 @@
       <link>https://zhaoshaodada.github.io/</link>
     </image>
     <atom:link href="https://zhaoshaodada.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Vibe Coding — 当 DeepSeek 遇见 Three.js 的治愈深海</title>
+      <link>https://zhaoshaodada.github.io/2026/07/27/Vibe-Coding-%E5%BD%93DeepSeek%E9%81%87%E8%A7%81Three-js%E7%9A%84%E6%B2%BB%E6%84%88%E6%B7%B1%E6%B5%B7/</link>
+      <description>一个纯前端治愈系网页：深蓝深海背景，中文词语如窗帘般缓缓下滚，鼠标拨开时文字碎裂成粒子，背景里虎鲸在游动，点击发出海豚音。Three.js 画虎鲸，p5.js 画窗帘和粒子，Web Audio API 合成声音。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
+      <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Three-js/">Three.js</category>
+      <category domain="https://zhaoshaodada.github.io/tags/p5-js/">p5.js</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Web-Audio-API/">Web Audio API</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%88%9B%E6%84%8F%E7%BC%96%E7%A8%8B/">创意编程</category>
+      <pubDate>Mon, 27 Jul 2026 14:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>Cesium 近地天空盒：把天空拉回地面</title>
       <link>https://zhaoshaodada.github.io/2026/07/27/Cesium%E8%BF%91%E5%9C%B0%E5%A4%A9%E7%A9%BA%E7%9B%92%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88/</link>
@@ -233,17 +246,6 @@
       <category domain="https://zhaoshaodada.github.io/tags/HTTP/">HTTP</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</category>
       <pubDate>Thu, 23 Jul 2026 04:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>Vue3.0前的TypeScript最佳入门实践</title>
-      <link>https://zhaoshaodada.github.io/2026/07/23/Vue3%E5%89%8D%E7%9A%84TypeScript%E6%9C%80%E4%BD%B3%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5/</link>
-      <description>本文为Vue3.0发布前的TypeScript最佳入门实践，从Vue官方部分使用Ts重写的背景出发，系统讲解类型、接口等核心概念在Vue项目中的应用。文章结合实际开发场景，帮助前端开发者快速掌握TypeScript的类型系统，为Vue3的全面TS化做好铺垫。</description>
-      <author>Moonligh</author>
-      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
-      <category domain="https://zhaoshaodada.github.io/tags/Vue/">Vue</category>
-      <category domain="https://zhaoshaodada.github.io/tags/TypeScript/">TypeScript</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E5%85%A5%E9%97%A8/">入门</category>
-      <pubDate>Thu, 23 Jul 2026 03:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>

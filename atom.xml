@@ -11,7 +11,24 @@
   <rights>All rights reserved 2026, Moonligh</rights>
   <subtitle>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</subtitle>
   <title>Moonligh</title>
-  <updated>2026-07-28T11:25:25.162Z</updated>
+  <updated>2026-07-31T01:39:43.479Z</updated>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
+    <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
+    <category term="Three.js" scheme="https://zhaoshaodada.github.io/tags/Three-js/"/>
+    <category term="p5.js" scheme="https://zhaoshaodada.github.io/tags/p5-js/"/>
+    <category term="Web Audio API" scheme="https://zhaoshaodada.github.io/tags/Web-Audio-API/"/>
+    <category term="创意编程" scheme="https://zhaoshaodada.github.io/tags/%E5%88%9B%E6%84%8F%E7%BC%96%E7%A8%8B/"/>
+    <id>https://zhaoshaodada.github.io/2026/07/27/Vibe-Coding-%E5%BD%93DeepSeek%E9%81%87%E8%A7%81Three-js%E7%9A%84%E6%B2%BB%E6%84%88%E6%B7%B1%E6%B5%B7/</id>
+    <link href="https://zhaoshaodada.github.io/2026/07/27/Vibe-Coding-%E5%BD%93DeepSeek%E9%81%87%E8%A7%81Three-js%E7%9A%84%E6%B2%BB%E6%84%88%E6%B7%B1%E6%B5%B7/"/>
+    <published>2026-07-27T14:00:00.000Z</published>
+    <summary>一个纯前端治愈系网页：深蓝深海背景，中文词语如窗帘般缓缓下滚，鼠标拨开时文字碎裂成粒子，背景里虎鲸在游动，点击发出海豚音。Three.js 画虎鲸，p5.js 画窗帘和粒子，Web Audio API 合成声音。</summary>
+    <title>Vibe Coding — 当 DeepSeek 遇见 Three.js 的治愈深海</title>
+    <updated>2026-07-31T01:39:43.479Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Moonligh</name>
@@ -307,20 +324,5 @@
     <summary>本文总结使用Node.js本地启动HTTP服务的多种方式，涵盖Node内置http模块的使用、express框架的快速搭建以及其他常见方案。文章以代码示例对比各方式的优劣与适用场景，帮助开发者在学习与调试时快速选择合适的本地服务搭建方法。</summary>
     <title>Node本地启动HTTP服务的几种方式</title>
     <updated>2026-07-23T12:03:52.852Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
-    <category term="Vue" scheme="https://zhaoshaodada.github.io/tags/Vue/"/>
-    <category term="TypeScript" scheme="https://zhaoshaodada.github.io/tags/TypeScript/"/>
-    <category term="入门" scheme="https://zhaoshaodada.github.io/tags/%E5%85%A5%E9%97%A8/"/>
-    <id>https://zhaoshaodada.github.io/2026/07/23/Vue3%E5%89%8D%E7%9A%84TypeScript%E6%9C%80%E4%BD%B3%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5/</id>
-    <link href="https://zhaoshaodada.github.io/2026/07/23/Vue3%E5%89%8D%E7%9A%84TypeScript%E6%9C%80%E4%BD%B3%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5/"/>
-    <published>2026-07-23T03:00:00.000Z</published>
-    <summary>本文为Vue3.0发布前的TypeScript最佳入门实践，从Vue官方部分使用Ts重写的背景出发，系统讲解类型、接口等核心概念在Vue项目中的应用。文章结合实际开发场景，帮助前端开发者快速掌握TypeScript的类型系统，为Vue3的全面TS化做好铺垫。</summary>
-    <title>Vue3.0前的TypeScript最佳入门实践</title>
-    <updated>2026-07-23T12:03:53.471Z</updated>
   </entry>
 </feed>
