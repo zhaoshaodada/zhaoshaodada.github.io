@@ -11,7 +11,25 @@
   <rights>All rights reserved 2026, Moonligh</rights>
   <subtitle>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</subtitle>
   <title>Moonligh</title>
-  <updated>2026-07-31T03:54:03.739Z</updated>
+  <updated>2026-07-31T04:01:13.075Z</updated>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
+    <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
+    <category term="体积云" scheme="https://zhaoshaodada.github.io/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/"/>
+    <category term="渲染管线" scheme="https://zhaoshaodada.github.io/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/"/>
+    <category term="大气散射" scheme="https://zhaoshaodada.github.io/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/"/>
+    <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
+    <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
+    <id>https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/</id>
+    <link href="https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/"/>
+    <published>2026-07-31T12:00:00.000Z</published>
+    <summary>本文记录将全球体积云移植到 Cesium 的过程，目前还原度约 90%。涵盖渲染管线、坐标转换、MRT、GBuffer 以及基于 Texture2DArray 的阴影资源管理等核心要点，并对比 Three.js 与 Cesium 在渲染架构上的差异，分享 inscatter 贴地、tonemap 冲突、色彩空间偏白等典型问题与思考。</summary>
+    <title>Cesium 全球体积云移植：从 GIS 迈向图形的 90% 还原之路</title>
+    <updated>2026-07-31T04:01:13.075Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Moonligh</name>
@@ -28,24 +46,6 @@
     <summary>在Cesium中添加成千上万棵树、一排排路灯、沿山脊排开的风机时，逐个Entity添加会让浏览器卡死。本文详解Cesium高版本中GPU实例化渲染的实现方案，涵盖局部坐标系绕开精度问题、矩阵纹理打包变换、instanceCount复制draw call、视锥裁剪与id纹理拾取等核心要点。</summary>
     <title>Cesium实例化渲染详解：同模型万级批量绘制方案</title>
     <updated>2026-07-31T03:54:03.739Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
-    <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
-    <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
-    <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
-    <category term="体积云" scheme="https://zhaoshaodada.github.io/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/"/>
-    <category term="渲染管线" scheme="https://zhaoshaodada.github.io/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/"/>
-    <category term="大气散射" scheme="https://zhaoshaodada.github.io/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/"/>
-    <id>https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/</id>
-    <link href="https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/"/>
-    <published>2026-07-31T12:00:00.000Z</published>
-    <summary>本文记录将全球体积云移植到 Cesium 的过程，目前还原度约 90%。涵盖渲染管线、坐标转换、MRT、GBuffer 以及基于 Texture2DArray 的阴影资源管理等核心要点，并对比 Three.js 与 Cesium 在渲染架构上的差异，分享 inscatter 贴地、tonemap 冲突、色彩空间偏白等典型问题与思考。</summary>
-    <title>Cesium 全球体积云移植：从 GIS 迈向图形的 90% 还原之路</title>
-    <updated>2026-07-31T03:55:20.885Z</updated>
   </entry>
   <entry>
     <author>
@@ -70,9 +70,9 @@
     </author>
     <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
     <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
-    <category term="天空盒" scheme="https://zhaoshaodada.github.io/tags/%E5%A4%A9%E7%A9%BA%E7%9B%92/"/>
     <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
     <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
+    <category term="天空盒" scheme="https://zhaoshaodada.github.io/tags/%E5%A4%A9%E7%A9%BA%E7%9B%92/"/>
     <id>https://zhaoshaodada.github.io/2026/07/27/Cesium%E8%BF%91%E5%9C%B0%E5%A4%A9%E7%A9%BA%E7%9B%92%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88/</id>
     <link href="https://zhaoshaodada.github.io/2026/07/27/Cesium%E8%BF%91%E5%9C%B0%E5%A4%A9%E7%A9%BA%E7%9B%92%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88/"/>
     <published>2026-07-27T10:00:00.000Z</published>
@@ -134,8 +134,8 @@
     </author>
     <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
     <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
-    <category term="GIS" scheme="https://zhaoshaodada.github.io/tags/GIS/"/>
     <category term="性能优化" scheme="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <category term="GIS" scheme="https://zhaoshaodada.github.io/tags/GIS/"/>
     <category term="三维地图" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4%E5%9C%B0%E5%9B%BE/"/>
     <id>https://zhaoshaodada.github.io/2026/07/27/%E6%8F%90%E5%8D%87Cesium%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/</id>
     <link href="https://zhaoshaodada.github.io/2026/07/27/%E6%8F%90%E5%8D%87Cesium%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/"/>
