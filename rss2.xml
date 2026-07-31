@@ -6,7 +6,7 @@
     <description>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</description>
     <language>zh-CN</language>
     <copyright>All rights reserved 2026, Moonligh</copyright>
-    <lastBuildDate>Fri, 31 Jul 2026 04:01:13 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2026 04:14:22 GMT</lastBuildDate>
     <generator>Hexo</generator>
     <image>
       <url>https://zhaoshaodada.github.io/img/favicon.jpg</url>
@@ -15,17 +15,29 @@
     </image>
     <atom:link href="https://zhaoshaodada.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>Web Worker 前端多线程编程实战指南</title>
+      <link>https://zhaoshaodada.github.io/2026/07/31/Web-Worker%E5%89%8D%E7%AB%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/</link>
+      <description>本文深入讲解 Web Worker 的原理与实战用法，涵盖基础通信、Transferable 对象零拷贝传输、大数据排序与图片处理实战场景，以及 Worker 池模式的实现，帮助前端开发者解锁浏览器多线程编程能力，解决主线程阻塞导致的页面卡顿问题。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
+      <category domain="https://zhaoshaodada.github.io/tags/JavaScript/">JavaScript</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Web-Worker/">Web Worker</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</category>
+      <pubDate>Fri, 31 Jul 2026 12:20:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Cesium 全球体积云移植：从 GIS 迈向图形的 90% 还原之路</title>
       <link>https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/</link>
       <description>本文记录将全球体积云移植到 Cesium 的过程，目前还原度约 90%。涵盖渲染管线、坐标转换、MRT、GBuffer 以及基于 Texture2DArray 的阴影资源管理等核心要点，并对比 Three.js 与 Cesium 在渲染架构上的差异，分享 inscatter 贴地、tonemap 冲突、色彩空间偏白等典型问题与思考。</description>
       <author>Moonligh</author>
       <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
       <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
-      <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/">体积云</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/">渲染管线</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/">大气散射</category>
+      <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</category>
       <pubDate>Fri, 31 Jul 2026 12:00:00 GMT</pubDate>
     </item>
     <item>
@@ -40,6 +52,19 @@
       <category domain="https://zhaoshaodada.github.io/tags/%E5%AE%9E%E4%BE%8B%E5%8C%96%E6%B8%B2%E6%9F%93/">实例化渲染</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
       <pubDate>Fri, 31 Jul 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>3D写实国漫女神四视图，一套提示词全搞定！（附提示词）</title>
+      <link>https://zhaoshaodada.github.io/2026/07/28/3D%E5%86%99%E5%AE%9E%E5%9B%BD%E6%BC%AB%E5%A5%B3%E7%A5%9E%E5%9B%9B%E8%A7%86%E5%9B%BE-%E4%B8%80%E5%A5%97%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%85%A8%E6%90%9E%E5%AE%9A/</link>
+      <description>一套提示词实现3D写实国漫女神四视图（正面、左侧、右侧、背面），人物五官、发型、服装细节完全统一，附完整提示词。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
+      <category domain="https://zhaoshaodada.github.io/tags/AI%E7%BB%98%E7%94%BB/">AI绘画</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D/">提示词</category>
+      <category domain="https://zhaoshaodada.github.io/tags/3D%E5%BB%BA%E6%A8%A1/">3D建模</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%9B%BD%E6%BC%AB/">国漫</category>
+      <category domain="https://zhaoshaodada.github.io/tags/AIGC/">AIGC</category>
+      <pubDate>Tue, 28 Jul 2026 12:30:00 GMT</pubDate>
     </item>
     <item>
       <title>Vibe Coding — 当 DeepSeek 遇见 Three.js 的治愈深海</title>
@@ -73,9 +98,9 @@
       <author>Moonligh</author>
       <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
       <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
-      <category domain="https://zhaoshaodada.github.io/tags/Canvas/">Canvas</category>
       <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Canvas/">Canvas</category>
       <pubDate>Mon, 27 Jul 2026 08:00:00 GMT</pubDate>
     </item>
     <item>
@@ -230,27 +255,6 @@
       <category domain="https://zhaoshaodada.github.io/tags/Grid/">Grid</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E5%B8%83%E5%B1%80/">布局</category>
       <pubDate>Thu, 23 Jul 2026 08:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>CSS实现漂亮的滚动条样式</title>
-      <link>https://zhaoshaodada.github.io/2026/07/23/CSS%E5%AE%9E%E7%8E%B0%E6%BC%82%E4%BA%AE%E7%9A%84%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%A0%B7%E5%BC%8F/</link>
-      <description>本文介绍如何使用CSS实现美观的自定义滚动条样式，提供多款经典样式示例的HTML与CSS代码。文章通过webkit-scrollbar等伪元素属性对浏览器默认滚动条进行美化改造，帮助前端开发者提升页面整体视觉体验与细节质感。</description>
-      <author>Moonligh</author>
-      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
-      <category domain="https://zhaoshaodada.github.io/tags/CSS/">CSS</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E6%BB%9A%E5%8A%A8%E6%9D%A1/">滚动条</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E6%A0%B7%E5%BC%8F/">样式</category>
-      <pubDate>Thu, 23 Jul 2026 07:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>CSS技巧合集</title>
-      <link>https://zhaoshaodada.github.io/2026/07/23/CSS%E6%8A%80%E5%B7%A7%E5%90%88%E9%9B%86/</link>
-      <description>本文总结了一批常用又有趣的CSS技巧，涵盖三角形绘制、滚动条样式、时间轴布局、卡券效果等多种实用场景。文章以减少查资料时间为目的，提供可直接复用的代码片段与实现思路，帮助前端开发者提升样式编写效率与表现力。</description>
-      <author>Moonligh</author>
-      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
-      <category domain="https://zhaoshaodada.github.io/tags/CSS/">CSS</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E6%8A%80%E5%B7%A7/">技巧</category>
-      <pubDate>Thu, 23 Jul 2026 06:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>

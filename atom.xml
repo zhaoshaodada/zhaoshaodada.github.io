@@ -11,18 +11,34 @@
   <rights>All rights reserved 2026, Moonligh</rights>
   <subtitle>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</subtitle>
   <title>Moonligh</title>
-  <updated>2026-07-31T04:01:13.075Z</updated>
+  <updated>2026-07-31T04:14:22.941Z</updated>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
+    <category term="性能优化" scheme="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <category term="JavaScript" scheme="https://zhaoshaodada.github.io/tags/JavaScript/"/>
+    <category term="Web Worker" scheme="https://zhaoshaodada.github.io/tags/Web-Worker/"/>
+    <category term="多线程" scheme="https://zhaoshaodada.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    <id>https://zhaoshaodada.github.io/2026/07/31/Web-Worker%E5%89%8D%E7%AB%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/</id>
+    <link href="https://zhaoshaodada.github.io/2026/07/31/Web-Worker%E5%89%8D%E7%AB%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/"/>
+    <published>2026-07-31T12:20:00.000Z</published>
+    <summary>本文深入讲解 Web Worker 的原理与实战用法，涵盖基础通信、Transferable 对象零拷贝传输、大数据排序与图片处理实战场景，以及 Worker 池模式的实现，帮助前端开发者解锁浏览器多线程编程能力，解决主线程阻塞导致的页面卡顿问题。</summary>
+    <title>Web Worker 前端多线程编程实战指南</title>
+    <updated>2026-07-31T04:14:22.941Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Moonligh</name>
     </author>
     <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
     <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
-    <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
-    <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
     <category term="体积云" scheme="https://zhaoshaodada.github.io/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/"/>
     <category term="渲染管线" scheme="https://zhaoshaodada.github.io/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/"/>
     <category term="大气散射" scheme="https://zhaoshaodada.github.io/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/"/>
+    <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
+    <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
     <id>https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/</id>
     <link href="https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/"/>
     <published>2026-07-31T12:00:00.000Z</published>
@@ -46,6 +62,23 @@
     <summary>在Cesium中添加成千上万棵树、一排排路灯、沿山脊排开的风机时，逐个Entity添加会让浏览器卡死。本文详解Cesium高版本中GPU实例化渲染的实现方案，涵盖局部坐标系绕开精度问题、矩阵纹理打包变换、instanceCount复制draw call、视锥裁剪与id纹理拾取等核心要点。</summary>
     <title>Cesium实例化渲染详解：同模型万级批量绘制方案</title>
     <updated>2026-07-31T04:09:17.992Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
+    <category term="AI绘画" scheme="https://zhaoshaodada.github.io/tags/AI%E7%BB%98%E7%94%BB/"/>
+    <category term="提示词" scheme="https://zhaoshaodada.github.io/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D/"/>
+    <category term="3D建模" scheme="https://zhaoshaodada.github.io/tags/3D%E5%BB%BA%E6%A8%A1/"/>
+    <category term="国漫" scheme="https://zhaoshaodada.github.io/tags/%E5%9B%BD%E6%BC%AB/"/>
+    <category term="AIGC" scheme="https://zhaoshaodada.github.io/tags/AIGC/"/>
+    <id>https://zhaoshaodada.github.io/2026/07/28/3D%E5%86%99%E5%AE%9E%E5%9B%BD%E6%BC%AB%E5%A5%B3%E7%A5%9E%E5%9B%9B%E8%A7%86%E5%9B%BE-%E4%B8%80%E5%A5%97%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%85%A8%E6%90%9E%E5%AE%9A/</id>
+    <link href="https://zhaoshaodada.github.io/2026/07/28/3D%E5%86%99%E5%AE%9E%E5%9B%BD%E6%BC%AB%E5%A5%B3%E7%A5%9E%E5%9B%9B%E8%A7%86%E5%9B%BE-%E4%B8%80%E5%A5%97%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%85%A8%E6%90%9E%E5%AE%9A/"/>
+    <published>2026-07-28T12:30:00.000Z</published>
+    <summary>一套提示词实现3D写实国漫女神四视图（正面、左侧、右侧、背面），人物五官、发型、服装细节完全统一，附完整提示词。</summary>
+    <title>3D写实国漫女神四视图，一套提示词全搞定！（附提示词）</title>
+    <updated>2026-07-31T04:21:01.532Z</updated>
   </entry>
   <entry>
     <author>
@@ -86,9 +119,9 @@
     </author>
     <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
     <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
-    <category term="Canvas" scheme="https://zhaoshaodada.github.io/tags/Canvas/"/>
     <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
     <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
+    <category term="Canvas" scheme="https://zhaoshaodada.github.io/tags/Canvas/"/>
     <id>https://zhaoshaodada.github.io/2026/07/27/Cesium-Wall-Canvas%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%B4%B4%E5%9C%B0%E8%B4%B4%E5%A2%99%E5%8A%A8%E6%80%81%E6%A0%87%E6%B3%A8/</id>
     <link href="https://zhaoshaodada.github.io/2026/07/27/Cesium-Wall-Canvas%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%B4%B4%E5%9C%B0%E8%B4%B4%E5%A2%99%E5%8A%A8%E6%80%81%E6%A0%87%E6%B3%A8/"/>
     <published>2026-07-27T08:00:00.000Z</published>
@@ -300,34 +333,5 @@
     <summary>本文以实际错落网格布局需求为切入点，系统讲解CSS Grid网格布局的基本概念与使用技巧。文章从格子的组成入手，结合实际案例演示Grid布局的实现方式，帮助前端开发者轻松上手并灵活运用CSS Grid完成复杂的二维布局任务。</summary>
     <title>轻松上手CSS Grid网格布局</title>
     <updated>2026-07-23T12:03:38.511Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
-    <category term="CSS" scheme="https://zhaoshaodada.github.io/tags/CSS/"/>
-    <category term="滚动条" scheme="https://zhaoshaodada.github.io/tags/%E6%BB%9A%E5%8A%A8%E6%9D%A1/"/>
-    <category term="样式" scheme="https://zhaoshaodada.github.io/tags/%E6%A0%B7%E5%BC%8F/"/>
-    <id>https://zhaoshaodada.github.io/2026/07/23/CSS%E5%AE%9E%E7%8E%B0%E6%BC%82%E4%BA%AE%E7%9A%84%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%A0%B7%E5%BC%8F/</id>
-    <link href="https://zhaoshaodada.github.io/2026/07/23/CSS%E5%AE%9E%E7%8E%B0%E6%BC%82%E4%BA%AE%E7%9A%84%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%A0%B7%E5%BC%8F/"/>
-    <published>2026-07-23T07:00:00.000Z</published>
-    <summary>本文介绍如何使用CSS实现美观的自定义滚动条样式，提供多款经典样式示例的HTML与CSS代码。文章通过webkit-scrollbar等伪元素属性对浏览器默认滚动条进行美化改造，帮助前端开发者提升页面整体视觉体验与细节质感。</summary>
-    <title>CSS实现漂亮的滚动条样式</title>
-    <updated>2026-07-23T12:03:39.565Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
-    <category term="CSS" scheme="https://zhaoshaodada.github.io/tags/CSS/"/>
-    <category term="技巧" scheme="https://zhaoshaodada.github.io/tags/%E6%8A%80%E5%B7%A7/"/>
-    <id>https://zhaoshaodada.github.io/2026/07/23/CSS%E6%8A%80%E5%B7%A7%E5%90%88%E9%9B%86/</id>
-    <link href="https://zhaoshaodada.github.io/2026/07/23/CSS%E6%8A%80%E5%B7%A7%E5%90%88%E9%9B%86/"/>
-    <published>2026-07-23T06:00:00.000Z</published>
-    <summary>本文总结了一批常用又有趣的CSS技巧，涵盖三角形绘制、滚动条样式、时间轴布局、卡券效果等多种实用场景。文章以减少查资料时间为目的，提供可直接复用的代码片段与实现思路，帮助前端开发者提升样式编写效率与表现力。</summary>
-    <title>CSS技巧合集</title>
-    <updated>2026-07-23T12:03:41.107Z</updated>
   </entry>
 </feed>
