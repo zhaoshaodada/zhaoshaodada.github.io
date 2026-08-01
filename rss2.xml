@@ -38,6 +38,20 @@
       <pubDate>Fri, 31 Jul 2026 12:20:00 GMT</pubDate>
     </item>
     <item>
+      <title>Cesium 全球体积云移植：从 GIS 迈向图形的 90% 还原之路</title>
+      <link>https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/</link>
+      <description>本文记录将全球体积云移植到 Cesium 的过程，目前还原度约 90%。涵盖渲染管线、坐标转换、MRT、GBuffer 以及基于 Texture2DArray 的阴影资源管理等核心要点，并对比 Three.js 与 Cesium 在渲染架构上的差异，分享 inscatter 贴地、tonemap 冲突、色彩空间偏白等典型问题与思考。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
+      <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/">体积云</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/">渲染管线</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/">大气散射</category>
+      <pubDate>Fri, 31 Jul 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Cesium实例化渲染详解：同模型万级批量绘制方案</title>
       <link>https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%AE%9E%E4%BE%8B%E5%8C%96%E6%B8%B2%E6%9F%93%E8%AF%A6%E8%A7%A3%E5%90%8C%E6%A8%A1%E5%9E%8B%E4%B8%87%E7%BA%A7%E6%89%B9%E9%87%8F%E7%BB%98%E5%88%B6%E6%96%B9%E6%A1%88/</link>
       <description>在Cesium中添加成千上万棵树、一排排路灯、沿山脊排开的风机时，逐个Entity添加会让浏览器卡死。本文详解Cesium高版本中GPU实例化渲染的实现方案，涵盖局部坐标系绕开精度问题、矩阵纹理打包变换、instanceCount复制draw call、视锥裁剪与id纹理拾取等核心要点。</description>
@@ -51,18 +65,14 @@
       <pubDate>Fri, 31 Jul 2026 12:00:00 GMT</pubDate>
     </item>
     <item>
-      <title>Cesium 全球体积云移植：从 GIS 迈向图形的 90% 还原之路</title>
-      <link>https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/</link>
-      <description>本文记录将全球体积云移植到 Cesium 的过程，目前还原度约 90%。涵盖渲染管线、坐标转换、MRT、GBuffer 以及基于 Texture2DArray 的阴影资源管理等核心要点，并对比 Three.js 与 Cesium 在渲染架构上的差异，分享 inscatter 贴地、tonemap 冲突、色彩空间偏白等典型问题与思考。</description>
+      <title>7-31 手机壁纸</title>
+      <link>https://zhaoshaodada.github.io/2026/07/31/7-31-%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8/</link>
+      <description>7月31日精选手机壁纸分享，你今天特别讨厌，讨人喜欢又百看不厌。</description>
       <author>Moonligh</author>
-      <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
-      <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
-      <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/">体积云</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/">渲染管线</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/">大气散射</category>
-      <pubDate>Fri, 31 Jul 2026 12:00:00 GMT</pubDate>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%A3%81%E7%BA%B8/">壁纸</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%A3%81%E7%BA%B8/">壁纸</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8/">手机壁纸</category>
+      <pubDate>Thu, 30 Jul 2026 22:54:00 GMT</pubDate>
     </item>
     <item>
       <title>3D写实国漫女神四视图，一套提示词全搞定！（附提示词）</title>
@@ -145,8 +155,8 @@
       <author>Moonligh</author>
       <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
       <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
-      <category domain="https://zhaoshaodada.github.io/tags/GIS/">GIS</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
+      <category domain="https://zhaoshaodada.github.io/tags/GIS/">GIS</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4%E5%9C%B0%E5%9B%BE/">三维地图</category>
       <pubDate>Mon, 27 Jul 2026 02:30:00 GMT</pubDate>
     </item>
@@ -244,17 +254,6 @@
       <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</category>
       <pubDate>Thu, 23 Jul 2026 10:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>Vue.js国际化vue-i18n插件的使用</title>
-      <link>https://zhaoshaodada.github.io/2026/07/23/Vue%E5%9B%BD%E9%99%85%E5%8C%96vue-i18n%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
-      <description>本文介绍Vue.js国际化插件vue-i18n的使用方法，详细讲解在模板文本、组件方法以及jsf方法中如何调用多语言翻译函数。文章以实际代码示例展示多语言切换的实现思路，帮助开发者快速完成Vue项目的国际化改造与多语言支持。</description>
-      <author>Moonligh</author>
-      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
-      <category domain="https://zhaoshaodada.github.io/tags/Vue/">Vue</category>
-      <category domain="https://zhaoshaodada.github.io/tags/i18n/">i18n</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E5%9B%BD%E9%99%85%E5%8C%96/">国际化</category>
-      <pubDate>Thu, 23 Jul 2026 09:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
