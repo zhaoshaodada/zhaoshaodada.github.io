@@ -11,7 +11,23 @@
   <rights>All rights reserved 2026, Moonligh</rights>
   <subtitle>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</subtitle>
   <title>Moonligh</title>
-  <updated>2026-08-01T04:03:47.322Z</updated>
+  <updated>2026-08-01T07:25:35.574Z</updated>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
+    <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
+    <category term="GIS" scheme="https://zhaoshaodada.github.io/tags/GIS/"/>
+    <category term="天地图" scheme="https://zhaoshaodada.github.io/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/"/>
+    <category term="三维地图" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4%E5%9C%B0%E5%9B%BE/"/>
+    <id>https://zhaoshaodada.github.io/2026/08/01/Cesium%E5%8A%A0%E8%BD%BD%E5%A4%A9%E5%9C%B0%E5%9B%BE/</id>
+    <link href="https://zhaoshaodada.github.io/2026/08/01/Cesium%E5%8A%A0%E8%BD%BD%E5%A4%A9%E5%9C%B0%E5%9B%BE/"/>
+    <published>2026-08-01T08:00:00.000Z</published>
+    <summary>天地图是国家地理信息公共服务平台，提供影像、矢量、地形、注记等多种服务。本文系统讲解在 Cesium 中加载天地图的完整方案，涵盖 Token 申请、图层类型、底图与注记叠加、地形加载、工具类封装以及常见问题排查。</summary>
+    <title>Cesium 加载天地图：底图、注记与地形完整方案</title>
+    <updated>2026-08-01T07:25:35.574Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Moonligh</name>
@@ -25,7 +41,7 @@
     <published>2026-08-01T06:30:00.000Z</published>
     <summary>当列表数据量达到上万条时，直接渲染会导致页面卡顿。本文深入讲解虚拟列表的核心原理，并手写实现定高与不定高两种虚拟列表方案，帮助你掌握大数据量渲染优化的关键技巧。</summary>
     <title>前端大数据量渲染优化：虚拟列表原理与实现详解</title>
-    <updated>2026-08-01T04:03:47.322Z</updated>
+    <updated>2026-08-01T07:26:54.038Z</updated>
   </entry>
   <entry>
     <author>
@@ -41,7 +57,7 @@
     <published>2026-07-31T12:20:00.000Z</published>
     <summary>本文深入讲解 Web Worker 的原理与实战用法，涵盖基础通信、Transferable 对象零拷贝传输、大数据排序与图片处理实战场景，以及 Worker 池模式的实现，帮助前端开发者解锁浏览器多线程编程能力，解决主线程阻塞导致的页面卡顿问题。</summary>
     <title>Web Worker 前端多线程编程实战指南</title>
-    <updated>2026-07-31T04:14:22.941Z</updated>
+    <updated>2026-08-01T07:26:45.553Z</updated>
   </entry>
   <entry>
     <author>
@@ -49,17 +65,17 @@
     </author>
     <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
     <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
-    <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
-    <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
     <category term="体积云" scheme="https://zhaoshaodada.github.io/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/"/>
     <category term="渲染管线" scheme="https://zhaoshaodada.github.io/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/"/>
     <category term="大气散射" scheme="https://zhaoshaodada.github.io/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/"/>
+    <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
+    <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
     <id>https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/</id>
     <link href="https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/"/>
     <published>2026-07-31T12:00:00.000Z</published>
     <summary>本文记录将全球体积云移植到 Cesium 的过程，目前还原度约 90%。涵盖渲染管线、坐标转换、MRT、GBuffer 以及基于 Texture2DArray 的阴影资源管理等核心要点，并对比 Three.js 与 Cesium 在渲染架构上的差异，分享 inscatter 贴地、tonemap 冲突、色彩空间偏白等典型问题与思考。</summary>
     <title>Cesium 全球体积云移植：从 GIS 迈向图形的 90% 还原之路</title>
-    <updated>2026-07-31T04:01:13.075Z</updated>
+    <updated>2026-08-01T07:25:05.204Z</updated>
   </entry>
   <entry>
     <author>
@@ -76,7 +92,7 @@
     <published>2026-07-31T12:00:00.000Z</published>
     <summary>在Cesium中添加成千上万棵树、一排排路灯、沿山脊排开的风机时，逐个Entity添加会让浏览器卡死。本文详解Cesium高版本中GPU实例化渲染的实现方案，涵盖局部坐标系绕开精度问题、矩阵纹理打包变换、instanceCount复制draw call、视锥裁剪与id纹理拾取等核心要点。</summary>
     <title>Cesium实例化渲染详解：同模型万级批量绘制方案</title>
-    <updated>2026-07-31T04:09:17.992Z</updated>
+    <updated>2026-08-01T07:25:19.292Z</updated>
   </entry>
   <entry>
     <author>
@@ -85,12 +101,12 @@
     <category term="壁纸" scheme="https://zhaoshaodada.github.io/categories/%E5%A3%81%E7%BA%B8/"/>
     <category term="壁纸" scheme="https://zhaoshaodada.github.io/tags/%E5%A3%81%E7%BA%B8/"/>
     <category term="手机壁纸" scheme="https://zhaoshaodada.github.io/tags/%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8/"/>
-    <id>https://zhaoshaodada.github.io/2026/07/31/7-31-%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8/</id>
-    <link href="https://zhaoshaodada.github.io/2026/07/31/7-31-%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8/"/>
+    <id>https://zhaoshaodada.github.io/2026/07/31/%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8/</id>
+    <link href="https://zhaoshaodada.github.io/2026/07/31/%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8/"/>
     <published>2026-07-30T22:54:00.000Z</published>
     <summary>7月31日精选手机壁纸分享，你今天特别讨厌，讨人喜欢又百看不厌。</summary>
-    <title>7-31 手机壁纸</title>
-    <updated>2026-08-01T07:08:42.597Z</updated>
+    <title>手机壁纸</title>
+    <updated>2026-08-01T07:22:38.920Z</updated>
   </entry>
   <entry>
     <author>
@@ -107,7 +123,7 @@
     <published>2026-07-28T12:30:00.000Z</published>
     <summary>一套提示词实现3D写实国漫女神四视图（正面、左侧、右侧、背面），人物五官、发型、服装细节完全统一，附完整提示词。</summary>
     <title>3D写实国漫女神四视图，一套提示词全搞定！（附提示词）</title>
-    <updated>2026-07-31T04:21:01.532Z</updated>
+    <updated>2026-08-01T07:25:00.440Z</updated>
   </entry>
   <entry>
     <author>
@@ -124,7 +140,7 @@
     <published>2026-07-27T14:00:00.000Z</published>
     <summary>一个纯前端治愈系网页：深蓝深海背景，中文词语如窗帘般缓缓下滚，鼠标拨开时文字碎裂成粒子，背景里虎鲸在游动，点击发出海豚音。Three.js 画虎鲸，p5.js 画窗帘和粒子，Web Audio API 合成声音。</summary>
     <title>Vibe Coding — 当 DeepSeek 遇见 Three.js 的治愈深海</title>
-    <updated>2026-07-31T02:36:36.287Z</updated>
+    <updated>2026-08-01T07:27:15.037Z</updated>
   </entry>
   <entry>
     <author>
@@ -140,7 +156,7 @@
     <published>2026-07-27T10:00:00.000Z</published>
     <summary>Cesium默认天空盒适合太空视角，相机贴近地面时天空显得不贴合。本文介绍通过自定义DrawCommand做近地天空盒，并按相机高度自动切回默认天空的完整技术方案，涵盖SkyBoxOnGround实现、Cubemap方向映射、天空盒制作三步走等核心要点。</summary>
     <title>Cesium 近地天空盒：把天空拉回地面</title>
-    <updated>2026-07-28T11:25:25.162Z</updated>
+    <updated>2026-08-01T07:25:32.279Z</updated>
   </entry>
   <entry>
     <author>
@@ -148,15 +164,15 @@
     </author>
     <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
     <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
-    <category term="Canvas" scheme="https://zhaoshaodada.github.io/tags/Canvas/"/>
     <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
     <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
+    <category term="Canvas" scheme="https://zhaoshaodada.github.io/tags/Canvas/"/>
     <id>https://zhaoshaodada.github.io/2026/07/27/Cesium-Wall-Canvas%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%B4%B4%E5%9C%B0%E8%B4%B4%E5%A2%99%E5%8A%A8%E6%80%81%E6%A0%87%E6%B3%A8/</id>
     <link href="https://zhaoshaodada.github.io/2026/07/27/Cesium-Wall-Canvas%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%B4%B4%E5%9C%B0%E8%B4%B4%E5%A2%99%E5%8A%A8%E6%80%81%E6%A0%87%E6%B3%A8/"/>
     <published>2026-07-27T08:00:00.000Z</published>
     <summary>Cesium原生Label实体存在始终面向相机、像素级尺寸、样式能力有限等局限。本文介绍通过Wall实体+Canvas动态材质实现文字贴地/贴墙动态标注的完整技术方案，涵盖异步纹理生成、CallbackProperty逐帧刷新、相机自动定位等核心要点。</summary>
     <title>Cesium Wall + Canvas 实现文字贴地贴墙动态标注</title>
-    <updated>2026-07-28T11:30:29.380Z</updated>
+    <updated>2026-08-01T07:25:03.114Z</updated>
   </entry>
   <entry>
     <author>
@@ -172,7 +188,7 @@
     <published>2026-07-27T04:00:00.000Z</published>
     <summary>网上流传的一行脚本激活Windows和Office看似方便快捷，但背后隐藏着巨大的安全风险。本文详细介绍如何甄别真假激活脚本，识别域名仿冒陷阱和带毒可执行文件，保护你的电脑安全。</summary>
     <title>警惕！甄别真假难辨的Windows和Office激活脚本</title>
-    <updated>2026-07-27T03:30:06.686Z</updated>
+    <updated>2026-08-01T07:27:17.010Z</updated>
   </entry>
   <entry>
     <author>
@@ -188,7 +204,7 @@
     <published>2026-07-27T03:00:00.000Z</published>
     <summary>在Windows 7环境下使用Electron开发时，由于Node.js版本较低，`require('fs/promises')`会报错。本文提供了通过拦截Module._resolveFilename和重写require逻辑来兼容处理的完整解决方案。</summary>
     <title>Win7下Electron中fs引用报错的解决方案</title>
-    <updated>2026-07-27T03:14:27.340Z</updated>
+    <updated>2026-08-01T07:27:15.939Z</updated>
   </entry>
   <entry>
     <author>
@@ -196,15 +212,15 @@
     </author>
     <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
     <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
-    <category term="性能优化" scheme="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <category term="GIS" scheme="https://zhaoshaodada.github.io/tags/GIS/"/>
     <category term="三维地图" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4%E5%9C%B0%E5%9B%BE/"/>
+    <category term="性能优化" scheme="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <id>https://zhaoshaodada.github.io/2026/07/27/%E6%8F%90%E5%8D%87Cesium%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/</id>
     <link href="https://zhaoshaodada.github.io/2026/07/27/%E6%8F%90%E5%8D%87Cesium%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/"/>
     <published>2026-07-27T02:30:00.000Z</published>
     <summary>本文详细介绍如何通过调整Cesium的地形精度、瓦片缓存等参数来提升渲染性能和FPS，让三维地球场景运行更加流畅，适用于Web端GIS应用开发。</summary>
     <title>提升Cesium渲染性能的方法</title>
-    <updated>2026-07-27T02:39:45.399Z</updated>
+    <updated>2026-08-01T07:25:46.606Z</updated>
   </entry>
   <entry>
     <author>
@@ -219,7 +235,7 @@
     <published>2026-07-24T13:00:00.000Z</published>
     <summary>新拉取的前端项目经常会遇到Node版本不兼容和npm依赖安装失败的问题，本文总结了使用--force、--legacy-peer-deps强制安装、cnpm替代方案，以及使用国内镜像加速依赖拉取等实用技巧。</summary>
     <title>Node版本兼容与npm依赖安装指南</title>
-    <updated>2026-07-27T02:20:48.325Z</updated>
+    <updated>2026-08-01T07:26:33.395Z</updated>
   </entry>
   <entry>
     <author>
@@ -234,7 +250,7 @@
     <published>2026-07-24T12:00:00.000Z</published>
     <summary>记录2019-2020年间在珠海出差的美好时光，与同事一起游览珠海渔女、珠海大剧院，骑行情侣路，参加珠澳三千米徒步活动，那段简单快乐的工作生活至今难忘。</summary>
     <title>珠海时光</title>
-    <updated>2026-07-24T09:19:47.112Z</updated>
+    <updated>2026-08-01T07:25:33.552Z</updated>
   </entry>
   <entry>
     <author>
@@ -251,7 +267,7 @@
     <published>2026-07-23T12:00:00.000Z</published>
     <summary>本文记录前端开发过程中遇到的常见小问题及解决方法，按HTML、CSS、JS三个篇章汇总实用技巧。文章以实际场景为切入点，提供大量可直接复用的代码片段与处理思路，帮助开发者快速应对日常开发中的各类细节问题，提升开发效率。</summary>
     <title>前端小技巧集锦</title>
-    <updated>2026-07-23T12:03:26.723Z</updated>
+    <updated>2026-08-01T07:26:55.101Z</updated>
   </entry>
   <entry>
     <author>
@@ -269,7 +285,7 @@
     <published>2026-07-23T11:20:00.000Z</published>
     <summary>本文整理了一份前端开发中简洁并实用的工具类集合，涵盖日期格式化、数组去重、对象遍历、axios封装、Promise处理以及正则表达式判断等常用函数的封装实现，可在项目中直接引用，显著提升日常开发效率。</summary>
     <title>前端简洁并实用的工具类</title>
-    <updated>2026-07-23T12:03:04.156Z</updated>
+    <updated>2026-08-01T07:26:57.766Z</updated>
   </entry>
   <entry>
     <author>
@@ -285,7 +301,7 @@
     <published>2026-07-23T11:10:00.000Z</published>
     <summary>本文介绍如何使用Node.js与Express框架搭建本地后端服务，承接前端请求并分页返回假数据，支持JSONP跨域访问。该方案可用于编写无限下拉等依赖后端数据组件时的顺畅调试，也适合Mock数据模拟前后端联调，让真实数据接入时能快速对接上线。</summary>
     <title>使用Node Express创建后端返回假数据</title>
-    <updated>2026-07-23T12:03:09.005Z</updated>
+    <updated>2026-08-01T07:26:35.623Z</updated>
   </entry>
   <entry>
     <author>
@@ -301,7 +317,7 @@
     <published>2026-07-23T11:00:00.000Z</published>
     <summary>本文详细讲解如何使用FormData对象组装键值对，配合XMLHttpRequest实现二进制文件的异步上传。涵盖文件对象结构、jQuery与原生Ajax两种实现方式，以及multipart/form-data编码格式下表单数据传输的原理，帮助开发者灵活方便地完成文件上传功能。</summary>
     <title>FormData对象上传二进制文件</title>
-    <updated>2026-07-23T12:03:10.584Z</updated>
+    <updated>2026-08-01T07:26:35.898Z</updated>
   </entry>
   <entry>
     <author>
@@ -316,21 +332,6 @@
     <published>2026-07-23T11:00:00.000Z</published>
     <summary>本文汇总整理了大量实用的Vue组件资源，涵盖element、Vux等主流UI组件库、Vue插件及各类Vue资源。文章以表格形式罗列组件的Star数与简介，方便开发者快速检索选型，是Vue项目组件选型与资源整合的实用参考资料。</summary>
     <title>VUE组件汇总大全</title>
-    <updated>2026-07-23T12:03:28.285Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="资源" scheme="https://zhaoshaodada.github.io/categories/%E8%B5%84%E6%BA%90/"/>
-    <category term="资源" scheme="https://zhaoshaodada.github.io/tags/%E8%B5%84%E6%BA%90/"/>
-    <category term="前端开发" scheme="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    <category term="工具" scheme="https://zhaoshaodada.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    <id>https://zhaoshaodada.github.io/2026/07/23/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%BA%94%E7%9F%A5%E7%BD%91%E7%AB%99%E5%A4%A7%E5%85%A8/</id>
-    <link href="https://zhaoshaodada.github.io/2026/07/23/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%BA%94%E7%9F%A5%E7%BD%91%E7%AB%99%E5%A4%A7%E5%85%A8/"/>
-    <published>2026-07-23T10:00:00.000Z</published>
-    <summary>本文汇总前端开发过程中应知应会的各类实用网站，涵盖搜索技巧、开发工具、学习网站、资源站点等多个分类。文章旨在帮助程序员高效检索问题、定位资源，提升学习与开发效率，是前端开发者值得收藏的资源导航合集。</summary>
-    <title>前端开发应知网站大全</title>
-    <updated>2026-07-23T12:03:37.884Z</updated>
+    <updated>2026-08-01T07:26:11.650Z</updated>
   </entry>
 </feed>
