@@ -2882,4 +2882,73 @@
         <tag>资源</tag>
       </tags>
   </entry>
+  <entry>
+    <title>新 HTML 标签发布！搞定所有前端权限！</title>
+    <url>/2026/08/01/%E6%96%B0HTML%E6%A0%87%E7%AD%BE%E5%8F%91%E5%B8%83%E6%90%9E%E5%AE%9A%E6%89%80%E6%9C%89%E5%89%8D%E7%AB%AF%E6%9D%83%E9%99%90/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>以往网页想要调用摄像头、麦克风、定位，全套流程都靠 JavaScript 硬编码实现。我们要手写一堆异步逻辑、捕获各种异常、持续监听权限状态，样板代码堆一大堆。</p>
+<p><img src="/img/permission-tag-1.png" alt="前端权限流程示意"></p>
+<p>更头疼的是用户体验问题。很多网站一打开页面，冷不丁弹出授权弹窗，用户毫无防备，下意识直接点拒绝。一旦权限被拦截，麻烦事就来了：浏览器会永久屏蔽再次唤起弹窗，想要重新开启权限，只能引导用户钻进浏览器层层嵌套的设置面板，普通用户根本找不到入口，最后直接放弃使用功能。</p>
+<p>现在 WICG 带来了实验性 HTML 新标签 <code>&lt;permission&gt;</code>，Chrome 144 及以上版本已经支持。只用声明式 HTML 标签，就能搞定设备权限申请，既能精简代码，也能大幅优化授权交互。</p>
+<h2 id="这个标签到底强在哪"><a href="#这个标签到底强在哪" class="headerlink" title="这个标签到底强在哪"></a>这个标签到底强在哪</h2><ul>
+<li><strong>声明式写法</strong>：一行 HTML 替代数十行 JS，不用手动调用浏览器权限 API</li>
+<li><strong>原生控件自动渲染</strong>：浏览器自动生成授权按钮，文字跟随权限状态动态切换（未授权 &#x2F; 已允许 &#x2F; 已拒绝）</li>
+<li><strong>交互更人性化</strong>：只有用户主动点击按钮，才弹出授权窗口；就算之前拒绝权限，再次点击依旧能够唤起弹窗，不用手动修改浏览器设置</li>
+<li><strong>完善事件体系</strong>：授权成功、拒绝、关闭弹窗等行为，都提供事件回调，方便业务逻辑拓展</li>
+</ul>
+<h2 id="上手实操，直接复制可用"><a href="#上手实操，直接复制可用" class="headerlink" title="上手实操，直接复制可用"></a>上手实操，直接复制可用</h2><h3 id="单个权限申请"><a href="#单个权限申请" class="headerlink" title="单个权限申请"></a>单个权限申请</h3><p>极简写法，想要什么权限直接填入 <code>type</code> 属性：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">permission</span> <span class="attr">type</span>=<span class="string">&quot;camera&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">permission</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="一次性申请多项权限"><a href="#一次性申请多项权限" class="headerlink" title="一次性申请多项权限"></a>一次性申请多项权限</h3><p>摄像头 + 麦克风同时授权，空格分隔权限类型即可：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">permission</span> <span class="attr">type</span>=<span class="string">&quot;camera microphone&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">permission</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="搭配-JS-监听权限状态"><a href="#搭配-JS-监听权限状态" class="headerlink" title="搭配 JS 监听权限状态"></a>搭配 JS 监听权限状态</h3><p>通过事件捕获用户操作，实时更新页面状态：</p>
+<p><img src="/img/permission-tag-2.png" alt="代码示例：permission 标签搭配 JS 监听权限状态"></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> permissionEl = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;permission&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听授权状态变化</span></span><br><span class="line">permissionEl.<span class="title function_">addEventListener</span>(<span class="string">&#x27;resolve&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;权限状态：&#x27;</span>, e.<span class="property">target</span>.<span class="property">state</span>); <span class="comment">// granted / denied / prompt</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用户做出授权决定</span></span><br><span class="line">permissionEl.<span class="title function_">addEventListener</span>(<span class="string">&#x27;dismiss&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;用户关闭了授权弹窗&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="核心属性一览"><a href="#核心属性一览" class="headerlink" title="核心属性一览"></a>核心属性一览</h2><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>是否必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>type</code></td>
+<td>必填</td>
+<td>权限类型，支持 <code>camera</code>（摄像头）、<code>microphone</code>（麦克风）、<code>geolocation</code>（定位）；多个权限使用空格隔开</td>
+</tr>
+<tr>
+<td><code>preciseLocation</code></td>
+<td>可选</td>
+<td>搭配定位权限使用，开启高精度位置获取</td>
+</tr>
+<tr>
+<td><code>isValid</code></td>
+<td>只读</td>
+<td>用来判断当前元素是否具备触发授权的条件</td>
+</tr>
+</tbody></table>
+<h2 id="生产环境兼容方案"><a href="#生产环境兼容方案" class="headerlink" title="生产环境兼容方案"></a>生产环境兼容方案</h2><p>重点提醒：目前还属于实验草案，仅 Chrome 144+ 浏览器支持，<strong>千万不要直接上线裸奔</strong>。推荐渐进增强方案：支持新标签就原生渲染，不支持的浏览器显示传统按钮兜底。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 特性检测：判断是否支持 &lt;permission&gt; 标签</span></span><br><span class="line"><span class="keyword">if</span> (<span class="title class_">HTMLPermissionElement</span>) &#123;</span><br><span class="line">  <span class="comment">// 原生渲染 &lt;permission&gt; 标签</span></span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">insertAdjacentHTML</span>(</span><br><span class="line">    <span class="string">&#x27;beforeend&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;&lt;permission type=&quot;camera&quot;&gt;&lt;/permission&gt;&#x27;</span></span><br><span class="line">  );</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 不支持的浏览器，降级为传统按钮 + navigator.permissions API</span></span><br><span class="line">  <span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;button&#x27;</span>);</span><br><span class="line">  btn.<span class="property">textContent</span> = <span class="string">&#x27;申请摄像头权限&#x27;</span>;</span><br><span class="line">  btn.<span class="property">onclick</span> = <span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> stream = <span class="keyword">await</span> navigator.<span class="property">mediaDevices</span>.<span class="title function_">getUserMedia</span>(&#123; <span class="attr">video</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">    <span class="comment">// 处理流...</span></span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(btn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="简单总结"><a href="#简单总结" class="headerlink" title="简单总结"></a>简单总结</h2><p>长久以来，网页权限请求被 JS 强行驱动，不仅代码臃肿，突兀的弹窗还极易引发用户反感，权限拒绝后的修复路径更是一大痛点。</p>
+<p><code>&lt;permission&gt;</code> 标签把权限请求交给 HTML 声明式实现，把授权主动权交到用户手上，点击才弹窗、拒绝后可重试，同时大幅减少前端样板代码。</p>
+<p>后续浏览器持续跟进完善标准之后，网页定位、视频通话、语音采集这类场景的开发体验，会迎来不小的升级。</p>
+<blockquote>
+<p>官方文档：<a href="https://developer.chrome.com/blog/permission-element-origin-trial?hl=zh-cn">https://developer.chrome.com/blog/permission-element-origin-trial?hl=zh-cn</a></p>
+</blockquote>
+<hr>
+<p><em>本文内容整理自微信公众号「前端之神」发布的《新 HTML 标签发布！搞定所有前端权限！》，版权归原作者所有。</em></p>
+]]></content>
+      <categories>
+        <category>技术分享</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>HTML</tag>
+        <tag>权限</tag>
+        <tag>permission标签</tag>
+      </tags>
+  </entry>
 </search>

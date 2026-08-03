@@ -1,3 +1,4 @@
+https://zhaoshaodada.github.io/2026/08/01/%E6%96%B0HTML%E6%A0%87%E7%AD%BE%E5%8F%91%E5%B8%83%E6%90%9E%E5%AE%9A%E6%89%80%E6%9C%89%E5%89%8D%E7%AB%AF%E6%9D%83%E9%99%90/
 https://zhaoshaodada.github.io/2025/11/21/%E8%B5%84%E6%BA%90%E7%BD%91%E7%AB%99/
 https://zhaoshaodada.github.io/2026/07/27/%E8%AD%A6%E6%83%95%EF%BC%81%E7%94%84%E5%88%AB%E7%9C%9F%E5%81%87%E9%9A%BE%E8%BE%A8%E7%9A%84Windows%E5%92%8COffice%E6%BF%80%E6%B4%BB%E8%84%9A%E6%9C%AC/
 https://zhaoshaodada.github.io/2026/07/27/Win7%E4%B8%8BElectron%E4%B8%ADfs%E5%BC%95%E7%94%A8%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/
@@ -172,6 +173,8 @@ https://zhaoshaodada.github.io/tags/%E7%97%85%E6%AF%92/
 https://zhaoshaodada.github.io/tags/Office/
 https://zhaoshaodada.github.io/tags/Grid/
 https://zhaoshaodada.github.io/tags/%E5%B8%83%E5%B1%80/
+https://zhaoshaodada.github.io/tags/%E6%9D%83%E9%99%90/
+https://zhaoshaodada.github.io/tags/permission%E6%A0%87%E7%AD%BE/
 https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/
 https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/
 https://zhaoshaodada.github.io/categories/%E8%B5%84%E6%BA%90/

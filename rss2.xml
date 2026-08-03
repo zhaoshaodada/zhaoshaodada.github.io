@@ -38,6 +38,20 @@
       <pubDate>Sat, 01 Aug 2026 06:30:00 GMT</pubDate>
     </item>
     <item>
+      <title>新 HTML 标签发布！搞定所有前端权限！</title>
+      <link>https://zhaoshaodada.github.io/2026/08/01/%E6%96%B0HTML%E6%A0%87%E7%AD%BE%E5%8F%91%E5%B8%83%E6%90%9E%E5%AE%9A%E6%89%80%E6%9C%89%E5%89%8D%E7%AB%AF%E6%9D%83%E9%99%90/</link>
+      <description>
+        <![CDATA[WICG 带来实验性 HTML 新标签 <permission>，Chrome 144+ 已支持。只用声明式 HTML 标签就能搞定设备权限申请，精简代码的同时大幅优化授权交互。本文介绍其核心优势、上手实操、核心属性与生产环境兼容方案。]]>
+      </description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/HTML/">HTML</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%9D%83%E9%99%90/">权限</category>
+      <category domain="https://zhaoshaodada.github.io/tags/permission%E6%A0%87%E7%AD%BE/">permission标签</category>
+      <pubDate>Sat, 01 Aug 2026 03:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Web Worker 前端多线程编程实战指南</title>
       <link>https://zhaoshaodada.github.io/2026/07/31/Web-Worker%E5%89%8D%E7%AB%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/</link>
       <description>本文深入讲解 Web Worker 的原理与实战用法，涵盖基础通信、Transferable 对象零拷贝传输、大数据排序与图片处理实战场景，以及 Worker 池模式的实现，帮助前端开发者解锁浏览器多线程编程能力，解决主线程阻塞导致的页面卡顿问题。</description>
@@ -243,17 +257,6 @@
       <category domain="https://zhaoshaodada.github.io/tags/jQuery/">jQuery</category>
       <category domain="https://zhaoshaodada.github.io/tags/FormData/">FormData</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">文件上传</category>
-      <pubDate>Thu, 23 Jul 2026 11:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>VUE组件汇总大全</title>
-      <link>https://zhaoshaodada.github.io/2026/07/23/VUE%E7%BB%84%E4%BB%B6%E6%B1%87%E6%80%BB%E5%A4%A7%E5%85%A8/</link>
-      <description>本文汇总整理了大量实用的Vue组件资源，涵盖element、Vux等主流UI组件库、Vue插件及各类Vue资源。文章以表格形式罗列组件的Star数与简介，方便开发者快速检索选型，是Vue项目组件选型与资源整合的实用参考资料。</description>
-      <author>Moonligh</author>
-      <category domain="https://zhaoshaodada.github.io/categories/%E8%B5%84%E6%BA%90/">资源</category>
-      <category domain="https://zhaoshaodada.github.io/tags/Vue/">Vue</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E7%BB%84%E4%BB%B6/">组件</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E8%B5%84%E6%BA%90/">资源</category>
       <pubDate>Thu, 23 Jul 2026 11:00:00 GMT</pubDate>
     </item>
   </channel>
