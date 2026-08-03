@@ -11,7 +11,22 @@
   <rights>All rights reserved 2026, Moonligh</rights>
   <subtitle>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</subtitle>
   <title>Moonligh</title>
-  <updated>2026-08-01T07:25:35.574Z</updated>
+  <updated>2026-08-03T04:03:22.231Z</updated>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="技术" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="JavaScript" scheme="https://zhaoshaodada.github.io/tags/JavaScript/"/>
+    <category term="事件循环" scheme="https://zhaoshaodada.github.io/tags/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/"/>
+    <category term="异步编程" scheme="https://zhaoshaodada.github.io/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
+    <id>https://zhaoshaodada.github.io/2026/08/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6/</id>
+    <link href="https://zhaoshaodada.github.io/2026/08/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6/"/>
+    <published>2026-08-03T12:15:00.000Z</published>
+    <summary>本文深入剖析 JavaScript 事件循环机制的核心原理，涵盖调用栈、任务队列、宏任务与微任务的执行顺序，通过经典代码示例帮助开发者彻底理解浏览器异步编程的本质。</summary>
+    <title>深入理解JavaScript事件循环机制</title>
+    <updated>2026-08-03T04:03:22.231Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Moonligh</name>
@@ -83,11 +98,11 @@
     </author>
     <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
     <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
+    <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
+    <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
     <category term="体积云" scheme="https://zhaoshaodada.github.io/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/"/>
     <category term="渲染管线" scheme="https://zhaoshaodada.github.io/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/"/>
     <category term="大气散射" scheme="https://zhaoshaodada.github.io/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/"/>
-    <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
-    <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
     <id>https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/</id>
     <link href="https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/"/>
     <published>2026-07-31T12:00:00.000Z</published>
@@ -182,9 +197,9 @@
     </author>
     <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
     <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
+    <category term="Canvas" scheme="https://zhaoshaodada.github.io/tags/Canvas/"/>
     <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
     <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
-    <category term="Canvas" scheme="https://zhaoshaodada.github.io/tags/Canvas/"/>
     <id>https://zhaoshaodada.github.io/2026/07/27/Cesium-Wall-Canvas%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%B4%B4%E5%9C%B0%E8%B4%B4%E5%A2%99%E5%8A%A8%E6%80%81%E6%A0%87%E6%B3%A8/</id>
     <link href="https://zhaoshaodada.github.io/2026/07/27/Cesium-Wall-Canvas%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%B4%B4%E5%9C%B0%E8%B4%B4%E5%A2%99%E5%8A%A8%E6%80%81%E6%A0%87%E6%B3%A8/"/>
     <published>2026-07-27T08:00:00.000Z</published>
@@ -320,21 +335,5 @@
     <summary>本文介绍如何使用Node.js与Express框架搭建本地后端服务，承接前端请求并分页返回假数据，支持JSONP跨域访问。该方案可用于编写无限下拉等依赖后端数据组件时的顺畅调试，也适合Mock数据模拟前后端联调，让真实数据接入时能快速对接上线。</summary>
     <title>使用Node Express创建后端返回假数据</title>
     <updated>2026-08-01T07:26:35.623Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
-    <category term="Ajax" scheme="https://zhaoshaodada.github.io/tags/Ajax/"/>
-    <category term="jQuery" scheme="https://zhaoshaodada.github.io/tags/jQuery/"/>
-    <category term="FormData" scheme="https://zhaoshaodada.github.io/tags/FormData/"/>
-    <category term="文件上传" scheme="https://zhaoshaodada.github.io/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
-    <id>https://zhaoshaodada.github.io/2026/07/23/FormData%E5%AF%B9%E8%B1%A1%E4%B8%8A%E4%BC%A0%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6/</id>
-    <link href="https://zhaoshaodada.github.io/2026/07/23/FormData%E5%AF%B9%E8%B1%A1%E4%B8%8A%E4%BC%A0%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6/"/>
-    <published>2026-07-23T11:00:00.000Z</published>
-    <summary>本文详细讲解如何使用FormData对象组装键值对，配合XMLHttpRequest实现二进制文件的异步上传。涵盖文件对象结构、jQuery与原生Ajax两种实现方式，以及multipart/form-data编码格式下表单数据传输的原理，帮助开发者灵活方便地完成文件上传功能。</summary>
-    <title>FormData对象上传二进制文件</title>
-    <updated>2026-08-01T07:26:35.898Z</updated>
   </entry>
 </feed>

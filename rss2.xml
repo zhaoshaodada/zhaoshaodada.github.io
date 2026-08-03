@@ -6,7 +6,7 @@
     <description>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</description>
     <language>zh-CN</language>
     <copyright>All rights reserved 2026, Moonligh</copyright>
-    <lastBuildDate>Sat, 01 Aug 2026 07:25:35 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 03 Aug 2026 04:03:22 GMT</lastBuildDate>
     <generator>Hexo</generator>
     <image>
       <url>https://zhaoshaodada.github.io/img/favicon.jpg</url>
@@ -14,6 +14,17 @@
       <link>https://zhaoshaodada.github.io/</link>
     </image>
     <atom:link href="https://zhaoshaodada.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>深入理解JavaScript事件循环机制</title>
+      <link>https://zhaoshaodada.github.io/2026/08/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6/</link>
+      <description>本文深入剖析 JavaScript 事件循环机制的核心原理，涵盖调用栈、任务队列、宏任务与微任务的执行顺序，通过经典代码示例帮助开发者彻底理解浏览器异步编程的本质。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+      <category domain="https://zhaoshaodada.github.io/tags/JavaScript/">JavaScript</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">事件循环</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/">异步编程</category>
+      <pubDate>Mon, 03 Aug 2026 12:15:00 GMT</pubDate>
+    </item>
     <item>
       <title>Cesium 加载天地图：底图、注记与地形完整方案</title>
       <link>https://zhaoshaodada.github.io/2026/08/01/Cesium%E5%8A%A0%E8%BD%BD%E5%A4%A9%E5%9C%B0%E5%9B%BE/</link>
@@ -70,11 +81,11 @@
       <author>Moonligh</author>
       <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
       <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
+      <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/">体积云</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/">渲染管线</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/">大气散射</category>
-      <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</category>
       <pubDate>Fri, 31 Jul 2026 12:00:00 GMT</pubDate>
     </item>
     <item>
@@ -145,9 +156,9 @@
       <author>Moonligh</author>
       <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
       <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Canvas/">Canvas</category>
       <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</category>
-      <category domain="https://zhaoshaodada.github.io/tags/Canvas/">Canvas</category>
       <pubDate>Mon, 27 Jul 2026 08:00:00 GMT</pubDate>
     </item>
     <item>
@@ -246,18 +257,6 @@
       <category domain="https://zhaoshaodada.github.io/tags/Mock%E6%95%B0%E6%8D%AE/">Mock数据</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%81%94%E8%B0%83/">前后端联调</category>
       <pubDate>Thu, 23 Jul 2026 11:10:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>FormData对象上传二进制文件</title>
-      <link>https://zhaoshaodada.github.io/2026/07/23/FormData%E5%AF%B9%E8%B1%A1%E4%B8%8A%E4%BC%A0%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6/</link>
-      <description>本文详细讲解如何使用FormData对象组装键值对，配合XMLHttpRequest实现二进制文件的异步上传。涵盖文件对象结构、jQuery与原生Ajax两种实现方式，以及multipart/form-data编码格式下表单数据传输的原理，帮助开发者灵活方便地完成文件上传功能。</description>
-      <author>Moonligh</author>
-      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
-      <category domain="https://zhaoshaodada.github.io/tags/Ajax/">Ajax</category>
-      <category domain="https://zhaoshaodada.github.io/tags/jQuery/">jQuery</category>
-      <category domain="https://zhaoshaodada.github.io/tags/FormData/">FormData</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">文件上传</category>
-      <pubDate>Thu, 23 Jul 2026 11:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
