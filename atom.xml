@@ -11,14 +11,30 @@
   <rights>All rights reserved 2026, Moonligh</rights>
   <subtitle>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</subtitle>
   <title>Moonligh</title>
-  <updated>2026-08-04T04:04:25.565Z</updated>
+  <updated>2026-08-05T04:05:35.404Z</updated>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="技术" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="JavaScript" scheme="https://zhaoshaodada.github.io/tags/JavaScript/"/>
+    <category term="WebSocket" scheme="https://zhaoshaodada.github.io/tags/WebSocket/"/>
+    <category term="实时通信" scheme="https://zhaoshaodada.github.io/tags/%E5%AE%9E%E6%97%B6%E9%80%9A%E4%BF%A1/"/>
+    <category term="网络协议" scheme="https://zhaoshaodada.github.io/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
+    <id>https://zhaoshaodada.github.io/2026/08/05/WebSocket%E5%AE%9E%E6%97%B6%E9%80%9A%E4%BF%A1%E5%85%A8%E8%A7%A3%E6%9E%90%E4%BB%8E%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86%E5%88%B0%E5%BF%83%E8%B7%B3%E9%87%8D%E8%BF%9E%E5%AE%9E%E6%88%98/</id>
+    <link href="https://zhaoshaodada.github.io/2026/08/05/WebSocket%E5%AE%9E%E6%97%B6%E9%80%9A%E4%BF%A1%E5%85%A8%E8%A7%A3%E6%9E%90%E4%BB%8E%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86%E5%88%B0%E5%BF%83%E8%B7%B3%E9%87%8D%E8%BF%9E%E5%AE%9E%E6%88%98/"/>
+    <published>2026-08-05T02:30:00.000Z</published>
+    <summary>本文全面解析 WebSocket 实时通信技术，涵盖协议原理（握手升级、数据帧格式）、前端 API 使用、生产级客户端封装（心跳检测与断线重连）、消息协议设计最佳实践，以及与 SSE、轮询方案的对比选型，帮助前端开发者彻底掌握 WebSocket 实战能力。</summary>
+    <title>WebSocket实时通信全解析：从协议原理到心跳重连实战</title>
+    <updated>2026-08-05T04:05:35.404Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Moonligh</name>
     </author>
     <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
-    <category term="JavaScript" scheme="https://zhaoshaodada.github.io/tags/JavaScript/"/>
     <category term="性能优化" scheme="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <category term="JavaScript" scheme="https://zhaoshaodada.github.io/tags/JavaScript/"/>
     <category term="Intersection Observer" scheme="https://zhaoshaodada.github.io/tags/Intersection-Observer/"/>
     <id>https://zhaoshaodada.github.io/2026/08/04/IntersectionObserver-API%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E6%87%92%E5%8A%A0%E8%BD%BD%E6%97%A0%E9%99%90%E6%BB%9A%E5%8A%A8%E4%B8%8E%E6%BB%9A%E5%8A%A8%E5%8A%A8%E7%94%BB/</id>
     <link href="https://zhaoshaodada.github.io/2026/08/04/IntersectionObserver-API%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E6%87%92%E5%8A%A0%E8%BD%BD%E6%97%A0%E9%99%90%E6%BB%9A%E5%8A%A8%E4%B8%8E%E6%BB%9A%E5%8A%A8%E5%8A%A8%E7%94%BB/"/>
@@ -63,8 +79,8 @@
       <name>Moonligh</name>
     </author>
     <category term="实战" scheme="https://zhaoshaodada.github.io/categories/%E5%AE%9E%E6%88%98/"/>
-    <category term="JavaScript" scheme="https://zhaoshaodada.github.io/tags/JavaScript/"/>
     <category term="性能优化" scheme="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <category term="JavaScript" scheme="https://zhaoshaodada.github.io/tags/JavaScript/"/>
     <category term="虚拟列表" scheme="https://zhaoshaodada.github.io/tags/%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8/"/>
     <id>https://zhaoshaodada.github.io/2026/08/01/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%87%8F%E6%B8%B2%E6%9F%93%E4%BC%98%E5%8C%96%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0%E8%AF%A6%E8%A7%A3/</id>
     <link href="https://zhaoshaodada.github.io/2026/08/01/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%87%8F%E6%B8%B2%E6%9F%93%E4%BC%98%E5%8C%96%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0%E8%AF%A6%E8%A7%A3/"/>
@@ -96,8 +112,8 @@
       <name>Moonligh</name>
     </author>
     <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
-    <category term="JavaScript" scheme="https://zhaoshaodada.github.io/tags/JavaScript/"/>
     <category term="性能优化" scheme="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <category term="JavaScript" scheme="https://zhaoshaodada.github.io/tags/JavaScript/"/>
     <category term="Web Worker" scheme="https://zhaoshaodada.github.io/tags/Web-Worker/"/>
     <category term="多线程" scheme="https://zhaoshaodada.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     <id>https://zhaoshaodada.github.io/2026/07/31/Web-Worker%E5%89%8D%E7%AB%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/</id>
@@ -196,9 +212,9 @@
     </author>
     <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
     <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
+    <category term="天空盒" scheme="https://zhaoshaodada.github.io/tags/%E5%A4%A9%E7%A9%BA%E7%9B%92/"/>
     <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
     <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
-    <category term="天空盒" scheme="https://zhaoshaodada.github.io/tags/%E5%A4%A9%E7%A9%BA%E7%9B%92/"/>
     <id>https://zhaoshaodada.github.io/2026/07/27/Cesium%E8%BF%91%E5%9C%B0%E5%A4%A9%E7%A9%BA%E7%9B%92%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88/</id>
     <link href="https://zhaoshaodada.github.io/2026/07/27/Cesium%E8%BF%91%E5%9C%B0%E5%A4%A9%E7%A9%BA%E7%9B%92%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88/"/>
     <published>2026-07-27T10:00:00.000Z</published>
@@ -212,9 +228,9 @@
     </author>
     <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
     <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
-    <category term="Canvas" scheme="https://zhaoshaodada.github.io/tags/Canvas/"/>
     <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
     <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
+    <category term="Canvas" scheme="https://zhaoshaodada.github.io/tags/Canvas/"/>
     <id>https://zhaoshaodada.github.io/2026/07/27/Cesium-Wall-Canvas%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%B4%B4%E5%9C%B0%E8%B4%B4%E5%A2%99%E5%8A%A8%E6%80%81%E6%A0%87%E6%B3%A8/</id>
     <link href="https://zhaoshaodada.github.io/2026/07/27/Cesium-Wall-Canvas%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%B4%B4%E5%9C%B0%E8%B4%B4%E5%A2%99%E5%8A%A8%E6%80%81%E6%A0%87%E6%B3%A8/"/>
     <published>2026-07-27T08:00:00.000Z</published>
@@ -261,8 +277,8 @@
     <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
     <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
     <category term="GIS" scheme="https://zhaoshaodada.github.io/tags/GIS/"/>
-    <category term="三维地图" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4%E5%9C%B0%E5%9B%BE/"/>
     <category term="性能优化" scheme="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <category term="三维地图" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4%E5%9C%B0%E5%9B%BE/"/>
     <id>https://zhaoshaodada.github.io/2026/07/27/%E6%8F%90%E5%8D%87Cesium%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/</id>
     <link href="https://zhaoshaodada.github.io/2026/07/27/%E6%8F%90%E5%8D%87Cesium%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/"/>
     <published>2026-07-27T02:30:00.000Z</published>
@@ -316,23 +332,5 @@
     <summary>本文记录前端开发过程中遇到的常见小问题及解决方法，按HTML、CSS、JS三个篇章汇总实用技巧。文章以实际场景为切入点，提供大量可直接复用的代码片段与处理思路，帮助开发者快速应对日常开发中的各类细节问题，提升开发效率。</summary>
     <title>前端小技巧集锦</title>
     <updated>2026-08-01T07:26:55.101Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
-    <category term="JavaScript" scheme="https://zhaoshaodada.github.io/tags/JavaScript/"/>
-    <category term="工具类" scheme="https://zhaoshaodada.github.io/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
-    <category term="日期处理" scheme="https://zhaoshaodada.github.io/tags/%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86/"/>
-    <category term="数组" scheme="https://zhaoshaodada.github.io/tags/%E6%95%B0%E7%BB%84/"/>
-    <category term="axios" scheme="https://zhaoshaodada.github.io/tags/axios/"/>
-    <category term="Promise" scheme="https://zhaoshaodada.github.io/tags/Promise/"/>
-    <id>https://zhaoshaodada.github.io/2026/07/23/%E5%89%8D%E7%AB%AF%E7%AE%80%E6%B4%81%E5%B9%B6%E5%AE%9E%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/</id>
-    <link href="https://zhaoshaodada.github.io/2026/07/23/%E5%89%8D%E7%AB%AF%E7%AE%80%E6%B4%81%E5%B9%B6%E5%AE%9E%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
-    <published>2026-07-23T11:20:00.000Z</published>
-    <summary>本文整理了一份前端开发中简洁并实用的工具类集合，涵盖日期格式化、数组去重、对象遍历、axios封装、Promise处理以及正则表达式判断等常用函数的封装实现，可在项目中直接引用，显著提升日常开发效率。</summary>
-    <title>前端简洁并实用的工具类</title>
-    <updated>2026-08-01T07:26:57.766Z</updated>
   </entry>
 </feed>
