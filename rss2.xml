@@ -6,7 +6,7 @@
     <description>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</description>
     <language>zh-CN</language>
     <copyright>All rights reserved 2026, Moonligh</copyright>
-    <lastBuildDate>Thu, 06 Aug 2026 04:05:57 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 07 Aug 2026 04:04:09 GMT</lastBuildDate>
     <generator>Hexo</generator>
     <image>
       <url>https://zhaoshaodada.github.io/img/favicon.jpg</url>
@@ -14,6 +14,17 @@
       <link>https://zhaoshaodada.github.io/</link>
     </image>
     <atom:link href="https://zhaoshaodada.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Vite 构建工具核心原理与实战配置指南</title>
+      <link>https://zhaoshaodada.github.io/2026/08/07/Vite%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E6%88%98%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</link>
+      <description>本文深入解析 Vite 的核心原理与实战配置，涵盖基于原生 ESM 的开发服务器、esbuild 依赖预构建、HMR 热更新机制、生产环境 Rollup 打包，以及路径别名、开发代理、代码分割与自定义插件开发，帮助前端开发者掌握现代构建工具的工程化实践。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Vite/">Vite</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">构建工具</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化</category>
+      <pubDate>Fri, 07 Aug 2026 07:30:00 GMT</pubDate>
+    </item>
     <item>
       <title>前端路由原理详解：Hash与History模式从原理到手写实现</title>
       <link>https://zhaoshaodada.github.io/2026/08/06/%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3Hash%E4%B8%8EHistory%E6%A8%A1%E5%BC%8F%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0/</link>
@@ -44,8 +55,8 @@
       <description>本文深入讲解 Intersection Observer API 的核心原理与实战用法，涵盖图片懒加载、无限滚动加载、滚动触发动画三大场景，并解析 rootMargin、threshold、多元素监听等进阶技巧，帮助前端开发者掌握元素可见性监听的最佳实践。</description>
       <author>Moonligh</author>
       <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
       <category domain="https://zhaoshaodada.github.io/tags/JavaScript/">JavaScript</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
       <category domain="https://zhaoshaodada.github.io/tags/Intersection-Observer/">Intersection Observer</category>
       <pubDate>Tue, 04 Aug 2026 11:15:00 GMT</pubDate>
     </item>
@@ -67,8 +78,8 @@
       <author>Moonligh</author>
       <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
       <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/">天地图</category>
       <category domain="https://zhaoshaodada.github.io/tags/GIS/">GIS</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/">天地图</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4%E5%9C%B0%E5%9B%BE/">三维地图</category>
       <pubDate>Sat, 01 Aug 2026 08:00:00 GMT</pubDate>
     </item>
@@ -78,8 +89,8 @@
       <description>当列表数据量达到上万条时，直接渲染会导致页面卡顿。本文深入讲解虚拟列表的核心原理，并手写实现定高与不定高两种虚拟列表方案，帮助你掌握大数据量渲染优化的关键技巧。</description>
       <author>Moonligh</author>
       <category domain="https://zhaoshaodada.github.io/categories/%E5%AE%9E%E6%88%98/">实战</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
       <category domain="https://zhaoshaodada.github.io/tags/JavaScript/">JavaScript</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8/">虚拟列表</category>
       <pubDate>Sat, 01 Aug 2026 06:30:00 GMT</pubDate>
     </item>
@@ -103,8 +114,8 @@
       <description>本文深入讲解 Web Worker 的原理与实战用法，涵盖基础通信、Transferable 对象零拷贝传输、大数据排序与图片处理实战场景，以及 Worker 池模式的实现，帮助前端开发者解锁浏览器多线程编程能力，解决主线程阻塞导致的页面卡顿问题。</description>
       <author>Moonligh</author>
       <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
       <category domain="https://zhaoshaodada.github.io/tags/JavaScript/">JavaScript</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
       <category domain="https://zhaoshaodada.github.io/tags/Web-Worker/">Web Worker</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</category>
       <pubDate>Fri, 31 Jul 2026 12:20:00 GMT</pubDate>
@@ -242,17 +253,6 @@
       <category domain="https://zhaoshaodada.github.io/tags/npm/">npm</category>
       <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
       <pubDate>Fri, 24 Jul 2026 13:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>珠海时光</title>
-      <link>https://zhaoshaodada.github.io/2026/07/24/%E7%8F%A0%E6%B5%B7%E6%97%B6%E5%85%89/</link>
-      <description>记录2019-2020年间在珠海出差的美好时光，与同事一起游览珠海渔女、珠海大剧院，骑行情侣路，参加珠澳三千米徒步活动，那段简单快乐的工作生活至今难忘。</description>
-      <author>Moonligh</author>
-      <category domain="https://zhaoshaodada.github.io/categories/%E9%9A%8F%E7%AC%94/">随笔</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E7%94%9F%E6%B4%BB/">生活</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E9%9A%8F%E7%AC%94/">随笔</category>
-      <category domain="https://zhaoshaodada.github.io/tags/%E7%8F%A0%E6%B5%B7/">珠海</category>
-      <pubDate>Fri, 24 Jul 2026 12:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
