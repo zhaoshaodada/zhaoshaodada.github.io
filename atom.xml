@@ -11,7 +11,68 @@
   <rights>All rights reserved 2026, Moonligh</rights>
   <subtitle>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</subtitle>
   <title>Moonligh</title>
-  <updated>2026-08-12T08:44:50.236Z</updated>
+  <updated>2026-08-20T07:52:55.492Z</updated>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
+    <category term="Vue3" scheme="https://zhaoshaodada.github.io/tags/Vue3/"/>
+    <category term="TypeScript" scheme="https://zhaoshaodada.github.io/tags/TypeScript/"/>
+    <category term="类型进阶" scheme="https://zhaoshaodada.github.io/tags/%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/"/>
+    <id>https://zhaoshaodada.github.io/2026/08/20/Vue3-TypeScript%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6%E5%AE%9E%E6%88%98%E4%BB%8Eprops%E5%88%B0%E6%B3%9B%E5%9E%8B%E7%BB%84%E4%BB%B6/</id>
+    <link href="https://zhaoshaodada.github.io/2026/08/20/Vue3-TypeScript%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6%E5%AE%9E%E6%88%98%E4%BB%8Eprops%E5%88%B0%E6%B3%9B%E5%9E%8B%E7%BB%84%E4%BB%B6/"/>
+    <published>2026-08-20T03:30:00.000Z</published>
+    <summary>本文系统讲解 TypeScript 在 Vue3 中的类型进阶用法，覆盖 defineProps/defineEmits 的类型声明、defineModel 双向绑定、provide/inject 的类型安全注入、defineSlots/defineOptions、泛型组件（Generic Components）以及 Vue Router 的类型化路由，让类型真正成为开发期的安全网。</summary>
+    <title>Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件</title>
+    <updated>2026-08-20T07:52:55.492Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
+    <category term="Pinia" scheme="https://zhaoshaodada.github.io/tags/Pinia/"/>
+    <category term="Vue3" scheme="https://zhaoshaodada.github.io/tags/Vue3/"/>
+    <category term="状态管理" scheme="https://zhaoshaodada.github.io/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/"/>
+    <id>https://zhaoshaodada.github.io/2026/08/20/Pinia%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E4%BB%8EVuex%E8%BF%81%E7%A7%BB%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/</id>
+    <link href="https://zhaoshaodada.github.io/2026/08/20/Pinia%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E4%BB%8EVuex%E8%BF%81%E7%A7%BB%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    <published>2026-08-20T03:00:00.000Z</published>
+    <summary>本文系统讲解 Pinia 的实战用法，从与 Vuex 的差异切入，覆盖 defineStore 两种写法、state/getters/actions、storeToRefs 解构、跨 store 调用、持久化插件、SSR 兼容、Devtools 调试与最佳实践，帮你彻底搞定 Vue3 的状态管理。</summary>
+    <title>Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践</title>
+    <updated>2026-08-20T07:51:45.750Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
+    <category term="前端" scheme="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    <category term="Vue3" scheme="https://zhaoshaodada.github.io/tags/Vue3/"/>
+    <category term="Composition API" scheme="https://zhaoshaodada.github.io/tags/Composition-API/"/>
+    <id>https://zhaoshaodada.github.io/2026/08/20/Vue3-Composition-API%E5%AE%9E%E6%88%98%E7%B2%BE%E8%AE%B2/</id>
+    <link href="https://zhaoshaodada.github.io/2026/08/20/Vue3-Composition-API%E5%AE%9E%E6%88%98%E7%B2%BE%E8%AE%B2/"/>
+    <published>2026-08-20T02:30:00.000Z</published>
+    <summary>本文系统讲解 Vue3 Composition API 的实战用法，覆盖 ref 与 reactive 的选择边界、computed 缓存机制、watch/watchEffect 副作用管理、生命周期钩子、自定义组合式函数抽取，以及响应式原理与常见陷阱，帮你写出可复用、可维护的 Vue3 业务代码。</summary>
+    <title>Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数</title>
+    <updated>2026-08-20T07:50:38.751Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
+    <category term="Vue3" scheme="https://zhaoshaodada.github.io/tags/Vue3/"/>
+    <category term="Vite" scheme="https://zhaoshaodada.github.io/tags/Vite/"/>
+    <category term="前端工程化" scheme="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    <category term="TypeScript" scheme="https://zhaoshaodada.github.io/tags/TypeScript/"/>
+    <id>https://zhaoshaodada.github.io/2026/08/20/Vite-Vue3-TypeScript%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E5%AE%9E%E6%88%98%E4%BB%8E%E9%9B%B6%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/</id>
+    <link href="https://zhaoshaodada.github.io/2026/08/20/Vite-Vue3-TypeScript%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E5%AE%9E%E6%88%98%E4%BB%8E%E9%9B%B6%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    <published>2026-08-20T02:00:00.000Z</published>
+    <summary>本文从零搭建一个 Vite + Vue3 + TypeScript 工程，覆盖 create-vue 脚手架、目录规范、路径别名、环境变量、ESLint + Prettier、组件与 API 自动导入、开发代理与构建优化，帮助前端开发者快速建立可维护的现代项目骨架。</summary>
+    <title>Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化</title>
+    <updated>2026-08-20T07:49:37.166Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Moonligh</name>
@@ -125,8 +186,8 @@
     </author>
     <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
     <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
-    <category term="天地图" scheme="https://zhaoshaodada.github.io/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/"/>
     <category term="GIS" scheme="https://zhaoshaodada.github.io/tags/GIS/"/>
+    <category term="天地图" scheme="https://zhaoshaodada.github.io/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/"/>
     <category term="三维地图" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4%E5%9C%B0%E5%9B%BE/"/>
     <id>https://zhaoshaodada.github.io/2026/08/01/Cesium%E5%8A%A0%E8%BD%BD%E5%A4%A9%E5%9C%B0%E5%9B%BE/</id>
     <link href="https://zhaoshaodada.github.io/2026/08/01/Cesium%E5%8A%A0%E8%BD%BD%E5%A4%A9%E5%9C%B0%E5%9B%BE/"/>
@@ -190,11 +251,11 @@
     </author>
     <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
     <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
+    <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
+    <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
     <category term="体积云" scheme="https://zhaoshaodada.github.io/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/"/>
     <category term="渲染管线" scheme="https://zhaoshaodada.github.io/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/"/>
     <category term="大气散射" scheme="https://zhaoshaodada.github.io/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/"/>
-    <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
-    <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
     <id>https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/</id>
     <link href="https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/"/>
     <published>2026-07-31T12:00:00.000Z</published>
@@ -266,69 +327,5 @@
     <summary>一个纯前端治愈系网页：深蓝深海背景，中文词语如窗帘般缓缓下滚，鼠标拨开时文字碎裂成粒子，背景里虎鲸在游动，点击发出海豚音。Three.js 画虎鲸，p5.js 画窗帘和粒子，Web Audio API 合成声音。</summary>
     <title>Vibe Coding — 当 DeepSeek 遇见 Three.js 的治愈深海</title>
     <updated>2026-08-01T07:27:15.037Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
-    <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
-    <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
-    <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
-    <category term="天空盒" scheme="https://zhaoshaodada.github.io/tags/%E5%A4%A9%E7%A9%BA%E7%9B%92/"/>
-    <id>https://zhaoshaodada.github.io/2026/07/27/Cesium%E8%BF%91%E5%9C%B0%E5%A4%A9%E7%A9%BA%E7%9B%92%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88/</id>
-    <link href="https://zhaoshaodada.github.io/2026/07/27/Cesium%E8%BF%91%E5%9C%B0%E5%A4%A9%E7%A9%BA%E7%9B%92%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88/"/>
-    <published>2026-07-27T10:00:00.000Z</published>
-    <summary>Cesium默认天空盒适合太空视角，相机贴近地面时天空显得不贴合。本文介绍通过自定义DrawCommand做近地天空盒，并按相机高度自动切回默认天空的完整技术方案，涵盖SkyBoxOnGround实现、Cubemap方向映射、天空盒制作三步走等核心要点。</summary>
-    <title>Cesium 近地天空盒：把天空拉回地面</title>
-    <updated>2026-08-01T07:25:32.279Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="技术分享" scheme="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
-    <category term="Cesium" scheme="https://zhaoshaodada.github.io/tags/Cesium/"/>
-    <category term="WebGL" scheme="https://zhaoshaodada.github.io/tags/WebGL/"/>
-    <category term="三维GIS" scheme="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/"/>
-    <category term="Canvas" scheme="https://zhaoshaodada.github.io/tags/Canvas/"/>
-    <id>https://zhaoshaodada.github.io/2026/07/27/Cesium-Wall-Canvas%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%B4%B4%E5%9C%B0%E8%B4%B4%E5%A2%99%E5%8A%A8%E6%80%81%E6%A0%87%E6%B3%A8/</id>
-    <link href="https://zhaoshaodada.github.io/2026/07/27/Cesium-Wall-Canvas%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%B4%B4%E5%9C%B0%E8%B4%B4%E5%A2%99%E5%8A%A8%E6%80%81%E6%A0%87%E6%B3%A8/"/>
-    <published>2026-07-27T08:00:00.000Z</published>
-    <summary>Cesium原生Label实体存在始终面向相机、像素级尺寸、样式能力有限等局限。本文介绍通过Wall实体+Canvas动态材质实现文字贴地/贴墙动态标注的完整技术方案，涵盖异步纹理生成、CallbackProperty逐帧刷新、相机自动定位等核心要点。</summary>
-    <title>Cesium Wall + Canvas 实现文字贴地贴墙动态标注</title>
-    <updated>2026-08-01T07:25:03.114Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="经验分享" scheme="https://zhaoshaodada.github.io/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"/>
-    <category term="Windows" scheme="https://zhaoshaodada.github.io/tags/Windows/"/>
-    <category term="安全" scheme="https://zhaoshaodada.github.io/tags/%E5%AE%89%E5%85%A8/"/>
-    <category term="病毒" scheme="https://zhaoshaodada.github.io/tags/%E7%97%85%E6%AF%92/"/>
-    <category term="Office" scheme="https://zhaoshaodada.github.io/tags/Office/"/>
-    <id>https://zhaoshaodada.github.io/2026/07/27/%E8%AD%A6%E6%83%95%EF%BC%81%E7%94%84%E5%88%AB%E7%9C%9F%E5%81%87%E9%9A%BE%E8%BE%A8%E7%9A%84Windows%E5%92%8COffice%E6%BF%80%E6%B4%BB%E8%84%9A%E6%9C%AC/</id>
-    <link href="https://zhaoshaodada.github.io/2026/07/27/%E8%AD%A6%E6%83%95%EF%BC%81%E7%94%84%E5%88%AB%E7%9C%9F%E5%81%87%E9%9A%BE%E8%BE%A8%E7%9A%84Windows%E5%92%8COffice%E6%BF%80%E6%B4%BB%E8%84%9A%E6%9C%AC/"/>
-    <published>2026-07-27T04:00:00.000Z</published>
-    <summary>网上流传的一行脚本激活Windows和Office看似方便快捷，但背后隐藏着巨大的安全风险。本文详细介绍如何甄别真假激活脚本，识别域名仿冒陷阱和带毒可执行文件，保护你的电脑安全。</summary>
-    <title>警惕！甄别真假难辨的Windows和Office激活脚本</title>
-    <updated>2026-08-01T07:27:17.010Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="教程" scheme="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/"/>
-    <category term="Node.js" scheme="https://zhaoshaodada.github.io/tags/Node-js/"/>
-    <category term="Electron" scheme="https://zhaoshaodada.github.io/tags/Electron/"/>
-    <category term="fs" scheme="https://zhaoshaodada.github.io/tags/fs/"/>
-    <category term="兼容性" scheme="https://zhaoshaodada.github.io/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
-    <id>https://zhaoshaodada.github.io/2026/07/27/Win7%E4%B8%8BElectron%E4%B8%ADfs%E5%BC%95%E7%94%A8%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
-    <link href="https://zhaoshaodada.github.io/2026/07/27/Win7%E4%B8%8BElectron%E4%B8%ADfs%E5%BC%95%E7%94%A8%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    <published>2026-07-27T03:00:00.000Z</published>
-    <summary>在Windows 7环境下使用Electron开发时，由于Node.js版本较低，`require('fs/promises')`会报错。本文提供了通过拦截Module._resolveFilename和重写require逻辑来兼容处理的完整解决方案。</summary>
-    <title>Win7下Electron中fs引用报错的解决方案</title>
-    <updated>2026-08-01T07:27:15.939Z</updated>
   </entry>
 </feed>
