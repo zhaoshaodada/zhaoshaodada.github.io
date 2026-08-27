@@ -1,6 +1,8 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 Disallow: /js/
 Disallow: /css/
+Disallow: /img/
 
-Sitemap: https://zhaoshaodada.github.io/sitemap.xml
+# Sitemap 璺緞涓?_config.yml 涓殑 url 涓€鑷达紙Netlify 涓荤珯锛?Sitemap: https://moonligh.netlify.app/sitemap.xml
+Sitemap: https://moonligh.netlify.app/atom.xml
