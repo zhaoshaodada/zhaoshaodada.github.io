@@ -11,7 +11,22 @@
   <rights>All rights reserved 2026, Moonligh</rights>
   <subtitle>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</subtitle>
   <title>Moonligh</title>
-  <updated>2026-08-20T07:52:55.492Z</updated>
+  <updated>2026-09-10T04:01:08.306Z</updated>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="实战" scheme="https://moonligh.netlify.app/categories/%E5%AE%9E%E6%88%98/"/>
+    <category term="JavaScript" scheme="https://moonligh.netlify.app/tags/JavaScript/"/>
+    <category term="AbortController" scheme="https://moonligh.netlify.app/tags/AbortController/"/>
+    <category term="前端优化" scheme="https://moonligh.netlify.app/tags/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/"/>
+    <id>https://moonligh.netlify.app/AbortController%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82%E5%8F%96%E6%B6%88%E4%B8%8E%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6%E5%AE%9E%E6%88%98/</id>
+    <link href="https://moonligh.netlify.app/AbortController%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82%E5%8F%96%E6%B6%88%E4%B8%8E%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6%E5%AE%9E%E6%88%98/"/>
+    <published>2026-09-10T06:30:00.000Z</published>
+    <summary>深入讲解 AbortController 的核心原理与实战应用，涵盖请求取消、超时控制、并发取消、竞态取消等场景，帮助前端开发者构建更健壮的异步请求体系。</summary>
+    <title>AbortController完全指南前端请求取消与并发控制实战</title>
+    <updated>2026-09-10T04:01:08.306Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Moonligh</name>
@@ -78,8 +93,8 @@
       <name>Moonligh</name>
     </author>
     <category term="技术" scheme="https://moonligh.netlify.app/categories/%E6%8A%80%E6%9C%AF/"/>
-    <category term="ES6" scheme="https://moonligh.netlify.app/tags/ES6/"/>
     <category term="JavaScript" scheme="https://moonligh.netlify.app/tags/JavaScript/"/>
+    <category term="ES6" scheme="https://moonligh.netlify.app/tags/ES6/"/>
     <category term="前端" scheme="https://moonligh.netlify.app/tags/%E5%89%8D%E7%AB%AF/"/>
     <id>https://moonligh.netlify.app/JavaScript-Proxy%E4%B8%8EReflect%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E4%B8%8E%E5%AE%9E%E6%88%98%E5%BA%94%E7%94%A8/</id>
     <link href="https://moonligh.netlify.app/JavaScript-Proxy%E4%B8%8EReflect%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E4%B8%8E%E5%AE%9E%E6%88%98%E5%BA%94%E7%94%A8/"/>
@@ -93,8 +108,8 @@
       <name>Moonligh</name>
     </author>
     <category term="技术" scheme="https://moonligh.netlify.app/categories/%E6%8A%80%E6%9C%AF/"/>
-    <category term="性能优化" scheme="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <category term="JavaScript" scheme="https://moonligh.netlify.app/tags/JavaScript/"/>
+    <category term="性能优化" scheme="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <category term="前端" scheme="https://moonligh.netlify.app/tags/%E5%89%8D%E7%AB%AF/"/>
     <id>https://moonligh.netlify.app/JavaScript%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%B7%A5%E7%A8%8B%E7%BA%A7%E5%AE%9E%E7%8E%B0/</id>
     <link href="https://moonligh.netlify.app/JavaScript%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%B7%A5%E7%A8%8B%E7%BA%A7%E5%AE%9E%E7%8E%B0/"/>
@@ -155,8 +170,8 @@
       <name>Moonligh</name>
     </author>
     <category term="教程" scheme="https://moonligh.netlify.app/categories/%E6%95%99%E7%A8%8B/"/>
-    <category term="性能优化" scheme="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <category term="JavaScript" scheme="https://moonligh.netlify.app/tags/JavaScript/"/>
+    <category term="性能优化" scheme="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <category term="Intersection Observer" scheme="https://moonligh.netlify.app/tags/Intersection-Observer/"/>
     <id>https://moonligh.netlify.app/IntersectionObserver-API%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E6%87%92%E5%8A%A0%E8%BD%BD%E6%97%A0%E9%99%90%E6%BB%9A%E5%8A%A8%E4%B8%8E%E6%BB%9A%E5%8A%A8%E5%8A%A8%E7%94%BB/</id>
     <link href="https://moonligh.netlify.app/IntersectionObserver-API%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E6%87%92%E5%8A%A0%E8%BD%BD%E6%97%A0%E9%99%90%E6%BB%9A%E5%8A%A8%E4%B8%8E%E6%BB%9A%E5%8A%A8%E5%8A%A8%E7%94%BB/"/>
@@ -201,8 +216,8 @@
       <name>Moonligh</name>
     </author>
     <category term="实战" scheme="https://moonligh.netlify.app/categories/%E5%AE%9E%E6%88%98/"/>
-    <category term="性能优化" scheme="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <category term="JavaScript" scheme="https://moonligh.netlify.app/tags/JavaScript/"/>
+    <category term="性能优化" scheme="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <category term="虚拟列表" scheme="https://moonligh.netlify.app/tags/%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8/"/>
     <id>https://moonligh.netlify.app/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%87%8F%E6%B8%B2%E6%9F%93%E4%BC%98%E5%8C%96%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0%E8%AF%A6%E8%A7%A3/</id>
     <link href="https://moonligh.netlify.app/%E5%89%8D%E7%AB%AF%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%87%8F%E6%B8%B2%E6%9F%93%E4%BC%98%E5%8C%96%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0%E8%AF%A6%E8%A7%A3/"/>
@@ -234,8 +249,8 @@
       <name>Moonligh</name>
     </author>
     <category term="教程" scheme="https://moonligh.netlify.app/categories/%E6%95%99%E7%A8%8B/"/>
-    <category term="性能优化" scheme="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <category term="JavaScript" scheme="https://moonligh.netlify.app/tags/JavaScript/"/>
+    <category term="性能优化" scheme="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <category term="Web Worker" scheme="https://moonligh.netlify.app/tags/Web-Worker/"/>
     <category term="多线程" scheme="https://moonligh.netlify.app/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     <id>https://moonligh.netlify.app/Web-Worker%E5%89%8D%E7%AB%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/</id>
@@ -244,24 +259,6 @@
     <summary>本文深入讲解 Web Worker 的原理与实战用法，涵盖基础通信、Transferable 对象零拷贝传输、大数据排序与图片处理实战场景，以及 Worker 池模式的实现，帮助前端开发者解锁浏览器多线程编程能力，解决主线程阻塞导致的页面卡顿问题。</summary>
     <title>Web Worker 前端多线程编程实战指南</title>
     <updated>2026-08-01T07:26:45.553Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="技术分享" scheme="https://moonligh.netlify.app/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
-    <category term="Cesium" scheme="https://moonligh.netlify.app/tags/Cesium/"/>
-    <category term="体积云" scheme="https://moonligh.netlify.app/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/"/>
-    <category term="渲染管线" scheme="https://moonligh.netlify.app/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/"/>
-    <category term="大气散射" scheme="https://moonligh.netlify.app/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/"/>
-    <category term="WebGL" scheme="https://moonligh.netlify.app/tags/WebGL/"/>
-    <category term="三维GIS" scheme="https://moonligh.netlify.app/tags/%E4%B8%89%E7%BB%B4GIS/"/>
-    <id>https://moonligh.netlify.app/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/</id>
-    <link href="https://moonligh.netlify.app/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/"/>
-    <published>2026-07-31T12:00:00.000Z</published>
-    <summary>本文记录将全球体积云移植到 Cesium 的过程，目前还原度约 90%。涵盖渲染管线、坐标转换、MRT、GBuffer 以及基于 Texture2DArray 的阴影资源管理等核心要点，并对比 Three.js 与 Cesium 在渲染架构上的差异，分享 inscatter 贴地、tonemap 冲突、色彩空间偏白等典型问题与思考。</summary>
-    <title>Cesium 全球体积云移植：从 GIS 迈向图形的 90% 还原之路</title>
-    <updated>2026-08-01T07:25:05.204Z</updated>
   </entry>
   <entry>
     <author>
@@ -279,6 +276,24 @@
     <summary>在Cesium中添加成千上万棵树、一排排路灯、沿山脊排开的风机时，逐个Entity添加会让浏览器卡死。本文详解Cesium高版本中GPU实例化渲染的实现方案，涵盖局部坐标系绕开精度问题、矩阵纹理打包变换、instanceCount复制draw call、视锥裁剪与id纹理拾取等核心要点。</summary>
     <title>Cesium实例化渲染详解：同模型万级批量绘制方案</title>
     <updated>2026-08-01T07:25:19.292Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Moonligh</name>
+    </author>
+    <category term="技术分享" scheme="https://moonligh.netlify.app/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
+    <category term="Cesium" scheme="https://moonligh.netlify.app/tags/Cesium/"/>
+    <category term="WebGL" scheme="https://moonligh.netlify.app/tags/WebGL/"/>
+    <category term="三维GIS" scheme="https://moonligh.netlify.app/tags/%E4%B8%89%E7%BB%B4GIS/"/>
+    <category term="体积云" scheme="https://moonligh.netlify.app/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/"/>
+    <category term="渲染管线" scheme="https://moonligh.netlify.app/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/"/>
+    <category term="大气散射" scheme="https://moonligh.netlify.app/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/"/>
+    <id>https://moonligh.netlify.app/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/</id>
+    <link href="https://moonligh.netlify.app/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/"/>
+    <published>2026-07-31T12:00:00.000Z</published>
+    <summary>本文记录将全球体积云移植到 Cesium 的过程，目前还原度约 90%。涵盖渲染管线、坐标转换、MRT、GBuffer 以及基于 Texture2DArray 的阴影资源管理等核心要点，并对比 Three.js 与 Cesium 在渲染架构上的差异，分享 inscatter 贴地、tonemap 冲突、色彩空间偏白等典型问题与思考。</summary>
+    <title>Cesium 全球体积云移植：从 GIS 迈向图形的 90% 还原之路</title>
+    <updated>2026-08-01T07:25:05.204Z</updated>
   </entry>
   <entry>
     <author>
@@ -310,22 +325,5 @@
     <summary>一套提示词实现3D写实国漫女神四视图（正面、左侧、右侧、背面），人物五官、发型、服装细节完全统一，附完整提示词。</summary>
     <title>3D写实国漫女神四视图，一套提示词全搞定！（附提示词）</title>
     <updated>2026-08-01T07:25:00.440Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Moonligh</name>
-    </author>
-    <category term="技术分享" scheme="https://moonligh.netlify.app/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
-    <category term="WebGL" scheme="https://moonligh.netlify.app/tags/WebGL/"/>
-    <category term="Three.js" scheme="https://moonligh.netlify.app/tags/Three-js/"/>
-    <category term="p5.js" scheme="https://moonligh.netlify.app/tags/p5-js/"/>
-    <category term="Web Audio API" scheme="https://moonligh.netlify.app/tags/Web-Audio-API/"/>
-    <category term="创意编程" scheme="https://moonligh.netlify.app/tags/%E5%88%9B%E6%84%8F%E7%BC%96%E7%A8%8B/"/>
-    <id>https://moonligh.netlify.app/Vibe-Coding-%E5%BD%93DeepSeek%E9%81%87%E8%A7%81Three-js%E7%9A%84%E6%B2%BB%E6%84%88%E6%B7%B1%E6%B5%B7/</id>
-    <link href="https://moonligh.netlify.app/Vibe-Coding-%E5%BD%93DeepSeek%E9%81%87%E8%A7%81Three-js%E7%9A%84%E6%B2%BB%E6%84%88%E6%B7%B1%E6%B5%B7/"/>
-    <published>2026-07-27T14:00:00.000Z</published>
-    <summary>一个纯前端治愈系网页：深蓝深海背景，中文词语如窗帘般缓缓下滚，鼠标拨开时文字碎裂成粒子，背景里虎鲸在游动，点击发出海豚音。Three.js 画虎鲸，p5.js 画窗帘和粒子，Web Audio API 合成声音。</summary>
-    <title>Vibe Coding — 当 DeepSeek 遇见 Three.js 的治愈深海</title>
-    <updated>2026-08-01T07:27:15.037Z</updated>
   </entry>
 </feed>

@@ -6,7 +6,7 @@
     <description>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</description>
     <language>zh-CN</language>
     <copyright>All rights reserved 2026, Moonligh</copyright>
-    <lastBuildDate>Thu, 20 Aug 2026 07:52:55 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 04:01:08 GMT</lastBuildDate>
     <generator>Hexo</generator>
     <image>
       <url>https://moonligh.netlify.app/img/favicon.jpg</url>
@@ -14,6 +14,17 @@
       <link>https://moonligh.netlify.app/</link>
     </image>
     <atom:link href="https://moonligh.netlify.app/rss2.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>AbortController完全指南前端请求取消与并发控制实战</title>
+      <link>https://moonligh.netlify.app/AbortController%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82%E5%8F%96%E6%B6%88%E4%B8%8E%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6%E5%AE%9E%E6%88%98/</link>
+      <description>深入讲解 AbortController 的核心原理与实战应用，涵盖请求取消、超时控制、并发取消、竞态取消等场景，帮助前端开发者构建更健壮的异步请求体系。</description>
+      <author>Moonligh</author>
+      <category domain="https://moonligh.netlify.app/categories/%E5%AE%9E%E6%88%98/">实战</category>
+      <category domain="https://moonligh.netlify.app/tags/JavaScript/">JavaScript</category>
+      <category domain="https://moonligh.netlify.app/tags/AbortController/">AbortController</category>
+      <category domain="https://moonligh.netlify.app/tags/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</category>
+      <pubDate>Thu, 10 Sep 2026 06:30:00 GMT</pubDate>
+    </item>
     <item>
       <title>Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件</title>
       <link>https://moonligh.netlify.app/Vue3-TypeScript%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6%E5%AE%9E%E6%88%98%E4%BB%8Eprops%E5%88%B0%E6%B3%9B%E5%9E%8B%E7%BB%84%E4%BB%B6/</link>
@@ -65,8 +76,8 @@
       <description>深入剖析 JavaScript Proxy 与 Reflect 的核心原理与协同机制，涵盖 13 种拦截器陷阱、Reflect 静态方法详解，并通过数据校验、响应式系统、私有属性保护等实战场景掌握元编程在前端开发中的应用。</description>
       <author>Moonligh</author>
       <category domain="https://moonligh.netlify.app/categories/%E6%8A%80%E6%9C%AF/">技术</category>
-      <category domain="https://moonligh.netlify.app/tags/ES6/">ES6</category>
       <category domain="https://moonligh.netlify.app/tags/JavaScript/">JavaScript</category>
+      <category domain="https://moonligh.netlify.app/tags/ES6/">ES6</category>
       <category domain="https://moonligh.netlify.app/tags/%E5%89%8D%E7%AB%AF/">前端</category>
       <pubDate>Wed, 12 Aug 2026 06:20:00 GMT</pubDate>
     </item>
@@ -76,8 +87,8 @@
       <description>深入解析 JavaScript 防抖（Debounce）与节流（Throttle）的核心原理，从基础实现到工程级增强，涵盖立即执行、取消机制、Vue/React 集成及 RequestAnimationFrame 方案对比。</description>
       <author>Moonligh</author>
       <category domain="https://moonligh.netlify.app/categories/%E6%8A%80%E6%9C%AF/">技术</category>
-      <category domain="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
       <category domain="https://moonligh.netlify.app/tags/JavaScript/">JavaScript</category>
+      <category domain="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
       <category domain="https://moonligh.netlify.app/tags/%E5%89%8D%E7%AB%AF/">前端</category>
       <pubDate>Tue, 11 Aug 2026 07:30:00 GMT</pubDate>
     </item>
@@ -122,8 +133,8 @@
       <description>本文深入讲解 Intersection Observer API 的核心原理与实战用法，涵盖图片懒加载、无限滚动加载、滚动触发动画三大场景，并解析 rootMargin、threshold、多元素监听等进阶技巧，帮助前端开发者掌握元素可见性监听的最佳实践。</description>
       <author>Moonligh</author>
       <category domain="https://moonligh.netlify.app/categories/%E6%95%99%E7%A8%8B/">教程</category>
-      <category domain="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
       <category domain="https://moonligh.netlify.app/tags/JavaScript/">JavaScript</category>
+      <category domain="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
       <category domain="https://moonligh.netlify.app/tags/Intersection-Observer/">Intersection Observer</category>
       <pubDate>Tue, 04 Aug 2026 11:15:00 GMT</pubDate>
     </item>
@@ -156,8 +167,8 @@
       <description>当列表数据量达到上万条时，直接渲染会导致页面卡顿。本文深入讲解虚拟列表的核心原理，并手写实现定高与不定高两种虚拟列表方案，帮助你掌握大数据量渲染优化的关键技巧。</description>
       <author>Moonligh</author>
       <category domain="https://moonligh.netlify.app/categories/%E5%AE%9E%E6%88%98/">实战</category>
-      <category domain="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
       <category domain="https://moonligh.netlify.app/tags/JavaScript/">JavaScript</category>
+      <category domain="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
       <category domain="https://moonligh.netlify.app/tags/%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8/">虚拟列表</category>
       <pubDate>Sat, 01 Aug 2026 06:30:00 GMT</pubDate>
     </item>
@@ -181,25 +192,11 @@
       <description>本文深入讲解 Web Worker 的原理与实战用法，涵盖基础通信、Transferable 对象零拷贝传输、大数据排序与图片处理实战场景，以及 Worker 池模式的实现，帮助前端开发者解锁浏览器多线程编程能力，解决主线程阻塞导致的页面卡顿问题。</description>
       <author>Moonligh</author>
       <category domain="https://moonligh.netlify.app/categories/%E6%95%99%E7%A8%8B/">教程</category>
-      <category domain="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
       <category domain="https://moonligh.netlify.app/tags/JavaScript/">JavaScript</category>
+      <category domain="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
       <category domain="https://moonligh.netlify.app/tags/Web-Worker/">Web Worker</category>
       <category domain="https://moonligh.netlify.app/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</category>
       <pubDate>Fri, 31 Jul 2026 12:20:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>Cesium 全球体积云移植：从 GIS 迈向图形的 90% 还原之路</title>
-      <link>https://moonligh.netlify.app/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/</link>
-      <description>本文记录将全球体积云移植到 Cesium 的过程，目前还原度约 90%。涵盖渲染管线、坐标转换、MRT、GBuffer 以及基于 Texture2DArray 的阴影资源管理等核心要点，并对比 Three.js 与 Cesium 在渲染架构上的差异，分享 inscatter 贴地、tonemap 冲突、色彩空间偏白等典型问题与思考。</description>
-      <author>Moonligh</author>
-      <category domain="https://moonligh.netlify.app/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
-      <category domain="https://moonligh.netlify.app/tags/Cesium/">Cesium</category>
-      <category domain="https://moonligh.netlify.app/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/">体积云</category>
-      <category domain="https://moonligh.netlify.app/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/">渲染管线</category>
-      <category domain="https://moonligh.netlify.app/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/">大气散射</category>
-      <category domain="https://moonligh.netlify.app/tags/WebGL/">WebGL</category>
-      <category domain="https://moonligh.netlify.app/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</category>
-      <pubDate>Fri, 31 Jul 2026 12:00:00 GMT</pubDate>
     </item>
     <item>
       <title>Cesium实例化渲染详解：同模型万级批量绘制方案</title>
@@ -212,6 +209,20 @@
       <category domain="https://moonligh.netlify.app/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</category>
       <category domain="https://moonligh.netlify.app/tags/%E5%AE%9E%E4%BE%8B%E5%8C%96%E6%B8%B2%E6%9F%93/">实例化渲染</category>
       <category domain="https://moonligh.netlify.app/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
+      <pubDate>Fri, 31 Jul 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Cesium 全球体积云移植：从 GIS 迈向图形的 90% 还原之路</title>
+      <link>https://moonligh.netlify.app/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/</link>
+      <description>本文记录将全球体积云移植到 Cesium 的过程，目前还原度约 90%。涵盖渲染管线、坐标转换、MRT、GBuffer 以及基于 Texture2DArray 的阴影资源管理等核心要点，并对比 Three.js 与 Cesium 在渲染架构上的差异，分享 inscatter 贴地、tonemap 冲突、色彩空间偏白等典型问题与思考。</description>
+      <author>Moonligh</author>
+      <category domain="https://moonligh.netlify.app/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
+      <category domain="https://moonligh.netlify.app/tags/Cesium/">Cesium</category>
+      <category domain="https://moonligh.netlify.app/tags/WebGL/">WebGL</category>
+      <category domain="https://moonligh.netlify.app/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</category>
+      <category domain="https://moonligh.netlify.app/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/">体积云</category>
+      <category domain="https://moonligh.netlify.app/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/">渲染管线</category>
+      <category domain="https://moonligh.netlify.app/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/">大气散射</category>
       <pubDate>Fri, 31 Jul 2026 12:00:00 GMT</pubDate>
     </item>
     <item>
@@ -236,19 +247,6 @@
       <category domain="https://moonligh.netlify.app/tags/%E5%9B%BD%E6%BC%AB/">国漫</category>
       <category domain="https://moonligh.netlify.app/tags/AIGC/">AIGC</category>
       <pubDate>Tue, 28 Jul 2026 12:30:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>Vibe Coding — 当 DeepSeek 遇见 Three.js 的治愈深海</title>
-      <link>https://moonligh.netlify.app/Vibe-Coding-%E5%BD%93DeepSeek%E9%81%87%E8%A7%81Three-js%E7%9A%84%E6%B2%BB%E6%84%88%E6%B7%B1%E6%B5%B7/</link>
-      <description>一个纯前端治愈系网页：深蓝深海背景，中文词语如窗帘般缓缓下滚，鼠标拨开时文字碎裂成粒子，背景里虎鲸在游动，点击发出海豚音。Three.js 画虎鲸，p5.js 画窗帘和粒子，Web Audio API 合成声音。</description>
-      <author>Moonligh</author>
-      <category domain="https://moonligh.netlify.app/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
-      <category domain="https://moonligh.netlify.app/tags/WebGL/">WebGL</category>
-      <category domain="https://moonligh.netlify.app/tags/Three-js/">Three.js</category>
-      <category domain="https://moonligh.netlify.app/tags/p5-js/">p5.js</category>
-      <category domain="https://moonligh.netlify.app/tags/Web-Audio-API/">Web Audio API</category>
-      <category domain="https://moonligh.netlify.app/tags/%E5%88%9B%E6%84%8F%E7%BC%96%E7%A8%8B/">创意编程</category>
-      <pubDate>Mon, 27 Jul 2026 14:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
