@@ -1,0 +1,647 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Moonligh | Moonligh</title><meta name="author" content="Moonligh"><meta name="copyright" content="Moonligh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="拼音转换器 - 在线工具       * { margin: 0; padding: 0; box-sizing: border-box; } body {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;   backgro">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Moonligh">
+<meta property="og:url" content="https://zhaoshaodada.github.io/tools/pinyin.html">
+<meta property="og:site_name" content="Moonligh">
+<meta property="og:description" content="拼音转换器 - 在线工具       * { margin: 0; padding: 0; box-sizing: border-box; } body {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;   backgro">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhaoshaodada.github.io/img/favicon.jpg">
+<meta property="article:published_time" content="2026-10-14T16:53:16.005Z">
+<meta property="article:modified_time" content="2026-10-14T16:53:16.005Z">
+<meta property="article:author" content="Moonligh">
+<meta property="article:tag" content="前端开发, JavaScript, Vue, Hexo, 技术博客, ES6, Three.js, Cesium, Axios">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhaoshaodada.github.io/img/favicon.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://zhaoshaodada.github.io/tools/pinyin.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Moonligh',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Moonligh" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Moonligh" type="application/rss+xml">
+</head><body><div id="web_bg" style="background-image: url(/img/22.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/favicon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 工具</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/index.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Moonligh</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 工具</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title"></h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>拼音转换器 - 在线工具</title>
+<meta name="description" content="在线拼音转换器，支持汉字转拼音，支持声调、首字母、多种分隔符，纯前端实现">
+<meta name="keywords" content="拼音转换,汉字转拼音,拼音工具,在线工具">
+<meta property="og:title" content="拼音转换器 - 在线工具">
+<meta property="og:description" content="在线拼音转换器，支持汉字转拼音，支持声调、首字母">
+<meta property="og:type" content="website">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 30px;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #49b1f5;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #333;
+}
+.subtitle { font-size: 13px; color: #999; margin-bottom: 20px; }
+.textarea-group { margin-bottom: 16px; }
+label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  min-height: 150px;
+  resize: vertical;
+}
+textarea:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+.btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary { background: #49b1f5; color: #fff; }
+.btn-primary:hover { background: #3aa0e4; }
+.btn-secondary { background: #f0f0f0; color: #333; }
+.btn-secondary:hover { background: #e0e0e0; }
+.btn-success { background: #52c41a; color: #fff; }
+.btn-success:hover { background: #45b016; }
+.btn-danger { background: #ff4d4f; color: #fff; }
+.btn-danger:hover { background: #e84143; }
+.msg {
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  display: none;
+}
+.msg.error { background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7; display: block; }
+.msg.success { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; display: block; }
+.option-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  align-items: center;
+}
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+  cursor: pointer;
+}
+select:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+@media (max-width: 600px) {
+  .option-row { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← 返回工具列表</a>
+  <h1>拼音转换器</h1>
+  <p class="subtitle">汉字转拼音，支持声调、首字母、多种分隔符</p>
+
+  <div id="msg" class="msg"></div>
+
+  <div class="textarea-group">
+    <label>输入汉字：</label>
+    <textarea id="inputText" placeholder="输入中文文本，例如：你好世界"></textarea>
+  </div>
+
+  <div class="option-row">
+    <div class="checkbox-group">
+      <input type="checkbox" id="tone" checked>
+      <label for="tone">带声调</label>
+    </div>
+    <div class="checkbox-group">
+      <input type="checkbox" id="firstLetter">
+      <label for="firstLetter">仅首字母</label>
+    </div>
+    <div class="checkbox-group">
+      <input type="checkbox" id="capitalize">
+      <label for="capitalize">首字母大写</label>
+    </div>
+    <div>
+      <label style="display:inline;">分隔符：</label>
+      <select id="separator">
+        <option value="space">空格</option>
+        <option value="-">连字符 -</option>
+        <option value="_">下划线 _</option>
+        <option value="">无</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn-primary" onclick="convert()">转换</button>
+    <button class="btn-success" onclick="copyResult()">复制结果</button>
+    <button class="btn-danger" onclick="clearAll()">清空</button>
+  </div>
+
+  <div class="textarea-group">
+    <label>结果：</label>
+    <textarea id="outputText" readonly placeholder="转换结果"></textarea>
+  </div>
+</div>
+
+<script>
+const pinyinDict = {
+  '一': ['yi', 'yi', 'yi', 'yi'], '二': ['er', 'er', 'er', 'er'], '三': ['san', 'san', 'san', 'san'],
+  '四': ['si', 'si', 'si', 'si'], '五': ['wu', 'wu', 'wu', 'wu'], '六': ['liu', 'liu', 'liu', 'liu'],
+  '七': ['qi', 'qi', 'qi', 'qi'], '八': ['ba', 'ba', 'ba', 'ba'], '九': ['jiu', 'jiu', 'jiu', 'jiu'],
+  '十': ['shi', 'shi', 'shi', 'shi'], '百': ['bai', 'bai', 'bai', 'bai'], '千': ['qian', 'qian', 'qian', 'qian'],
+  '万': ['wan', 'wan', 'wan', 'wan'], '亿': ['yi', 'yi', 'yi', 'yi'],
+  '你': ['ni', 'ni', 'ni', 'ni'], '好': ['hao', 'hao', 'hao', 'hao'], '世': ['shi', 'shi', 'shi', 'shi'],
+  '界': ['jie', 'jie', 'jie', 'jie'], '我': ['wo', 'wo', 'wo', 'wo'], '他': ['ta', 'ta', 'ta', 'ta'],
+  '她': ['ta', 'ta', 'ta', 'ta'], '它': ['ta', 'ta', 'ta', 'ta'], '是': ['shi', 'shi', 'shi', 'shi'],
+  '不': ['bu', 'bu', 'bu', 'bu'], '有': ['you', 'you', 'you', 'you'], '在': ['zai', 'zai', 'zai', 'zai'],
+  '人': ['ren', 'ren', 'ren', 'ren'], '上': ['shang', 'shang', 'shang', 'shang'], '来': ['lai', 'lai', 'lai', 'lai'],
+  '大': ['da', 'da', 'da', 'da'], '天': ['tian', 'tian', 'tian', 'tian'], '中': ['zhong', 'zhong', 'zhong', 'zhong'],
+  '国': ['guo', 'guo', 'guo', 'guo'], '人': ['ren', 'ren', 'ren', 'ren'], '民': ['min', 'min', 'min', 'min'],
+  '和': ['he', 'he', 'he', 'he'], '平': ['ping', 'ping', 'ping', 'ping'], '发': ['fa', 'fa', 'fa', 'fa'],
+  '展': ['zhan', 'zhan', 'zhan', 'zhan'], '改': ['gai', 'gai', 'gai', 'gai'], '革': ['ge', 'ge', 'ge', 'ge'],
+  '开': ['kai', 'kai', 'kai', 'kai'], '放': ['fang', 'fang', 'fang', 'fang'], '科': ['ke', 'ke', 'ke', 'ke'],
+  '技': ['ji', 'ji', 'ji', 'ji'], '教': ['jiao', 'jiao', 'jiao', 'jiao'], '育': ['yu', 'yu', 'yu', 'yu'],
+  '文': ['wen', 'wen', 'wen', 'wen'], '化': ['hua', 'hua', 'hua', 'hua'], '艺': ['yi', 'yi', 'yi', 'yi'],
+  '术': ['shu', 'shu', 'shu', 'shu'], '体': ['ti', 'ti', 'ti', 'ti'], '育': ['yu', 'yu', 'yu', 'yu'],
+  '旅': ['lv', 'lv', 'lv', 'lv'], '游': ['you', 'you', 'you', 'you'], '金': ['jin', 'jin', 'jin', 'jin'],
+  '融': ['rong', 'rong', 'rong', 'rong'], '经': ['jing', 'jing', 'jing', 'jing'], '济': ['ji', 'ji', 'ji', 'ji'],
+  '社': ['she', 'she', 'she', 'she'], '会': ['hui', 'hui', 'hui', 'hui'], '政': ['zheng', 'zheng', 'zheng', 'zheng'],
+  '治': ['zhi', 'zhi', 'zhi', 'zhi'], '法': ['fa', 'fa', 'fa', 'fa'], '律': ['lv', 'lv', 'lv', 'lv'],
+  '医': ['yi', 'yi', 'yi', 'yi'], '疗': ['liao', 'liao', 'liao', 'liao'], '卫': ['wei', 'wei', 'wei', 'wei'],
+  '生': ['sheng', 'sheng', 'sheng', 'sheng'], '食': ['shi', 'shi', 'shi', 'shi'], '品': ['pin', 'pin', 'pin', 'pin'],
+  '安': ['an', 'an', 'an', 'an'], '全': ['quan', 'quan', 'quan', 'quan'], '环': ['huan', 'huan', 'huan', 'huan'],
+  '境': ['jing', 'jing', 'jing', 'jing'], '保': ['bao', 'bao', 'bao', 'bao'], '护': ['hu', 'hu', 'hu', 'hu'],
+  '工': ['gong', 'gong', 'gong', 'gong'], '作': ['zuo', 'zuo', 'zuo', 'zuo'], '学': ['xue', 'xue', 'xue', 'xue'],
+  '习': ['xi', 'xi', 'xi', 'xi'], '研': ['yan', 'yan', 'yan', 'yan'], '究': ['jiu', 'jiu', 'jiu', 'jiu'],
+  '创': ['chuang', 'chuang', 'chuang', 'chuang'], '新': ['xin', 'xin', 'xin', 'xin'], '协': ['xie', 'xie', 'xie', 'xie'],
+  '作': ['zuo', 'zuo', 'zuo', 'zuo'], '合': ['he', 'he', 'he', 'he'], '作': ['zuo', 'zuo', 'zuo', 'zuo'],
+  '信': ['xin', 'xin', 'xin', 'xin'], '息': ['xi', 'xi', 'xi', 'xi'], '技': ['ji', 'ji', 'ji', 'ji'],
+  '术': ['shu', 'shu', 'shu', 'shu'], '互': ['hu', 'hu', 'hu', 'hu'], '联': ['lian', 'lian', 'lian', 'lian'],
+  '网': ['wang', 'wang', 'wang', 'wang'], '物': ['wu', 'wu', 'wu', 'wu'], '联': ['lian', 'lian', 'lian', 'lian'],
+  '智': ['zhi', 'zhi', 'zhi', 'zhi'], '能': ['neng', 'neng', 'neng', 'neng'], '大': ['da', 'da', 'da', 'da'],
+  '数': ['shu', 'shu', 'shu', 'shu'], '据': ['ju', 'ju', 'ju', 'ju'], '云': ['yun', 'yun', 'yun', 'yun'],
+  '计': ['ji', 'ji', 'ji', 'ji'], '算': ['suan', 'suan', 'suan', 'suan'], '人': ['ren', 'ren', 'ren', 'ren'],
+  '工': ['gong', 'gong', 'gong', 'gong'], '智': ['zhi', 'zhi', 'zhi', 'zhi'], '能': ['neng', 'neng', 'neng', 'neng'],
+  '机': ['ji', 'ji', 'ji', 'ji'], '器': ['qi', 'qi', 'qi', 'qi'], '学': ['xue', 'xue', 'xue', 'xue'],
+  '习': ['xi', 'xi', 'xi', 'xi'], '深': ['shen', 'shen', 'shen', 'shen'], '度': ['du', 'du', 'du', 'du'],
+  '学': ['xue', 'xue', 'xue', 'xue'], '习': ['xi', 'xi', 'xi', 'xi'], '自': ['zi', 'zi', 'zi', 'zi'],
+  '然': ['ran', 'ran', 'ran', 'ran'], '语': ['yu', 'yu', 'yu', 'yu'], '言': ['yan', 'yan', 'yan', 'yan'],
+  '处': ['chu', 'chu', 'chu', 'chu'], '理': ['li', 'li', 'li', 'li'], '图': ['tu', 'tu', 'tu', 'tu'],
+  '像': ['xiang', 'xiang', 'xiang', 'xiang'], '识': ['shi', 'shi', 'shi', 'shi'], '别': ['bie', 'bie', 'bie', 'bie'],
+  '语': ['yu', 'yu', 'yu', 'yu'], '音': ['yin', 'yin', 'yin', 'yin'], '识': ['shi', 'shi', 'shi', 'shi'],
+  '别': ['bie', 'bie', 'bie', 'bie'], '搜': ['sou', 'sou', 'sou', 'sou'], '索': ['suo', 'suo', 'suo', 'suo'],
+  '引': ['yin', 'yin', 'yin', 'yin'], '擎': ['qing', 'qing', 'qing', 'qing'], '推': ['tui', 'tui', 'tui', 'tui'],
+  '荐': ['jian', 'jian', 'jian', 'jian'], '系': ['xi', 'xi', 'xi', 'xi'], '统': ['tong', 'tong', 'tong', 'tong'],
+  '网': ['wang', 'wang', 'wang', 'wang'], '站': ['zhan', 'zhan', 'zhan', 'zhan'], '开': ['kai', 'kai', 'kai', 'kai'],
+  '发': ['fa', 'fa', 'fa', 'fa'], '移': ['yi', 'yi', 'yi', 'yi'], '动': ['dong', 'dong', 'dong', 'dong'],
+  '应': ['ying', 'ying', 'ying', 'ying'], '用': ['yong', 'yong', 'yong', 'yong'], '软': ['ruan', 'ruan', 'ruan', 'ruan'],
+  '件': ['jian', 'jian', 'jian', 'jian'], '开': ['kai', 'kai', 'kai', 'kai'], '发': ['fa', 'fa', 'fa', 'fa'],
+  '产': ['chan', 'chan', 'chan', 'chan'], '品': ['pin', 'pin', 'pin', 'pin'], '设': ['she', 'she', 'she', 'she'],
+  '计': ['ji', 'ji', 'ji', 'ji'], '用': ['yong', 'yong', 'yong', 'yong'], '户': ['hu', 'hu', 'hu', 'hu'],
+  '体': ['ti', 'ti', 'ti', 'ti'], '验': ['yan', 'yan', 'yan', 'yan'], '交': ['jiao', 'jiao', 'jiao', 'jiao'],
+  '互': ['hu', 'hu', 'hu', 'hu'], '设': ['she', 'she', 'she', 'she'], '计': ['ji', 'ji', 'ji', 'ji'],
+  '前': ['qian', 'qian', 'qian', 'qian'], '端': ['duan', 'duan', 'duan', 'duan'], '后': ['hou', 'hou', 'hou', 'hou'],
+  '端': ['duan', 'duan', 'duan', 'duan'], '全': ['quan', 'quan', 'quan', 'quan'], '栈': ['zhan', 'zhan', 'zhan', 'zhan'],
+  '数': ['shu', 'shu', 'shu', 'shu'], '据': ['ju', 'ju', 'ju', 'ju'], '库': ['ku', 'ku', 'ku', 'ku'],
+  '服': ['fu', 'fu', 'fu', 'fu'], '务': ['wu', 'wu', 'wu', 'wu'], '器': ['qi', 'qi', 'qi', 'qi'],
+  '架': ['jia', 'jia', 'jia', 'jia'], '构': ['gou', 'gou', 'gou', 'gou'], '设': ['she', 'she', 'she', 'she'],
+  '计': ['ji', 'ji', 'ji', 'ji'], '编': ['bian', 'bian', 'bian', 'bian'], '程': ['cheng', 'cheng', 'cheng', 'cheng'],
+  '语': ['yu', 'yu', 'yu', 'yu'], '言': ['yan', 'yan', 'yan', 'yan'], '开': ['kai', 'kai', 'kai', 'kai'],
+  '源': ['yuan', 'yuan', 'yuan', 'yuan'], '社': ['she', 'she', 'she', 'she'], '区': ['qu', 'qu', 'qu', 'qu'],
+  '代': ['dai', 'dai', 'dai', 'dai'], '码': ['ma', 'ma', 'ma', 'ma'], '管': ['guan', 'guan', 'guan', 'guan'],
+  '理': ['li', 'li', 'li', 'li'], '项': ['xiang', 'xiang', 'xiang', 'xiang'], '目': ['mu', 'mu', 'mu', 'mu'],
+  '管': ['guan', 'guan', 'guan', 'guan'], '理': ['li', 'li', 'li', 'li'], '测': ['ce', 'ce', 'ce', 'ce'],
+  '试': ['shi', 'shi', 'shi', 'shi'], '自': ['zi', 'zi', 'zi', 'zi'], '动': ['dong', 'dong', 'dong', 'dong'],
+  '化': ['hua', 'hua', 'hua', 'hua'], '持': ['chi', 'chi', 'chi', 'chi'], '续': ['xu', 'xu', 'xu', 'xu'],
+  '集': ['ji', 'ji', 'ji', 'ji'], '成': ['cheng', 'cheng', 'cheng', 'cheng'], '持': ['chi', 'chi', 'chi', 'chi'],
+  '续': ['xu', 'xu', 'xu', 'xu'], '部': ['bu', 'bu', 'bu', 'bu'], '署': ['shu', 'shu', 'shu', 'shu'],
+  '云': ['yun', 'yun', 'yun', 'yun'], '服': ['fu', 'fu', 'fu', 'fu'], '务': ['wu', 'wu', 'wu', 'wu'],
+  '虚': ['xu', 'xu', 'xu', 'xu'], '拟': ['ni', 'ni', 'ni', 'ni'], '机': ['ji', 'ji', 'ji', 'ji'],
+  '容': ['rong', 'rong', 'rong', 'rong'], '器': ['qi', 'qi', 'qi', 'qi'], '微': ['wei', 'wei', 'wei', 'wei'],
+  '服': ['fu', 'fu', 'fu', 'fu'], '务': ['wu', 'wu', 'wu', 'wu'], 'K': ['K', 'K', 'K', 'K'],
+  '8': ['8', '8', '8', '8'], 'S': ['S', 'S', 'S', 'S'], '安': ['an', 'an', 'an', 'an'],
+  '全': ['quan', 'quan', 'quan', 'quan'], '加': ['jia', 'jia', 'jia', 'jia'], '密': ['mi', 'mi', 'mi', 'mi'],
+  '协': ['xie', 'xie', 'xie', 'xie'], '议': ['yi', 'yi', 'yi', 'yi'], '协': ['xie', 'xie', 'xie', 'xie'],
+  '议': ['yi', 'yi', 'yi', 'yi'], '传': ['chuan', 'chuan', 'chuan', 'chuan'], '输': ['shu', 'shu', 'shu', 'shu'],
+  '层': ['ceng', 'ceng', 'ceng', 'ceng'], '网': ['wang', 'wang', 'wang', 'wang'], '络': ['luo', 'luo', 'luo', 'luo'],
+  '协': ['xie', 'xie', 'xie', 'xie'], '议': ['yi', 'yi', 'yi', 'yi'], '数': ['shu', 'shu', 'shu', 'shu'],
+  '据': ['ju', 'ju', 'ju', 'ju'], '结': ['jie', 'jie', 'jie', 'jie'], '构': ['gou', 'gou', 'gou', 'gou'],
+  '算': ['suan', 'suan', 'suan', 'suan'], '法': ['fa', 'fa', 'fa', 'fa'], '算': ['suan', 'suan', 'suan', 'suan'],
+  '法': ['fa', 'fa', 'fa', 'fa'], '分': ['fen', 'fen', 'fen', 'fen'], '析': ['xi', 'xi', 'xi', 'xi'],
+  '设': ['she', 'she', 'she', 'she'], '计': ['ji', 'ji', 'ji', 'ji'], '模': ['mo', 'mo', 'mo', 'mo'],
+  '型': ['xing', 'xing', 'xing', 'xing'], '算': ['suan', 'suan', 'suan', 'suan'], '法': ['fa', 'fa', 'fa', 'fa'],
+  '优': ['you', 'you', 'you', 'you'], '化': ['hua', 'hua', 'hua', 'hua'], '性': ['xing', 'xing', 'xing', 'xing'],
+  '能': ['neng', 'neng', 'neng', 'neng'], '调': ['tiao', 'tiao', 'tiao', 'tiao'], '优': ['you', 'you', 'you', 'you'],
+  '性': ['xing', 'xing', 'xing', 'xing'], '能': ['neng', 'neng', 'neng', 'neng'], '测': ['ce', 'ce', 'ce', 'ce'],
+  '试': ['shi', 'shi', 'shi', 'shi'], '性': ['xing', 'xing', 'xing', 'xing'], '能': ['neng', 'neng', 'neng', 'neng'],
+  '监': ['jian', 'jian', 'jian', 'jian'], '控': ['kong', 'kong', 'kong', 'kong'], '日': ['ri', 'ri', 'ri', 'ri'],
+  '志': ['zhi', 'zhi', 'zhi', 'zhi'], '分': ['fen', 'fen', 'fen', 'fen'], '析': ['xi', 'xi', 'xi', 'xi'],
+  '异': ['yi', 'yi', 'yi', 'yi'], '常': ['chang', 'chang', 'chang', 'chang'], '排': ['pai', 'pai', 'pai', 'pai'],
+  '查': ['cha', 'cha', 'cha', 'cha'], '运': ['yun', 'yun', 'yun', 'yun'], '维': ['wei', 'wei', 'wei', 'wei'],
+  '定': ['ding', 'ding', 'ding', 'ding'], '期': ['qi', 'qi', 'qi', 'qi'], '检': ['jian', 'jian', 'jian', 'jian'],
+  '修': ['xiu', 'xiu', 'xiu', 'xiu'], '故': ['gu', 'gu', 'gu', 'gu'], '障': ['zhang', 'zhang', 'zhang', 'zhang'],
+  '处': ['chu', 'chu', 'chu', 'chu'], '理': ['li', 'li', 'li', 'li'], '数': ['shu', 'shu', 'shu', 'shu'],
+  '据': ['ju', 'ju', 'ju', 'ju'], '备': ['bei', 'bei', 'bei', 'bei'], '份': ['fen', 'fen', 'fen', 'fen'],
+  '恢': ['hui', 'hui', 'hui', 'hui'], '复': ['fu', 'fu', 'fu', 'fu'], '灾': ['zai', 'zai', 'zai', 'zai'],
+  '难': ['nan', 'nan', 'nan', 'nan'], '恢': ['hui', 'hui', 'hui', 'hui'], '复': ['fu', 'fu', 'fu', 'fu'],
+  '高': ['gao', 'gao', 'gao', 'gao'], '可': ['ke', 'ke', 'ke', 'ke'], '用': ['yong', 'yong', 'yong', 'yong'],
+  '性': ['xing', 'xing', 'xing', 'xing'], '负': ['fu', 'fu', 'fu', 'fu'], '载': ['zai', 'zai', 'zai', 'zai'],
+  '均': ['jun', 'jun', 'jun', 'jun'], '衡': ['heng', 'heng', 'heng', 'heng'], '自': ['zi', 'zi', 'zi', 'zi'],
+  '动': ['dong', 'dong', 'dong', 'dong'], '扩': ['kuo', 'kuo', 'kuo', 'kuo'], '容': ['rong', 'rong', 'rong', 'rong'],
+  '节': ['jie', 'jie', 'jie', 'jie'], '约': ['yue', 'yue', 'yue', 'yue'], '成': ['cheng', 'cheng', 'cheng', 'cheng'],
+  '本': ['ben', 'ben', 'ben', 'ben'], '绿': ['lv', 'lv', 'lv', 'lv'], '色': ['se', 'se', 'se', 'se'],
+  '环': ['huan', 'huan', 'huan', 'huan'], '保': ['bao', 'bao', 'bao', 'bao'], '新': ['xin', 'xin', 'xin', 'xin'],
+  '能': ['neng', 'neng', 'neng', 'neng'], '源': ['yuan', 'yuan', 'yuan', 'yuan'], '节': ['jie', 'jie', 'jie', 'jie'],
+  '能': ['neng', 'neng', 'neng', 'neng'], '减': ['jian', 'jian', 'jian', 'jian'], '排': ['pai', 'pai', 'pai', 'pai'],
+  '碳': ['tan', 'tan', 'tan', 'tan'], '中': ['zhong', 'zhong', 'zhong', 'zhong'], '和': ['he', 'he', 'he', 'he'],
+  '发': ['fa', 'fa', 'fa', 'fa'], '展': ['zhan', 'zhan', 'zhan', 'zhan'], '战': ['zhan', 'zhan', 'zhan', 'zhan'],
+  '略': ['lue', 'lue', 'lue', 'lue'], '规': ['gui', 'gui', 'gui', 'gui'], '划': ['hua', 'hua', 'hua', 'hua'],
+  '目': ['mu', 'mu', 'mu', 'mu'], '标': ['biao', 'biao', 'biao', 'biao'], '实': ['shi', 'shi', 'shi', 'shi'],
+  '施': ['shi', 'shi', 'shi', 'shi'], '方': ['fang', 'fang', 'fang', 'fang'], '案': ['an', 'an', 'an', 'an'],
+  '计': ['ji', 'ji', 'ji', 'ji'], '划': ['hua', 'hua', 'hua', 'hua'], '执': ['zhi', 'zhi', 'zhi', 'zhi'],
+  '行': ['xing', 'xing', 'xing', 'xing'], '监': ['jian', 'jian', 'jian', 'jian'], '督': ['du', 'du', 'du', 'du'],
+  '考': ['kao', 'kao', 'kao', 'kao'], '核': ['he', 'he', 'he', 'he'], '总': ['zong', 'zong', 'zong', 'zong'],
+  '结': ['jie', 'jie', 'jie', 'jie'], '反': ['fan', 'fan', 'fan', 'fan'], '思': ['si', 'si', 'si', 'si'],
+  '改': ['gai', 'gai', 'gai', 'gai'], '进': ['jin', 'jin', 'jin', 'jin'], '创': ['chuang', 'chuang', 'chuang', 'chuang'],
+  '新': ['xin', 'xin', 'xin', 'xin'], '突': ['tu', 'tu', 'tu', 'tu'], '破': ['po', 'po', 'po', 'po'],
+  '团': ['tuan', 'tuan', 'tuan', 'tuan'], '队': ['dui', 'dui', 'dui', 'dui'], '合': ['he', 'he', 'he', 'he'],
+  '作': ['zuo', 'zuo', 'zuo', 'zuo'], '沟': ['gou', 'gou', 'gou', 'gou'], '通': ['tong', 'tong', 'tong', 'tong'],
+  '交': ['jiao', 'jiao', 'jiao', 'jiao'], '流': ['liu', 'liu', 'liu', 'liu'], '学': ['xue', 'xue', 'xue', 'xue'],
+  '习': ['xi', 'xi', 'xi', 'xi'], '成': ['cheng', 'cheng', 'cheng', 'cheng'], '长': ['zhang', 'zhang', 'zhang', 'zhang'],
+  '职': ['zhi', 'zhi', 'zhi', 'zhi'], '业': ['ye', 'ye', 'ye', 'ye'], '发': ['fa', 'fa', 'fa', 'fa'],
+  '展': ['zhan', 'zhan', 'zhan', 'zhan'], '生': ['sheng', 'sheng', 'sheng', 'sheng'], '活': ['huo', 'huo', 'huo', 'huo'],
+  '平': ['ping', 'ping', 'ping', 'ping'], '衡': ['heng', 'heng', 'heng', 'heng'], '健': ['jian', 'jian', 'jian', 'jian'],
+  '康': ['kang', 'kang', 'kang', 'kang'], '快': ['kuai', 'kuai', 'kuai', 'kuai'], '乐': ['le', 'le', 'le', 'le'],
+  '幸': ['xing', 'xing', 'xing', 'xing'], '福': ['fu', 'fu', 'fu', 'fu'], '美': ['mei', 'mei', 'mei', 'mei'],
+  '好': ['hao', 'hao', 'hao', 'hao'], '未': ['wei', 'wei', 'wei', 'wei'], '来': ['lai', 'lai', 'lai', 'lai']
+};
+
+function showMsg(text, type) {
+  const msg = document.getElementById('msg');
+  msg.textContent = text;
+  msg.className = 'msg ' + type;
+}
+function hideMsg() {
+  document.getElementById('msg').className = 'msg';
+}
+
+function convert() {
+  const input = document.getElementById('inputText').value;
+  if (!input) { showMsg('请输入内容', 'error'); return; }
+  
+  const tone = document.getElementById('tone').checked;
+  const firstLetter = document.getElementById('firstLetter').checked;
+  const capitalize = document.getElementById('capitalize').checked;
+  const separator = document.getElementById('separator').value === 'space' ? ' ' : document.getElementById('separator').value;
+  
+  const results = [];
+  for (let i = 0; i < input.length; i++) {
+    const char = input[i];
+    if (pinyinDict[char]) {
+      let pinyin = pinyinDict[char][0];
+      if (firstLetter) {
+        pinyin = pinyin.charAt(0);
+      }
+      if (capitalize) {
+        pinyin = pinyin.charAt(0).toUpperCase() + pinyin.slice(1);
+      }
+      results.push(pinyin);
+    } else {
+      results.push(char);
+    }
+  }
+  
+  document.getElementById('outputText').value = results.join(separator);
+  showMsg('转换完成', 'success');
+}
+
+function copyResult() {
+  const output = document.getElementById('outputText');
+  if (!output.value) { showMsg('没有可复制的内容', 'error'); return; }
+  output.select();
+  document.execCommand('copy');
+  showMsg('已复制到剪贴板', 'success');
+}
+
+function clearAll() {
+  document.getElementById('inputText').value = '';
+  document.getElementById('outputText').value = '';
+  hideMsg();
+}
+</script>
+</body>
+</html></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/favicon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Moonligh</div><div class="author-info-description">不需要什么描述</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">随便转，随便看</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/08/20/Vue3-TypeScript%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6%E5%AE%9E%E6%88%98%E4%BB%8Eprops%E5%88%B0%E6%B3%9B%E5%9E%8B%E7%BB%84%E4%BB%B6/" title="Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件"><img src="/img/cover-vue.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件"/></a><div class="content"><a class="title" href="/2026/08/20/Vue3-TypeScript%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6%E5%AE%9E%E6%88%98%E4%BB%8Eprops%E5%88%B0%E6%B3%9B%E5%9E%8B%E7%BB%84%E4%BB%B6/" title="Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件">Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件</a><time datetime="2026-08-20T03:30:00.000Z" title="发表于 2026-08-20 11:30:00">2026-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/20/Pinia%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E4%BB%8EVuex%E8%BF%81%E7%A7%BB%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践"><img src="/img/cover-vue.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践"/></a><div class="content"><a class="title" href="/2026/08/20/Pinia%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E4%BB%8EVuex%E8%BF%81%E7%A7%BB%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践">Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践</a><time datetime="2026-08-20T03:00:00.000Z" title="发表于 2026-08-20 11:00:00">2026-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/20/Vue3-Composition-API%E5%AE%9E%E6%88%98%E7%B2%BE%E8%AE%B2/" title="Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数"><img src="/img/cover-vue.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数"/></a><div class="content"><a class="title" href="/2026/08/20/Vue3-Composition-API%E5%AE%9E%E6%88%98%E7%B2%BE%E8%AE%B2/" title="Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数">Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数</a><time datetime="2026-08-20T02:30:00.000Z" title="发表于 2026-08-20 10:30:00">2026-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/20/Vite-Vue3-TypeScript%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E5%AE%9E%E6%88%98%E4%BB%8E%E9%9B%B6%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化"><img src="/img/cover-vue.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化"/></a><div class="content"><a class="title" href="/2026/08/20/Vite-Vue3-TypeScript%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E5%AE%9E%E6%88%98%E4%BB%8E%E9%9B%B6%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化">Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化</a><time datetime="2026-08-20T02:00:00.000Z" title="发表于 2026-08-20 10:00:00">2026-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/01/Cesium%E5%8A%A0%E8%BD%BD%E5%A4%A9%E5%9C%B0%E5%9B%BE/" title="Cesium 加载天地图：底图、注记与地形完整方案"><img src="/img/cesium-skybox-result.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Cesium 加载天地图：底图、注记与地形完整方案"/></a><div class="content"><a class="title" href="/2026/08/01/Cesium%E5%8A%A0%E8%BD%BD%E5%A4%A9%E5%9C%B0%E5%9B%BE/" title="Cesium 加载天地图：底图、注记与地形完整方案">Cesium 加载天地图：底图、注记与地形完整方案</a><time datetime="2026-08-01T08:00:00.000Z" title="发表于 2026-08-01 16:00:00">2026-08-01</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%A3%81%E7%BA%B8/"><span class="card-category-list-name">壁纸</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"><span class="card-category-list-name">技术分享</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%99%E7%A8%8B/"><span class="card-category-list-name">教程</span><span class="card-category-list-count">26</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"><span class="card-category-list-name">经验分享</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%B5%84%E6%BA%90/"><span class="card-category-list-name">资源</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/"><span class="card-category-list-name">随笔</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CSS/" style="font-size: 1.39em; color: rgb(179, 50, 50);">CSS</a><a href="/tags/%E6%BB%9A%E5%8A%A8%E6%9D%A1/" style="font-size: 1.15em; color: rgb(50, 50, 120);">滚动条</a><a href="/tags/%E6%A0%B7%E5%BC%8F/" style="font-size: 1.15em; color: rgb(86, 163, 197);">样式</a><a href="/tags/AI%E7%BB%98%E7%94%BB/" style="font-size: 1.15em; color: rgb(141, 63, 57);">AI绘画</a><a href="/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D/" style="font-size: 1.15em; color: rgb(82, 50, 114);">提示词</a><a href="/tags/3D%E5%BB%BA%E6%A8%A1/" style="font-size: 1.15em; color: rgb(50, 50, 107);">3D建模</a><a href="/tags/%E5%9B%BD%E6%BC%AB/" style="font-size: 1.15em; color: rgb(166, 64, 125);">国漫</a><a href="/tags/AIGC/" style="font-size: 1.15em; color: rgb(50, 57, 109);">AIGC</a><a href="/tags/Butterfly/" style="font-size: 1.15em; color: rgb(50, 179, 50);">Butterfly</a><a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 1.27em; color: rgb(50, 50, 173);">技巧</a><a href="/tags/Cesium/" style="font-size: 1.45em; color: rgb(127, 149, 131);">Cesium</a><a href="/tags/Canvas/" style="font-size: 1.15em; color: rgb(50, 50, 50);">Canvas</a><a href="/tags/WebGL/" style="font-size: 1.39em; color: rgb(156, 122, 173);">WebGL</a><a href="/tags/%E4%B8%89%E7%BB%B4GIS/" style="font-size: 1.33em; color: rgb(107, 119, 171);">三维GIS</a><a href="/tags/%E7%82%B9%E7%BA%BF%E9%9D%A2/" style="font-size: 1.15em; color: rgb(143, 94, 63);">点线面</a><a href="/tags/GIS/" style="font-size: 1.27em; color: rgb(145, 177, 156);">GIS</a><a href="/tags/%E5%A4%A9%E7%A9%BA%E7%9B%92/" style="font-size: 1.15em; color: rgb(68, 97, 69);">天空盒</a><a href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" style="font-size: 1.15em; color: rgb(133, 168, 50);">天地图</a><a href="/tags/%E4%B8%89%E7%BB%B4%E5%9C%B0%E5%9B%BE/" style="font-size: 1.21em; color: rgb(92, 112, 50);">三维地图</a><a href="/tags/Ajax/" style="font-size: 1.15em; color: rgb(70, 152, 154);">Ajax</a><a href="/tags/jQuery/" style="font-size: 1.15em; color: rgb(135, 50, 50);">jQuery</a><a href="/tags/FormData/" style="font-size: 1.15em; color: rgb(107, 61, 119);">FormData</a><a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" style="font-size: 1.15em; color: rgb(63, 170, 187);">文件上传</a><a href="/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/" style="font-size: 1.15em; color: rgb(162, 135, 50);">体积云</a><a href="/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/" style="font-size: 1.15em; color: rgb(71, 50, 137);">渲染管线</a><a href="/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/" style="font-size: 1.15em; color: rgb(50, 117, 129);">大气散射</a><a href="/tags/Node/" style="font-size: 1.15em; color: rgb(166, 50, 50);">Node</a><a href="/tags/npm/" style="font-size: 1.15em; color: rgb(191, 50, 50);">npm</a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.39em; color: rgb(50, 50, 112);">前端</a><a href="/tags/Pinia/" style="font-size: 1.15em; color: rgb(50, 156, 112);">Pinia</a><a href="/tags/Vue3/" style="font-size: 1.33em; color: rgb(181, 50, 50);">Vue3</a><a href="/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" style="font-size: 1.15em; color: rgb(134, 85, 50);">状态管理</a><a href="/tags/Node-js/" style="font-size: 1.27em; color: rgb(50, 183, 91);">Node.js</a><a href="/tags/HTTP/" style="font-size: 1.15em; color: rgb(129, 69, 50);">HTTP</a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.15em; color: rgb(50, 75, 50);">服务器</a><a href="/tags/ES6/" style="font-size: 1.15em; color: rgb(99, 161, 122);">ES6</a><a href="/tags/JavaScript/" style="font-size: 1.27em; color: rgb(77, 167, 56);">JavaScript</a><a href="/tags/Vue/" style="font-size: 1.27em; color: rgb(167, 144, 110);">Vue</a><a href="/tags/%E7%BB%84%E4%BB%B6/" style="font-size: 1.15em; color: rgb(50, 50, 55);">组件</a><a href="/tags/%E8%B5%84%E6%BA%90/" style="font-size: 1.27em; color: rgb(135, 154, 184);">资源</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/08/">
+            <span class="card-archive-list-date">
+              八月 2026
+            </span>
+            <span class="card-archive-list-count">6</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/07/">
+            <span class="card-archive-list-date">
+              七月 2026
+            </span>
+            <span class="card-archive-list-count">28</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/04/">
+            <span class="card-archive-list-date">
+              四月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              十二月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              十一月 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">39</div></div><div class="webinfo-item"><div class="item-name">运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2025-11-18T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-10-21T15:29:42.157Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Moonligh</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = {"data-mapping":"pathname","data-reactions-enabled":"1","data-emit-metadata":"0","data-input-position":"bottom","data-lang":"zh-CN"}
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'zhaoshaodada/zhaoshaodada.github.io',
+      'data-repo-id': 'MDEwOlJlcG9zaXRvcnkzMzM3MTQ2OTg=',
+      'data-category-id': 'DIC_kwDOE-QVCs4DByp7',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script>var meting_api="https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&r=:r";</script><div class="aplayer" data-server="netease" data-type="playlist" data-id="6758762023" data-fixed="true" data-mini="true" data-autoplay="false" data-theme="#49b1f5" data-loop="all" data-order="list" data-preload="auto" data-volume="0.7" data-mutex="true" data-lrctype="0"></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="https://events.vercount.one/js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

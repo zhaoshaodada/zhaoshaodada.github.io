@@ -1,0 +1,263 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Moonligh</title><meta name="author" content="Moonligh"><meta name="copyright" content="Moonligh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Moonligh">
+<meta property="og:url" content="https://zhaoshaodada.github.io/index.html">
+<meta property="og:site_name" content="Moonligh">
+<meta property="og:description" content="一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhaoshaodada.github.io/img/favicon.jpg">
+<meta property="article:author" content="Moonligh">
+<meta property="article:tag" content="前端开发, JavaScript, Vue, Hexo, 技术博客, ES6, Three.js, Cesium, Axios">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhaoshaodada.github.io/img/favicon.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Moonligh",
+  "alternateName": [
+    "zhaoshaodada.github.io"
+  ],
+  "url": "https://zhaoshaodada.github.io/"
+}</script><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://zhaoshaodada.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Moonligh',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Moonligh" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Moonligh" type="application/rss+xml">
+</head><body><div id="web_bg" style="background-image: url(/img/22.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/favicon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 工具</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/index.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Moonligh</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 工具</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Moonligh</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover"><a href="/2026/08/20/Vue3-TypeScript%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6%E5%AE%9E%E6%88%98%E4%BB%8Eprops%E5%88%B0%E6%B3%9B%E5%9E%8B%E7%BB%84%E4%BB%B6/" title="Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件"><img class="post-bg" src="/img/cover-vue.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/08/20/Vue3-TypeScript%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6%E5%AE%9E%E6%88%98%E4%BB%8Eprops%E5%88%B0%E6%B3%9B%E5%9E%8B%E7%BB%84%E4%BB%B6/" title="Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件">Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-08-20T03:30:00.000Z" title="发表于 2026-08-20 11:30:00">2026-08-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Vue3/">Vue3</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/TypeScript/">TypeScript</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/">类型进阶</a></span></div><div class="content">前言前三篇我们已经把 Vite + Vue3 + Pinia 这套骨架搭起来了，但还有一层”安全网”没说透——TypeScript 的类型。很多人写 Vue3 + TS 时其实只是”用了 TS 的语法”，并没有真正享受类型带来的好处：props 类型写 any、emit 用 string、provide&#x2F;inject 一律 unknown、泛型组件干脆不会写。 本文聚焦 Vue3 + TS 的类型进阶，把这些场景的类型写法一次讲清。读完你写出来的组件会自带完整类型提示，IDE 跳转、重构、拼写错误都能被编译器挡掉。 一、defineProps：基于类型的声明推荐：泛型写法1234567891011&lt;script setup lang=&quot;ts&quot;&gt;interface Props &#123;  title: string  count?: number              // 可选  size?: &#x27;sm&#x27; | &#x27;md&#x27; | &#x27;lg&#x27;   // 字面量联合  list: st...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2026/08/20/Pinia%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E4%BB%8EVuex%E8%BF%81%E7%A7%BB%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践"><img class="post-bg" src="/img/cover-vue.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/08/20/Pinia%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E4%BB%8EVuex%E8%BF%81%E7%A7%BB%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践">Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-08-20T03:00:00.000Z" title="发表于 2026-08-20 11:00:00">2026-08-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Pinia/">Pinia</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Vue3/">Vue3</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/">状态管理</a></span></div><div class="content">前言Pinia 是 Vue3 官方推荐的状态管理库，由 Vue 核心团队成员开发，定位上是 Vuex 5。它解决了 Vuex 的几个老问题：TS 支持差、mutations 写起来啰嗦、模块嵌套太深。在 Vite + Vue3 + TS 这套技术栈里，Pinia 是状态管理的默认选择。 本文延续前两篇的工程化骨架，把状态管理这一层讲透。 一、为什么不用 VuexVuex 在 Vue2 时代是事实标准，但它在 Vue3 + TS 项目里有几个明显的痛点：    维度 Vuex 4 Pinia    TS 支持 类型推断弱，需手写 MutationTree 等 开箱即用，IDE 提示完整   Mutations 必须写 mutation 才能改 state 直接在 action 里改，或直接改   模块嵌套 modules 嵌套，访问要写 namespaced 路径 扁平 store，互相 import 即可   体积 较大 约 1KB（gzip）   Devtools 集成 集成且更直观   Composition API 需 useStore 包装 天然支持   简单说：Pini...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2026/08/20/Vue3-Composition-API%E5%AE%9E%E6%88%98%E7%B2%BE%E8%AE%B2/" title="Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数"><img class="post-bg" src="/img/cover-vue.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/08/20/Vue3-Composition-API%E5%AE%9E%E6%88%98%E7%B2%BE%E8%AE%B2/" title="Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数">Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-08-20T02:30:00.000Z" title="发表于 2026-08-20 10:30:00">2026-08-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Vue3/">Vue3</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Composition-API/">Composition API</a></span></div><div class="content">前言Vue3 最具革命性的变化就是 Composition API。它解决了 Options API 在复杂组件中”逻辑碎片化”的问题——同一个功能的代码被 data、methods、computed、watch 强行切散到四个角落，维护时要在文件里来回跳转。Composition API 让你能把”一个功能”的所有逻辑聚拢到一起，还能轻松抽出来复用。 本文假设你已经按上一篇文章搭好了 Vite + Vue3 + TS 骨架，重点讲清三个问题：怎么用、什么时候用什么、怎么抽出来复用。 一、&lt;script setup&gt;：一切的开始Vue3.2 之后推荐用 &lt;script setup&gt; 写法，它是 Composition API 的编译期语法糖，比 setup() 函数更简洁。 1234567891011&lt;script setup lang=&quot;ts&quot;&gt;import &#123; ref &#125; from &#x27;vue&#x27;import Child from &#x27;./Child.vue&#x27;cons...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2026/08/20/Vite-Vue3-TypeScript%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E5%AE%9E%E6%88%98%E4%BB%8E%E9%9B%B6%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化"><img class="post-bg" src="/img/cover-vue.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/08/20/Vite-Vue3-TypeScript%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E5%AE%9E%E6%88%98%E4%BB%8E%E9%9B%B6%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化">Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-08-20T02:00:00.000Z" title="发表于 2026-08-20 10:00:00">2026-08-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Vue3/">Vue3</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Vite/">Vite</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/TypeScript/">TypeScript</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化</a></span></div><div class="content">前言Vite、Vue3、TypeScript 已经成为 2026 年前端工程化的”标配三件套”。但很多团队在搭建项目时仍然停留在 npm create vite 后直接写业务的阶段，忽略了目录规范、路径别名、自动导入、代码规范、环境变量这些”看不见但天天用”的工程化配置。 本文将从一行命令开始，搭建一个具备完整工程化能力的 Vite + Vue3 + TypeScript 项目骨架。读完你将获得一份可以直接复用的项目模板，后续的 Composition API、Pinia、类型进阶文章都会基于这套骨架展开。 一、技术选型与前置准备为什么是 Vite + Vue3 + TypeScript Vite：开发阶段基于原生 ESM，冷启动几乎瞬间完成；生产环境用 Rollup 打包，产物质量有保障。 Vue3：Composition API 让逻辑复用更彻底，配合 &lt;script setup&gt; 写法极其简洁，性能也全面优于 Vue2。 TypeScript：类型系统把大量低级错误挡在编译期，配合 IDE 的智能提示，重构和协作成本显著降低。  三者结合后，开发体验、可维护性、...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2026/08/01/Cesium%E5%8A%A0%E8%BD%BD%E5%A4%A9%E5%9C%B0%E5%9B%BE/" title="Cesium 加载天地图：底图、注记与地形完整方案"><img class="post-bg" src="/img/cesium-skybox-result.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Cesium 加载天地图：底图、注记与地形完整方案"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/08/01/Cesium%E5%8A%A0%E8%BD%BD%E5%A4%A9%E5%9C%B0%E5%9B%BE/" title="Cesium 加载天地图：底图、注记与地形完整方案">Cesium 加载天地图：底图、注记与地形完整方案</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-08-01T08:00:00.000Z" title="发表于 2026-08-01 16:00:00">2026-08-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Cesium/">Cesium</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/GIS/">GIS</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/">天地图</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E4%B8%89%E7%BB%B4%E5%9C%B0%E5%9B%BE/">三维地图</a></span></div><div class="content">前言做三维地球项目时，底图选型永远是绕不开的第一步。谷歌影像有访问限制，高德、百度的切片服务坐标系与 Cesium 原生球面墨卡托不完全一致，自己发布切片服务又费时费力。 对于国内项目，天地图（国家地理信息公共服务平台） 是一个非常稳的选择：官方维护、坐标系标准、影像和矢量都齐全、个人开发者免费申请 Token 即可使用。本文就把在 Cesium 中接入天地图的全流程梳理一遍。 一、申请天地图 Token天地图所有服务都需要带上 tk（Token Key）参数，所以第一步是申请开发者密钥。  打开 天地图控制台，注册账号并完成实名认证 进入「应用管理」→「创建新应用」，应用类型选择「浏览器端」 创建后会得到一串 tk，形如 a1b2c3d4e5f6...，这就是后面所有请求都要带的密钥   注意：浏览器端应用的 Referer 白名单要配置好，否则线上环境会出现 403。本地开发可填 localhost。  二、天地图图层类型一览天地图服务采用 T=类型 的方式区分图层，Cesium 常用的有：    T 参数 说明 后缀 _c &#x2F; _w    img 影像底图（卫星影...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2026/08/01/%E6%96%B0HTML%E6%A0%87%E7%AD%BE%E5%8F%91%E5%B8%83%E6%90%9E%E5%AE%9A%E6%89%80%E6%9C%89%E5%89%8D%E7%AB%AF%E6%9D%83%E9%99%90/" title="新 HTML 标签发布！搞定所有前端权限！"><img class="post-bg" src="/img/cover-js.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="新 HTML 标签发布！搞定所有前端权限！"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/08/01/%E6%96%B0HTML%E6%A0%87%E7%AD%BE%E5%8F%91%E5%B8%83%E6%90%9E%E5%AE%9A%E6%89%80%E6%9C%89%E5%89%8D%E7%AB%AF%E6%9D%83%E9%99%90/" title="新 HTML 标签发布！搞定所有前端权限！">新 HTML 标签发布！搞定所有前端权限！</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-08-01T03:00:00.000Z" title="发表于 2026-08-01 11:00:00">2026-08-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/HTML/">HTML</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9D%83%E9%99%90/">权限</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/permission%E6%A0%87%E7%AD%BE/">permission标签</a></span></div><div class="content">前言以往网页想要调用摄像头、麦克风、定位，全套流程都靠 JavaScript 硬编码实现。我们要手写一堆异步逻辑、捕获各种异常、持续监听权限状态，样板代码堆一大堆。  更头疼的是用户体验问题。很多网站一打开页面，冷不丁弹出授权弹窗，用户毫无防备，下意识直接点拒绝。一旦权限被拦截，麻烦事就来了：浏览器会永久屏蔽再次唤起弹窗，想要重新开启权限，只能引导用户钻进浏览器层层嵌套的设置面板，普通用户根本找不到入口，最后直接放弃使用功能。 现在 WICG 带来了实验性 HTML 新标签 &lt;permission&gt;，Chrome 144 及以上版本已经支持。只用声明式 HTML 标签，就能搞定设备权限申请，既能精简代码，也能大幅优化授权交互。 这个标签到底强在哪 声明式写法：一行 HTML 替代数十行 JS，不用手动调用浏览器权限 API 原生控件自动渲染：浏览器自动生成授权按钮，文字跟随权限状态动态切换（未授权 &#x2F; 已允许 &#x2F; 已拒绝） 交互更人性化：只有用户主动点击按钮，才弹出授权窗口；就算之前拒绝权限，再次点击依旧能够唤起弹窗，不用手动修改浏览器设置 完善事...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2026/07/31/Web-Worker%E5%89%8D%E7%AB%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/" title="Web Worker 前端多线程编程实战指南"><img class="post-bg" src="/img/cover-js.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Web Worker 前端多线程编程实战指南"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/07/31/Web-Worker%E5%89%8D%E7%AB%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/" title="Web Worker 前端多线程编程实战指南">Web Worker 前端多线程编程实战指南</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-31T12:20:00.000Z" title="发表于 2026-07-31 20:20:00">2026-07-31</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/JavaScript/">JavaScript</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Web-Worker/">Web Worker</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></span></div><div class="content">前言在前端开发中，我们经常会遇到这样的场景：点击一个按钮触发了一次大规模数据计算，结果整个页面”冻住”了——动画停止、按钮无响应、甚至连鼠标移动都卡顿。这背后的根本原因，是 JavaScript 运行在单一线程（主线程）上，而主线程同时负责渲染 UI、处理交互和执行脚本。一旦脚本长时间占用主线程，页面就会失去响应。 Web Worker 就是浏览器为解决这个问题提供的多线程方案。它允许我们在后台创建独立线程来执行耗时的 JavaScript 任务，而不会阻塞主线程的 UI 渲染。本文将从原理到实战，带你完整掌握 Web Worker 的使用方法。 一、为什么需要 Web Worker单线程的困境JavaScript 从诞生起就是单线程语言，这与它最初的定位有关——作为浏览器脚本，处理简单的 DOM 操作和用户交互。但前端的能力边界在不断扩张，如今我们经常需要在浏览器端完成：  大规模数据的过滤、排序与聚合 图片的像素级处理（滤镜、压缩） 复杂数学运算或加密解密 大型 JSON 文件的解析与转换  当这类计算耗时超过 50ms 时，就会被判定为”长任务”（Long Task），直接...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/" title="Cesium 全球体积云移植：从 GIS 迈向图形的 90% 还原之路"><img class="post-bg" src="/img/cesium-volumetric-clouds-cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Cesium 全球体积云移植：从 GIS 迈向图形的 90% 还原之路"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/" title="Cesium 全球体积云移植：从 GIS 迈向图形的 90% 还原之路">Cesium 全球体积云移植：从 GIS 迈向图形的 90% 还原之路</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-31T12:00:00.000Z" title="发表于 2026-07-31 20:00:00">2026-07-31</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Cesium/">Cesium</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/WebGL/">WebGL</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/">体积云</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/">渲染管线</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/">大气散射</a></span></div><div class="content"> 从 GIS 脱坑，向图形更近一步鸽了好久，终于脱坑 GIS 了，也算是离图形更近了一些，这下可以专心研究图形了。 断断续续移植的全球体积云，总算是有了个像样的版本，目前还原大概 90%。 中间实在是踩了太多坑，但到最后把经验落到 skill 的时候发现，还是对渲染管线、坐标转换不熟悉造成的。如果基础很扎实，那从一开始思路定好，还是能省很多时间的。 这个移植项目到底有没有使用价值总有人问这个到底有没有使用价值，我只想说：这个过程中我学到的东西和对渲染管线的理解，比付出的时间大得多。Cesium 的 render 流程也很值得学习。 抛开国别不谈，这个移植项目的思路和渲染管线的使用真的很值得学习。因为之前做大气散射的时候，虽然也能实现效果，但很多东西都需要适配 Cesium 的实现。本项目实现了 MRT、GBuffer 等，以及基于 Texture2DArray 的阴影资源管理能力。  移植项目开源地址：https://takram-design-engineering.github.io/  效果演进先放几张之前的效果——地面光照、inscatter、云层阴影、lightshaf...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2026/07/31/Cesium%E5%AE%9E%E4%BE%8B%E5%8C%96%E6%B8%B2%E6%9F%93%E8%AF%A6%E8%A7%A3%E5%90%8C%E6%A8%A1%E5%9E%8B%E4%B8%87%E7%BA%A7%E6%89%B9%E9%87%8F%E7%BB%98%E5%88%B6%E6%96%B9%E6%A1%88/" title="Cesium实例化渲染详解：同模型万级批量绘制方案"><img class="post-bg" src="/img/cesium-instancing-demo.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Cesium实例化渲染详解：同模型万级批量绘制方案"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/07/31/Cesium%E5%AE%9E%E4%BE%8B%E5%8C%96%E6%B8%B2%E6%9F%93%E8%AF%A6%E8%A7%A3%E5%90%8C%E6%A8%A1%E5%9E%8B%E4%B8%87%E7%BA%A7%E6%89%B9%E9%87%8F%E7%BB%98%E5%88%B6%E6%96%B9%E6%A1%88/" title="Cesium实例化渲染详解：同模型万级批量绘制方案">Cesium实例化渲染详解：同模型万级批量绘制方案</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-31T12:00:00.000Z" title="发表于 2026-07-31 20:00:00">2026-07-31</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Cesium/">Cesium</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/WebGL/">WebGL</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%AE%9E%E4%BE%8B%E5%8C%96%E6%B8%B2%E6%9F%93/">实例化渲染</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a></span></div><div class="content"> 痛点：同模型大量复制的性能困境在 Cesium 开发过程中，我们常会为添加一整片森林、一排排路灯、沿山脊排开的风机感到苦恼，不是模型不好找而是添加这些模型的量太大。这些东西都是同一个模型复制成千上万份。如果一个个 Entity 去加，浏览器分分钟卡死。 instance 实例化渲染，就是为解决”同一个模型画很多次”这件事做的。下面说清楚它到底能干什么，再详细讲解实例化渲染在高版本的 Cesium 中如何实现。 这个功能能拿来干嘛凡是”同一个模型，出现很多次”的场景，都该用实例化。几种典型用途：  种树 &#x2F; 森林：一个树的 GLB，往一片山上铺几万棵。每棵位置不同、朝向随机，但模型只加载一次。 工程工地：塔吊、集装箱、施工车辆，按实际坐标批量摆放，模拟现场布局。 电力线路：电线杆、铁塔沿路径等距排开，几百根一根根画。 城市家具：路灯、消防栓、长椅、垃圾桶，整条街整条街地铺。 车队 &#x2F; 设备分布：demo 默认就是 100 辆消防车 10×10 方阵，模拟车队或装备到位情况。 军事 &#x2F; 态势标绘：装备、阵地、雷达站的批量摆放。  共同点是模型共用、变换...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2026/07/31/%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8/" title="手机壁纸"><img class="post-bg" src="/img/wallpaper-0731-1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="手机壁纸"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/07/31/%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8/" title="手机壁纸">手机壁纸</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-30T22:54:00.000Z" title="发表于 2026-07-31 06:54:00">2026-07-31</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%A3%81%E7%BA%B8/">壁纸</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%A3%81%E7%BA%B8/">壁纸</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8/">手机壁纸</a></span></div><div class="content"> 你今天特别讨厌，讨人喜欢又百看不厌。  每日手机壁纸更新，长按图片即可保存到相册设置为壁纸。      [{"url":"/img/wallpaper-0731-1.jpg","alt":"7-31 手机壁纸 1","title":""},{"url":"/img/wallpaper-0731-2.jpg","alt":"7-31 手机壁纸 2","title":""},{"url":"/img/wallpaper-0731-3.jpg","alt":"7-31 手机壁纸 3","title":""},{"url":"/img/wallpaper-0731-4.jpg","alt":"7-31 手机壁纸 4","title":""},{"url":"/img/wallpaper-0731-5.jpg","alt":"7-31 手机壁纸 5","title":""},{"url":"/img/wallpaper-0731-6.jpg","alt":"7-31 手机壁纸 6","title":""}]      本文内容整理自微信公众号「莫」发布的《7-31 手机壁纸》，版权归原作...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/favicon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Moonligh</div><div class="author-info-description">不需要什么描述</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">随便转，随便看</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/08/20/Vue3-TypeScript%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6%E5%AE%9E%E6%88%98%E4%BB%8Eprops%E5%88%B0%E6%B3%9B%E5%9E%8B%E7%BB%84%E4%BB%B6/" title="Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件"><img src="/img/cover-vue.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件"/></a><div class="content"><a class="title" href="/2026/08/20/Vue3-TypeScript%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6%E5%AE%9E%E6%88%98%E4%BB%8Eprops%E5%88%B0%E6%B3%9B%E5%9E%8B%E7%BB%84%E4%BB%B6/" title="Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件">Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件</a><time datetime="2026-08-20T03:30:00.000Z" title="发表于 2026-08-20 11:30:00">2026-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/20/Pinia%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E4%BB%8EVuex%E8%BF%81%E7%A7%BB%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践"><img src="/img/cover-vue.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践"/></a><div class="content"><a class="title" href="/2026/08/20/Pinia%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E4%BB%8EVuex%E8%BF%81%E7%A7%BB%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践">Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践</a><time datetime="2026-08-20T03:00:00.000Z" title="发表于 2026-08-20 11:00:00">2026-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/20/Vue3-Composition-API%E5%AE%9E%E6%88%98%E7%B2%BE%E8%AE%B2/" title="Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数"><img src="/img/cover-vue.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数"/></a><div class="content"><a class="title" href="/2026/08/20/Vue3-Composition-API%E5%AE%9E%E6%88%98%E7%B2%BE%E8%AE%B2/" title="Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数">Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数</a><time datetime="2026-08-20T02:30:00.000Z" title="发表于 2026-08-20 10:30:00">2026-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/20/Vite-Vue3-TypeScript%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E5%AE%9E%E6%88%98%E4%BB%8E%E9%9B%B6%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化"><img src="/img/cover-vue.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化"/></a><div class="content"><a class="title" href="/2026/08/20/Vite-Vue3-TypeScript%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E5%AE%9E%E6%88%98%E4%BB%8E%E9%9B%B6%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化">Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化</a><time datetime="2026-08-20T02:00:00.000Z" title="发表于 2026-08-20 10:00:00">2026-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/01/Cesium%E5%8A%A0%E8%BD%BD%E5%A4%A9%E5%9C%B0%E5%9B%BE/" title="Cesium 加载天地图：底图、注记与地形完整方案"><img src="/img/cesium-skybox-result.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Cesium 加载天地图：底图、注记与地形完整方案"/></a><div class="content"><a class="title" href="/2026/08/01/Cesium%E5%8A%A0%E8%BD%BD%E5%A4%A9%E5%9C%B0%E5%9B%BE/" title="Cesium 加载天地图：底图、注记与地形完整方案">Cesium 加载天地图：底图、注记与地形完整方案</a><time datetime="2026-08-01T08:00:00.000Z" title="发表于 2026-08-01 16:00:00">2026-08-01</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%A3%81%E7%BA%B8/"><span class="card-category-list-name">壁纸</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"><span class="card-category-list-name">技术分享</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%99%E7%A8%8B/"><span class="card-category-list-name">教程</span><span class="card-category-list-count">26</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"><span class="card-category-list-name">经验分享</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%B5%84%E6%BA%90/"><span class="card-category-list-name">资源</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/"><span class="card-category-list-name">随笔</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CSS/" style="font-size: 1.39em; color: rgb(179, 50, 50);">CSS</a><a href="/tags/%E6%BB%9A%E5%8A%A8%E6%9D%A1/" style="font-size: 1.15em; color: rgb(50, 50, 120);">滚动条</a><a href="/tags/%E6%A0%B7%E5%BC%8F/" style="font-size: 1.15em; color: rgb(86, 163, 197);">样式</a><a href="/tags/AI%E7%BB%98%E7%94%BB/" style="font-size: 1.15em; color: rgb(141, 63, 57);">AI绘画</a><a href="/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D/" style="font-size: 1.15em; color: rgb(82, 50, 114);">提示词</a><a href="/tags/3D%E5%BB%BA%E6%A8%A1/" style="font-size: 1.15em; color: rgb(50, 50, 107);">3D建模</a><a href="/tags/%E5%9B%BD%E6%BC%AB/" style="font-size: 1.15em; color: rgb(166, 64, 125);">国漫</a><a href="/tags/AIGC/" style="font-size: 1.15em; color: rgb(50, 57, 109);">AIGC</a><a href="/tags/Butterfly/" style="font-size: 1.15em; color: rgb(50, 179, 50);">Butterfly</a><a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 1.27em; color: rgb(50, 50, 173);">技巧</a><a href="/tags/Cesium/" style="font-size: 1.45em; color: rgb(127, 149, 131);">Cesium</a><a href="/tags/Canvas/" style="font-size: 1.15em; color: rgb(50, 50, 50);">Canvas</a><a href="/tags/WebGL/" style="font-size: 1.39em; color: rgb(156, 122, 173);">WebGL</a><a href="/tags/%E4%B8%89%E7%BB%B4GIS/" style="font-size: 1.33em; color: rgb(107, 119, 171);">三维GIS</a><a href="/tags/%E7%82%B9%E7%BA%BF%E9%9D%A2/" style="font-size: 1.15em; color: rgb(143, 94, 63);">点线面</a><a href="/tags/GIS/" style="font-size: 1.27em; color: rgb(145, 177, 156);">GIS</a><a href="/tags/%E5%A4%A9%E7%A9%BA%E7%9B%92/" style="font-size: 1.15em; color: rgb(68, 97, 69);">天空盒</a><a href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" style="font-size: 1.15em; color: rgb(133, 168, 50);">天地图</a><a href="/tags/%E4%B8%89%E7%BB%B4%E5%9C%B0%E5%9B%BE/" style="font-size: 1.21em; color: rgb(92, 112, 50);">三维地图</a><a href="/tags/Ajax/" style="font-size: 1.15em; color: rgb(70, 152, 154);">Ajax</a><a href="/tags/jQuery/" style="font-size: 1.15em; color: rgb(135, 50, 50);">jQuery</a><a href="/tags/FormData/" style="font-size: 1.15em; color: rgb(107, 61, 119);">FormData</a><a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" style="font-size: 1.15em; color: rgb(63, 170, 187);">文件上传</a><a href="/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/" style="font-size: 1.15em; color: rgb(162, 135, 50);">体积云</a><a href="/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/" style="font-size: 1.15em; color: rgb(71, 50, 137);">渲染管线</a><a href="/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/" style="font-size: 1.15em; color: rgb(50, 117, 129);">大气散射</a><a href="/tags/Node/" style="font-size: 1.15em; color: rgb(166, 50, 50);">Node</a><a href="/tags/npm/" style="font-size: 1.15em; color: rgb(191, 50, 50);">npm</a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.39em; color: rgb(50, 50, 112);">前端</a><a href="/tags/Pinia/" style="font-size: 1.15em; color: rgb(50, 156, 112);">Pinia</a><a href="/tags/Vue3/" style="font-size: 1.33em; color: rgb(181, 50, 50);">Vue3</a><a href="/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" style="font-size: 1.15em; color: rgb(134, 85, 50);">状态管理</a><a href="/tags/Node-js/" style="font-size: 1.27em; color: rgb(50, 183, 91);">Node.js</a><a href="/tags/HTTP/" style="font-size: 1.15em; color: rgb(129, 69, 50);">HTTP</a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.15em; color: rgb(50, 75, 50);">服务器</a><a href="/tags/ES6/" style="font-size: 1.15em; color: rgb(99, 161, 122);">ES6</a><a href="/tags/JavaScript/" style="font-size: 1.27em; color: rgb(77, 167, 56);">JavaScript</a><a href="/tags/Vue/" style="font-size: 1.27em; color: rgb(167, 144, 110);">Vue</a><a href="/tags/%E7%BB%84%E4%BB%B6/" style="font-size: 1.15em; color: rgb(50, 50, 55);">组件</a><a href="/tags/%E8%B5%84%E6%BA%90/" style="font-size: 1.27em; color: rgb(135, 154, 184);">资源</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/08/">
+            <span class="card-archive-list-date">
+              八月 2026
+            </span>
+            <span class="card-archive-list-count">6</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/07/">
+            <span class="card-archive-list-date">
+              七月 2026
+            </span>
+            <span class="card-archive-list-count">28</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/04/">
+            <span class="card-archive-list-date">
+              四月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              十二月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              十一月 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">39</div></div><div class="webinfo-item"><div class="item-name">运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2025-11-18T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-10-21T15:29:42.157Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Moonligh</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, "https://v1.hitokoto.cn/"))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = ["真正的强大不是对抗，而是允许发生。"].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  typedJSFn.processSubtitle(["真正的强大不是对抗，而是允许发生。"])
+}
+typedJSFn.run(subtitleType)</script></div><script>var meting_api="https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&r=:r";</script><div class="aplayer" data-server="netease" data-type="playlist" data-id="6758762023" data-fixed="true" data-mini="true" data-autoplay="false" data-theme="#49b1f5" data-loop="all" data-order="list" data-preload="auto" data-volume="0.7" data-mutex="true" data-lrctype="0"></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="https://events.vercount.one/js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

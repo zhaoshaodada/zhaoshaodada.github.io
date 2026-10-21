@@ -1,0 +1,924 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Moonligh | Moonligh</title><meta name="author" content="Moonligh"><meta name="copyright" content="Moonligh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="图片加水印 - 在线工具            {   &quot;@context&quot;: &quot;https:&#x2F;&#x2F;schema.org&quot;,   &quot;@type&quot;: &quot;SoftwareApplication&quot;,   &quot;name&quot;: &quot;图片加水印&quot;,   &quot;applicationCategory&quot;: &quot;UtilitiesApplication&quot;,   &quot;operatingSystem&quot;: &quot;Web&quot;,   &quot;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Moonligh">
+<meta property="og:url" content="https://zhaoshaodada.github.io/tools/image-watermark.html">
+<meta property="og:site_name" content="Moonligh">
+<meta property="og:description" content="图片加水印 - 在线工具            {   &quot;@context&quot;: &quot;https:&#x2F;&#x2F;schema.org&quot;,   &quot;@type&quot;: &quot;SoftwareApplication&quot;,   &quot;name&quot;: &quot;图片加水印&quot;,   &quot;applicationCategory&quot;: &quot;UtilitiesApplication&quot;,   &quot;operatingSystem&quot;: &quot;Web&quot;,   &quot;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhaoshaodada.github.io/img/favicon.jpg">
+<meta property="article:published_time" content="2026-10-14T16:53:16.002Z">
+<meta property="article:modified_time" content="2026-10-14T16:53:16.002Z">
+<meta property="article:author" content="Moonligh">
+<meta property="article:tag" content="前端开发, JavaScript, Vue, Hexo, 技术博客, ES6, Three.js, Cesium, Axios">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhaoshaodada.github.io/img/favicon.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://zhaoshaodada.github.io/tools/image-watermark.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Moonligh',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Moonligh" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Moonligh" type="application/rss+xml">
+</head><body><div id="web_bg" style="background-image: url(/img/22.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/favicon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 工具</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/index.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Moonligh</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 工具</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title"></h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>图片加水印 - 在线工具</title>
+<meta name="description" content="在线图片加水印工具，支持文字水印、平铺水印、自定义位置/字号/颜色/透明度/旋转，纯前端 Canvas 实现，图片不上传服务器，安全高效。">
+<meta name="keywords" content="图片加水印,水印工具,在线水印,文字水印,平铺水印,Canvas水印,图片水印,批量水印,防盗图,图片保护">
+<meta property="og:title" content="图片加水印 - 在线工具">
+<meta property="og:description" content="在线图片加水印工具，支持文字水印、平铺水印，纯前端 Canvas 实现">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://moonligh.netlify.app/tools/image-watermark.html">
+<meta property="og:image" content="https://moonligh.netlify.app/img/index.jpg">
+<meta property="og:site_name" content="Moonligh 在线工具">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://moonligh.netlify.app/tools/image-watermark.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "图片加水印",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Web",
+  "description": "在线图片加水印工具，支持文字水印、平铺水印、自定义位置/字号/颜色/透明度/旋转，纯前端 Canvas 实现，图片不上传服务器",
+  "url": "https://moonligh.netlify.app/tools/image-watermark.html",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CNY" }
+}
+</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 30px;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #49b1f5;
+  text-decoration: none;
+  font-size: 14px;
+}
+.back-link:hover { text-decoration: underline; }
+h1 { font-size: 24px; margin-bottom: 20px; color: #333; }
+.textarea-group { margin-bottom: 16px; }
+label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+.btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary { background: #49b1f5; color: #fff; }
+.btn-primary:hover { background: #3aa0e4; }
+.btn-secondary { background: #f0f0f0; color: #333; }
+.btn-secondary:hover { background: #e0e0e0; }
+.btn-success { background: #52c41a; color: #fff; }
+.btn-success:hover { background: #45b016; }
+.btn-danger { background: #ff4d4f; color: #fff; }
+.btn-danger:hover { background: #e84143; }
+.result-area { margin-top: 20px; }
+.msg {
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  display: none;
+}
+.msg.error { background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7; display: block; }
+.msg.success { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; display: block; }
+.drop-zone {
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #fafafa;
+}
+.drop-zone:hover, .drop-zone.dragover {
+  border-color: #49b1f5;
+  background: #f0f8ff;
+}
+.drop-zone p { color: #666; font-size: 14px; margin-top: 8px; }
+.drop-zone .icon { font-size: 36px; color: #999; }
+.control-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 24px;
+  margin: 16px 0;
+}
+.control-group { display: flex; flex-direction: column; }
+.control-group.full { grid-column: 1 / -1; }
+.control-group label { margin-bottom: 6px; }
+.control-group input[type="text"],
+.control-group input[type="number"],
+.control-group select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+  font-family: inherit;
+}
+.control-group input:focus,
+.control-group select:focus {
+  outline: none;
+  border-color: #49b1f5;
+}
+input[type="range"] { width: 100%; vertical-align: middle; }
+.range-value {
+  display: inline-block;
+  margin-left: 8px;
+  color: #49b1f5;
+  font-weight: 500;
+  min-width: 40px;
+}
+.color-row { display: flex; align-items: center; gap: 8px; }
+.color-row input[type="color"] {
+  width: 44px; height: 34px;
+  border: 1px solid #ddd; border-radius: 6px;
+  padding: 2px; cursor: pointer; background: #fff;
+}
+.color-row input[type="text"] {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd; border-radius: 6px;
+  font-size: 14px; font-family: Consolas, Monaco, monospace;
+}
+.position-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  max-width: 240px;
+}
+.position-grid label {
+  margin: 0;
+  padding: 10px 0;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  background: #fff;
+  transition: all 0.15s;
+  user-select: none;
+}
+.position-grid label:hover { border-color: #49b1f5; color: #49b1f5; }
+.position-grid input { position: absolute; opacity: 0; pointer-events: none; }
+.position-grid input:checked + span {
+  display: block;
+  margin: -11px -1px;
+  padding: 10px 0;
+  background: #49b1f5;
+  color: #fff;
+  border-radius: 6px;
+  border: 1px solid #49b1f5;
+}
+.position-grid label:has(input:checked) {
+  border-color: #49b1f5;
+  color: #49b1f5;
+  background: #f0f8ff;
+}
+.tile-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 13px; color: #666; }
+.tile-row input { margin: 0; }
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+.compare-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.compare-card .card-title {
+  padding: 10px 14px;
+  background: #f6f8fa;
+  font-size: 13px;
+  color: #666;
+  border-bottom: 1px solid #eee;
+}
+.compare-card .card-body {
+  padding: 12px;
+  text-align: center;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  font-size: 13px;
+  color: #999;
+}
+.compare-card img {
+  max-width: 100%;
+  max-height: 300px;
+  display: block;
+  margin: 0 auto;
+}
+.info-line {
+  font-size: 13px;
+  color: #666;
+  margin-top: 6px;
+  font-family: Consolas, Monaco, monospace;
+}
+@media (max-width: 600px) {
+  .compare-grid { grid-template-columns: 1fr; }
+  .control-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<!-- Google AdSense — 申请通过后把下面 PLACEHOLDER_CLIENT 替换为真实 ca-pub-XXXXXXXXXXXXXXXX -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+<script>
+  window.__AD_CLIENT__ = window.__AD_CLIENT__ || 'ca-pub-0000000000000000';
+  window.__HAS_ADS__ = (function() {
+    var c = window.__AD_CLIENT__ || '';
+    return c.indexOf('0000000000000000') === -1 && c.indexOf('ca-pub-') === 0;
+  })();
+  if (window.__HAS_ADS__) {
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  }
+</script>
+<style>
+.ad-banner {
+  margin: 30px auto 0;
+  max-width: 728px;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 2px dashed #d0d7de;
+  color: #8b949e;
+  font-size: 13px;
+  background: #f6f8fa;
+  padding: 20px;
+  text-align: center;
+}
+.ad-banner .adsbygoogle[data-ad-status="filled"] + span { display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/tools/" class="back-link">← 返回工具列表</a>
+  <h1>图片加水印</h1>
+
+  <div id="msg" class="msg"></div>
+
+  <div class="textarea-group">
+    <label>上传图片：</label>
+    <div class="drop-zone" id="drop-zone">
+      <div class="icon">📷</div>
+      <p>点击选择图片，或将图片拖拽到此处</p>
+      <p style="font-size:12px;color:#999;">支持 JPEG / PNG / WebP，图片不会上传服务器</p>
+      <input type="file" id="file-input" accept="image/*" style="display:none;">
+    </div>
+  </div>
+
+  <div class="control-grid">
+    <div class="control-group full">
+      <label>水印文字：</label>
+      <input type="text" id="text" value="仅供个人使用" placeholder="输入水印文字">
+    </div>
+
+    <div class="control-group">
+      <label>字号：<span class="range-value" id="size-value">48</span>px</label>
+      <input type="range" id="size" min="12" max="200" value="48">
+    </div>
+
+    <div class="control-group">
+      <label>透明度：<span class="range-value" id="opacity-value">50</span>%</label>
+      <input type="range" id="opacity" min="0" max="100" value="50">
+    </div>
+
+    <div class="control-group">
+      <label>旋转角度：<span class="range-value" id="rotate-value">-45</span>°</label>
+      <input type="range" id="rotate" min="-180" max="180" value="-45">
+    </div>
+
+    <div class="control-group">
+      <label>颜色：</label>
+      <div class="color-row">
+        <input type="color" id="color-picker" value="#ffffff">
+        <input type="text" id="color-text" value="#ffffff">
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label>输出格式：</label>
+      <select id="format">
+        <option value="image/jpeg">JPEG</option>
+        <option value="image/png">PNG（保留透明）</option>
+        <option value="image/webp">WebP</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label>输出质量（JPEG/WebP）：<span class="range-value" id="quality-value">92</span>%</label>
+      <input type="range" id="quality" min="1" max="100" value="92">
+    </div>
+
+    <div class="control-group full">
+      <label>水印位置：</label>
+      <div class="position-grid" id="position-grid">
+        <label><input type="radio" name="position" value="top-left"><span>↖ 左上</span></label>
+        <label><input type="radio" name="position" value="top"><span>↑ 顶部</span></label>
+        <label><input type="radio" name="position" value="top-right"><span>↗ 右上</span></label>
+        <label><input type="radio" name="position" value="left"><span>← 左侧</span></label>
+        <label><input type="radio" name="position" value="center" checked><span>• 居中</span></label>
+        <label><input type="radio" name="position" value="right"><span>→ 右侧</span></label>
+        <label><input type="radio" name="position" value="bottom-left"><span>↙ 左下</span></label>
+        <label><input type="radio" name="position" value="bottom"><span>↓ 底部</span></label>
+        <label><input type="radio" name="position" value="bottom-right"><span>↘ 右下</span></label>
+      </div>
+      <div class="tile-row">
+        <input type="checkbox" id="tile">
+        <label for="tile" style="margin:0;cursor:pointer;">平铺水印（覆盖整张图片，位置选项失效）</label>
+      </div>
+      <div class="tile-row" id="tile-gap-row">
+        <label for="tile-gap" style="margin:0;">平铺间距倍数：<span class="range-value" id="tile-gap-value">1.5</span>x</label>
+        <input type="range" id="tile-gap" min="1" max="4" step="0.1" value="1.5" style="max-width:200px;">
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn-primary" onclick="render()">添加水印</button>
+    <button class="btn-success" id="download-btn" onclick="download()" disabled style="opacity:0.5;cursor:not-allowed;">下载图片</button>
+    <button class="btn-danger" onclick="clearAll()">清空</button>
+  </div>
+
+  <div class="result-area">
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="card-title">原图</div>
+        <div class="card-body" id="original-body">原图预览</div>
+      </div>
+      <div class="compare-card">
+        <div class="card-title">加水印后</div>
+        <div class="card-body" id="result-body">点击「添加水印」</div>
+      </div>
+    </div>
+    <div class="info-line" id="info-line" style="margin-top:16px;"></div>
+  </div>
+</div>
+
+<script>
+let originalFile = null;
+let originalUrl = null;
+let resultBlob = null;
+let resultUrl = null;
+let resultExt = 'jpg';
+
+function showMsg(text, type) {
+  var msg = document.getElementById('msg');
+  msg.textContent = text;
+  msg.className = 'msg ' + type;
+}
+function hideMsg() { document.getElementById('msg').className = 'msg'; }
+
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(2) + ' KB';
+  return (bytes / 1024 / 1024).toFixed(2) + ' MB';
+}
+
+// 绑定拖拽与点击上传
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+dropZone.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+  if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+});
+
+// 滑块实时显示数值
+function bindRange(id, suffix) {
+  const el = document.getElementById(id);
+  const val = document.getElementById(id + '-value');
+  el.addEventListener('input', function() { val.textContent = this.value; });
+}
+bindRange('size');
+bindRange('opacity');
+bindRange('rotate');
+bindRange('quality');
+bindRange('tile-gap');
+
+// 颜色拾取器与文本框联动
+const colorPicker = document.getElementById('color-picker');
+const colorText = document.getElementById('color-text');
+colorPicker.addEventListener('input', () => { colorText.value = colorPicker.value; });
+colorText.addEventListener('input', () => {
+  const v = colorText.value.trim();
+  if (/^#[0-9a-fA-F]{6}$/.test(v)) colorPicker.value = v;
+});
+
+// 平铺开关切换相关项显隐
+const tileChk = document.getElementById('tile');
+const tileGapRow = document.getElementById('tile-gap-row');
+function syncTileUI() {
+  tileGapRow.style.display = tileChk.checked ? 'flex' : 'none';
+  document.getElementById('position-grid').style.opacity = tileChk.checked ? '0.4' : '1';
+  document.getElementById('position-grid').style.pointerEvents = tileChk.checked ? 'none' : 'auto';
+}
+tileChk.addEventListener('change', syncTileUI);
+syncTileUI();
+
+function handleFile(file) {
+  hideMsg();
+  if (!file.type.startsWith('image/')) { showMsg('请选择图片文件', 'error'); return; }
+  if (file.type === 'image/gif') { showMsg('暂不支持 GIF 动图水印', 'error'); return; }
+  originalFile = file;
+  if (originalUrl) URL.revokeObjectURL(originalUrl);
+  originalUrl = URL.createObjectURL(file);
+  document.getElementById('original-body').innerHTML =
+    '<img src="' + originalUrl + '" alt="原图">' +
+    '<div class="info-line" style="margin-top:8px;">' + formatSize(file.size) + ' · ' + (file.type || '未知') + '</div>';
+  document.getElementById('result-body').textContent = '点击「添加水印」';
+  document.getElementById('info-line').textContent = '';
+  resetDownload();
+  // 收到新图自动渲染一次（用当前配置）
+  render();
+}
+
+function getConfig() {
+  const pos = document.querySelector('input[name="position"]:checked').value;
+  return {
+    text: document.getElementById('text').value || '',
+    size: parseInt(document.getElementById('size').value, 10),
+    opacity: parseInt(document.getElementById('opacity').value, 10) / 100,
+    rotate: parseInt(document.getElementById('rotate').value, 10),
+    color: document.getElementById('color-text').value.trim(),
+    format: document.getElementById('format').value,
+    quality: parseInt(document.getElementById('quality').value, 10) / 100,
+    tile: document.getElementById('tile').checked,
+    tileGap: parseFloat(document.getElementById('tile-gap').value),
+    position: pos,
+  };
+}
+
+function render() {
+  if (!originalFile) { showMsg('请先上传图片', 'error'); return; }
+  const cfg = getConfig();
+  if (!cfg.text) { showMsg('请输入水印文字', 'error'); return; }
+  if (!/^#[0-9a-fA-F]{6}$/.test(cfg.color)) { showMsg('颜色格式不正确，需为 #RRGGBB', 'error'); return; }
+  hideMsg();
+
+  const img = new Image();
+  img.onload = function() {
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    const ctx = canvas.getContext('2d');
+
+    // JPEG 不支持透明，填充白色背景
+    if (cfg.format === 'image/jpeg') {
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    ctx.drawImage(img, 0, 0);
+
+    // 准备水印文字：转换 #RRGGBB → rgba()
+    const hex = cfg.color.slice(1);
+    const r = parseInt(hex.slice(0, 2), 16);
+    const g = parseInt(hex.slice(2, 4), 16);
+    const b = parseInt(hex.slice(4, 6), 16);
+
+    // 字号按图片大小自适应：原图越大，水印也跟着放大
+    const baseScale = Math.max(1, Math.min(canvas.width, canvas.height) / 600);
+    const fontPx = cfg.size * baseScale;
+
+    ctx.font = '600 ' + fontPx + 'px -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif';
+    ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + cfg.opacity + ')';
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'center';
+
+    // 测量水印宽高
+    const metrics = ctx.measureText(cfg.text);
+    const textW = metrics.width;
+    const textH = fontPx;
+
+    if (cfg.tile) {
+      drawTile(ctx, cfg, fontPx, textW, textH, canvas.width, canvas.height);
+    } else {
+      drawSingle(ctx, cfg, fontPx, textW, textH, canvas.width, canvas.height);
+    }
+
+    canvas.toBlob(function(blob) {
+      if (!blob) { showMsg('生成失败，浏览器可能不支持该格式', 'error'); return; }
+      resultBlob = blob;
+      if (resultUrl) URL.revokeObjectURL(resultUrl);
+      resultUrl = URL.createObjectURL(blob);
+      resultExt = cfg.format === 'image/jpeg' ? 'jpg' : (cfg.format === 'image/webp' ? 'webp' : 'png');
+      document.getElementById('result-body').innerHTML =
+        '<img src="' + resultUrl + '" alt="加水印后">' +
+        '<div class="info-line" style="margin-top:8px;">' + formatSize(blob.size) + ' · ' + resultExt.toUpperCase() + '</div>';
+      const ratio = (blob.size / originalFile.size * 100);
+      const ratioText = ratio <= 100
+        ? '为原图 ' + ratio.toFixed(1) + '%'
+        : '比原图大 ' + (ratio - 100).toFixed(1) + '%';
+      document.getElementById('info-line').innerHTML =
+        '原始：<strong>' + formatSize(originalFile.size) + '</strong>  →  ' +
+        '加水印后：<strong>' + formatSize(blob.size) + '</strong>  ' + ratioText;
+      enableDownload();
+      showMsg('水印添加完成', 'success');
+    }, cfg.format, cfg.format === 'image/png' ? undefined : cfg.quality);
+  };
+  img.onerror = function() { showMsg('图片加载失败', 'error'); };
+  img.src = originalUrl;
+}
+
+// 平铺水印
+function drawTile(ctx, cfg, fontPx, textW, textH, W, H) {
+  // 单元格大小 = 文字宽 + 间距
+  const stepX = Math.max(textW + fontPx * 2, textW + 40) * cfg.tileGap;
+  const stepY = Math.max(textH + fontPx * 2, textH + 40) * cfg.tileGap;
+  // 旋转后要覆盖对角线范围，避免边缘出现空白
+  const diag = Math.sqrt(W * W + H * H);
+  const cols = Math.ceil(diag / stepX) + 2;
+  const rows = Math.ceil(diag / stepY) + 2;
+  const offsetX = -Math.floor(cols / 2) * stepX;
+  const offsetY = -Math.floor(rows / 2) * stepY;
+
+  ctx.save();
+  ctx.translate(W / 2, H / 2);
+  ctx.rotate(cfg.rotate * Math.PI / 180);
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      ctx.fillText(cfg.text, offsetX + c * stepX, offsetY + r * stepY);
+    }
+  }
+  ctx.restore();
+}
+
+// 单点水印：根据位置选择锚点
+function drawSingle(ctx, cfg, fontPx, textW, textH, W, H) {
+  const pad = fontPx * 0.6;  // 距边缘留白
+  let x = W / 2, y = H / 2;  // 默认居中
+  switch (cfg.position) {
+    case 'top-left':     x = pad + textW / 2;        y = pad + textH / 2;        break;
+    case 'top':          x = W / 2;                  y = pad + textH / 2;        break;
+    case 'top-right':    x = W - pad - textW / 2;    y = pad + textH / 2;        break;
+    case 'left':         x = pad + textW / 2;        y = H / 2;                  break;
+    case 'center':       x = W / 2;                  y = H / 2;                  break;
+    case 'right':        x = W - pad - textW / 2;    y = H / 2;                  break;
+    case 'bottom-left':  x = pad + textW / 2;        y = H - pad - textH / 2;    break;
+    case 'bottom':       x = W / 2;                  y = H - pad - textH / 2;    break;
+    case 'bottom-right': x = W - pad - textW / 2;    y = H - pad - textH / 2;    break;
+  }
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(cfg.rotate * Math.PI / 180);
+  ctx.fillText(cfg.text, 0, 0);
+  ctx.restore();
+}
+
+function enableDownload() {
+  const btn = document.getElementById('download-btn');
+  btn.disabled = false;
+  btn.style.opacity = '1';
+  btn.style.cursor = 'pointer';
+}
+function resetDownload() {
+  const btn = document.getElementById('download-btn');
+  btn.disabled = true;
+  btn.style.opacity = '0.5';
+  btn.style.cursor = 'not-allowed';
+  resultBlob = null;
+  if (resultUrl) { URL.revokeObjectURL(resultUrl); resultUrl = null; }
+}
+
+function download() {
+  if (!resultBlob) { showMsg('没有可下载的内容', 'error'); return; }
+  const baseName = (originalFile && originalFile.name) ? originalFile.name.replace(/\.[^.]+$/, '') : 'image';
+  const a = document.createElement('a');
+  a.href = resultUrl;
+  a.download = baseName + '_watermark.' + resultExt;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  showMsg('开始下载', 'success');
+}
+
+function clearAll() {
+  hideMsg();
+  originalFile = null;
+  if (originalUrl) { URL.revokeObjectURL(originalUrl); originalUrl = null; }
+  resetDownload();
+  fileInput.value = '';
+  document.getElementById('original-body').textContent = '原图预览';
+  document.getElementById('result-body').textContent = '点击「添加水印」';
+  document.getElementById('info-line').textContent = '';
+}
+</script>
+
+<!-- 横幅广告位：工具页底部（AdSense 申请通过后自动显示广告） -->
+<div class="ad-banner">
+  <ins class="adsbygoogle adsense-ad-slot"
+       style="display:block;width:100%"
+       data-ad-client="ca-pub-0000000000000000"
+       data-ad-slot="0000000000"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <span>广告位（AdSense 申请通过后，替换工具页脚本中的 PLACEHOLDER_CLIENT 为真实 ca-pub-，并填写 data-ad-slot）</span>
+</div>
+<script>
+  if (window.__HAS_ADS__) {
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+  } else {
+    var slot = document.querySelector('.adsense-ad-slot');
+    if (slot) slot.style.display = 'none';
+  }
+</script>
+</body>
+</html>
+</div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/favicon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Moonligh</div><div class="author-info-description">不需要什么描述</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">随便转，随便看</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/08/20/Vue3-TypeScript%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6%E5%AE%9E%E6%88%98%E4%BB%8Eprops%E5%88%B0%E6%B3%9B%E5%9E%8B%E7%BB%84%E4%BB%B6/" title="Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件"><img src="/img/cover-vue.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件"/></a><div class="content"><a class="title" href="/2026/08/20/Vue3-TypeScript%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6%E5%AE%9E%E6%88%98%E4%BB%8Eprops%E5%88%B0%E6%B3%9B%E5%9E%8B%E7%BB%84%E4%BB%B6/" title="Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件">Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件</a><time datetime="2026-08-20T03:30:00.000Z" title="发表于 2026-08-20 11:30:00">2026-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/20/Pinia%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E4%BB%8EVuex%E8%BF%81%E7%A7%BB%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践"><img src="/img/cover-vue.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践"/></a><div class="content"><a class="title" href="/2026/08/20/Pinia%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E4%BB%8EVuex%E8%BF%81%E7%A7%BB%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践">Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践</a><time datetime="2026-08-20T03:00:00.000Z" title="发表于 2026-08-20 11:00:00">2026-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/20/Vue3-Composition-API%E5%AE%9E%E6%88%98%E7%B2%BE%E8%AE%B2/" title="Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数"><img src="/img/cover-vue.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数"/></a><div class="content"><a class="title" href="/2026/08/20/Vue3-Composition-API%E5%AE%9E%E6%88%98%E7%B2%BE%E8%AE%B2/" title="Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数">Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数</a><time datetime="2026-08-20T02:30:00.000Z" title="发表于 2026-08-20 10:30:00">2026-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/20/Vite-Vue3-TypeScript%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E5%AE%9E%E6%88%98%E4%BB%8E%E9%9B%B6%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化"><img src="/img/cover-vue.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化"/></a><div class="content"><a class="title" href="/2026/08/20/Vite-Vue3-TypeScript%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E5%AE%9E%E6%88%98%E4%BB%8E%E9%9B%B6%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化">Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化</a><time datetime="2026-08-20T02:00:00.000Z" title="发表于 2026-08-20 10:00:00">2026-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/01/Cesium%E5%8A%A0%E8%BD%BD%E5%A4%A9%E5%9C%B0%E5%9B%BE/" title="Cesium 加载天地图：底图、注记与地形完整方案"><img src="/img/cesium-skybox-result.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Cesium 加载天地图：底图、注记与地形完整方案"/></a><div class="content"><a class="title" href="/2026/08/01/Cesium%E5%8A%A0%E8%BD%BD%E5%A4%A9%E5%9C%B0%E5%9B%BE/" title="Cesium 加载天地图：底图、注记与地形完整方案">Cesium 加载天地图：底图、注记与地形完整方案</a><time datetime="2026-08-01T08:00:00.000Z" title="发表于 2026-08-01 16:00:00">2026-08-01</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%A3%81%E7%BA%B8/"><span class="card-category-list-name">壁纸</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"><span class="card-category-list-name">技术分享</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%99%E7%A8%8B/"><span class="card-category-list-name">教程</span><span class="card-category-list-count">26</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"><span class="card-category-list-name">经验分享</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%B5%84%E6%BA%90/"><span class="card-category-list-name">资源</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/"><span class="card-category-list-name">随笔</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CSS/" style="font-size: 1.39em; color: rgb(179, 50, 50);">CSS</a><a href="/tags/%E6%BB%9A%E5%8A%A8%E6%9D%A1/" style="font-size: 1.15em; color: rgb(50, 50, 120);">滚动条</a><a href="/tags/%E6%A0%B7%E5%BC%8F/" style="font-size: 1.15em; color: rgb(86, 163, 197);">样式</a><a href="/tags/AI%E7%BB%98%E7%94%BB/" style="font-size: 1.15em; color: rgb(141, 63, 57);">AI绘画</a><a href="/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D/" style="font-size: 1.15em; color: rgb(82, 50, 114);">提示词</a><a href="/tags/3D%E5%BB%BA%E6%A8%A1/" style="font-size: 1.15em; color: rgb(50, 50, 107);">3D建模</a><a href="/tags/%E5%9B%BD%E6%BC%AB/" style="font-size: 1.15em; color: rgb(166, 64, 125);">国漫</a><a href="/tags/AIGC/" style="font-size: 1.15em; color: rgb(50, 57, 109);">AIGC</a><a href="/tags/Butterfly/" style="font-size: 1.15em; color: rgb(50, 179, 50);">Butterfly</a><a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 1.27em; color: rgb(50, 50, 173);">技巧</a><a href="/tags/Cesium/" style="font-size: 1.45em; color: rgb(127, 149, 131);">Cesium</a><a href="/tags/Canvas/" style="font-size: 1.15em; color: rgb(50, 50, 50);">Canvas</a><a href="/tags/WebGL/" style="font-size: 1.39em; color: rgb(156, 122, 173);">WebGL</a><a href="/tags/%E4%B8%89%E7%BB%B4GIS/" style="font-size: 1.33em; color: rgb(107, 119, 171);">三维GIS</a><a href="/tags/%E7%82%B9%E7%BA%BF%E9%9D%A2/" style="font-size: 1.15em; color: rgb(143, 94, 63);">点线面</a><a href="/tags/GIS/" style="font-size: 1.27em; color: rgb(145, 177, 156);">GIS</a><a href="/tags/%E5%A4%A9%E7%A9%BA%E7%9B%92/" style="font-size: 1.15em; color: rgb(68, 97, 69);">天空盒</a><a href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" style="font-size: 1.15em; color: rgb(133, 168, 50);">天地图</a><a href="/tags/%E4%B8%89%E7%BB%B4%E5%9C%B0%E5%9B%BE/" style="font-size: 1.21em; color: rgb(92, 112, 50);">三维地图</a><a href="/tags/Ajax/" style="font-size: 1.15em; color: rgb(70, 152, 154);">Ajax</a><a href="/tags/jQuery/" style="font-size: 1.15em; color: rgb(135, 50, 50);">jQuery</a><a href="/tags/FormData/" style="font-size: 1.15em; color: rgb(107, 61, 119);">FormData</a><a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" style="font-size: 1.15em; color: rgb(63, 170, 187);">文件上传</a><a href="/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/" style="font-size: 1.15em; color: rgb(162, 135, 50);">体积云</a><a href="/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/" style="font-size: 1.15em; color: rgb(71, 50, 137);">渲染管线</a><a href="/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/" style="font-size: 1.15em; color: rgb(50, 117, 129);">大气散射</a><a href="/tags/Node/" style="font-size: 1.15em; color: rgb(166, 50, 50);">Node</a><a href="/tags/npm/" style="font-size: 1.15em; color: rgb(191, 50, 50);">npm</a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.39em; color: rgb(50, 50, 112);">前端</a><a href="/tags/Pinia/" style="font-size: 1.15em; color: rgb(50, 156, 112);">Pinia</a><a href="/tags/Vue3/" style="font-size: 1.33em; color: rgb(181, 50, 50);">Vue3</a><a href="/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" style="font-size: 1.15em; color: rgb(134, 85, 50);">状态管理</a><a href="/tags/Node-js/" style="font-size: 1.27em; color: rgb(50, 183, 91);">Node.js</a><a href="/tags/HTTP/" style="font-size: 1.15em; color: rgb(129, 69, 50);">HTTP</a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.15em; color: rgb(50, 75, 50);">服务器</a><a href="/tags/ES6/" style="font-size: 1.15em; color: rgb(99, 161, 122);">ES6</a><a href="/tags/JavaScript/" style="font-size: 1.27em; color: rgb(77, 167, 56);">JavaScript</a><a href="/tags/Vue/" style="font-size: 1.27em; color: rgb(167, 144, 110);">Vue</a><a href="/tags/%E7%BB%84%E4%BB%B6/" style="font-size: 1.15em; color: rgb(50, 50, 55);">组件</a><a href="/tags/%E8%B5%84%E6%BA%90/" style="font-size: 1.27em; color: rgb(135, 154, 184);">资源</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/08/">
+            <span class="card-archive-list-date">
+              八月 2026
+            </span>
+            <span class="card-archive-list-count">6</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/07/">
+            <span class="card-archive-list-date">
+              七月 2026
+            </span>
+            <span class="card-archive-list-count">28</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/04/">
+            <span class="card-archive-list-date">
+              四月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              十二月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              十一月 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">39</div></div><div class="webinfo-item"><div class="item-name">运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2025-11-18T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-10-21T15:29:42.157Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Moonligh</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = {"data-mapping":"pathname","data-reactions-enabled":"1","data-emit-metadata":"0","data-input-position":"bottom","data-lang":"zh-CN"}
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'zhaoshaodada/zhaoshaodada.github.io',
+      'data-repo-id': 'MDEwOlJlcG9zaXRvcnkzMzM3MTQ2OTg=',
+      'data-category-id': 'DIC_kwDOE-QVCs4DByp7',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script>var meting_api="https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&r=:r";</script><div class="aplayer" data-server="netease" data-type="playlist" data-id="6758762023" data-fixed="true" data-mini="true" data-autoplay="false" data-theme="#49b1f5" data-loop="all" data-order="list" data-preload="auto" data-volume="0.7" data-mutex="true" data-lrctype="0"></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="https://events.vercount.one/js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

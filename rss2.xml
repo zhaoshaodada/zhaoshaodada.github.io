@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Moonligh</title>
+    <link>https://zhaoshaodada.github.io/</link>
+    <description>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</description>
+    <language>zh-CN</language>
+    <copyright>All rights reserved 2026, Moonligh</copyright>
+    <lastBuildDate>Wed, 14 Oct 2026 16:53:15 GMT</lastBuildDate>
+    <generator>Hexo</generator>
+    <image>
+      <url>https://zhaoshaodada.github.io/img/favicon.jpg</url>
+      <title>Moonligh</title>
+      <link>https://zhaoshaodada.github.io/</link>
+    </image>
+    <atom:link href="https://zhaoshaodada.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Vue3 + TypeScript 类型进阶实战：从 props 到泛型组件</title>
+      <link>https://zhaoshaodada.github.io/2026/08/20/Vue3-TypeScript%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6%E5%AE%9E%E6%88%98%E4%BB%8Eprops%E5%88%B0%E6%B3%9B%E5%9E%8B%E7%BB%84%E4%BB%B6/</link>
+      <description>本文系统讲解 TypeScript 在 Vue3 中的类型进阶用法，覆盖 defineProps/defineEmits 的类型声明、defineModel 双向绑定、provide/inject 的类型安全注入、defineSlots/defineOptions、泛型组件（Generic Components）以及 Vue Router 的类型化路由，让类型真正成为开发期的安全网。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Vue3/">Vue3</category>
+      <category domain="https://zhaoshaodada.github.io/tags/TypeScript/">TypeScript</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/">类型进阶</category>
+      <pubDate>Thu, 20 Aug 2026 03:30:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Pinia 状态管理实战指南：从 Vuex 迁移到工程化实践</title>
+      <link>https://zhaoshaodada.github.io/2026/08/20/Pinia%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E4%BB%8EVuex%E8%BF%81%E7%A7%BB%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/</link>
+      <description>本文系统讲解 Pinia 的实战用法，从与 Vuex 的差异切入，覆盖 defineStore 两种写法、state/getters/actions、storeToRefs 解构、跨 store 调用、持久化插件、SSR 兼容、Devtools 调试与最佳实践，帮你彻底搞定 Vue3 的状态管理。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Pinia/">Pinia</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Vue3/">Vue3</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/">状态管理</category>
+      <pubDate>Thu, 20 Aug 2026 03:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Vue3 Composition API 实战精讲：从 ref 到自定义组合式函数</title>
+      <link>https://zhaoshaodada.github.io/2026/08/20/Vue3-Composition-API%E5%AE%9E%E6%88%98%E7%B2%BE%E8%AE%B2/</link>
+      <description>本文系统讲解 Vue3 Composition API 的实战用法，覆盖 ref 与 reactive 的选择边界、computed 缓存机制、watch/watchEffect 副作用管理、生命周期钩子、自定义组合式函数抽取，以及响应式原理与常见陷阱，帮你写出可复用、可维护的 Vue3 业务代码。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Vue3/">Vue3</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Composition-API/">Composition API</category>
+      <pubDate>Thu, 20 Aug 2026 02:30:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Vite + Vue3 + TypeScript 项目搭建实战：从零到工程化</title>
+      <link>https://zhaoshaodada.github.io/2026/08/20/Vite-Vue3-TypeScript%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E5%AE%9E%E6%88%98%E4%BB%8E%E9%9B%B6%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%8C%96/</link>
+      <description>本文从零搭建一个 Vite + Vue3 + TypeScript 工程，覆盖 create-vue 脚手架、目录规范、路径别名、环境变量、ESLint + Prettier、组件与 API 自动导入、开发代理与构建优化，帮助前端开发者快速建立可维护的现代项目骨架。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Vue3/">Vue3</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Vite/">Vite</category>
+      <category domain="https://zhaoshaodada.github.io/tags/TypeScript/">TypeScript</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化</category>
+      <pubDate>Thu, 20 Aug 2026 02:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Cesium 加载天地图：底图、注记与地形完整方案</title>
+      <link>https://zhaoshaodada.github.io/2026/08/01/Cesium%E5%8A%A0%E8%BD%BD%E5%A4%A9%E5%9C%B0%E5%9B%BE/</link>
+      <description>天地图是国家地理信息公共服务平台，提供影像、矢量、地形、注记等多种服务。本文系统讲解在 Cesium 中加载天地图的完整方案，涵盖 Token 申请、图层类型、底图与注记叠加、地形加载、工具类封装以及常见问题排查。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
+      <category domain="https://zhaoshaodada.github.io/tags/GIS/">GIS</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/">天地图</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4%E5%9C%B0%E5%9B%BE/">三维地图</category>
+      <pubDate>Sat, 01 Aug 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>新 HTML 标签发布！搞定所有前端权限！</title>
+      <link>https://zhaoshaodada.github.io/2026/08/01/%E6%96%B0HTML%E6%A0%87%E7%AD%BE%E5%8F%91%E5%B8%83%E6%90%9E%E5%AE%9A%E6%89%80%E6%9C%89%E5%89%8D%E7%AB%AF%E6%9D%83%E9%99%90/</link>
+      <description>
+        <![CDATA[WICG 带来实验性 HTML 新标签 <permission>，Chrome 144+ 已支持。只用声明式 HTML 标签就能搞定设备权限申请，精简代码的同时大幅优化授权交互。本文介绍其核心优势、上手实操、核心属性与生产环境兼容方案。]]>
+      </description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/HTML/">HTML</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%9D%83%E9%99%90/">权限</category>
+      <category domain="https://zhaoshaodada.github.io/tags/permission%E6%A0%87%E7%AD%BE/">permission标签</category>
+      <pubDate>Sat, 01 Aug 2026 03:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web Worker 前端多线程编程实战指南</title>
+      <link>https://zhaoshaodada.github.io/2026/07/31/Web-Worker%E5%89%8D%E7%AB%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/</link>
+      <description>本文深入讲解 Web Worker 的原理与实战用法，涵盖基础通信、Transferable 对象零拷贝传输、大数据排序与图片处理实战场景，以及 Worker 池模式的实现，帮助前端开发者解锁浏览器多线程编程能力，解决主线程阻塞导致的页面卡顿问题。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://zhaoshaodada.github.io/tags/JavaScript/">JavaScript</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Web-Worker/">Web Worker</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</category>
+      <pubDate>Fri, 31 Jul 2026 12:20:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Cesium 全球体积云移植：从 GIS 迈向图形的 90% 还原之路</title>
+      <link>https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%85%A8%E7%90%83%E4%BD%93%E7%A7%AF%E4%BA%91%E7%A7%BB%E6%A4%8D%E7%AC%94%E8%AE%B0/</link>
+      <description>本文记录将全球体积云移植到 Cesium 的过程，目前还原度约 90%。涵盖渲染管线、坐标转换、MRT、GBuffer 以及基于 Texture2DArray 的阴影资源管理等核心要点，并对比 Three.js 与 Cesium 在渲染架构上的差异，分享 inscatter 贴地、tonemap 冲突、色彩空间偏白等典型问题与思考。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
+      <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E4%BD%93%E7%A7%AF%E4%BA%91/">体积云</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/">渲染管线</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%A4%A7%E6%B0%94%E6%95%A3%E5%B0%84/">大气散射</category>
+      <pubDate>Fri, 31 Jul 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Cesium实例化渲染详解：同模型万级批量绘制方案</title>
+      <link>https://zhaoshaodada.github.io/2026/07/31/Cesium%E5%AE%9E%E4%BE%8B%E5%8C%96%E6%B8%B2%E6%9F%93%E8%AF%A6%E8%A7%A3%E5%90%8C%E6%A8%A1%E5%9E%8B%E4%B8%87%E7%BA%A7%E6%89%B9%E9%87%8F%E7%BB%98%E5%88%B6%E6%96%B9%E6%A1%88/</link>
+      <description>在Cesium中添加成千上万棵树、一排排路灯、沿山脊排开的风机时，逐个Entity添加会让浏览器卡死。本文详解Cesium高版本中GPU实例化渲染的实现方案，涵盖局部坐标系绕开精度问题、矩阵纹理打包变换、instanceCount复制draw call、视锥裁剪与id纹理拾取等核心要点。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
+      <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%AE%9E%E4%BE%8B%E5%8C%96%E6%B8%B2%E6%9F%93/">实例化渲染</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
+      <pubDate>Fri, 31 Jul 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>手机壁纸</title>
+      <link>https://zhaoshaodada.github.io/2026/07/31/%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8/</link>
+      <description>7月31日精选手机壁纸分享，你今天特别讨厌，讨人喜欢又百看不厌。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%A3%81%E7%BA%B8/">壁纸</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%A3%81%E7%BA%B8/">壁纸</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8/">手机壁纸</category>
+      <pubDate>Thu, 30 Jul 2026 22:54:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>3D写实国漫女神四视图，一套提示词全搞定！（附提示词）</title>
+      <link>https://zhaoshaodada.github.io/2026/07/28/3D%E5%86%99%E5%AE%9E%E5%9B%BD%E6%BC%AB%E5%A5%B3%E7%A5%9E%E5%9B%9B%E8%A7%86%E5%9B%BE-%E4%B8%80%E5%A5%97%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%85%A8%E6%90%9E%E5%AE%9A/</link>
+      <description>一套提示词实现3D写实国漫女神四视图（正面、左侧、右侧、背面），人物五官、发型、服装细节完全统一，附完整提示词。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
+      <category domain="https://zhaoshaodada.github.io/tags/AI%E7%BB%98%E7%94%BB/">AI绘画</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D/">提示词</category>
+      <category domain="https://zhaoshaodada.github.io/tags/3D%E5%BB%BA%E6%A8%A1/">3D建模</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%9B%BD%E6%BC%AB/">国漫</category>
+      <category domain="https://zhaoshaodada.github.io/tags/AIGC/">AIGC</category>
+      <pubDate>Tue, 28 Jul 2026 12:30:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Vibe Coding — 当 DeepSeek 遇见 Three.js 的治愈深海</title>
+      <link>https://zhaoshaodada.github.io/2026/07/27/Vibe-Coding-%E5%BD%93DeepSeek%E9%81%87%E8%A7%81Three-js%E7%9A%84%E6%B2%BB%E6%84%88%E6%B7%B1%E6%B5%B7/</link>
+      <description>一个纯前端治愈系网页：深蓝深海背景，中文词语如窗帘般缓缓下滚，鼠标拨开时文字碎裂成粒子，背景里虎鲸在游动，点击发出海豚音。Three.js 画虎鲸，p5.js 画窗帘和粒子，Web Audio API 合成声音。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
+      <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Three-js/">Three.js</category>
+      <category domain="https://zhaoshaodada.github.io/tags/p5-js/">p5.js</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Web-Audio-API/">Web Audio API</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%88%9B%E6%84%8F%E7%BC%96%E7%A8%8B/">创意编程</category>
+      <pubDate>Mon, 27 Jul 2026 14:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Cesium 近地天空盒：把天空拉回地面</title>
+      <link>https://zhaoshaodada.github.io/2026/07/27/Cesium%E8%BF%91%E5%9C%B0%E5%A4%A9%E7%A9%BA%E7%9B%92%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88/</link>
+      <description>Cesium默认天空盒适合太空视角，相机贴近地面时天空显得不贴合。本文介绍通过自定义DrawCommand做近地天空盒，并按相机高度自动切回默认天空的完整技术方案，涵盖SkyBoxOnGround实现、Cubemap方向映射、天空盒制作三步走等核心要点。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
+      <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%A4%A9%E7%A9%BA%E7%9B%92/">天空盒</category>
+      <pubDate>Mon, 27 Jul 2026 10:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Cesium Wall + Canvas 实现文字贴地贴墙动态标注</title>
+      <link>https://zhaoshaodada.github.io/2026/07/27/Cesium-Wall-Canvas%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%B4%B4%E5%9C%B0%E8%B4%B4%E5%A2%99%E5%8A%A8%E6%80%81%E6%A0%87%E6%B3%A8/</link>
+      <description>Cesium原生Label实体存在始终面向相机、像素级尺寸、样式能力有限等局限。本文介绍通过Wall实体+Canvas动态材质实现文字贴地/贴墙动态标注的完整技术方案，涵盖异步纹理生成、CallbackProperty逐帧刷新、相机自动定位等核心要点。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Canvas/">Canvas</category>
+      <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4GIS/">三维GIS</category>
+      <pubDate>Mon, 27 Jul 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>警惕！甄别真假难辨的Windows和Office激活脚本</title>
+      <link>https://zhaoshaodada.github.io/2026/07/27/%E8%AD%A6%E6%83%95%EF%BC%81%E7%94%84%E5%88%AB%E7%9C%9F%E5%81%87%E9%9A%BE%E8%BE%A8%E7%9A%84Windows%E5%92%8COffice%E6%BF%80%E6%B4%BB%E8%84%9A%E6%9C%AC/</link>
+      <description>网上流传的一行脚本激活Windows和Office看似方便快捷，但背后隐藏着巨大的安全风险。本文详细介绍如何甄别真假激活脚本，识别域名仿冒陷阱和带毒可执行文件，保护你的电脑安全。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Windows/">Windows</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%AE%89%E5%85%A8/">安全</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E7%97%85%E6%AF%92/">病毒</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Office/">Office</category>
+      <pubDate>Mon, 27 Jul 2026 04:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Win7下Electron中fs引用报错的解决方案</title>
+      <link>https://zhaoshaodada.github.io/2026/07/27/Win7%E4%B8%8BElectron%E4%B8%ADfs%E5%BC%95%E7%94%A8%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link>
+      <description>在Windows 7环境下使用Electron开发时，由于Node.js版本较低，`require('fs/promises')`会报错。本文提供了通过拦截Module._resolveFilename和重写require逻辑来兼容处理的完整解决方案。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Node-js/">Node.js</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Electron/">Electron</category>
+      <category domain="https://zhaoshaodada.github.io/tags/fs/">fs</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/">兼容性</category>
+      <pubDate>Mon, 27 Jul 2026 03:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>提升Cesium渲染性能的方法</title>
+      <link>https://zhaoshaodada.github.io/2026/07/27/%E6%8F%90%E5%8D%87Cesium%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/</link>
+      <description>本文详细介绍如何通过调整Cesium的地形精度、瓦片缓存等参数来提升渲染性能和FPS，让三维地球场景运行更加流畅，适用于Web端GIS应用开发。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
+      <category domain="https://zhaoshaodada.github.io/tags/GIS/">GIS</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E4%B8%89%E7%BB%B4%E5%9C%B0%E5%9B%BE/">三维地图</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
+      <pubDate>Mon, 27 Jul 2026 02:30:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Node版本兼容与npm依赖安装指南</title>
+      <link>https://zhaoshaodada.github.io/2026/07/24/Node%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E4%B8%8Enpm%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</link>
+      <description>新拉取的前端项目经常会遇到Node版本不兼容和npm依赖安装失败的问题，本文总结了使用--force、--legacy-peer-deps强制安装、cnpm替代方案，以及使用国内镜像加速依赖拉取等实用技巧。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Node/">Node</category>
+      <category domain="https://zhaoshaodada.github.io/tags/npm/">npm</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <pubDate>Fri, 24 Jul 2026 13:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>珠海时光</title>
+      <link>https://zhaoshaodada.github.io/2026/07/24/%E7%8F%A0%E6%B5%B7%E6%97%B6%E5%85%89/</link>
+      <description>记录2019-2020年间在珠海出差的美好时光，与同事一起游览珠海渔女、珠海大剧院，骑行情侣路，参加珠澳三千米徒步活动，那段简单快乐的工作生活至今难忘。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E9%9A%8F%E7%AC%94/">随笔</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E7%94%9F%E6%B4%BB/">生活</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E9%9A%8F%E7%AC%94/">随笔</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E7%8F%A0%E6%B5%B7/">珠海</category>
+      <pubDate>Fri, 24 Jul 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>前端小技巧集锦</title>
+      <link>https://zhaoshaodada.github.io/2026/07/23/%E5%89%8D%E7%AB%AF%E5%B0%8F%E6%8A%80%E5%B7%A7%E9%9B%86%E9%94%A6/</link>
+      <description>本文记录前端开发过程中遇到的常见小问题及解决方法，按HTML、CSS、JS三个篇章汇总实用技巧。文章以实际场景为切入点，提供大量可直接复用的代码片段与处理思路，帮助开发者快速应对日常开发中的各类细节问题，提升开发效率。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://zhaoshaodada.github.io/tags/CSS/">CSS</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%8A%80%E5%B7%A7/">技巧</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/HTML/">HTML</category>
+      <category domain="https://zhaoshaodada.github.io/tags/JS/">JS</category>
+      <pubDate>Thu, 23 Jul 2026 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
