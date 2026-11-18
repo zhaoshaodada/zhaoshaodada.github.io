@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Moonligh</title>
+    <link>https://zhaoshaodada.github.io/</link>
+    <description>一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。</description>
+    <language>zh-CN</language>
+    <copyright>All rights reserved 2026, Moonligh</copyright>
+    <lastBuildDate>Wed, 18 Nov 2026 00:10:12 GMT</lastBuildDate>
+    <generator>Hexo</generator>
+    <image>
+      <url>https://zhaoshaodada.github.io/img/favicon.jpg</url>
+      <title>Moonligh</title>
+      <link>https://zhaoshaodada.github.io/</link>
+    </image>
+    <atom:link href="https://zhaoshaodada.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>用时间切片拆解长任务：让页面在处理十万条数据时依然流畅</title>
+      <link>https://zhaoshaodada.github.io/2026/11/18/2026-11-18-time-slicing-long-task/</link>
+      <description>用 MessageChannel 实现通用时间切片调度器，把一个耗时的长任务拆成每帧几毫秒的小片，让页面在大计算量下依然保持流畅。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/JavaScript/">JavaScript</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">前端性能优化</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%97%B6%E9%97%B4%E5%88%87%E7%89%87/">时间切片</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E9%95%BF%E4%BB%BB%E5%8A%A1/">长任务</category>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>前端人用 AI 写代码一年，我把 5 类重复劳动交给工具，效率真的翻倍了吗</title>
+      <link>https://zhaoshaodada.github.io/2026/11/17/2026-11-17-ai-coding-efficiency-review/</link>
+      <description>一位前端开发者使用 AI 编码工具一年后的真实复盘，逐类拆解 5 种被工具吃掉的重复劳动，讲清能用它做什么、怎么上手、坑在哪里。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/AI%E5%B7%A5%E5%85%B7/">AI工具</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF%E6%8F%90%E6%95%88/">前端提效</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E7%BC%96%E7%A8%8B/">编程</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%AE%9E%E6%88%98%E5%A4%8D%E7%9B%98/">实战复盘</category>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>手写迷你 Promise：从状态机到 then 链式调用</title>
+      <link>https://zhaoshaodada.github.io/2026/11/16/2026-11-16-js-hand-write-promise/</link>
+      <description>从零实现一个迷你 Promise，讲透状态机、then 链式调用、异步调度与错误冒泡，附可直接运行的代码。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/JavaScript/">JavaScript</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/">异步编程</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Promise/">Promise</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0/">手写实现</category>
+      <pubDate>Mon, 16 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Vue3 组合式函数实战：封装一个能防竞态、带缓存的 useRequest Hook</title>
+      <link>https://zhaoshaodada.github.io/2026/11/12/2026-11-12-vue3-userequest-composable/</link>
+      <description>用组合式函数把异步请求封装成可复用的 Hook，自动处理竞态、重复请求与缓存，附可直接运行的示例。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Vue3/">Vue3</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E7%BB%84%E5%90%88%E5%BC%8F%E5%87%BD%E6%95%B0/">组合式函数</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Composable/">Composable</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82/">异步请求</category>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Cesium 坐标系实战：WGS84 经纬度与 ECEF 笛卡尔坐标的相互转换</title>
+      <link>https://zhaoshaodada.github.io/2026/11/11/2026-11-11-cesium-coordinate-ecef-conversion/</link>
+      <description>从经纬度高程到 Cartesian3 笛卡尔坐标，讲清 Cesium 的 WGS84/ECEF 两套坐标系与相互转换的正确姿势。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
+      <category domain="https://zhaoshaodada.github.io/tags/3D%E5%8F%AF%E8%A7%86%E5%8C%96/">3D可视化</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/">坐标转换</category>
+      <category domain="https://zhaoshaodada.github.io/tags/ECEF/">ECEF</category>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>用 Three.js GLTFLoader 加载并控制 3D 模型：从加载、Draco 解压到动画播放</title>
+      <link>https://zhaoshaodada.github.io/2026/11/10/2026-11-10-threejs-gltfloader-model/</link>
+      <description>一次讲清 Three.js 加载 glTF/GLB 模型的完整链路，覆盖 Draco 几何解压、模型自适应居中缩放、PBR 材质打光与 AnimationMixer 动画播放，并列出 5 个最常见的黑屏与动画失效坑。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Three-js/">Three.js</category>
+      <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/3D%E5%8F%AF%E8%A7%86%E5%8C%96/">3D可视化</category>
+      <category domain="https://zhaoshaodada.github.io/tags/GLTFLoader/">GLTFLoader</category>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Vite 插件实战：从零写一个自动注入构建信息的插件</title>
+      <link>https://zhaoshaodada.github.io/2026/11/09/2026-11-09-vite-plugin-inject-build-info/</link>
+      <description>通过开发一个 Vite 插件，在构建时自动注入版本号与 Git 提交信息，掌握插件钩子与虚拟模块的用法。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">构建工具</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Vite/">Vite</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/">插件开发</category>
+      <pubDate>Mon, 09 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>用 CSS :has() 选择器实现容器感知样式：父级状态联动子元素实战</title>
+      <link>https://zhaoshaodada.github.io/2026/11/08/2026-11-08-css-has-selector/</link>
+      <description>深入讲解 CSS :has() 父选择器的工作机制，通过一个表单联动与卡片布局切换的可运行示例，掌握容器感知样式的写法与常见坑。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/CSS/">CSS</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%93%8D%E5%BA%94%E5%BC%8F/">响应式</category>
+      <category domain="https://zhaoshaodada.github.io/tags/has%E9%80%89%E6%8B%A9%E5%99%A8/">:has选择器</category>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>用虚拟列表（Virtual List）渲染十万条数据：前端长列表性能优化实战</title>
+      <link>https://zhaoshaodada.github.io/2026/11/07/2026-11-07-virtual-list-performance/</link>
+      <description>当列表从几百条涨到十万条，直接渲染会让浏览器卡死。本文用纯 JavaScript 实现一个固定行高的虚拟列表，只渲染视口内可见的少量 DOM 节点。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/JavaScript/">JavaScript</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">前端性能优化</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8/">虚拟列表</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E9%95%BF%E5%88%97%E8%A1%A8/">长列表</category>
+      <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>深入理解 JavaScript Proxy 与 Reflect：手写一个最小响应式系统</title>
+      <link>https://zhaoshaodada.github.io/2026/11/06/2026-11-06-js-proxy-reflect-reactive/</link>
+      <description>从零用 Proxy 与 Reflect 写一个可运行的最小响应式系统，理解 Vue3 响应式的底层原理与常见陷阱。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/JavaScript/">JavaScript</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%93%8D%E5%BA%94%E5%BC%8F/">响应式</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Proxy/">Proxy</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Reflect/">Reflect</category>
+      <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Vue3 shallowRef 与 markRaw：管理大型非响应式对象时的响应式陷阱</title>
+      <link>https://zhaoshaodada.github.io/2026/11/05/2026-11-05-vue3-shallowref-markraw/</link>
+      <description>当用 Vue3 的 ref 包裹 Three.js、Cesium 或大型配置对象时，深度响应式会带来性能与循环引用问题，shallowRef 与 markRaw 才是正确的解法。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Vue3/">Vue3</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%93%8D%E5%BA%94%E5%BC%8F/">响应式</category>
+      <category domain="https://zhaoshaodada.github.io/tags/shallowRef/">shallowRef</category>
+      <category domain="https://zhaoshaodada.github.io/tags/markRaw/">markRaw</category>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Cesium 坐标拾取实战：从屏幕像素到经纬度与高程</title>
+      <link>https://zhaoshaodada.github.io/2026/11/04/2026-11-04-cesium-coordinate-picking/</link>
+      <description>详解 Cesium 三种屏幕坐标拾取方式（pickEllipsoid / pickPosition / globe.pick）的原理差异，并给出可直接运行的地形高程拾取代码示例与常见坑。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
+      <category domain="https://zhaoshaodada.github.io/tags/3D%E5%8F%AF%E8%A7%86%E5%8C%96/">3D可视化</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/">坐标转换</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%8B%BE%E5%8F%96/">拾取</category>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Three.js 后处理辉光实战：用 UnrealBloomPass 让 3D 场景发光</title>
+      <link>https://zhaoshaodada.github.io/2026/11/03/2026-11-03-threejs-bloom-postprocessing/</link>
+      <description>用 EffectComposer 与 UnrealBloomPass 为 Three.js 场景添加选择性辉光，并避开抗锯齿失效与整屏糊化等常见坑。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Three-js/">Three.js</category>
+      <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%90%8E%E5%A4%84%E7%90%86/">后处理</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E8%BE%89%E5%85%89/">辉光</category>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>用 esbuild 写一个极简前端构建器：30 行代码搞定打包与 TypeScript 转译</title>
+      <link>https://zhaoshaodada.github.io/2026/11/01/2026-11-01-esbuild-minimal-bundler/</link>
+      <description>不依赖 webpack 或 Vite，用 esbuild 的 Node API 手写一个支持 TS 转译、CSS 处理、压缩与监听的极简构建脚本，理解现代构建工具的核心原理。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化</category>
+      <category domain="https://zhaoshaodada.github.io/tags/esbuild/">esbuild</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">构建工具</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%89%93%E5%8C%85/">打包</category>
+      <category domain="https://zhaoshaodada.github.io/tags/TypeScript/">TypeScript</category>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>用 CSS 容器查询（Container Queries）构建真正响应容器的组件</title>
+      <link>https://zhaoshaodada.github.io/2026/10/31/2026-10-31-css-container-queries/</link>
+      <description>媒体查询只能看视口，组件一旦复用就失控。用 Container Queries 让组件根据父容器宽度自适应，这才是组件级响应式的正解。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/CSS/">CSS</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%AE%B9%E5%99%A8%E6%9F%A5%E8%AF%A2/">容器查询</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/">响应式布局</category>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>用 Cesium 的 SampledPositionProperty 与 Clock 实现模型沿时间轴飞行</title>
+      <link>https://zhaoshaodada.github.io/2026/10/30/2026-10-30-cesium-time-dynamic-trajectory/</link>
+      <description>借助 SampledPositionProperty 与时间轴 Clock，让 GLB 模型在数据驱动下沿轨迹平滑飞行并自动朝向。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Cesium/">Cesium</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%97%B6%E9%97%B4%E8%BD%B4/">时间轴</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%8A%A8%E6%80%81%E8%BD%A8%E8%BF%B9/">动态轨迹</category>
+      <category domain="https://zhaoshaodada.github.io/tags/3D%E5%8F%AF%E8%A7%86%E5%8C%96/">3D可视化</category>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Three.js 射线拾取实战：用 Raycaster 从屏幕坐标选中 3D 物体</title>
+      <link>https://zhaoshaodada.github.io/2026/10/29/2026-10-29-threejs-raycaster-picking/</link>
+      <description>拆解 Three.js 中 Raycaster 的工作原理，并用一份可直接运行的代码实现鼠标点击精准选中三维物体的交互。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Three-js/">Three.js</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%B0%84%E7%BA%BF%E6%8B%BE%E5%8F%96/">射线拾取</category>
+      <category domain="https://zhaoshaodada.github.io/tags/3D%E4%BA%A4%E4%BA%92/">3D交互</category>
+      <category domain="https://zhaoshaodada.github.io/tags/WebGL/">WebGL</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>用 PerformanceObserver 测量并优化 Core Web Vitals：LCP、INP 与 CLS 实战</title>
+      <link>https://zhaoshaodada.github.io/2026/10/28/2026-10-28-performance-observer-web-vitals/</link>
+      <description>借助 PerformanceObserver 在浏览器中原生采集 LCP、INP、CLS 三大核心指标，并给出可落地的优化手段与常见陷阱。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">前端性能优化</category>
+      <category domain="https://zhaoshaodada.github.io/tags/PerformanceObserver/">PerformanceObserver</category>
+      <category domain="https://zhaoshaodada.github.io/tags/CoreWebVitals/">CoreWebVitals</category>
+      <category domain="https://zhaoshaodada.github.io/tags/WebVitals/">WebVitals</category>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>深入理解 JavaScript 事件循环：宏任务、微任务与渲染时机</title>
+      <link>https://zhaoshaodada.github.io/2026/10/27/2026-10-27-js-event-loop/</link>
+      <description>从单线程模型出发，讲清宏任务与微任务的执行顺序，以及它们与浏览器渲染时机的关系，并给出可运行的验证代码与常见误区。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
+      <category domain="https://zhaoshaodada.github.io/tags/JavaScript/">JavaScript</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">事件循环</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/">异步编程</category>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>用 IntersectionObserver 写一个零依赖的 Vue 懒加载指令</title>
+      <link>https://zhaoshaodada.github.io/2026/10/26/2026-10-26-vue-lazy-directive/</link>
+      <description>告别 scroll 事件与 data-src 的繁琐，用 IntersectionObserver 封装一个可复用的 v-lazy 指令，实现图片与组件的按需加载与出场动画。</description>
+      <author>Moonligh</author>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      <category domain="https://zhaoshaodada.github.io/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</category>
+      <category domain="https://zhaoshaodada.github.io/tags/Vue3/">Vue3</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
+      <category domain="https://zhaoshaodada.github.io/tags/IntersectionObserver/">IntersectionObserver</category>
+      <category domain="https://zhaoshaodada.github.io/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">自定义指令</category>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

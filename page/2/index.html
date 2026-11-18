@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Moonligh</title><meta name="author" content="Moonligh"><meta name="copyright" content="Moonligh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Moonligh">
+<meta property="og:url" content="https://zhaoshaodada.github.io/page/2/index.html">
+<meta property="og:site_name" content="Moonligh">
+<meta property="og:description" content="一个专注前端开发技术分享的博客，涵盖 JavaScript、Vue、Three.js、Cesium 等框架与工具的使用心得和实战经验。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhaoshaodada.github.io/img/favicon.jpg">
+<meta property="article:author" content="Moonligh">
+<meta property="article:tag" content="前端开发, JavaScript, Vue, Hexo, 技术博客, ES6, Three.js, Cesium, Axios">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhaoshaodada.github.io/img/favicon.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://zhaoshaodada.github.io/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Moonligh',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Moonligh" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Moonligh" type="application/rss+xml">
+</head><body><div id="web_bg" style="background-image: url(/img/22.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/favicon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">130</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 工具</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/index.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Moonligh</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 工具</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Moonligh</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/11/05/2026-11-05-vue3-shallowref-markraw/" title="Vue3 shallowRef 与 markRaw：管理大型非响应式对象时的响应式陷阱">Vue3 shallowRef 与 markRaw：管理大型非响应式对象时的响应式陷阱</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-11-05T00:00:00.000Z" title="发表于 2026-11-05 08:00:00">2026-11-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Vue3/">Vue3</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%93%8D%E5%BA%94%E5%BC%8F/">响应式</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/shallowRef/">shallowRef</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/markRaw/">markRaw</a></span></div><div class="content">引言在 Vue3 项目里，我们习惯用 ref() 包住一切状态。但当对象是 Three.js 的 Mesh、Cesium 的 Viewer，或一份动辄数千字段的配置文件时，这种“无脑 ref”会触发深度响应式代理：Vue 会递归遍历整个对象，给每个属性套上 Proxy。其结果不仅是性能浪费，更可能因为对象内部存在循环引用、非 configurable 属性或自带 getter，导致代理直接抛错。本文讲清楚 shallowRef 与 markRaw 何时该上场。 原理ref(value) 在 value 是对象时，底层会调用 reactive() 做深度递归代理；而 shallowRef(value) 只追踪 .value 这一层引用，内部的嵌套属性不会被代理。markRaw(obj) 则给对象打上标记，告诉 Vue 永远不要把它变成响应式——即便它被放进 reactive 或 ref 里也保持原样。三者差异可以用一段最小代码看清： 123456789101112import &#123; ref, shallowRef, isReactive, markRaw &#125; fr...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/11/04/2026-11-04-cesium-coordinate-picking/" title="Cesium 坐标拾取实战：从屏幕像素到经纬度与高程">Cesium 坐标拾取实战：从屏幕像素到经纬度与高程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-11-04T00:00:00.000Z" title="发表于 2026-11-04 08:00:00">2026-11-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Cesium/">Cesium</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/3D%E5%8F%AF%E8%A7%86%E5%8C%96/">3D可视化</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/">坐标转换</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%8B%BE%E5%8F%96/">拾取</a></span></div><div class="content">引言在 Cesium 三维项目中，几乎绕不开”用户点击地图，拿到这个点的经纬度与高程”这类需求——无论是打点标注、量测距离，还是把业务数据贴合真实地形。看似一行 API 就能解决，但实际落地时经常遇到”点在山上却拿到海平面高度””地形开启后坐标飘了”等问题。本文梳理三种主流拾取方式的原理差异，并给出一个可直接运行的示例。 原理Cesium 把屏幕上的像素（Cartesian2）转换成三维世界坐标，本质是反向射线求交，但求交的”目标面”不同：  camera.pickEllipsoid(windowPosition)：只与 WGS84 椭球面求交，完全忽略地形。返回的是椭球面上的点，没有真实地形高程。 scene.pickPosition(windowPosition)：基于深度缓冲拾取，能拿到包含地形、模型在内的真实三维坐标。但前提是启用了深度检测（scene.globe.depthTestAgainstTerrain = true），否则会退化到椭球面。 globe.pick(ray, scene)：用 camera.getPickRay 构造射线后，与地形表面求交，是获取”带...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/11/03/2026-11-03-threejs-bloom-postprocessing/" title="Three.js 后处理辉光实战：用 UnrealBloomPass 让 3D 场景发光">Three.js 后处理辉光实战：用 UnrealBloomPass 让 3D 场景发光</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-11-03T00:00:00.000Z" title="发表于 2026-11-03 08:00:00">2026-11-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Three-js/">Three.js</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/WebGL/">WebGL</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%90%8E%E5%A4%84%E7%90%86/">后处理</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%BE%89%E5%85%89/">辉光</a></span></div><div class="content">引言在 3D 可视化与游戏化界面里，”发光”是提升质感最直接的手段：霓虹灯牌、能量护盾、粒子光晕都依赖辉光（Bloom）。Three.js 本身只负责把几何体渲染成一张普通图像，真正的辉光来自后处理（Post-Processing）管线——在渲染结果之上再做一次屏幕级图像处理。本文用一个可运行的例子，带你从零搭建辉光效果，并解释它为什么不能直接挂在 WebGLRenderer 上。 原理后处理的核心是把”渲染一帧”拆成多道工序。Three.js 用 EffectComposer 充当流水线调度器：  RenderPass 先按常规方式把场景画进一个离屏缓冲区（而不是直接画到屏幕）； 后续的 Pass（如 UnrealBloomPass）读取上一道工序的输出，做模糊、叠加等操作，再把结果交给下一道； 最后一道 Pass 把像素真正写到屏幕上。  UnrealBloomPass 的实现是经典的”亮度提取 + 多级高斯模糊 + 叠加”：它先按阈值（threshold）抠出发光区域，再用不同半径做几层模糊，最后把模糊结果按强度（strength）加回原图。因此参数调得好，发光物体会”溢光...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/11/01/2026-11-01-esbuild-minimal-bundler/" title="用 esbuild 写一个极简前端构建器：30 行代码搞定打包与 TypeScript 转译">用 esbuild 写一个极简前端构建器：30 行代码搞定打包与 TypeScript 转译</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-11-01T00:00:00.000Z" title="发表于 2026-11-01 08:00:00">2026-11-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/esbuild/">esbuild</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">构建工具</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%89%93%E5%8C%85/">打包</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/TypeScript/">TypeScript</a></span></div><div class="content">引言在日常开发中，我们习惯用 webpack、Vite 这类”全家桶”构建工具，却很少思考它们到底做了什么。本质上，前端构建只解决三件事：把分散的模块聚合成一个文件（打包）、把 TypeScript 与新语法转成浏览器能懂的 JS（转译）、把样式与资源一并处理（资源管线）。esbuild 是一个用 Go 编写的极速构建器，它把这三件事浓缩成了几个清晰的 API。本文不引入任何框架，仅用 esbuild 的 Node API 手写一个最小可用的构建脚本，帮你从零理解构建工具的真实工作流。 原理esbuild 的核心入口是 build 方法，它接收一个配置对象并返回 Promise。关键字段可以分为三类：  入口与产物：entryPoints 指定入口文件，outfile 或 outdir 指定输出位置；bundle: true 开启依赖收集与合并。 目标与格式：format 决定产物是 esm 还是 iife；target 控制语法降级程度（如 es2020）；platform 区分为 browser 还是 node。 资源与优化：loader 告诉 esbuild 如何处理非 J...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/10/31/2026-10-31-css-container-queries/" title="用 CSS 容器查询（Container Queries）构建真正响应容器的组件">用 CSS 容器查询（Container Queries）构建真正响应容器的组件</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-10-31T00:00:00.000Z" title="发表于 2026-10-31 08:00:00">2026-10-31</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/CSS/">CSS</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%AE%B9%E5%99%A8%E6%9F%A5%E8%AF%A2/">容器查询</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/">响应式布局</a></span></div><div class="content">引言我们写了无数「响应式组件」，但仔细想会发现一个矛盾：媒体查询（Media Queries）判断的是视口（viewport）宽度，而不是组件自身所在容器的宽度。同一个卡片组件，放在侧边栏的窄槽和放在主内容区的宽槽里，它只会盯着浏览器窗口做同一套判断。结果就是：组件无法真正「自适应其所在位置」，复用越深，布局越乱。 CSS 容器查询（Container Queries）正是为解决这个问题而生：它让元素根据最近的祖先容器的尺寸来做样式分支，把「响应式」的粒度从页面降到了组件。本文用一个可运行的卡片组件，讲清原理与落地。 原理容器查询分两步：  用 container-type 把一个元素声明为「查询容器」，它会建立尺寸包含（containment），供后代查询。 container-type: inline-size：只建立横向（inline）尺寸包含，最常用，子元素仍可自由决定高度。 container-type: size：同时约束横纵尺寸，要求容器本身有确定尺寸，否则会塌陷为 0。   后代用 @container 规则针对该容器断点生效，语法与媒体查询几乎一致。  可选 c...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/10/30/2026-10-30-cesium-time-dynamic-trajectory/" title="用 Cesium 的 SampledPositionProperty 与 Clock 实现模型沿时间轴飞行">用 Cesium 的 SampledPositionProperty 与 Clock 实现模型沿时间轴飞行</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-10-30T00:00:00.000Z" title="发表于 2026-10-30 08:00:00">2026-10-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Cesium/">Cesium</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%B6%E9%97%B4%E8%BD%B4/">时间轴</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%8A%A8%E6%80%81%E8%BD%A8%E8%BF%B9/">动态轨迹</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/3D%E5%8F%AF%E8%A7%86%E5%8C%96/">3D可视化</a></span></div><div class="content">引言在三维地理可视化项目中，让一架飞机、一辆车或一艘船按照真实时间戳沿路径运动，是再常见不过的需求。Cesium 没有把”动画”做成一个独立的 API，而是把时间作为一等公民——几乎所有动态属性都绑定到全局的时间轴（Clock）之上。理解这一点，你就掌握了 Cesium 动态场景的钥匙。 原理Cesium 时间系统的核心是 JulianDate（儒略日期）与 Clock。SampledPositionProperty 是一个按时间采样的位置属性：你往里塞入一组（时间，坐标）样本点，它就会在任意时刻做插值，返回该时刻的精确位置。当你把这个属性赋给 Entity 的 position，并开启 Clock 的 shouldAnimate，Cesium 在每一帧根据当前时间自动算出模型位置。 朝向（orientation）则通过 VelocityOrientationProperty 实现：它根据相邻样本的速度方向自动推导模型朝向，让机头始终对准前进方向，无需手动计算四元数。 代码实现下面是一段可直接在 HTML 中运行的完整示例（以 CDN 方式引入 Cesium）： 12345678...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/10/29/2026-10-29-threejs-raycaster-picking/" title="Three.js 射线拾取实战：用 Raycaster 从屏幕坐标选中 3D 物体">Three.js 射线拾取实战：用 Raycaster 从屏幕坐标选中 3D 物体</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-10-29T00:00:00.000Z" title="发表于 2026-10-29 08:00:00">2026-10-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Three-js/">Three.js</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%B0%84%E7%BA%BF%E6%8B%BE%E5%8F%96/">射线拾取</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/3D%E4%BA%A4%E4%BA%92/">3D交互</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/WebGL/">WebGL</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">引言在三维编辑器、数据可视化平台和 3D 游戏中，最基础也最常用的一项交互，就是「用户用鼠标点一下屏幕，程序要能知道他点中了哪个三维物体」。但浏览器事件只给我们鼠标在画布上的像素坐标（clientX、clientY），而场景里的物体都活在三维世界坐标系里。如何把二维屏幕点击「反投影」成三维空间里的一次命中？Three.js 提供的 Raycaster（射线投射器）就是为此而生的标准解法。 本文不依赖任何外部 API，从坐标变换原理讲起，给出一份可直接运行的完整示例，并总结几个老手也容易踩的坑。 原理拾取的本质，是从相机位置出发、穿过鼠标点击位置、射出一条「看不见的射线」，再判断这条射线和场景里哪些物体的表面相交，取最近的交点。 整个过程分三步：  归一化设备坐标（NDC）转换。把鼠标像素坐标换算成 [-1, 1] 区间的 NDC 坐标。x 方向：(x / width) * 2 - 1；y 方向注意要取反：-(y / height) * 2 + 1，因为屏幕 y 轴向下，而 WebGL 的 NDC y 轴向上。  生成射线。raycaster.setFromCamera(ndc, ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/10/28/2026-10-28-performance-observer-web-vitals/" title="用 PerformanceObserver 测量并优化 Core Web Vitals：LCP、INP 与 CLS 实战">用 PerformanceObserver 测量并优化 Core Web Vitals：LCP、INP 与 CLS 实战</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-10-28T00:00:00.000Z" title="发表于 2026-10-28 08:00:00">2026-10-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">前端性能优化</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/PerformanceObserver/">PerformanceObserver</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/CoreWebVitals/">CoreWebVitals</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/WebVitals/">WebVitals</a></span></div><div class="content">引言Core Web Vitals（核心网页指标）已经成为衡量前端体验的事实标准，Google 搜索排名、业务转化率都与之强相关。三大指标分别是：LCP（Largest Contentful Paint，最大内容绘制）衡量加载，INP（Interaction to Next Paint，交互到绘制）衡量响应，CLS（Cumulative Layout Shift，累积布局偏移）衡量视觉稳定性。 很多团队依赖 Lighthouse 跑分，但实验室数据难以还原真实用户网络与设备。真正有价值的，是用地道的前端代码在线上持续采集真实用户的 Field Data。浏览器原生提供的 PerformanceObserver 正是做这件事的标准 API，无需任何第三方库。 原理PerformanceObserver 订阅 Performance Timeline 上特定类型的 PerformanceEntry。各指标对应的 entry 类型：  LCP：监听 largest-contentful-paint，浏览器在页面生命周期内会不断上报更大的绘制元素，取最后一次即可。 INP：依赖 even...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/10/27/2026-10-27-js-event-loop/" title="深入理解 JavaScript 事件循环：宏任务、微任务与渲染时机">深入理解 JavaScript 事件循环：宏任务、微任务与渲染时机</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-10-27T00:00:00.000Z" title="发表于 2026-10-27 08:00:00">2026-10-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/JavaScript/">JavaScript</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">事件循环</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/">异步编程</a></span></div><div class="content">深入理解 JavaScript 事件循环：宏任务、微任务与渲染时机引言JavaScript 在设计之初就被定为单线程语言：同一时刻只能执行一段代码。这避免了多线程下共享状态的复杂竞态问题，但也带来一个疑问——为什么单线程的 JS 还能处理 AJAX、定时器、用户点击这些”并发”事情而不卡死？答案就是事件循环（Event Loop）。理解它，是写好异步代码、定位”为什么先打印了这个而不是那个”类问题的前提。 原理浏览器的事件循环维护两个核心队列：  宏任务队列（Macrotask）：script 整体代码、setTimeout、setInterval、I&#x2F;O、UI 事件、requestAnimationFrame（在多数实现中归为渲染前 task）等。 微任务队列（Microtask）：Promise 的 then&#x2F;catch&#x2F;finally、queueMicrotask、MutationObserver 等。  一次循环的执行顺序是：  执行一个宏任务（最初是整段 script）。 该宏任务执行完后，清空所有微任务（微任务中产生的微任务会继续排队清空...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/10/26/2026-10-26-vue-lazy-directive/" title="用 IntersectionObserver 写一个零依赖的 Vue 懒加载指令">用 IntersectionObserver 写一个零依赖的 Vue 懒加载指令</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-10-26T00:00:00.000Z" title="发表于 2026-10-26 08:00:00">2026-10-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Vue3/">Vue3</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/IntersectionObserver/">IntersectionObserver</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">自定义指令</a></span></div><div class="content">用 IntersectionObserver 写一个零依赖的 Vue 懒加载指令在长列表、图文流或落地页里，图片和重型组件如果一股脑全部加载，首屏时间和内存占用都会被拖垮。传统的做法是监听 scroll 事件，自己算元素是否进入视口——但滚动回调频繁触发、还要手动做节流，写起来又臭又长。 浏览器其实早就给了我们一个更优雅的方案：IntersectionObserver。它能在「元素进入&#x2F;离开视口」时异步回调，不阻塞主线程，也不需要你手写节流。 一、IntersectionObserver 最小可用12345678910const io = new IntersectionObserver((entries) =&gt; &#123;  for (const entry of entries) &#123;    if (entry.isIntersecting) &#123;      console.log(&#x27;进入视口&#x27;, entry.target)      io.unobserve(entry.target) // 只触发一次就取消观察    ...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/favicon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Moonligh</div><div class="author-info-description">不需要什么描述</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">130</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">随便转，随便看</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/18/2026-11-18-time-slicing-long-task/" title="用时间切片拆解长任务：让页面在处理十万条数据时依然流畅">用时间切片拆解长任务：让页面在处理十万条数据时依然流畅</a><time datetime="2026-11-18T00:00:00.000Z" title="发表于 2026-11-18 08:00:00">2026-11-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/17/2026-11-17-ai-coding-efficiency-review/" title="前端人用 AI 写代码一年，我把 5 类重复劳动交给工具，效率真的翻倍了吗">前端人用 AI 写代码一年，我把 5 类重复劳动交给工具，效率真的翻倍了吗</a><time datetime="2026-11-17T00:00:00.000Z" title="发表于 2026-11-17 08:00:00">2026-11-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/16/2026-11-16-js-hand-write-promise/" title="手写迷你 Promise：从状态机到 then 链式调用">手写迷你 Promise：从状态机到 then 链式调用</a><time datetime="2026-11-16T00:00:00.000Z" title="发表于 2026-11-16 08:00:00">2026-11-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/12/2026-11-12-vue3-userequest-composable/" title="Vue3 组合式函数实战：封装一个能防竞态、带缓存的 useRequest Hook">Vue3 组合式函数实战：封装一个能防竞态、带缓存的 useRequest Hook</a><time datetime="2026-11-12T00:00:00.000Z" title="发表于 2026-11-12 08:00:00">2026-11-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/11/2026-11-11-cesium-coordinate-ecef-conversion/" title="Cesium 坐标系实战：WGS84 经纬度与 ECEF 笛卡尔坐标的相互转换">Cesium 坐标系实战：WGS84 经纬度与 ECEF 笛卡尔坐标的相互转换</a><time datetime="2026-11-11T00:00:00.000Z" title="发表于 2026-11-11 08:00:00">2026-11-11</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="card-category-list-name">前端</span><span class="card-category-list-count">20</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/"><span class="card-category-list-name">Vue</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%A3%81%E7%BA%B8/"><span class="card-category-list-name">壁纸</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"><span class="card-category-list-name">技术分享</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%99%E7%A8%8B/"><span class="card-category-list-name">教程</span><span class="card-category-list-count">26</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"><span class="card-category-list-name">经验分享</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%B5%84%E6%BA%90/"><span class="card-category-list-name">资源</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/"><span class="card-category-list-name">随笔</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Vue3/" style="font-size: 1.34em; color: rgb(124, 98, 130);">Vue3</a><a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" style="font-size: 1.3em; color: rgb(126, 72, 150);">性能优化</a><a href="/tags/IntersectionObserver/" style="font-size: 1.15em; color: rgb(117, 123, 178);">IntersectionObserver</a><a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" style="font-size: 1.15em; color: rgb(148, 187, 184);">自定义指令</a><a href="/tags/JavaScript/" style="font-size: 1.38em; color: rgb(55, 193, 116);">JavaScript</a><a href="/tags/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" style="font-size: 1.15em; color: rgb(110, 177, 104);">事件循环</a><a href="/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/" style="font-size: 1.19em; color: rgb(195, 144, 128);">异步编程</a><a href="/tags/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" style="font-size: 1.22em; color: rgb(82, 50, 180);">前端性能优化</a><a href="/tags/PerformanceObserver/" style="font-size: 1.15em; color: rgb(114, 50, 72);">PerformanceObserver</a><a href="/tags/CoreWebVitals/" style="font-size: 1.15em; color: rgb(185, 70, 188);">CoreWebVitals</a><a href="/tags/WebVitals/" style="font-size: 1.15em; color: rgb(114, 50, 90);">WebVitals</a><a href="/tags/Three-js/" style="font-size: 1.3em; color: rgb(50, 174, 65);">Three.js</a><a href="/tags/%E5%B0%84%E7%BA%BF%E6%8B%BE%E5%8F%96/" style="font-size: 1.15em; color: rgb(89, 137, 50);">射线拾取</a><a href="/tags/3D%E4%BA%A4%E4%BA%92/" style="font-size: 1.15em; color: rgb(50, 91, 64);">3D交互</a><a href="/tags/WebGL/" style="font-size: 1.38em; color: rgb(196, 97, 87);">WebGL</a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.45em; color: rgb(96, 117, 183);">前端</a><a href="/tags/Cesium/" style="font-size: 1.41em; color: rgb(148, 179, 116);">Cesium</a><a href="/tags/%E6%97%B6%E9%97%B4%E8%BD%B4/" style="font-size: 1.15em; color: rgb(149, 50, 73);">时间轴</a><a href="/tags/%E5%8A%A8%E6%80%81%E8%BD%A8%E8%BF%B9/" style="font-size: 1.15em; color: rgb(109, 90, 50);">动态轨迹</a><a href="/tags/3D%E5%8F%AF%E8%A7%86%E5%8C%96/" style="font-size: 1.26em; color: rgb(167, 127, 192);">3D可视化</a><a href="/tags/CSS/" style="font-size: 1.34em; color: rgb(118, 50, 50);">CSS</a><a href="/tags/%E5%AE%B9%E5%99%A8%E6%9F%A5%E8%AF%A2/" style="font-size: 1.15em; color: rgb(50, 173, 50);">容器查询</a><a href="/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/" style="font-size: 1.15em; color: rgb(50, 86, 153);">响应式布局</a><a href="/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" style="font-size: 1.22em; color: rgb(165, 50, 50);">前端工程化</a><a href="/tags/esbuild/" style="font-size: 1.15em; color: rgb(120, 67, 92);">esbuild</a><a href="/tags/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/" style="font-size: 1.19em; color: rgb(161, 60, 70);">构建工具</a><a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 1.15em; color: rgb(163, 126, 51);">打包</a><a href="/tags/TypeScript/" style="font-size: 1.26em; color: rgb(194, 145, 50);">TypeScript</a><a href="/tags/%E5%90%8E%E5%A4%84%E7%90%86/" style="font-size: 1.15em; color: rgb(50, 137, 146);">后处理</a><a href="/tags/%E8%BE%89%E5%85%89/" style="font-size: 1.15em; color: rgb(177, 88, 50);">辉光</a><a href="/tags/%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/" style="font-size: 1.19em; color: rgb(138, 85, 181);">坐标转换</a><a href="/tags/%E6%8B%BE%E5%8F%96/" style="font-size: 1.15em; color: rgb(141, 50, 50);">拾取</a><a href="/tags/%E5%93%8D%E5%BA%94%E5%BC%8F/" style="font-size: 1.22em; color: rgb(119, 72, 102);">响应式</a><a href="/tags/shallowRef/" style="font-size: 1.15em; color: rgb(50, 69, 50);">shallowRef</a><a href="/tags/markRaw/" style="font-size: 1.15em; color: rgb(166, 171, 50);">markRaw</a><a href="/tags/Proxy/" style="font-size: 1.15em; color: rgb(109, 180, 69);">Proxy</a><a href="/tags/Reflect/" style="font-size: 1.15em; color: rgb(50, 186, 50);">Reflect</a><a href="/tags/%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8/" style="font-size: 1.15em; color: rgb(112, 93, 93);">虚拟列表</a><a href="/tags/%E9%95%BF%E5%88%97%E8%A1%A8/" style="font-size: 1.15em; color: rgb(158, 189, 152);">长列表</a><a href="/tags/has%E9%80%89%E6%8B%A9%E5%99%A8/" style="font-size: 1.15em; color: rgb(81, 134, 116);">:has选择器</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/11/">
+            <span class="card-archive-list-date">
+              十一月 2026
+            </span>
+            <span class="card-archive-list-count">14</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/10/">
+            <span class="card-archive-list-date">
+              十月 2026
+            </span>
+            <span class="card-archive-list-count">6</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/08/">
+            <span class="card-archive-list-date">
+              八月 2026
+            </span>
+            <span class="card-archive-list-count">6</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/07/">
+            <span class="card-archive-list-date">
+              七月 2026
+            </span>
+            <span class="card-archive-list-count">28</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/04/">
+            <span class="card-archive-list-date">
+              四月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              十二月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              十一月 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">59</div></div><div class="webinfo-item"><div class="item-name">运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2025-11-18T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-11-18T00:20:03.438Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-flex"><div class="footer-flex-items"><div class="footer-flex-item"><div class="footer-flex-title">翼羽网站群</div><div class="footer-flex-content"><a href="http://82.157.188.114:3005/" target="_blank" title="翼羽攻略网">翼羽攻略网</a><a href="http://82.157.188.114:3001/" target="_blank" title="翼羽工具箱">翼羽工具箱</a><a href="http://82.157.188.114:3002/" target="_blank" title="翼羽游戏站">翼羽游戏站</a><a href="http://82.157.188.114:3003/" target="_blank" title="翼羽工厂地图">翼羽工厂地图</a><a href="http://82.157.188.114:3004/" target="_blank" title="翼羽仙宫">翼羽仙宫</a><a href="http://82.157.188.114:3000/" target="_blank" title="制造汇">制造汇</a></div></div></div></div><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Moonligh</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, "https://v1.hitokoto.cn/"))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = ["真正的强大不是对抗，而是允许发生。"].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  typedJSFn.processSubtitle(["真正的强大不是对抗，而是允许发生。"])
+}
+typedJSFn.run(subtitleType)</script></div><script>var meting_api="https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&r=:r";</script><div class="aplayer" data-server="netease" data-type="playlist" data-id="6758762023" data-fixed="true" data-mini="true" data-autoplay="false" data-theme="#49b1f5" data-loop="all" data-order="list" data-preload="auto" data-volume="0.7" data-mutex="true" data-lrctype="0"></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="https://events.vercount.one/js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div>
+<!-- 访问人数计数器（共享后台服务） -->
+<script src="http://82.157.188.114:3006/visit.js" defer></script>
+</body></html>
